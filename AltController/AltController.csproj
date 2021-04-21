@@ -1,0 +1,632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A835F483-FA6A-43A5-90AC-15E8AADAC739}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AltController</RootNamespace>
+    <AssemblyName>AltController</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://www.tcbrogden.co.uk/Downloads/</InstallUrl>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.6.3.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AltController.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AltController.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B81ED9FE3850AD7C62B59C78C099C44930604C05</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AltController_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Actions\BaseKeyAction.cs" />
+    <Compile Include="Actions\ChangePointerAction.cs" />
+    <Compile Include="Actions\ToggleMouseButtonAction.cs" />
+    <Compile Include="Actions\StopScrollingAction.cs" />
+    <Compile Include="Actions\RepeatScrollWheelAction.cs" />
+    <Compile Include="Actions\MoveThePointerAction.cs" />
+    <Compile Include="Actions\ScrollWheelAction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Actions\ToggleKeyAction.cs" />
+    <Compile Include="Actions\TypeTextAction.cs" />
+    <Compile Include="Actions\HoldKeyAction.cs" />
+    <Compile Include="Actions\MouseButtonAction.cs" />
+    <Compile Include="Actions\StopOngoingActionsAction.cs" />
+    <Compile Include="Actions\WaitAction.cs" />
+    <Compile Include="AppConfigWindow.xaml.cs">
+      <DependentUpon>AppConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Config\ActionList.cs" />
+    <Compile Include="Config\AppMappingTable.cs" />
+    <Compile Include="Config\ModeMappingTable.cs" />
+    <Compile Include="Config\AppConfig.cs" />
+    <Compile Include="Config\ProfileUpgrader.cs" />
+    <Compile Include="Config\ScreenRegion.cs" />
+    <Compile Include="Config\ScreenRegionList.cs" />
+    <Compile Include="Controls\CustomWindowButtonSet.cs" />
+    <Compile Include="Core\CustomButtonData.cs" />
+    <Compile Include="Core\HighlightInfo.cs" />
+    <Compile Include="Core\HotkeyBindingConverter.cs" />
+    <Compile Include="Core\KeyUtils.cs" />
+    <Compile Include="Core\VirtualKeyData.cs" />
+    <Compile Include="CustomWindow.xaml.cs">
+      <DependentUpon>CustomWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomWindowDesigner.xaml.cs">
+      <DependentUpon>CustomWindowDesigner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DiagnosticsWindow.xaml.cs">
+      <DependentUpon>DiagnosticsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Event\AltAppChangeEventArgs.cs" />
+    <Compile Include="Event\AltKeyEventArgs.cs" />
+    <Compile Include="Event\AltStringValEventArgs.cs" />
+    <Compile Include="Event\AltRegionChangeEventArgs.cs" />
+    <Compile Include="Event\AltMouseButtonEventArgs.cs" />
+    <Compile Include="Event\AltToggleKeyEventArgs.cs" />
+    <Compile Include="Event\AltMouseScrollEventArgs.cs" />
+    <Compile Include="Event\DoubleValEventArgs.cs" />
+    <Compile Include="Event\WindowRegionEventArgs.cs" />
+    <Compile Include="Input\CustomWindowSource.cs" />
+    <Compile Include="ProfileNotesWindow.xaml.cs">
+      <DependentUpon>ProfileNotesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\NamedItemList.cs" />
+    <Compile Include="EditActionWindow.xaml.cs">
+      <DependentUpon>EditActionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Actions\BaseAction.cs" />
+    <Compile Include="Actions\RepeatKeyDirectionalAction.cs" />
+    <Compile Include="Actions\ReleaseKeyAction.cs" />
+    <Compile Include="Config\ActionMappingTable.cs" />
+    <Compile Include="Actions\ChangeModeAction.cs" />
+    <Compile Include="Actions\ChangePageAction.cs" />
+    <Compile Include="Controls\KeyboardControl.cs" />
+    <Compile Include="Controls\MouseButtonSet.cs" />
+    <Compile Include="Core\Constants.cs" />
+    <Compile Include="Core\GUIUtils.cs" />
+    <Compile Include="Core\Interfaces.cs" />
+    <Compile Include="Core\ParamDefinition.cs" />
+    <Compile Include="Core\Utils.cs" />
+    <Compile Include="EditRegionsWindow.xaml.cs">
+      <DependentUpon>EditRegionsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditSituationsWindow.xaml.cs">
+      <DependentUpon>EditSituationsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditSourcesWindow.xaml.cs">
+      <DependentUpon>EditSourcesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Event\AltControlEventArgs.cs" />
+    <Compile Include="Controls\PointerControl.cs" />
+    <Compile Include="Event\EventReport.cs" />
+    <Compile Include="Event\ParameterSourceArgs.cs" />
+    <Compile Include="Core\ParamValue.cs" />
+    <Compile Include="HelpAboutWindow.xaml.cs">
+      <DependentUpon>HelpAboutWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Input\InternalSource.cs" />
+    <Compile Include="Input\KeyboardSource.cs" />
+    <Compile Include="Input\MouseSource.cs" />
+    <Compile Include="Core\NamedItem.cs" />
+    <Compile Include="Actions\RepeatKeyAction.cs" />
+    <Compile Include="Input\BaseSource.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\LogicalState.cs" />
+    <Compile Include="Config\Profile.cs" />
+    <Compile Include="Event\AltStateChangeEventArgs.cs" />
+    <Compile Include="Core\StateManager.cs" />
+    <Compile Include="Actions\TypeKeyAction.cs" />
+    <Compile Include="EditProfileWindow.xaml.cs">
+      <DependentUpon>EditProfileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfileSummaryWindow.xaml.cs">
+      <DependentUpon>ProfileSummaryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OverlayWindow.xaml.cs">
+      <DependentUpon>OverlayWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Sys\MouseManager.cs" />
+    <Compile Include="Sys\KeyPressManager.cs" />
+    <Compile Include="Sys\WindowsAPI.cs" />
+    <Compile Include="UserControls\ChangeModeControl.xaml.cs">
+      <DependentUpon>ChangeModeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChangePageControl.xaml.cs">
+      <DependentUpon>ChangePageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ChangePointerControl.xaml.cs">
+      <DependentUpon>ChangePointerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ColourPickerControl.xaml.cs">
+      <DependentUpon>ColourPickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ToggleMouseButtonActionControl.xaml.cs">
+      <DependentUpon>ToggleMouseButtonActionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RepeatScrollControl.xaml.cs">
+      <DependentUpon>RepeatScrollControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MoveThePointerControl.xaml.cs">
+      <DependentUpon>MoveThePointerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ToggleKeyControl.xaml.cs">
+      <DependentUpon>ToggleKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewScreenRegionsControl.xaml.cs">
+      <DependentUpon>ViewScreenRegionsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WaitControl.xaml.cs">
+      <DependentUpon>WaitControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TypeTextControl.xaml.cs">
+      <DependentUpon>TypeTextControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MouseButtonActionControl.xaml.cs">
+      <DependentUpon>MouseButtonActionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomSliderControl.xaml.cs">
+      <DependentUpon>CustomSliderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\HoldKeyControl.xaml.cs">
+      <DependentUpon>HoldKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditItemsControl.xaml.cs">
+      <DependentUpon>EditItemsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ErrorMessageControl.xaml.cs">
+      <DependentUpon>ErrorMessageControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RepeatKeyDirectionalControl.xaml.cs">
+      <DependentUpon>RepeatKeyDirectionalControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RepeatKeyControl.xaml.cs">
+      <DependentUpon>RepeatKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ReleaseKeyControl.xaml.cs">
+      <DependentUpon>ReleaseKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TypeKeyControl.xaml.cs">
+      <DependentUpon>TypeKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewCustomWindowControl.xaml.cs">
+      <DependentUpon>ViewCustomWindowControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewKeyboardControl.xaml.cs">
+      <DependentUpon>ViewKeyboardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewMouseControl.xaml.cs">
+      <DependentUpon>ViewMouseControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AppConfigWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomWindowDesigner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DiagnosticsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfileNotesWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EditActionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditRegionsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditSituationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditSourcesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Core\ThreadManager.cs" />
+    <Compile Include="Core\Enums.cs" />
+    <Compile Include="Core\Delegates.cs" />
+    <Compile Include="Controls\BaseControl.cs" />
+    <Page Include="EditProfileWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HelpAboutWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfileSummaryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OverlayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ChangeModeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ChangePageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ChangePointerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ColourPickerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ToggleMouseButtonActionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\RepeatScrollControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MoveThePointerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ToggleKeyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ViewScreenRegionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WaitControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TypeTextControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\MouseButtonActionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CustomSliderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\HoldKeyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\EditItemsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ErrorMessageControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RepeatKeyDirectionalControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RepeatKeyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ReleaseKeyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TypeKeyControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewCustomWindowControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewKeyboardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewMouseControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="AltController.pfx" />
+    <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Xna.Framework.4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft XNA Framework Redistributable 4.0</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\controller_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\application_form_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\application_form_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\controller_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\accept.png" />
+    <Resource Include="Images\icons\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\arrow_down.png" />
+    <Resource Include="Images\icons\arrow_left.png" />
+    <Resource Include="Images\icons\arrow_right.png" />
+    <Resource Include="Images\icons\arrow_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\arrow_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\page_save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\folder_page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AltController.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\image_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\application_view_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoUpgrade\Upgrade from v0.3.xsl">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\stop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\bullet_disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\wrench.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\control_play_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\table_lightning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\user_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AutoUpgrade\Upgrade from v0.5.xsl">
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\specialeffectlogo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Cursors\blank.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\arrow_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icons\control_end_blue.png" />
+    <Resource Include="Images\icons\control_fastforward_blue.png" />
+    <Resource Include="Images\icons\control_rewind_blue.png" />
+    <Resource Include="Images\AltController.png" />
+    <Resource Include="Images\AltController16.png" />
+    <Resource Include="Images\InstallerBanner.bmp" />
+    <Resource Include="AutoUpgrade\Upgrade from v1.3.xsl">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Images\icons\control_stop_blue.png" />
+    <Resource Include="Images\icons\image_delete.png" />
+    <Resource Include="Images\icons\layout_edit.png" />
+    <Resource Include="Images\icons\text_dropcaps.png" />
+    <Resource Include="AutoUpgrade\Upgrade from v1.5.xsl">
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Images\icons\lightning.png" />
+    <Resource Include="Images\icons\information.png" />
+    <Content Include="Images\readme.html" />
+    <Resource Include="Profiles\TmForever LRUD A Driving Esc Default.alt.xml" />
+    <Resource Include="Profiles\TmForever WASD A Driving Esc Default.alt.xml" />
+    <Resource Include="Profiles\TmForever with custom window.alt.xml" />
+    <Resource Include="Profiles\Universal driving.alt.xml" />
+    <Resource Include="Images\readme.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

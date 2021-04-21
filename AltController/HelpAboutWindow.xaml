@@ -1,0 +1,74 @@
+﻿<Window x:Class="AltController.HelpAboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:AltController.Properties"
+        Title="{x:Static p:Resources.About_Title}" Loaded="Window_Loaded" Icon="/AltController;component/Images/AltController.png" 
+        mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  ResizeMode="CanMinimize"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Height="420" Width="600">
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" CanExecute="CloseCanExecute" Executed="CloseExecuted" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Margin="5">
+            <TabItem Name="AboutTab" Header="{x:Static p:Resources.About_AboutTab}">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Vertical" Grid.Column="0">
+                            <TextBlock VerticalAlignment="Center" FontWeight="Bold">Alt Controller</TextBlock>
+                            <TextBlock VerticalAlignment="Center" Name="VersionText">Version:</TextBlock>
+                            <TextBlock VerticalAlignment="Center">Copyright 2013-2021 Tim Brogden</TextBlock>
+                            <TextBlock VerticalAlignment="Center"><Hyperlink NavigateUri="https://altcontroller.net/" RequestNavigate="Hyperlink_RequestNavigate" Cursor="Hand">https://altcontroller.net</Hyperlink></TextBlock>
+                            <TextBlock Name="DescriptionLabel" Text="{x:Static p:Resources.About_DescriptionLabel}" VerticalAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
+                            <TextBlock TextWrapping="Wrap" Text="{x:Static p:Resources.About_ProgramDescription}"/>
+                            <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" Text="{x:Static p:Resources.About_SpecialEffect}"/>
+                            <TextBlock>
+                                <Hyperlink NavigateUri="https://specialeffect.org.uk" RequestNavigate="Hyperlink_RequestNavigate" Cursor="Hand">https://specialeffect.org.uk</Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Name="ImagesPanel" Grid.Column="1" Orientation="Vertical" Margin="0,5">
+                            <Border BorderBrush="DarkGray" BorderThickness="1" Margin="10">
+                                <TextBlock>
+                                <Hyperlink NavigateUri="https://specialeffect.org.uk" RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None" Cursor="Hand" ToolTip="specialeffect.org.uk">
+                                    <Image Name="SpecialEffectImage" Width="180" Source="/AltController;component/Images/specialeffectlogo.jpg" Stretch="Uniform"/>
+                                </Hyperlink>
+                                </TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="LicenceTab" Header="{x:Static p:Resources.About_LicenceTab}">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Name="LicenceLabel" Text="{x:Static p:Resources.About_LicenceLabel}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" Text="{x:Static p:Resources.About_LicenceText1}"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" Text="{x:Static p:Resources.About_LicenceText2}"/>
+                        <TextBlock TextWrapping="Wrap" Margin="0,10,0,0" Text="{x:Static p:Resources.About_LicenceText3}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+            <TabItem Name="CreditsTab" Header="{x:Static p:Resources.About_CreditsTab}">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Name="CreditsLabel" Text="{x:Static p:Resources.About_CreditsLabel}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" Text="{x:Static p:Resources.About_CreditsText}"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" Width="70" Height="23" Margin="5" Command="Close">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/AltController;component/Images/icons/cross.png" />
+                <AccessText Margin="5,0" Text="{x:Static p:Resources.CloseButton}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

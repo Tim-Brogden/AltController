@@ -1,0 +1,191 @@
+Version 0.30
+- First significant release, with nice icons!
+
+Version 0.40
+- Improvements to Pointer to Key actions (much better for steering)
+- Profiles auto upgrade themselves when the file format changes in a new release
+
+Version 0.41
+- Fix for buttons being cut off in the Choose actions window with a certain screen resolution
+- Improvement to allow user to quickly change which program their actions apply to 
+  by just selecting a different app name in the Apps tab of the Edit situations window
+- Moved source code into a "src" folder for neatness
+- Added extra TrackMania profile in which mouse control only applies when the left mouse button is held down
+- Added extra documentation
+
+Version 0.42
+- Added "Log information" window under Help menu for investigating profiles and diagnosing problems
+- Minor improvements to key press management
+- Minor changes to existing TrackMania profiles (new screen regions, and making accelerate action directional)
+- Added TrackMania profile for WASD keys (W=accelerate, S=brake, A=left, D=right)
+
+Version 0.43
+- Fixes for screen region drawing (unwanted red rectangles being drawn, bounds checking)
+- Fixes to key press manager (key release events not occurring for some users)
+
+Version 0.44
+- Fixed bug which prevented "Pointer Moved" actions from working
+- Added profile for Conquer Online game
+- Minor changes to existing TrackMania profiles
+
+Version 0.50
+- Added pointer "Dwell" event reason - actions are performed when the pointer "hovers" within an area for long enough
+- Added mouse button actions - click, double-click, hold, and release
+- Added "Stop Pressing Things" action. Useful to include this before "Change to mode 'Default'" action to prevent any unwanted key or mouse button pressing
+- Added "Type text" action. Useful for typing one or more special characters (unicode characters)
+- Added Tools - Options menu item for adjusting sensitivity parameters and start up options
+  - Pointer dwell time and box size
+  - XBox 360 thumbstick and trigger dead zones (i.e. how much you need to move them before a press is recognised)
+  - Whether or not to load the most recent profile upon start up
+  - Input polling frequency (note: advanced - you shouldn't need to change this)
+- No longer saves settings in app.config file as this could fail for some versions of Windows and certain install locations (due to permissions)
+
+Version 0.51
+- Fixed issue loading profiles with different culture settings (internationalisation).
+
+Version 0.60
+- "Show screen regions" option under View menu
+- Ability to create custom windows, including transparency and "always on top"
+- Ability to run action lists in series or parallel
+- New "Wait" action type to create a delay in a series of actions
+- In the Choose Actions window, removed the ability to select a key on the keyboard by pressing it 
+  because it made the window behaviour a bit odd
+- Improved the way Alt Controller windows resize
+- Added three new profiles
+  1. TmForever with custom window (usual profile plus custom window for turning Driving mode on and off)
+  2. Racing using custom windows experiment (1 custom window for Driving mode on/off and 1 with 4 buttons for left-right-up-down) 
+  3. Golf experiment (custom window for SpecialEffect to try with a golf game)
+  Please read the profile notes in each profile for further info.
+
+Version 0.61
+- "Toggle key" action for holding down a key if it's not pressed, and vice-versa
+- "Control the pointer" action for controlling the mouse pointer using an Xbox 360 controller thumbstick
+- "Change pointer" action to show a standard mouse pointer, hide the pointer, or restore it to how it was before. Note: only changes the Windows system cursor, does not affect applications that render their own custom graphics (e.g. games that run full screen)
+- "Move the pointer" action to "hop" the mouse pointer from one place to another. Can be moved by a relative amount, or to an absolute desktop or window position
+- Added window size diagnostics to the "Log information" window
+- Added "Universal left-click to hold and release spacebar" profile for mapping left-click to spacebar
+- Added 5 new profiles (named "F7...") which use the new types of pointer action (developed to help a particular user)
+
+Version 0.62
+- Added two more profiles for Conquer Online
+- Fixed bug where Repeat Key action was only pressing key once
+
+Version 0.63
+- Added View menu option to overlay a radial pointer indicator line to show where the pointer is
+
+Version 0.631
+- Added Dirt Showdown profile created by SpecialEffect. No software changes.
+
+Version 1.0
+- Improved keyboard viewer control in the Choose actions window
+- Added option to generate key strokes using either virtual key codes or DirectX scan codes
+- Key actions can now type a much wider range of virtual keys (media, browser, application etc)
+- Key actions now adapt according to the user's keyboard layout, so profiles should be useable on computers with different input languages without modification 
+- Fixed incorrectly displayed dead keys and the "shy" key too (a.k.a. soft hyphen, unicode character 173, google it if you're interested...)
+- Added next/previous buttons to quickly navigate between action lists in the Choose actions window
+- Screen region editor now preserves the aspect ratio of screenshot images, and resizes better
+- Added reminder in the main window for when Num Lock is on
+- Most of the editor windows can now be cancelled using the Escape key
+- Refresh button added to Apps tab of Choose situations window
+- App drop down menu in Choose situations window now only shows visible apps
+- Custom window button text can now span multiple lines
+- Removed action parameters from Edit action window to make it easier to understand
+- Created installer and new program icon
+- Created http://altcontroller.net! 
+
+Version 1.10
+- Clicking buttons in custom windows no longer activates the custom window (so you can now use custom window button presses and releases to control your game / app)
+- "Release Key" action stops any "Repeat Key" actions that are being performed for the same key
+- Added a "Show screen region names" option to the "View" menu - tick this if you want to see the names of screen regions when they are drawn over other games / apps
+
+Version 1.21
+- Fix for sometimes incorrect screen region co-ordinates
+
+Version 1.30
+- Fixed Apps list in Edit Situations window to include certain types of application windows which were previously being excluded
+- Added an option to position screen regions relative to the desktop, the working area (i.e. desktop excluding the task bar) or the active window. The desktop option may help with certain full screen applications.
+
+Version 1.31
+- Fixed bug in parsing version number which was preventing profile files from being loaded for some users.
+
+Version 1.32
+- Added extra error checking to screen region editor window.
+
+Version 1.40
+A major new version including:
+- Screen regions now support a wide range of actions, so you can do lots of things just by moving or hovering your mouse inside a region of the screen
+- Support for various screen region shapes: rectangle, ellipse (including circle), annulus (i.e. doughnut shape), ellipse sector (e.g. quarter of a circle), and annulus sector (e.g. half a doughnut)
+- Redesigned screen region editor, including click and drag to position and draw regions
+- Improved custom window editor, including click and drag to position buttons
+- Screen regions can now have background images (with optional translucency)
+- Option to automatically open custom windows when a profile is loaded, or with Ctrl+0,1,2... keyboard shortcuts. The windows open in the corners of the desktop by default.
+- New action types for emulating the mouse scroll wheel
+- Various user interface improvements, including access text keyboard shortcuts throughout
+
+Version 1.50
+- Mouse button events are now specific to screen regions, e.g. "click in Region 1 to type Enter".
+
+Version 1.51
+- Fixed bug in parsing mouse button actions.
+
+Version 1.52
+- Support for Ctrl + click to select multiple regions in the screen region editor window, so that you can reposition them (by clicking and dragging) or edit their settings as a group.
+- Fixed minor issue where screen region changes were lost when clicking certain other controls.
+- Text box + slider controls can now be adjusted using the scroll wheel too.
+Thanks to T. Kozlowski for suggesting and contributing to these changes!
+
+Version 1.53
+- Fixed a bug in the drag-drop code for the custom window editor which was causing a crash when selecting a previously added button.
+- Removed Gamebase image from Help-About window.
+
+Version 1.60
+- Removed dependence on Microsoft XNA Framework, which has been discontinued.
+- Removed gamepad input. If you require controller input, I suggest trying Keysticks (https://keysticks.net), which is another free, open source program that I developed.
+- Removed 'Control the pointer' action, which was only applicable to gamepad inputs.
+- Improved the handling of extended keys (e.g. Home, End, the arrow keys) to resolve issues with having NumLock on.
+- Added message logging to record any errors to a file.
+- Changed the user's default profiles folder location to be under local application data (to avoid permissions issues with writing to the user's Documents folder).
+- Added option to change the location of the user's profiles folder.
+
+Version 1.61
+- Fixed indexing error in mouse button control.
+- Added screen region selector to mouse action viewer and allowed 'region N/A'.
+- Fixed crash on continuing an ongoing action list which contains a change situation action.
+
+Versions 1.62 & 1.63
+- Fixed bug affecting mouse coordinates and screen regions when certain display scaling options were enabled in Windows Control Panel.
+
+Version 1.70
+- Added action to toggle a mouse button (press if unpressed, unpress if pressed).
+- Added background image and translucency options for custom window buttons.
+
+Version 1.82
+A significant update to the software, including the following changes.
+- Added an overlay to show the current mode / page. See the View menu.
+- Added program options for assigning global hotkeys to the View menu options (to show / hide screen regions, pointer indicator etc.) See Tools – Options – Hotkeys tab.
+- Added a program option to show a circle for the pointer indicator instead of a radial line. This is now the default. If you prefer the previous behaviour, select the Radial line option. See Tools – Options – Display tab.
+- Added a program option to change the display update interval which determines the rate at which the pointer indicator circle / line is updated. See Tools – Options – Timing tab.
+- Added a program option to automatically stop ongoing Pressed actions when a key or mouse button or custom button is released. This is useful for automatically interrupting a list of actions separated by Wait actions, so certain actions are only performed when the key or button is held for long enough.  It can also be used to cycle through a number of modes or pages. This option is now enabled by default. If you prefer the previous behaviour, turn this option off. See Tools – Options – Actions tab.
+- Added a program option to automatically stop ongoing Inside actions when the pointer moves outside a screen region or custom button. This is useful for automatically interrupting a list of actions separated by Wait actions, so certain actions are only performed when the screen region or custom button is hovered over for long enough. It can also be used to cycle through a number of modes or pages. This option is now enabled by default. If you prefer the previous behaviour, turn this option off.  See Tools – Options – Actions tab.
+- Added F13 – F24 keys to the keyboard input.
+- Fixed incorrect scan code for the backslash key.
+- Added ‘Release after’ (duration) option to the Hold key action type.
+- Added Windows key option to the Type key action type.
+- Added move up / down buttons to the action list.
+- Improved colour picker drop down menus.
+- Screen region editor now uses the aspect ratio of the desktop / working area / active window screenshot. This is to make it easier to draw square and circular regions.
+- Added option to display screen regions only on the primary screen.
+- Added option to the ‘Move the pointer’ action to specify coordinates relative to the primary screen size.
+- Added reset to defaults button to the Tools – Options window. 
+- Changed certain default values and “Alt + key” keyboard shortcuts.
+- Removed a number of old sample profiles. These can be downloaded from the website if needed.
+- Sample profiles are now only copied to the user’s profiles folder on first installing the software.
+
+Version 1.90
+- Fixed a bug which was causing a profile to get stuck in a mode
+- Made the program translatable into other languages
+
+Version 1.91
+- Removed the installed documentation, which can now be found on the website.
+- Added a link to the online documentation to the Help menu.
+- Added source code to GitHub.

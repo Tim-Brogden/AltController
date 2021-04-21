@@ -1,0 +1,145 @@
+﻿<Window x:Class="AltController.EditSituationsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+        xmlns:p="clr-namespace:AltController.Properties"
+        xmlns:local="clr-namespace:AltController.UserControls" 
+        ResizeMode="CanMinimize" Title="{x:Static p:Resources.Situations_Title}" 
+        Icon="/AltController;component/Images/AltController.png" Loaded="Window_Loaded" mc:Ignorable="d" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        Height="355" Width="520">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="45"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Name="TabControl1">
+            <TabItem Name="ModesTab" Header="{x:Static p:Resources.Situations_ModesTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="ModesIntroLabel" Text="{x:Static p:Resources.Situations_ModesIntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Name="CurrentModesLabel" Text="{x:Static p:Resources.Situations_CurrentModesLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontWeight="Bold"></TextBlock>
+                    <local:EditItemsControl x:Name="EditModesControl" AddEnabled="True" EditVisible="False" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="175"/>
+                    <GroupBox Name="ModeDetailsGroupBox" Header="{x:Static p:Resources.Situations_DetailsLabel}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="ModeNameLabel" Text="{x:Static p:Resources.Situations_ModeNameLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" />
+                            <TextBox Name="ModeNameText" Grid.Row="0" Grid.Column="1" TextChanged="ModeNameText_TextChanged"></TextBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Name="AppsTab" Header="{x:Static p:Resources.Situations_AppsTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="AppsIntroLabel" Text="{x:Static p:Resources.Situations_AppsIntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Name="CurrentAppsLabel" Text="{x:Static p:Resources.Situations_CurrentAppsLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontWeight="Bold"></TextBlock>
+                    <Grid Grid.Row="2" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="25"/>
+                        </Grid.RowDefinitions>
+                        <ListBox Name="AppList" Grid.Row="0" Width="150" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="AppList_SelectionChanged" />
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Button Name="AddAppButton" Width="70" Height="23" Margin="0,0,5,0" HorizontalAlignment="Center" Click="AddAppButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/AltController;component/Images/icons/add.png" />
+                                    <AccessText Margin="5,0" Text="{x:Static p:Resources.Situations_AddAppButton}"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Name="DeleteAppButton" HorizontalAlignment="Left" IsEnabled="False" Height="23" Width="70" Click="DeleteAppButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/AltController;component/Images/icons/delete.png" />
+                                    <AccessText Margin="5,0" Text="{x:Static p:Resources.Situations_DeleteAppButton}"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                    <GroupBox Name="AppDetailsGroupBox" Header="{x:Static p:Resources.Situations_DetailsLabel}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="25"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="AppNameLabel" Text="{x:Static p:Resources.Situations_AppNameLabel}" VerticalAlignment="Center"></TextBlock>
+                            <ComboBox Name="AppCombo" DisplayMemberPath="Name" SelectedValuePath="ID" Grid.Row="0" Grid.Column="1" SelectionChanged="AppCombo_SelectionChanged" />
+                            <Button Name="RefreshButton" Grid.Column="2" HorizontalAlignment="Right" Click="RefreshButton_Click" ToolTip="{x:Static p:Resources.Situations_RefreshButton}">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="/AltController;component/Images/icons/arrow_refresh.png" Stretch="None" />
+                                </StackPanel>
+                            </Button>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Name="PagesTab" Header="{x:Static p:Resources.Situations_PagesTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>                        
+                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="PagesIntroLabel" Text="{x:Static p:Resources.Situations_PagesIntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
+                    <TextBlock Name="CurrentPagesLabel" Text="{x:Static p:Resources.Situations_CurrentPagesLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontWeight="Bold"></TextBlock>
+                    <local:EditItemsControl x:Name="EditPagesControl" AddEnabled="True" EditVisible="False" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="175"/>
+                    <GroupBox Name="PageDetailsGroupBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Header="{x:Static p:Resources.Situations_DetailsLabel}">
+                        <Grid Margin="5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="25"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Name="PageNameLabel" Text="{x:Static p:Resources.Situations_PageNameLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                            <TextBox Name="PageNameText" Grid.Row="0" Grid.Column="1" TextChanged="PageNameText_TextChanged"></TextBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Name="OKButton" Width="70" Height="23" Margin="5,0" Click="OKButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/accept.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="CancelButton" Width="70" Height="23" IsCancel="True" Click="CancelButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/cancel.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

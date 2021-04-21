@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="AltController.UserControls.RepeatScrollControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:AltController.Properties"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AltController.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock Name="RepeatEveryLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_RepeatEveryLabel}" Grid.Row="0" Grid.Column="0"/>
+        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="0" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.5" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <TextBlock Name="StopAfterLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_StopAfterLabel}" Grid.Row="1" Grid.Column="0"/>
+        <local:CustomSliderControl x:Name="StopAfterSlider" Grid.Row="1" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="0.0" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <TextBlock Name="RepeatScrollInfoLabel" Text="{x:Static p:Resources.Action_RepeatScrollInfoLabel}" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
+    </Grid>
+</UserControl>

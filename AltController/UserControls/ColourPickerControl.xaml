@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="AltController.UserControls.ColourPickerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="150" Loaded="UserControl_Loaded">
+    <ComboBox Name="ColoursCombo" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="150" Grid.IsSharedSizeScope="True" ItemsSource="{Binding ColourItems}" SelectedValuePath="Name" SelectedValue="{Binding SelectedColour}">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="ComboBoxItem"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Background="{Binding Name}" HorizontalAlignment="Stretch" Text="{Binding Name}" Padding="5,1" />
+                </Grid>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>
+</UserControl>

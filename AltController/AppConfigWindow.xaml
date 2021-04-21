@@ -1,0 +1,193 @@
+﻿<Window x:Class="AltController.AppConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:AltController.Properties"
+        xmlns:core="clr-namespace:AltController.Core" 
+        xmlns:local="clr-namespace:AltController.UserControls" 
+        ResizeMode="CanMinimize" Title="{x:Static p:Resources.Options_Title}" 
+        mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        Loaded="Window_Loaded" Icon="/AltController;component/Images/AltController.png" Height="360" Width="520">
+    <Window.Resources>
+        <core:HotkeyBindingConverter x:Key="HotkeyConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Row="0" Margin="5">
+            <TabItem Name="StartUpTab" Header="{x:Static p:Resources.Options_StartUpTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <CheckBox Name="AutoLoadCheckbox" Content="{x:Static p:Resources.Options_AutoLoadCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="AutoOpenCustomWindowsCheckbox" Content="{x:Static p:Resources.Options_AutoOpenCustomWindowsCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="DrawScreenRegionsCheckbox" Content="{x:Static p:Resources.Options_DrawScreenRegionsCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="DrawScreenRegionNamesCheckbox" Content="{x:Static p:Resources.Options_DrawScreenRegionNamesCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="DrawPointerIndicatorCheckbox" Content="{x:Static p:Resources.Options_DrawPointerIndicatorCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="DrawStateOverlayCheckbox" Content="{x:Static p:Resources.Options_DrawStateOverlayCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="DrawRegionForceSquareCheckbox" Content="{x:Static p:Resources.Options_DrawRegionForceSquareCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0" Padding="5,0"></CheckBox>
+                </Grid>
+            </TabItem>
+            <TabItem Name="TimingTab" Header="{x:Static p:Resources.Options_TimingTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="InputPollingIntervalLabel" Text="{x:Static p:Resources.Options_InputPollingIntervalLabel}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="InputPollingIntervalSlider" Grid.Row="0" Grid.Column="1"  Minimum="0.01" Maximum="0.1" Value="0.02" SmallChange="0.001" LargeChange="0.01" DecimalPlaces="3" />
+                    <TextBlock Name="UIUpdateIntervalLabel" Text="{x:Static p:Resources.Options_UIUpdateIntervalLabel}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="UIUpdateIntervalSlider" Grid.Row="1" Grid.Column="1"  Minimum="0.01" Maximum="0.5" Value="0.04" SmallChange="0.001" LargeChange="0.01" DecimalPlaces="3" />
+                    <TextBlock Name="DwellTimeLabel" Text="{x:Static p:Resources.Options_DwellTimeLabel}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="DwellTimeSlider" Grid.Row="2" Grid.Column="1"  Minimum="0.1" Maximum="5.0" Value="0.5" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Name="ActionsTab" Header="{x:Static p:Resources.Options_ActionsTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Name="AutoStopPressCheckbox" Content="{x:Static p:Resources.Options_AutoStopPressCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="5,0"></CheckBox>
+                    <CheckBox Name="AutoStopInsideCheckbox" Content="{x:Static p:Resources.Options_AutoStopInsideCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="5,0"></CheckBox>
+                    <TextBlock Name="GenerateKeyStrokesLabel" Text="{x:Static p:Resources.Options_GenerateKeyStrokesLabel}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <RadioButton Name="VirtualKeysRadioButton" Content="{x:Static p:Resources.Options_VirtualKeysRadioButton}" Grid.Row="3" Grid.Column="1" GroupName="KeyPressType" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    <RadioButton Name="UseScanCodesRadioButton" Content="{x:Static p:Resources.Options_UseScanCodesRadioButton}" Grid.Row="4" Grid.Column="1" GroupName="KeyPressType" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                </Grid>
+            </TabItem>
+            <TabItem Name="DisplayTab" Header="{x:Static p:Resources.Options_DisplayTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="220"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="PointerStyleLabel" Text="{x:Static p:Resources.Options_PointerStyleLabel}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                        <RadioButton Name="CircleRadioButton" Content="{x:Static p:Resources.Options_CircleRadioButton}" GroupName="PointerIndicatorType" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="PointerIndicatorType_Changed"/>
+                        <RadioButton Name="LineRadioButton" Content="{x:Static p:Resources.Options_LineRadioButton}" GroupName="PointerIndicatorType" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0" Checked="PointerIndicatorType_Changed"/>
+                    </StackPanel>
+                    <TextBlock Name="PointerColourLabel" Text="{x:Static p:Resources.Options_PointerColourLabel}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:ColourPickerControl Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" x:Name="PointerIndicatorColourCombo" />
+                    <TextBlock Name="PointerRadiusLabel" Text="{x:Static p:Resources.Options_PointerRadiusLabel}" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="PointerIndicatorRadiusSlider" Grid.Row="2" Grid.Column="1"  Minimum="1" Maximum="50" Value="12" SmallChange="1" LargeChange="1" DecimalPlaces="0" />
+                    <TextBlock Name="ModeOverlayBgColorLabel" Text="{x:Static p:Resources.Options_ModeOverlayBgColorLabel}" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:ColourPickerControl Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" x:Name="StateOverlayBgColourCombo" />
+                    <TextBlock Name="ModeOverlayColorLabel" Text="{x:Static p:Resources.Options_ModeOverlayColorLabel}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:ColourPickerControl Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" x:Name="StateOverlayTextColourCombo" />
+                    <TextBlock Name="ModeOverlayTranslucencyLabel" Text="{x:Static p:Resources.Options_ModeOverlayTranslucencyLabel}" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="StateOverlayTranslucencySlider" Grid.Row="5" Grid.Column="1"  Minimum="1" Maximum="100" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" />
+                    <TextBlock Name="ModeOverlayFontSizeLabel" Text="{x:Static p:Resources.Options_ModeOverlayFontSizeLabel}" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="StateOverlayFontSizeSlider" Grid.Row="6" Grid.Column="1"  Minimum="6" Maximum="100" Value="20" SmallChange="1" LargeChange="4" DecimalPlaces="0" />
+                    <TextBlock Name="ModeOverlayXPosLabel" Text="{x:Static p:Resources.Options_ModeOverlayXPosLabel}" Grid.Row="7" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="StateOverlayXPosSlider" Grid.Row="7" Grid.Column="1"  Minimum="0" Maximum="100" Value="3" SmallChange="0.1" LargeChange="5" DecimalPlaces="1" />
+                    <TextBlock Name="ModeOverlayYPosLabel" Text="{x:Static p:Resources.Options_ModeOverlayYPosLabel}" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <local:CustomSliderControl x:Name="StateOverlayYPosSlider" Grid.Row="8" Grid.Column="1"  Minimum="0" Maximum="100" Value="95" SmallChange="0.1" LargeChange="5" DecimalPlaces="1" />
+                </Grid>
+            </TabItem>
+            <TabItem Name="HotkeysTab" Header="{x:Static p:Resources.Options_HotkeysTab}">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="300"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="HotkeyList" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" SelectionChanged="HotkeyList_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="FeatureColumn" Header="{x:Static p:Resources.Options_FeatureColumn}" Width="150" Binding="{Binding Name}"/>
+                            <DataGridTextColumn x:Name="HotkeyColumn" Header="{x:Static p:Resources.Options_HotkeyColumn}" Width="*" Binding="{Binding Path=ID, Mode=OneWay, Converter={StaticResource HotkeyConverter}}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox x:Name="EditHotkeyGroupBox" Grid.Row="0" Grid.Column="1" Header="{x:Static p:Resources.Options_EditHotkeyGroupBox}" Width="150" Margin="5,20,5,0">
+                    <Grid Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                        </Grid.RowDefinitions>
+                            <ComboBox Name="KeyboardKeyCombo" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="KeyboardKeyCombo_SelectionChanged" />
+                            <CheckBox Name="AltCheck" Content="{x:Static p:Resources.Options_AltCheck}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="HotkeyModifierChanged" Unchecked="HotkeyModifierChanged"></CheckBox>
+                            <CheckBox Name="ControlCheck" Content="{x:Static p:Resources.Options_ControlCheck}" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="HotkeyModifierChanged" Unchecked="HotkeyModifierChanged"></CheckBox>
+                            <CheckBox Name="ShiftCheck" Content="{x:Static p:Resources.Options_ShiftCheck}" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="HotkeyModifierChanged" Unchecked="HotkeyModifierChanged"></CheckBox>
+                            <CheckBox Name="WinCheck" Content="{x:Static p:Resources.Options_WinCheck}" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="HotkeyModifierChanged" Unchecked="HotkeyModifierChanged"></CheckBox>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Name="FoldersTab" Header="{x:Static p:Resources.Options_FoldersTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="100"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="FolderLabel" Text="{x:Static p:Resources.Options_FolderLabel}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Name="ProfilesFolderTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"></TextBox>
+                    <Button Name="BrowseButton" Grid.Row="0" Grid.Column="2" Click="BrowseButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Height="23" Width="90">
+                        <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Options_BrowseToolTip}">
+                            <Image Source="/AltController;component/Images/icons/image_edit.png" />
+                            <AccessText Margin="5,0" Text="{x:Static p:Resources.Options_BrowseButton}"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+            <Button Name="ResetButton" Width="70" Height="23" Click="ResetButton_Click" ToolTip="{x:Static p:Resources.Options_ResetToolTip}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/lightning.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.Options_ResetButton}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <Button Name="OKButton" Width="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/accept.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="CancelButton" Width="70" Height="23" IsCancel="True" Click="CancelButton_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/cancel.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

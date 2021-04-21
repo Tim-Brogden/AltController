@@ -1,0 +1,24 @@
+﻿<profile version="1.4">
+  <notes></notes>
+  <sources>
+    <MouseSource id="1" name="Mouse" />
+  </sources>
+  <regions refimage="" overlayposition="ActiveWindow" />
+  <modes>
+    <mode id="-1" name="Default" />
+  </modes>
+  <apps>
+    <app id="-1" name="Default" />
+  </apps>
+  <pages>
+    <page id="-1" name="Default" />
+  </pages>
+  <mapping>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="1" controltype="MouseButtons" side="None" buttonstate="Left" lrudstate="None" eventdata="0" extraeventdata="0" eventreason="Pressed" eventname="" executionmode="Series">
+      <HoldKeyAction scancode="57" key="32" />
+    </actionlist>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="1" controltype="MouseButtons" side="None" buttonstate="Left" lrudstate="None" eventdata="0" extraeventdata="0" eventreason="Released" eventname="" executionmode="Series">
+      <ReleaseKeyAction scancode="57" key="32" />
+    </actionlist>
+  </mapping>
+</profile>

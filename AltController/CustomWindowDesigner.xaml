@@ -1,0 +1,135 @@
+﻿<Window x:Class="AltController.CustomWindowDesigner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:AltController.Properties"
+        xmlns:local="clr-namespace:AltController.UserControls"
+        Title="{x:Static p:Resources.Custom_Title}" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Icon="/AltController;component/Images/AltController.png"
+        Loaded="Window_Loaded" Height="600" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="35"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="310"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Name="PreviewGroupBox" Header="{x:Static p:Resources.Custom_PreviewGroupBox}" Margin="5" Grid.Row="0" Grid.Column="0">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="5">
+                <local:ViewCustomWindowControl x:Name="PreviewControl" IsDesignMode="True" AllowDrop="True" EnableColours="True" BorderBrush="DarkGray" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1.0"/>
+            </ScrollViewer>
+        </GroupBox>
+        <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+            <GroupBox Name="WindowGroupBox" Header="{x:Static p:Resources.Custom_WindowGroupBox}" Margin="5">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="WindowTitleLabel" Text="{x:Static p:Resources.Custom_WindowTitleLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></TextBlock>
+                    <TextBox Name="WindowTitleTextBox" Text="{x:Static p:Resources.Custom_WindowTitleTextBox}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextChanged="WindowTitleTextBox_TextChanged"></TextBox>
+                    <TextBlock Name="WindowWidthLabel" Text="{x:Static p:Resources.Custom_WindowWidthLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="WindowWidthSlider" Grid.Row="1" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="0" ValueChanged="WindowWidthSlider_ValueChanged" />
+                    <TextBlock Name="WindowHeightLabel" Text="{x:Static p:Resources.Custom_WindowHeightLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="WindowHeightSlider" Grid.Row="2" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="0" ValueChanged="WindowHeightSlider_ValueChanged"/>
+                    <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Custom_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="3" Grid.Column="1" Minimum="0.0" Maximum="1.0" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" ValueChanged="TranslucencySlider_ValueChanged" />
+                    <TextBlock Name="TopMostLabel" Text="{x:Static p:Resources.Custom_TopMostLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
+                    <CheckBox Grid.Row="4" Grid.Column="1" Name="TopMostCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Checked="TopMostCheckBox_Changed" Unchecked="TopMostCheckBox_Changed"></CheckBox>
+                    <TextBlock Name="GhostBgLabel" Text="{x:Static p:Resources.Custom_GhostBgLabel}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></TextBlock>
+                    <CheckBox Grid.Row="5" Grid.Column="1" Name="GhostBackgroundCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Checked="GhostBackgroundCheckBox_Changed" Unchecked="GhostBackgroundCheckBox_Changed"></CheckBox>
+                    <TextBlock Name="WindowBgColorLabel" Text="{x:Static p:Resources.Custom_WindowBgColorLabel}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></TextBlock>
+                    <local:ColourPickerControl Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" x:Name="WindowBackgroundColourCombo" SelectedColourChanged="WindowBackgroundColourCombo_SelectionChanged"></local:ColourPickerControl>
+                </Grid>
+            </GroupBox>
+            <GroupBox Name="ButtonGroupBox" Header="{x:Static p:Resources.Custom_ButtonGroupBox}" Margin="5">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="ButtonNameLabel" Text="{x:Static p:Resources.Custom_ButtonNameLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></TextBlock>
+                    <TextBox Grid.Row="0" Grid.Column="1" Name="ButtonNameTextBox" VerticalAlignment="Center" TextChanged="ButtonNameTextBox_TextChanged"></TextBox>
+                    <TextBlock Name="ButtonTextLabel" Text="{x:Static p:Resources.Custom_ButtonTextLabel}" VerticalAlignment="Top" Margin="0,5"  Grid.Row="1" Grid.Column="0"></TextBlock>
+                    <TextBox Grid.Row="1" Grid.Column="1" Name="ButtonTextTextBox" AcceptsReturn="True" TextChanged="ButtonTextTextBox_TextChanged"></TextBox>
+                    <TextBlock Name="ButtonXLabel" Text="{x:Static p:Resources.Custom_ButtonXLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="ButtonXSlider" Grid.Row="2" Grid.Column="1"  Minimum="0" Maximum="300" Value="0" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonXSlider_ValueChanged" />
+                    <TextBlock Name="ButtonYLabel" Text="{x:Static p:Resources.Custom_ButtonYLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="ButtonYSlider" Grid.Row="3" Grid.Column="1"  Minimum="0" Maximum="300" Value="0" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonYSlider_ValueChanged" />
+                    <TextBlock Name="ButtonWidthLabel" Text="{x:Static p:Resources.Custom_ButtonWidthLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="ButtonWidthSlider" Grid.Row="4" Grid.Column="1"  Minimum="1" Maximum="300" Value="50" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonWidthSlider_ValueChanged" />
+                    <TextBlock Name="ButtonHeightLabel" Text="{x:Static p:Resources.Custom_ButtonHeightLabel}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="ButtonHeightSlider" Grid.Row="5" Grid.Column="1"  Minimum="1" Maximum="300" Value="50" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonHeightSlider_ValueChanged"/>
+                    <TextBlock Name="ButtonBgColorLabel" Text="{x:Static p:Resources.Custom_ButtonBgColorLabel}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></TextBlock>
+                    <local:ColourPickerControl Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" x:Name="ButtonBackgroundColourCombo" SelectedColourChanged="ButtonBackgroundColourCombo_SelectionChanged"></local:ColourPickerControl>
+                    <TextBlock Name="ButtonBgImageLabel" Text="{x:Static p:Resources.Custom_ButtonBgImageLabel}" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0"></TextBlock>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="7" Grid.Column="1">
+                        <Button Name="BrowseButtonImageButton" Height="23" VerticalAlignment="Center" Click="BrowseButtonImageButton_Click" ToolTip="{x:Static p:Resources.Custom_BrowseButtonImageToolTip}" IsEnabled="False">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/AltController;component/Images/icons/image_edit.png" />
+                                <AccessText Margin="5,0" Text="{x:Static p:Resources.Custom_BrowseButtonImageButton}"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="ClearButtonImageButton" Height="23" Margin="5,0" VerticalAlignment="Center" Click="ClearButtonImageButton_Click" ToolTip="{x:Static p:Resources.Custom_ClearButtonImageToolTip}" IsEnabled="False">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/AltController;component/Images/icons/image_delete.png" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                    <TextBlock Name="ButtonTranslucencyLabel" Text="{x:Static p:Resources.Custom_ButtonTranslucencyLabel}" VerticalAlignment="Center" Grid.Row="8" Grid.Column="0"></TextBlock>
+                    <local:CustomSliderControl x:Name="ButtonTranslucencySlider" Grid.Row="8" Grid.Column="1" Minimum="0" Maximum="0.99" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" ValueChanged="ButtonTranslucencySlider_ValueChanged" />
+                </Grid>
+            </GroupBox>
+        </StackPanel>
+        <local:ErrorMessageControl x:Name="ErrorMessage" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="5,0"/>
+        <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,0,5" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button Height="23" Name="AddButton" Width="110" Margin="5,0" Click="AddButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/add.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.Custom_AddButton}"/>
+                </StackPanel>
+            </Button>
+            <Button Height="23" Name="DeleteButton" Width="110" IsEnabled="False" Click="DeleteButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/delete.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.Custom_DeleteButton}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Margin="0,0,0,5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Height="23" Name="OKButton" Width="70" Click="OKButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/accept.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
+                </StackPanel>
+            </Button>
+            <Button Height="23" Name="CancelButton" IsCancel="True" Width="70" Margin="5,0" Click="CancelButton_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/AltController;component/Images/icons/cancel.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,41 @@
+﻿<profile version="1.4">
+  <notes>For the game Conquer Online (Conquer.exe)
+-------------------------------------------------------
+Freely available from: co.91.com
+
+This profile has a mode called "Active". When you are in Active mode, Alt Controller will repeatedly press F6 for you whenever the mouse is in a small region in the centre of the screen (for casting potions). It will stop pressing F6 when you move the mouse out of the region again.
+
+To enable the "Active" mode, press Z.
+To return to the "Default" mode, press X. 
+
+Thanks to www.gamebase.info user @Alex for creating the the original version of this profile!</notes>
+  <sources>
+    <MouseSource id="1" name="Mouse" />
+    <KeyboardSource id="2" name="Keyboard" />
+  </sources>
+  <regions refimage="Conquer.jpg" overlayposition="ActiveWindow">
+    <region id="1" name="Potion" shape="Rectangle" x="0.49" y="0.48" width="0.05" height="0.05" holesize="0.5" startangle="0" sweepangle="90" colour="LightGray" bgimage="" translucency="0.5" mode="-1" app="0" page="-1" />
+  </regions>
+  <modes>
+    <mode id="-1" name="Default" />
+    <mode id="1" name="Active" />
+  </modes>
+  <apps>
+    <app id="-1" name="Default" />
+  </apps>
+  <pages>
+    <page id="-1" name="Default" />
+  </pages>
+  <mapping>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="2" controltype="Keyboard" side="None" buttonstate="None" lrudstate="None" eventdata="90" extraeventdata="44" eventreason="Pressed" eventname="" executionmode="Series">
+      <ChangeModeAction modeid="1" modename="Active" />
+    </actionlist>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="2" controltype="Keyboard" side="None" buttonstate="None" lrudstate="None" eventdata="88" extraeventdata="45" eventreason="Pressed" eventname="" executionmode="Series">
+      <StopOngoingActionsAction />
+      <ChangeModeAction modeid="-1" modename="Default" />
+    </actionlist>
+    <actionlist mode="1" app="-1" page="-1" sourceid="1" controltype="MousePointer" side="None" buttonstate="None" lrudstate="None" eventdata="1" extraeventdata="0" eventreason="Updated" eventname="" executionmode="Parallel">
+      <RepeatKeyDirectionalAction scancode="65" key="118" updateevery="2000000" sensitivity="1.00" direction="None" />
+    </actionlist>
+  </mapping>
+</profile>

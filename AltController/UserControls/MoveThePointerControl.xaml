@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="AltController.UserControls.MoveThePointerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:AltController.Properties"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AltController.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
+    <StackPanel Orientation="Vertical">
+        <GroupBox Name="TypeOfMoveGroupBox" Header="{x:Static p:Resources.Action_TypeOfMoveGroupBox}" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <RadioButton Name="AbsoluteRadioButton" Content="{x:Static p:Resources.Action_AbsoluteRadioButton}" Grid.Column="0" Margin="5" GroupName="AbsoluteOrRelativeButtons" IsChecked="True" VerticalAlignment="Center" Checked="MoveTypeRadioButton_Checked"></RadioButton>
+                <RadioButton Name="RelativeRadioButton" Content="{x:Static p:Resources.Action_RelativeRadioButton}" Grid.Column="1" Margin="5" GroupName="AbsoluteOrRelativeButtons" VerticalAlignment="Center" Checked="MoveTypeRadioButton_Checked"></RadioButton>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="UnitsGroupBox" Header="{x:Static p:Resources.Action_UnitsGroupBox}" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <RadioButton Name="PercentRadioButton" Content="{x:Static p:Resources.Action_PercentRadioButton}" Grid.Column="0" Margin="5" GroupName="UnitsRadioButtons"  IsChecked="True" VerticalAlignment="Center" Checked="UnitsRadioButton_Checked"></RadioButton>
+                <RadioButton Name="PixelsRadioButton" Content="{x:Static p:Resources.Action_PixelsRadioButton}" Grid.Column="1" Margin="5" GroupName="UnitsRadioButtons" VerticalAlignment="Center" Checked="UnitsRadioButton_Checked"></RadioButton>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="AmountGroupBox" Header="{x:Static p:Resources.Action_AmountGroupBox}" Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <TextBlock Name="XLabel" Text="{x:Static p:Resources.Action_XLabel}" VerticalAlignment="Center" Margin="5,0"></TextBlock>
+                    <local:CustomSliderControl x:Name="XAmountSlider" Width="100" Minimum="0" Maximum="100" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="2"/>
+                    <TextBlock VerticalAlignment="Center" Name="XUnitsLabel" Margin="5,0" Width="20">%</TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <TextBlock Name="YLabel" Text="{x:Static p:Resources.Action_YLabel}" VerticalAlignment="Center" Margin="5,0"></TextBlock>
+                    <local:CustomSliderControl x:Name="YAmountSlider" Width="100" Minimum="0" Maximum="100" Value="1" SmallChange="1" LargeChange="5" DecimalPlaces="2"/>
+                    <TextBlock VerticalAlignment="Center" Name="YUnitsLabel" Margin="5,0" Width="20">%</TextBlock>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Name="OffsetGroupBox" Header="{x:Static p:Resources.Action_RelativeToGroupBox}" Margin="5">
+            <Grid>
+                <ComboBox Name="RelativeToCombo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="5" DisplayMemberPath="Name" SelectedValuePath="ID" />
+            </Grid>
+        </GroupBox>
+    </StackPanel>
+</UserControl>

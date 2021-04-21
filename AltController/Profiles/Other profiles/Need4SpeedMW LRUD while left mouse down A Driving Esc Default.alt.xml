@@ -1,0 +1,75 @@
+﻿<profile version="1.4">
+  <notes>For Need For Speed Most Wanted demo (speedDemo.exe)
+-------------------------------------------------------------------------
+Turns mouse pointer position into cursor key presses (left, right, up, down)
+according to 4 screen rectangles named Left, Right, Accelerate, Brake. 
+Note: Brake and reverse are the same in this game. 
+This allows you to control the car using the mouse pointer only.
+
+When you're in the game window, pressing "A" enables "Driving mode". 
+In Driving mode, the mouse controls are enabled when you're the game window AND the left mouse button is held down.
+Pressing "Esc" returns to "Default" mode. 
+Outside the game window, this profile ignores any key presses and mouse movements.
+
+To see a summary of the inputs and actions in this profile, select "Profile summary" on the "View" menu.
+
+To see the screen regions, select "Choose screen regions" on the "Edit" menu. 
+You can change any region by entering new co-ordinates (as percentages of the window area with (0,0) = top-left and (100,100) = bottom right), or by clicking and dragging with the mouse to draw the region. 
+
+You can change the timings or the sensitivity of the steering by editing the actions for
+Mode=Driving, App=speedDemo, Page=Mouse Down, Input=Mouse + Pointer, Reason=Updated.
+</notes>
+  <sources>
+    <MouseSource id="1" name="Mouse" />
+    <KeyboardSource id="2" name="Keyboard" />
+  </sources>
+  <regions refimage="NeedForSpeedMostWanted.JPG" overlayposition="ActiveWindow">
+    <region id="1" name="Left" shape="Rectangle" x="0.02" y="0.1157" width="0.4625" height="0.8333" holesize="0.5" startangle="0" sweepangle="90" colour="LightGray" bgimage="" translucency="0.5" mode="-1" app="1" page="-1" />
+    <region id="2" name="Right" shape="Rectangle" x="0.5" y="0.1157" width="0.48" height="0.83" holesize="0.5" startangle="0" sweepangle="90" colour="LightGray" bgimage="" translucency="0.5" mode="-1" app="1" page="-1" />
+    <region id="3" name="Accelerate" shape="Rectangle" x="0.0275" y="0.1291" width="0.9475" height="0.47" holesize="0.5" startangle="0" sweepangle="90" colour="LightGray" bgimage="" translucency="0.5" mode="-1" app="1" page="-1" />
+    <region id="4" name="Brake" shape="Rectangle" x="0.03" y="0.6091" width="0.9425" height="0.3367" holesize="0.5" startangle="0" sweepangle="90" colour="LightGray" bgimage="" translucency="0.5" mode="-1" app="1" page="-1" />
+  </regions>
+  <modes>
+    <mode id="-1" name="Default" />
+    <mode id="1" name="Driving" />
+  </modes>
+  <apps>
+    <app id="-1" name="Default" />
+    <app id="1" name="speedDemo" />
+  </apps>
+  <pages>
+    <page id="-1" name="Default" />
+    <page id="1" name="Mouse Down" />
+  </pages>
+  <mapping>
+    <actionlist mode="-1" app="1" page="-1" sourceid="2" controltype="Keyboard" side="None" buttonstate="None" lrudstate="None" eventdata="65" extraeventdata="30" eventreason="Pressed" eventname="" executionmode="Series">
+      <ChangeModeAction modeid="1" modename="Driving" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="-1" sourceid="2" controltype="Keyboard" side="None" buttonstate="None" lrudstate="None" eventdata="27" extraeventdata="1" eventreason="Pressed" eventname="" executionmode="Series">
+      <StopOngoingActionsAction />
+      <ChangeModeAction modeid="-1" modename="Default" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="-1" sourceid="1" controltype="MouseButtons" side="None" buttonstate="Left" lrudstate="None" eventdata="0" extraeventdata="0" eventreason="Pressed" eventname="" executionmode="Series">
+      <ChangePageAction pageid="1" pagename="Mouse Down" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="1" sourceid="1" controltype="MouseButtons" side="None" buttonstate="Left" lrudstate="None" eventdata="0" extraeventdata="0" eventreason="Released" eventname="" executionmode="Series">
+      <StopOngoingActionsAction />
+      <ChangePageAction pageid="-1" pagename="Default" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="1" sourceid="1" controltype="MousePointer" side="None" buttonstate="None" lrudstate="None" eventdata="1" extraeventdata="0" eventreason="Updated" eventname="" executionmode="Series">
+      <RepeatKeyDirectionalAction scancode="331" key="37" updateevery="5000000" sensitivity="0.70" direction="Left" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="1" sourceid="1" controltype="MousePointer" side="None" buttonstate="None" lrudstate="None" eventdata="2" extraeventdata="0" eventreason="Updated" eventname="" executionmode="Series">
+      <RepeatKeyDirectionalAction scancode="333" key="39" updateevery="5000000" sensitivity="0.70" direction="Right" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="1" sourceid="1" controltype="MousePointer" side="None" buttonstate="None" lrudstate="None" eventdata="3" extraeventdata="0" eventreason="Updated" eventname="" executionmode="Series">
+      <RepeatKeyDirectionalAction scancode="328" key="38" updateevery="5000000" sensitivity="2.05" direction="None" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="1" sourceid="1" controltype="MousePointer" side="None" buttonstate="None" lrudstate="None" eventdata="4" extraeventdata="0" eventreason="Inside" eventname="" executionmode="Series">
+      <HoldKeyAction scancode="336" key="40" />
+    </actionlist>
+    <actionlist mode="1" app="1" page="1" sourceid="1" controltype="MousePointer" side="None" buttonstate="None" lrudstate="None" eventdata="4" extraeventdata="0" eventreason="Outside" eventname="" executionmode="Series">
+      <ReleaseKeyAction scancode="336" key="40" />
+    </actionlist>
+  </mapping>
+</profile>

@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="AltController.UserControls.ViewMouseControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:p="clr-namespace:AltController.Properties"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AltController.UserControls" 
+             mc:Ignorable="d" 
+             Height="240" Width="535" Loaded="UserControl_Loaded">
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="25"/>
+                <ColumnDefinition Width="330"/>
+            </Grid.ColumnDefinitions>
+            <Button Name="LeftButton" Content="{x:Static p:Resources.String_Left}" Grid.Row="0" Grid.Column="1" Click="LeftButton_Click"></Button>
+            <Button Name="MiddleButton" Content="{x:Static p:Resources.String_Middle}" Grid.Row="0" Grid.Column="2" Click="MiddleButton_Click"></Button>
+            <Button Name="RightButton" Content="{x:Static p:Resources.String_Right}" Grid.Row="0" Grid.Column="3" Click="RightButton_Click"></Button>
+            <Button Name="X1Button" Content="{x:Static p:Resources.String_X1}" Grid.Row="1" Grid.Column="0" Height="90" Click="X1Button_Click"></Button>
+            <Button Name="X2Button" Content="{x:Static p:Resources.String_X2}" Grid.Row="1" Grid.Column="4" Height="90" Click="X2Button_Click"></Button>
+            <Button Name="Pointer" Content="{x:Static p:Resources.String_Pointer}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Click="Pointer_Click"></Button>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="30,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="RegionLabel" Text="{x:Static p:Resources.Mouse_RegionLabel}" VerticalAlignment="Center"/>
+                    <ComboBox Name="RegionsComboBox" VerticalAlignment="Center" Width="150" Margin="5,0" SelectedValuePath="ID" DisplayMemberPath="Name" SelectionChanged="RegionsComboBox_SelectionChanged"/>
+                </StackPanel>
+            </Grid>
+            <local:ViewScreenRegionsControl Grid.Row="1" x:Name="RegionsControl" Background="LemonChiffon" IsDesignMode="True" CanSelectRegions="True" ShowBackground="True" ShowRegionNames="False" SelectedRegionChanged="RegionsControl_SelectedRegionChanged"/>
+        </Grid>
+    </Grid>
+</UserControl>

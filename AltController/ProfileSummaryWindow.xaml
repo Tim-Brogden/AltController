@@ -1,0 +1,25 @@
+﻿<Window x:Class="AltController.ProfileSummaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:p="clr-namespace:AltController.Properties"
+        Title="{x:Static p:Resources.Summary_Title}" Height="550" Width="700" Loaded="Window_Loaded" Closing="Window_Closing" Icon="/AltController;component/Images/AltController.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="33"></RowDefinition>
+        </Grid.RowDefinitions>
+        <ScrollViewer Name="ScrollView" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="5">
+            <Border BorderBrush="Black" BorderThickness="1">
+                <Grid Name="ProfileSummaryGrid">
+                </Grid>
+            </Border>
+        </ScrollViewer>
+        <Button Name="CloseButton" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" Width="70" Margin="5" Click="CloseButton_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/AltController;component/Images/icons/cross.png" />
+                <AccessText Margin="5,0" Text="{x:Static p:Resources.CloseButton}"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

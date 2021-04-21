@@ -1,0 +1,42 @@
+﻿<profile version="1.4">
+  <notes>For Conquer Online
+----------------------
+Has a custom window called "Potions" with 3 buttons (open from the Window menu).
+Hover the pointer briefly over the "Start F6" button to start repeatedly pressing F6. 
+Hover the pointer briefly over the "Start F7" button to start repeatedly pressing F7. 
+Hover the pointer briefly over the "Stop F6 &amp; F7" button to stop the key presses. 
+
+You only need to hover the pointer briefly over the buttons, no need to hold there or click.
+
+The key presses are set to stop automatically after 5 seconds.</notes>
+  <sources>
+    <CustomWindowSource id="1" name="Custom Window" windowwidthpx="347" windowheightpx="50" windowtitle="Potions" backgroundcolour="" topmost="True" ghostbackground="False" translucency="0.5">
+      <buttons>
+        <button id="1" name="F6 button" text="Start F6" x="0" y="0" width="80" height="50" backgroundcolour="GreenYellow" />
+        <button id="2" name="F7 button" text="Start F7" x="97" y="0" width="80" height="50" backgroundcolour="MediumAquamarine" />
+        <button id="3" name="Stop button" text="Stop F6 &amp; F7" x="251" y="0" width="96" height="50" backgroundcolour="Red" />
+      </buttons>
+    </CustomWindowSource>
+  </sources>
+  <regions refimage="" overlayposition="ActiveWindow" />
+  <modes>
+    <mode id="-1" name="Default" />
+  </modes>
+  <apps>
+    <app id="-1" name="Default" />
+  </apps>
+  <pages>
+    <page id="-1" name="Default" />
+  </pages>
+  <mapping>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="1" controltype="CustomButton" side="None" buttonstate="None" lrudstate="None" eventdata="1" extraeventdata="0" eventreason="Inside" eventname="F6 button" executionmode="Series">
+      <RepeatKeyAction scancode="64" key="117" duration="500000" repeatevery="2000000" stopafter="50000000" />
+    </actionlist>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="1" controltype="CustomButton" side="None" buttonstate="None" lrudstate="None" eventdata="2" extraeventdata="0" eventreason="Inside" eventname="F7 button" executionmode="Series">
+      <RepeatKeyAction scancode="65" key="118" duration="500000" repeatevery="2000000" stopafter="50000000" />
+    </actionlist>
+    <actionlist mode="-1" app="-1" page="-1" sourceid="1" controltype="CustomButton" side="None" buttonstate="None" lrudstate="None" eventdata="3" extraeventdata="0" eventreason="Inside" eventname="Stop button" executionmode="Series">
+      <StopOngoingActionsAction />
+    </actionlist>
+  </mapping>
+</profile>
