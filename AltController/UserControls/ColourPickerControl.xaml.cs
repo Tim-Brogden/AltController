@@ -43,7 +43,7 @@ namespace AltController.UserControls
     public partial class ColourPickerControl : UserControl
     {
         // Fields
-        private NamedItemList _colourItems;
+        private List<ColourItem> _colourItems;
 
         // Properties
         public string SelectedColour
@@ -58,7 +58,7 @@ namespace AltController.UserControls
             typeof(ColourPickerControl),
             new FrameworkPropertyMetadata(SelectedColourPropertyChanged)
         );
-        public NamedItemList ColourItems { get { return _colourItems; } }
+        public List<ColourItem> ColourItems { get { return _colourItems; } }
 
         // Routed events
         public static readonly RoutedEvent SelectedColourChangedEvent = EventManager.RegisterRoutedEvent(
@@ -113,7 +113,7 @@ namespace AltController.UserControls
         private void PopulateColourList()
         {
             // Get standard colours
-            Dictionary<int, string> colourTable = new Dictionary<int, string>();
+            _colourItems = new List<ColourItem>();
             foreach (PropertyInfo colourInfo in typeof(Colors).GetProperties())
             {
                 if (colourInfo.Name != "Transparent")
@@ -123,20 +123,27 @@ namespace AltController.UserControls
                     int hue = (int)sdc.GetHue();    // 0 - 360
                     int brightness = (int)(255 * sdc.GetBrightness());
                     int id = (hue << 8) + brightness;
-                    colourTable[id] = colourInfo.Name;
+                    string textColour = brightness < 128 ? "WhiteSmoke" : "Black";
+                    _colourItems.Add(new ColourItem(id, colourInfo.Name, textColour));
                 }
             }
 
-            // Create ordering
-            int[] idArray = colourTable.Keys.ToArray();
-            Array.Sort(idArray);
+            // Sort by ID
+            _colourItems.Sort((x, y) => x.ID.CompareTo(y.ID));            
+        }
+    }
 
-            // Populate named item list
-            _colourItems = new NamedItemList();
-            foreach (int id in idArray)
-            {
-                _colourItems.Add(new NamedItem(id, colourTable[id]));
-            }
+    /// <summary>
+    /// Data for item in colours combo box
+    /// </summary>
+    public class ColourItem : NamedItem
+    {
+        public string TextColour { get; set; }
+
+        public ColourItem(long id, string name, string textColour)
+            :base(id, name)
+        {
+            TextColour = textColour;
         }
     }
 }

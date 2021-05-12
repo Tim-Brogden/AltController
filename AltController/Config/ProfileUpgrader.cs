@@ -121,7 +121,7 @@ namespace AltController.Config
             }
             catch (Exception ex)
             {
-                throw new Exception("Unable to upgrade profile to current version", ex);
+                throw new Exception(Properties.Resources.E_UPGR001, ex);
             }
 
             return upgraded;

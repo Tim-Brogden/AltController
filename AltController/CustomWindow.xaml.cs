@@ -34,6 +34,7 @@ using AltController.Core;
 using AltController.Event;
 using AltController.Input;
 using AltController.Sys;
+//using System.Diagnostics;
 
 namespace AltController
 {
@@ -44,6 +45,8 @@ namespace AltController
     {
         // Members
         private bool _isLoaded = false;
+        private bool _showTitleBar = Constants.DefaultCustomWindowTitleBars;
+        private int _windowIndex = 0;
         private CustomWindowSource _customWindowSource;
         private IParentWindow _parentWindow;
 
@@ -52,6 +55,26 @@ namespace AltController
         { 
             get { return _customWindowSource; } 
             set { _customWindowSource = value; UpdateDisplay(); } 
+        }
+
+        public bool ShowTitleBar
+        {
+            set 
+            { 
+                _showTitleBar = value;
+                if (_isLoaded)
+                {
+                    TitleBar.Visibility = _showTitleBar ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Window index
+        /// </summary>
+        public int WindowIndex
+        {
+            set { _windowIndex = value; }        
         }
 
         /// <summary>
@@ -81,8 +104,9 @@ namespace AltController
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _isLoaded = true;
+            PositionWindow();
             UpdateDisplay();
-        }
+        }        
 
         /// <summary>
         /// Disable window activation if required
@@ -96,6 +120,88 @@ namespace AltController
             WindowInteropHelper helper = new WindowInteropHelper(this);
             uint gwlExStyle = WindowsAPI.GetWindowLong(helper.Handle, WindowsAPI.GWL_EXSTYLE);
             WindowsAPI.SetWindowLong(helper.Handle, WindowsAPI.GWL_EXSTYLE, gwlExStyle | WindowsAPI.WS_EX_NOACTIVATE);
+        }
+
+        /// <summary>
+        /// Window moved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {
+            if (_isLoaded && 
+                !double.IsNaN(this.Left) && !double.IsNaN(this.Top) &&
+                this.Left >= 0.0 && this.Top >= 0.0)
+            {
+                string positionKey = "window_pos_custom" + _customWindowSource.ID;
+                if (System.Windows.Forms.SystemInformation.MonitorCount > 1)
+                {
+                    positionKey += "_multiscreen";
+                }
+                Point windowPos = new Point(this.Left, this.Top);
+                _parentWindow.GetAppConfig().SetStringVal(positionKey, windowPos.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                //Trace.WriteLine("Window moved to " + windowPos.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Set the window position
+        /// </summary>
+        private void PositionWindow()
+        {
+            try
+            {
+                string positionKey = "window_pos_custom" + _customWindowSource.ID;
+                if (System.Windows.Forms.SystemInformation.MonitorCount > 1)
+                {
+                    positionKey += "_multiscreen";
+                }
+                Point windowPos = new Point();
+                string posStr = _parentWindow.GetAppConfig().GetStringVal(positionKey, "");
+                if (posStr != "")
+                {
+                    windowPos = Point.Parse(posStr);
+                }
+                else
+                {
+                    // Position windows near the corners of the screen
+                    // but not too close because that may interfere with toolbars
+                    // such as those used by head mouse users.
+                    switch (_windowIndex % 4)
+                    {
+                        case 0:
+                            // Top left
+                            windowPos.X = 80;
+                            windowPos.Y = 80;
+                            break;
+                        case 1:
+                            // Top right
+                            windowPos.X = SystemParameters.PrimaryScreenWidth - _customWindowSource.WindowWidth - 80;
+                            windowPos.Y = 80;
+                            break;
+                        case 2:
+                            // Bottom left
+                            windowPos.X = 80;
+                            windowPos.Y = SystemParameters.PrimaryScreenHeight - _customWindowSource.WindowHeight - 80;
+                            break;
+                        case 3:
+                            // Bottom right
+                            windowPos.X = SystemParameters.PrimaryScreenWidth - _customWindowSource.WindowWidth - 80;
+                            windowPos.Y = SystemParameters.PrimaryScreenHeight - _customWindowSource.WindowHeight - 80;
+                            break;
+                    }
+                }
+                if (windowPos.X >= 0.0 && windowPos.X < SystemParameters.VirtualScreenWidth &&
+                    windowPos.Y >= 0.0 && windowPos.Y < SystemParameters.VirtualScreenHeight)
+                {
+                    this.Left = windowPos.X;
+                    this.Top = windowPos.Y;
+                    //Trace.WriteLine("Positioned window " + windowPos.ToString());
+                }
+            }
+            catch (Exception)
+            {                
+            }
         }
 
         /// <summary>
@@ -126,11 +232,13 @@ namespace AltController
         /// </summary>
         private void UpdateDisplay()
         {
-            if (_isLoaded && _customWindowSource != null)
+            if (_isLoaded)
             {
                 this.CustomControl.SetSource(_customWindowSource);
                 this.Topmost = _customWindowSource.TopMost;
+                this.Title = _customWindowSource.WindowTitle;
                 this.TitleTextBlock.Text = _customWindowSource.WindowTitle;
+                TitleBar.Visibility = _showTitleBar ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 
@@ -154,6 +262,17 @@ namespace AltController
         {
             // Tell parent when window is closing
             _parentWindow.ChildWindowClosing(this);
-        }        
+        }
+
+        /// <summary>
+        /// Minimise button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MinimiseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = System.Windows.WindowState.Minimized;
+            e.Handled = true;
+        }
     }
 }

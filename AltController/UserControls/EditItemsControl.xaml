@@ -16,19 +16,19 @@
         </Grid.ColumnDefinitions>
         <ListBox Name="ItemsList" Grid.Row="0" Grid.Column="0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="ItemsList_SelectionChanged" />
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Height="23" Name="AddButton" Width="70" Click="AddButton_Click">
+            <Button Height="23" Name="AddButton" HorizontalAlignment="Left" MinWidth="70" Click="AddButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/add.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Items_AddButton}"/>
                 </StackPanel>
             </Button>
-            <Button Height="23" Name="EditButton" IsEnabled="False" Width="70" Margin="5,0,0,0" Click="EditButton_Click">
+            <Button Height="23" Name="EditButton" IsEnabled="False" HorizontalAlignment="Left" MinWidth="70" Margin="5,0,0,0" Click="EditButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/application_form_edit.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Items_EditButton}"/>
                 </StackPanel>
             </Button>
-            <Button Height="23" Name="DeleteButton" IsEnabled="False" Width="70" Margin="5,0,0,0" Click="DeleteButton_Click">
+            <Button Height="23" Name="DeleteButton" IsEnabled="False" HorizontalAlignment="Left" MinWidth="70" Margin="5,0,0,0" Click="DeleteButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/delete.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Items_DeleteButton}"/>

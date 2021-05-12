@@ -153,7 +153,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error loading window", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF001, ex);
             }
         }
 
@@ -191,7 +191,6 @@ namespace AltController
             _eventReasonButtons[EEventReason.Pressed] = this.ReasonPressed;
             _eventReasonButtons[EEventReason.Released] = this.ReasonReleased;
             //_eventReasonButtons[EEventReason.Changed] = this.ReasonChanged;
-            _eventReasonButtons[EEventReason.Moved] = this.ReasonMoved;
             _eventReasonButtons[EEventReason.Updated] = this.ReasonUpdated;
             _eventReasonButtons[EEventReason.Dwelled] = this.ReasonDwelled;
             _eventReasonButtons[EEventReason.Inside] = this.ReasonInside;
@@ -240,7 +239,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error applying changes", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF002, ex);
             }
         }
 
@@ -258,7 +257,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error applying changes", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF003, ex);
             }
         }
 
@@ -335,7 +334,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error adding new action", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF004, ex);
             }
         }
 
@@ -379,7 +378,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error editing action", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF005, ex);
             }
         }
 
@@ -415,7 +414,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error deleting action", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF006, ex);
             }
         }
 
@@ -445,7 +444,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error moving action up the order", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF007, ex);
             }
         }
 
@@ -475,7 +474,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error moving action down the order", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF008, ex);
             }
         }
 
@@ -553,7 +552,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error editing situations", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF009, ex);
             }
         }
 
@@ -600,7 +599,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error editing inputs", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF010, ex);
             }
         }
 
@@ -646,7 +645,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error designing window", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF011, ex);
             }
         }
 
@@ -692,7 +691,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error editing screen regions", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF012, ex);
             }
         }
         
@@ -710,7 +709,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error refreshing actions list", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF013, ex);
             }
         }
 
@@ -754,7 +753,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error changing selected source", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF014, ex);
             }
         }
 
@@ -782,7 +781,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error refreshing actions list", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF015, ex);
             }
         }
 
@@ -813,7 +812,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error navigating to next action list", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF016, ex);
             }
 
             e.Handled = true;
@@ -846,7 +845,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error navigating to previous action list", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF017, ex);
             }
 
             e.Handled = true;
@@ -900,7 +899,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error refreshing actions list", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF018, ex);
             }
         }
 
@@ -929,7 +928,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error while changing execution mode", ex);
+                ErrorMessage.Show(Properties.Resources.E_PROF019, ex);
             }
         }
 

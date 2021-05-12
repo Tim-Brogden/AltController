@@ -28,6 +28,7 @@ along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -78,7 +79,9 @@ namespace AltController
             {
                 // Window properties
                 this.WindowTitleTextBox.Text = _customWindowSource.WindowTitle;
+                this.WindowWidthSlider.Maximum = SystemParameters.PrimaryScreenWidth;
                 this.WindowWidthSlider.Value = _customWindowSource.WindowWidth;
+                this.WindowHeightSlider.Maximum = SystemParameters.PrimaryScreenHeight;
                 this.WindowHeightSlider.Value = _customWindowSource.WindowHeight;
                 this.TranslucencySlider.Value = _customWindowSource.Translucency;
                 this.TopMostCheckBox.IsChecked = _customWindowSource.TopMost;
@@ -88,19 +91,50 @@ namespace AltController
                 // Background colour N/A for ghost mode
                 this.WindowBackgroundColourCombo.IsEnabled = !_customWindowSource.GhostBackground;
 
+                // Font families
+                ComboBoxItem defaultItem = new ComboBoxItem();
+                defaultItem.Content = "";
+                ButtonFontCombo.Items.Add(defaultItem);
+                List<string> fontFamilies = GetListOfFonts();
+                foreach (string fontFamily in fontFamilies)
+                {
+                    ComboBoxItem item = new ComboBoxItem();
+                    item.Content = fontFamily;
+                    ButtonFontCombo.Items.Add(item);
+                }
+                ButtonFontCombo.SelectedValue = "";
+
                 // Button properties
                 this.ButtonXSlider.Maximum = _customWindowSource.WindowWidth;
                 this.ButtonWidthSlider.Maximum = _customWindowSource.WindowWidth;
                 this.ButtonYSlider.Maximum = _customWindowSource.WindowHeight;
                 this.ButtonHeightSlider.Maximum = _customWindowSource.WindowHeight;
-                this.ButtonBackgroundColourCombo.SelectedColour = "LightGray";
+                this.ButtonBorderColourCombo.SelectedColour = Constants.DefaultCustomButtonBorderColour;
+                this.ButtonBackgroundColourCombo.SelectedColour = Constants.DefaultCustomButtonBackgroundColour;
+                this.ButtonFontSizeSlider.Value = Constants.DefaultCustomButtonFontSize;
+                this.ButtonTextColourCombo.SelectedColour = Constants.DefaultCustomButtonTextColour;
 
                 _isLoaded = true;
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error loading window", ex);
+                ErrorMessage.Show(Properties.Resources.E_CUST001, ex);
             }
+        }
+
+        /// <summary>
+        /// Enumerate system fonts
+        /// </summary>
+        /// <returns></returns>
+        private List<string> GetListOfFonts()
+        {
+            List<string> fontFamilies = new List<string>();
+            foreach (FontFamily fontFamily in Fonts.SystemFontFamilies)
+            {
+                fontFamilies.Add(fontFamily.Source);
+            }
+            fontFamilies.Sort();
+            return fontFamilies;
         }
 
         /// <summary>
@@ -138,18 +172,30 @@ namespace AltController
                 long id = _customWindowSource.CustomButtons.GetFirstUnusedID();
                 if (id < 256)
                 {
+                    double newX = ButtonXSlider.Value + ButtonWidthSlider.Value;
+                    double newY = ButtonYSlider.Value;
+                    if (newX > ButtonXSlider.Maximum - ButtonWidthSlider.Value)
+                    {
+                        newX = ButtonXSlider.Value;
+                        newY = Math.Min(ButtonYSlider.Value + ButtonHeightSlider.Value, WindowHeightSlider.Value - ButtonHeightSlider.Value);
+                    }
                     string name = _customWindowSource.CustomButtons.GetFirstUnusedName("Button", false);
                     CustomButtonData buttonData = new CustomButtonData(
                         (byte)id, 
                         name, 
-                        "", 
-                        0, 
-                        0, 
+                        "",
+                        newX,
+                        newY, 
                         this.ButtonWidthSlider.Value, 
                         this.ButtonHeightSlider.Value, 
+                        this.ButtonBorderThicknessSlider.Value,
+                        this.ButtonBorderColourCombo.SelectedColour,
                         this.ButtonBackgroundColourCombo.SelectedColour,
                         "",
-                        this.ButtonTranslucencySlider.Value);
+                        this.ButtonTranslucencySlider.Value,
+                        (string)this.ButtonFontCombo.SelectedValue,
+                        this.ButtonFontSizeSlider.Value,
+                        this.ButtonTextColourCombo.SelectedColour);
 
                     // Add to custom window
                     PreviewControl.CreateButton(buttonData);
@@ -157,8 +203,8 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error adding new custom button", ex);
-            }
+                ErrorMessage.Show(Properties.Resources.E_CUST002, ex);
+            }            
         }
 
         /// <summary>
@@ -177,7 +223,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error deleting custom button", ex);
+                ErrorMessage.Show(Properties.Resources.E_CUST003, ex);
             }
         }
 
@@ -195,17 +241,23 @@ namespace AltController
                     ErrorMessage.Clear();
 
                     // Show button details
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    if (data.Count != 0)
                     {
+                        CustomButtonData buttonData = data[0];
                         ButtonNameTextBox.Text = buttonData.Name;
                         ButtonTextTextBox.Text = buttonData.Text;
                         ButtonXSlider.Value = buttonData.X;
                         ButtonYSlider.Value = buttonData.Y;
                         ButtonWidthSlider.Value = buttonData.Width;
                         ButtonHeightSlider.Value = buttonData.Height;
+                        ButtonBorderThicknessSlider.Value = buttonData.BorderThickness;
+                        ButtonBorderColourCombo.SelectedColour = buttonData.BorderColour;
                         ButtonBackgroundColourCombo.SelectedColour = buttonData.BackgroundColour;
                         ButtonTranslucencySlider.Value = buttonData.BackgroundTranslucency;
+                        ButtonFontCombo.SelectedValue = buttonData.FontName;
+                        ButtonFontSizeSlider.Value = buttonData.FontSize;
+                        ButtonTextColourCombo.SelectedColour = buttonData.TextColour;
                         BrowseButtonImageButton.IsEnabled = true;
                         ClearButtonImageButton.IsEnabled = true;
                         DeleteButton.IsEnabled = true;
@@ -219,7 +271,7 @@ namespace AltController
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error handling selection of custom button", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST004, ex);
                 }
             }
         }
@@ -264,7 +316,7 @@ namespace AltController
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while setting window size", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST005, ex);
                 }
             }
         }
@@ -296,7 +348,7 @@ namespace AltController
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while setting window size", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST006, ex);
                 }
             }
         }
@@ -319,7 +371,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error while selecting background colour", ex);
+                ErrorMessage.Show(Properties.Resources.E_CUST007, ex);
             }
 
         }
@@ -341,7 +393,7 @@ namespace AltController
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while setting window translucency", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST008, ex);
                 }
             }
         }
@@ -364,7 +416,7 @@ namespace AltController
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while changing ghost background option", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST009, ex);
                 }
             }
         }
@@ -394,16 +446,25 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    if (data.Count != 0)
                     {
-                        buttonData.X = Math.Max(0, Math.Min(_customWindowSource.WindowWidth - buttonData.Width, args.Value));
-                        PreviewControl.RefreshSelectedButtonLayout();
+                        CustomButtonData first = data[0];
+                        double x = Math.Max(0, Math.Min(_customWindowSource.WindowWidth - first.Width, args.Value));
+                        double diff = x - first.X;
+                        if (diff != 0)
+                        {
+                            foreach (CustomButtonData buttonData in data)
+                            {
+                                buttonData.X = Math.Max(0, Math.Min(_customWindowSource.WindowWidth - buttonData.Width, buttonData.X + diff));
+                            }
+                            PreviewControl.RefreshSelectedButtons();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while positioning button", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST010, ex);
                 }
             }
         }
@@ -420,16 +481,25 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    if (data.Count != 0)
                     {
-                        buttonData.Y = Math.Max(0, Math.Min(_customWindowSource.WindowHeight - buttonData.Height, args.Value));
-                        PreviewControl.RefreshSelectedButtonLayout();
+                        CustomButtonData first = data[0];
+                        double y = Math.Max(0, Math.Min(_customWindowSource.WindowHeight - first.Height, args.Value));
+                        double diff = y - first.Y;
+                        if (diff != 0)
+                        {
+                            foreach (CustomButtonData buttonData in data)
+                            {
+                                buttonData.Y = Math.Max(0, Math.Min(_customWindowSource.WindowHeight - buttonData.Height, buttonData.Y + diff));
+                            }
+                            PreviewControl.RefreshSelectedButtons();
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while positioning button", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST011, ex);
                 }
             }
         }
@@ -446,16 +516,25 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    bool updated = false;
+                    double width = Math.Max(Constants.MinCustomButtonSize, Math.Min(_customWindowSource.WindowWidth, args.Value));
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
                     {
-                        buttonData.Width = Math.Max(Constants.MinCustomButtonSize, Math.Min(_customWindowSource.WindowWidth - buttonData.X, args.Value));
-                        PreviewControl.RefreshSelectedButtonLayout();
+                        if (buttonData.Width != width)
+                        {
+                            buttonData.Width = width;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while resizing button", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST012, ex);
                 }
             }
         }
@@ -472,16 +551,59 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    bool updated = false;
+                    double height = Math.Max(Constants.MinCustomButtonSize, Math.Min(_customWindowSource.WindowHeight, args.Value));
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
                     {
-                        buttonData.Height = Math.Max(Constants.MinCustomButtonSize, Math.Min(_customWindowSource.WindowHeight - buttonData.Y, args.Value));
-                        PreviewControl.RefreshSelectedButtonLayout();
+                        if (buttonData.Height != height)
+                        {
+                            buttonData.Height = height;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while resizing button", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST013, ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Button border thickness changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        private void ButtonBorderThicknessSlider_ValueChanged(object sender, DoubleValEventArgs args)
+        {
+            if (_isLoaded)
+            {
+                try
+                {
+                    ErrorMessage.Clear();
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data) 
+                    {
+                        if (buttonData.BorderThickness != args.Value)
+                        {
+                            buttonData.BorderThickness = args.Value;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage.Show(Properties.Resources.E_CUST014, ex);
                 }
             }
         }
@@ -498,16 +620,24 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
                     {
-                        buttonData.Name = ButtonNameTextBox.Text;
-                        PreviewControl.RefreshSelectedButtonLayout();
+                        if (buttonData.Name != ButtonNameTextBox.Text)
+                        {
+                            buttonData.Name = ButtonNameTextBox.Text;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while changing button name", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST015, ex);
                 }
             }
         }
@@ -524,22 +654,99 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
                     {
-                        buttonData.Text = ButtonTextTextBox.Text;
-                        PreviewControl.RefreshSelectedButtonLayout();
+                        if (buttonData.Text != ButtonTextTextBox.Text)
+                        {
+                            buttonData.Text = ButtonTextTextBox.Text;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while changing button text", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST016, ex);
                 }
             }
         }
 
         /// <summary>
-        /// Button colour changed
+        /// Button text colour changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonTextColourCombo_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (_isLoaded && this.ButtonTextColourCombo.SelectedColour != null)
+            {
+                try
+                {
+                    ErrorMessage.Clear();
+                    string colour = this.ButtonTextColourCombo.SelectedColour;
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
+                    {
+                        if (buttonData.TextColour != colour)
+                        {
+                            buttonData.TextColour = colour;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage.Show(Properties.Resources.E_CUST024, ex);
+                }
+            }
+        }
+        /// <summary>
+        /// Button border colour changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonBorderColourCombo_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (_isLoaded && this.ButtonBorderColourCombo.SelectedColour != null)
+            {
+                try
+                {
+                    ErrorMessage.Clear();
+                    string colour = this.ButtonBorderColourCombo.SelectedColour;
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
+                    {
+                        if (buttonData.BorderColour != colour)
+                        {
+                            buttonData.BorderColour = colour;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage.Show(Properties.Resources.E_CUST017, ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Button background colour changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -550,20 +757,28 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    string colour = this.ButtonBackgroundColourCombo.SelectedColour;
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
                     {
-                        buttonData.BackgroundColour = (string)this.ButtonBackgroundColourCombo.SelectedColour;
+                        if (buttonData.BackgroundColour != colour)
+                        {
+                            buttonData.BackgroundColour = colour;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
                         PreviewControl.RefreshSelectedButtonBackground();
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while changing button colour", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST018, ex);
                 }
             }
         }
-
 
         /// <summary>
         /// Browse for button background image
@@ -575,8 +790,8 @@ namespace AltController
             try
             {
                 ErrorMessage.Clear();
-                CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                if (buttonData != null)
+                List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                if (data.Count != 0)
                 {
                     string defaultProfilesDir = System.IO.Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
                     string profilesDir = _parentWindow.GetAppConfig().GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
@@ -602,16 +817,18 @@ namespace AltController
                             // Profile isn't in Profiles directory, so store full path
                             fileName = fi.FullName;
                         }
-                        
-                        buttonData.BackgroundImage = fileName;
 
+                        foreach (CustomButtonData buttonData in data)
+                        {
+                            buttonData.BackgroundImage = fileName;
+                        }
                         PreviewControl.RefreshSelectedButtonBackground();
                     }
                 }
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error while setting button background image", ex);
+                ErrorMessage.Show(Properties.Resources.E_CUST019, ex);
             }
         }
 
@@ -625,17 +842,19 @@ namespace AltController
             try
             {
                 ErrorMessage.Clear();
-                CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                if (buttonData != null)
+                List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                if (data.Count != 0)
                 {
-                    buttonData.BackgroundImage = "";
-
+                    foreach (CustomButtonData buttonData in data)
+                    {
+                        buttonData.BackgroundImage = "";
+                    }
                     PreviewControl.RefreshSelectedButtonBackground();
                 }
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error while clearing background image", ex);
+                ErrorMessage.Show(Properties.Resources.E_CUST020, ex);
             }
         }
 
@@ -651,17 +870,93 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    CustomButtonData buttonData = PreviewControl.GetSelectedButtonData();
-                    if (buttonData != null)
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
                     {
-                        buttonData.BackgroundTranslucency = ButtonTranslucencySlider.Value;
-
+                        if (buttonData.BackgroundTranslucency != ButtonTranslucencySlider.Value)
+                        {
+                            buttonData.BackgroundTranslucency = ButtonTranslucencySlider.Value;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
                         PreviewControl.RefreshSelectedButtonBackground();
                     }
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while setting button translucency", ex);
+                    ErrorMessage.Show(Properties.Resources.E_CUST021, ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Button font changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonFontCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_isLoaded)
+            {
+                try
+                {
+                    ErrorMessage.Clear();
+                    ComboBoxItem item = (ComboBoxItem)ButtonFontCombo.SelectedItem;
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
+                    {
+                        if (item != null && buttonData.FontName != (string)item.Content)
+                        {
+                            buttonData.FontName = (string)item.Content;
+                            updated = true;
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage.Show(Properties.Resources.E_CUST022, ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Button font size changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonFontSizeSlider_ValueChanged(object sender, DoubleValEventArgs args)
+        {
+            if (_isLoaded)
+            {
+                try
+                {
+                    ErrorMessage.Clear();
+                    bool updated = false;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    foreach (CustomButtonData buttonData in data)
+                    {
+                        if (buttonData.FontSize != ButtonFontSizeSlider.Value)
+                        {
+                            buttonData.FontSize = ButtonFontSizeSlider.Value;
+                            updated = true;                            
+                        }
+                    }
+                    if (updated)
+                    {
+                        PreviewControl.RefreshSelectedButtons();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage.Show(Properties.Resources.E_CUST023, ex);
                 }
             }
         }

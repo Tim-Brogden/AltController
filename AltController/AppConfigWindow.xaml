@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AltController.UserControls" 
         ResizeMode="CanMinimize" Title="{x:Static p:Resources.Options_Title}" 
         mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        Loaded="Window_Loaded" Icon="/AltController;component/Images/AltController.png" Height="360" Width="520">
+        Loaded="Window_Loaded" Icon="/AltController;component/Images/AltController.png" Height="360" Width="550">
     <Window.Resources>
         <core:HotkeyBindingConverter x:Key="HotkeyConverter"/>
     </Window.Resources>
@@ -26,14 +26,22 @@
                         <RowDefinition Height="25"></RowDefinition>
                         <RowDefinition Height="25"></RowDefinition>
                         <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <local:LanguagePickerControl x:Name="LanguageCombo" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                    <TextBlock Name="RestartRequiredLabel" Grid.Row="1" Grid.Column="1" Text="{x:Static p:Resources.Options_RestartRequiredLabel}" HorizontalAlignment="Right" VerticalAlignment="Center" FontStyle="Italic" Visibility="Hidden"/>
                     <CheckBox Name="AutoLoadCheckbox" Content="{x:Static p:Resources.Options_AutoLoadCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Padding="5,0"></CheckBox>
                     <CheckBox Name="AutoOpenCustomWindowsCheckbox" Content="{x:Static p:Resources.Options_AutoOpenCustomWindowsCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Padding="5,0"></CheckBox>
                     <CheckBox Name="DrawScreenRegionsCheckbox" Content="{x:Static p:Resources.Options_DrawScreenRegionsCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Padding="5,0"></CheckBox>
                     <CheckBox Name="DrawScreenRegionNamesCheckbox" Content="{x:Static p:Resources.Options_DrawScreenRegionNamesCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Padding="5,0"></CheckBox>
                     <CheckBox Name="DrawPointerIndicatorCheckbox" Content="{x:Static p:Resources.Options_DrawPointerIndicatorCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" Padding="5,0"></CheckBox>
                     <CheckBox Name="DrawStateOverlayCheckbox" Content="{x:Static p:Resources.Options_DrawStateOverlayCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0" Padding="5,0"></CheckBox>
-                    <CheckBox Name="DrawRegionForceSquareCheckbox" Content="{x:Static p:Resources.Options_DrawRegionForceSquareCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="CustomWindowTitleBarsCheckbox" Content="{x:Static p:Resources.Options_CustomWindowTitleBarsCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0" Padding="5,0"></CheckBox>
+                    <CheckBox Name="DrawRegionForceSquareCheckbox" Content="{x:Static p:Resources.Options_DrawRegionForceSquareCheckbox}" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0" Padding="5,0"></CheckBox>
                 </Grid>
             </TabItem>
             <TabItem Name="TimingTab" Header="{x:Static p:Resources.Options_TimingTab}">
@@ -118,17 +126,17 @@
             <TabItem Name="HotkeysTab" Header="{x:Static p:Resources.Options_HotkeysTab}">
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="300"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="180"/>
                     </Grid.ColumnDefinitions>
                     <DataGrid Name="HotkeyList" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding}" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" SelectionChanged="HotkeyList_SelectionChanged">
                         <DataGrid.Columns>
-                            <DataGridTextColumn x:Name="FeatureColumn" Header="{x:Static p:Resources.Options_FeatureColumn}" Width="150" Binding="{Binding Name}"/>
+                            <DataGridTextColumn x:Name="FeatureColumn" Header="{x:Static p:Resources.Options_FeatureColumn}" Width="200" Binding="{Binding Name}"/>
                             <DataGridTextColumn x:Name="HotkeyColumn" Header="{x:Static p:Resources.Options_HotkeyColumn}" Width="*" Binding="{Binding Path=ID, Mode=OneWay, Converter={StaticResource HotkeyConverter}}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <GroupBox x:Name="EditHotkeyGroupBox" Grid.Row="0" Grid.Column="1" Header="{x:Static p:Resources.Options_EditHotkeyGroupBox}" Width="150" Margin="5,20,5,0">
+                    <GroupBox x:Name="EditHotkeyGroupBox" Grid.Row="0" Grid.Column="1" Header="{x:Static p:Resources.Options_EditHotkeyGroupBox}" Margin="10,20,5,0">
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="25"></RowDefinition>
@@ -150,15 +158,12 @@
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="25"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="90"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Name="FolderLabel" Text="{x:Static p:Resources.Options_FolderLabel}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
-                    <TextBox Name="ProfilesFolderTextBox" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center"></TextBox>
-                    <Button Name="BrowseButton" Grid.Row="0" Grid.Column="2" Click="BrowseButton_Click" VerticalAlignment="Center" HorizontalAlignment="Right" Height="23" Width="90">
+                    <TextBlock Name="FolderLabel" Text="{x:Static p:Resources.Options_FolderLabel}" Grid.Row="0" VerticalAlignment="Center"></TextBlock>
+                    <TextBox Name="ProfilesFolderTextBox" Grid.Row="1" VerticalAlignment="Center"></TextBox>
+                    <Button Name="BrowseButton" Grid.Row="2" Click="BrowseButton_Click" VerticalAlignment="Center" HorizontalAlignment="Left" Height="23">
                         <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Options_BrowseToolTip}">
                             <Image Source="/AltController;component/Images/icons/image_edit.png" />
                             <AccessText Margin="5,0" Text="{x:Static p:Resources.Options_BrowseButton}"/>
@@ -168,7 +173,7 @@
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-            <Button Name="ResetButton" Width="70" Height="23" Click="ResetButton_Click" ToolTip="{x:Static p:Resources.Options_ResetToolTip}">
+            <Button Name="ResetButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Click="ResetButton_Click" ToolTip="{x:Static p:Resources.Options_ResetToolTip}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/lightning.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Options_ResetButton}"/>
@@ -176,13 +181,13 @@
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Button Name="OKButton" Width="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click" >
+            <Button Name="OKButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/accept.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
                 </StackPanel>
             </Button>
-            <Button Name="CancelButton" Width="70" Height="23" IsCancel="True" Click="CancelButton_Click" >
+            <Button Name="CancelButton" HorizontalAlignment="Left" MinWidth="70" Height="23" IsCancel="True" Click="CancelButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/cancel.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>

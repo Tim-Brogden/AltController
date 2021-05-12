@@ -178,6 +178,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Translators.
+        /// </summary>
+        public static string About_TranslatorsLabel {
+            get {
+                return ResourceManager.GetString("About_TranslatorsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Translations kindly provided by:.
+        /// </summary>
+        public static string About_TranslatorsText {
+            get {
+                return ResourceManager.GetString("About_TranslatorsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To absolute position.
         /// </summary>
         public static string Action_AbsoluteRadioButton {
@@ -619,6 +637,42 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Border colour:.
+        /// </summary>
+        public static string Custom_ButtonBorderColourLabel {
+            get {
+                return ResourceManager.GetString("Custom_ButtonBorderColourLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Border width (pixels):.
+        /// </summary>
+        public static string Custom_ButtonBorderThicknessLabel {
+            get {
+                return ResourceManager.GetString("Custom_ButtonBorderThicknessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font:.
+        /// </summary>
+        public static string Custom_ButtonFontLabel {
+            get {
+                return ResourceManager.GetString("Custom_ButtonFontLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font size:.
+        /// </summary>
+        public static string Custom_ButtonFontSizeLabel {
+            get {
+                return ResourceManager.GetString("Custom_ButtonFontSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Button properties.
         /// </summary>
         public static string Custom_ButtonGroupBox {
@@ -642,6 +696,15 @@ namespace AltController.Properties {
         public static string Custom_ButtonNameLabel {
             get {
                 return ResourceManager.GetString("Custom_ButtonNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text colour:.
+        /// </summary>
+        public static string Custom_ButtonTextColourLabel {
+            get {
+                return ResourceManager.GetString("Custom_ButtonTextColourLabel", resourceCulture);
             }
         }
         
@@ -705,6 +768,15 @@ namespace AltController.Properties {
         public static string Custom_DeleteButton {
             get {
                 return ResourceManager.GetString("Custom_DeleteButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended button properties.
+        /// </summary>
+        public static string Custom_ExtendedButtonGroupBox {
+            get {
+                return ResourceManager.GetString("Custom_ExtendedButtonGroupBox", resourceCulture);
             }
         }
         
@@ -804,6 +876,807 @@ namespace AltController.Properties {
         public static string Custom_WindowWidthLabel {
             get {
                 return ResourceManager.GetString("Custom_WindowWidthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing the action type.
+        /// </summary>
+        public static string E_ACTION001 {
+            get {
+                return ResourceManager.GetString("E_ACTION001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while loading window.
+        /// </summary>
+        public static string E_CUST001 {
+            get {
+                return ResourceManager.GetString("E_CUST001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while adding new custom button.
+        /// </summary>
+        public static string E_CUST002 {
+            get {
+                return ResourceManager.GetString("E_CUST002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while deleting custom button.
+        /// </summary>
+        public static string E_CUST003 {
+            get {
+                return ResourceManager.GetString("E_CUST003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while handling selection of custom button.
+        /// </summary>
+        public static string E_CUST004 {
+            get {
+                return ResourceManager.GetString("E_CUST004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting window width.
+        /// </summary>
+        public static string E_CUST005 {
+            get {
+                return ResourceManager.GetString("E_CUST005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting window height.
+        /// </summary>
+        public static string E_CUST006 {
+            get {
+                return ResourceManager.GetString("E_CUST006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while selecting background colour.
+        /// </summary>
+        public static string E_CUST007 {
+            get {
+                return ResourceManager.GetString("E_CUST007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting window translucency.
+        /// </summary>
+        public static string E_CUST008 {
+            get {
+                return ResourceManager.GetString("E_CUST008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing ghost background option.
+        /// </summary>
+        public static string E_CUST009 {
+            get {
+                return ResourceManager.GetString("E_CUST009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button X slider.
+        /// </summary>
+        public static string E_CUST010 {
+            get {
+                return ResourceManager.GetString("E_CUST010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button Y slider.
+        /// </summary>
+        public static string E_CUST011 {
+            get {
+                return ResourceManager.GetString("E_CUST011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting button width.
+        /// </summary>
+        public static string E_CUST012 {
+            get {
+                return ResourceManager.GetString("E_CUST012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button height.
+        /// </summary>
+        public static string E_CUST013 {
+            get {
+                return ResourceManager.GetString("E_CUST013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button border width.
+        /// </summary>
+        public static string E_CUST014 {
+            get {
+                return ResourceManager.GetString("E_CUST014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button name.
+        /// </summary>
+        public static string E_CUST015 {
+            get {
+                return ResourceManager.GetString("E_CUST015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button text.
+        /// </summary>
+        public static string E_CUST016 {
+            get {
+                return ResourceManager.GetString("E_CUST016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button border colour.
+        /// </summary>
+        public static string E_CUST017 {
+            get {
+                return ResourceManager.GetString("E_CUST017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button background colour.
+        /// </summary>
+        public static string E_CUST018 {
+            get {
+                return ResourceManager.GetString("E_CUST018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button background image.
+        /// </summary>
+        public static string E_CUST019 {
+            get {
+                return ResourceManager.GetString("E_CUST019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while clearing button background image.
+        /// </summary>
+        public static string E_CUST020 {
+            get {
+                return ResourceManager.GetString("E_CUST020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button translucency.
+        /// </summary>
+        public static string E_CUST021 {
+            get {
+                return ResourceManager.GetString("E_CUST021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button font.
+        /// </summary>
+        public static string E_CUST022 {
+            get {
+                return ResourceManager.GetString("E_CUST022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button font size.
+        /// </summary>
+        public static string E_CUST023 {
+            get {
+                return ResourceManager.GetString("E_CUST023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing button text colour.
+        /// </summary>
+        public static string E_CUST024 {
+            get {
+                return ResourceManager.GetString("E_CUST024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while initialising folders.
+        /// </summary>
+        public static string E_MAIN001 {
+            get {
+                return ResourceManager.GetString("E_MAIN001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while initialising application.
+        /// </summary>
+        public static string E_MAIN002 {
+            get {
+                return ResourceManager.GetString("E_MAIN002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while positioning window.
+        /// </summary>
+        public static string E_MAIN003 {
+            get {
+                return ResourceManager.GetString("E_MAIN003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while creating new profile.
+        /// </summary>
+        public static string E_MAIN004 {
+            get {
+                return ResourceManager.GetString("E_MAIN004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening profile.
+        /// </summary>
+        public static string E_MAIN005 {
+            get {
+                return ResourceManager.GetString("E_MAIN005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while saving profile.
+        /// </summary>
+        public static string E_MAIN006 {
+            get {
+                return ResourceManager.GetString("E_MAIN006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} during Save As.
+        /// </summary>
+        public static string E_MAIN007 {
+            get {
+                return ResourceManager.GetString("E_MAIN007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening the profile editor.
+        /// </summary>
+        public static string E_MAIN008 {
+            get {
+                return ResourceManager.GetString("E_MAIN008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening the screen region editor.
+        /// </summary>
+        public static string E_MAIN009 {
+            get {
+                return ResourceManager.GetString("E_MAIN009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening the profile summary.
+        /// </summary>
+        public static string E_MAIN010 {
+            get {
+                return ResourceManager.GetString("E_MAIN010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while loading profile.
+        /// </summary>
+        public static string E_MAIN011 {
+            get {
+                return ResourceManager.GetString("E_MAIN011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening all custom windows.
+        /// </summary>
+        public static string E_MAIN012 {
+            get {
+                return ResourceManager.GetString("E_MAIN012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} during open custom window command.
+        /// </summary>
+        public static string E_MAIN013 {
+            get {
+                return ResourceManager.GetString("E_MAIN013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening custom window.
+        /// </summary>
+        public static string E_MAIN014 {
+            get {
+                return ResourceManager.GetString("E_MAIN014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while opening the Log information window.
+        /// </summary>
+        public static string E_MAIN015 {
+            get {
+                return ResourceManager.GetString("E_MAIN015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while loading profile from Xml.
+        /// </summary>
+        public static string E_PR001 {
+            get {
+                return ResourceManager.GetString("E_PR001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while converting profile to Xml.
+        /// </summary>
+        public static string E_PR002 {
+            get {
+                return ResourceManager.GetString("E_PR002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while loading profile editor window.
+        /// </summary>
+        public static string E_PROF001 {
+            get {
+                return ResourceManager.GetString("E_PROF001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while applying changes and closing.
+        /// </summary>
+        public static string E_PROF002 {
+            get {
+                return ResourceManager.GetString("E_PROF002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while applying changes.
+        /// </summary>
+        public static string E_PROF003 {
+            get {
+                return ResourceManager.GetString("E_PROF003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while adding new action.
+        /// </summary>
+        public static string E_PROF004 {
+            get {
+                return ResourceManager.GetString("E_PROF004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while editing action.
+        /// </summary>
+        public static string E_PROF005 {
+            get {
+                return ResourceManager.GetString("E_PROF005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while deleting action.
+        /// </summary>
+        public static string E_PROF006 {
+            get {
+                return ResourceManager.GetString("E_PROF006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while moving action up.
+        /// </summary>
+        public static string E_PROF007 {
+            get {
+                return ResourceManager.GetString("E_PROF007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while moving action down.
+        /// </summary>
+        public static string E_PROF008 {
+            get {
+                return ResourceManager.GetString("E_PROF008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while editing situations.
+        /// </summary>
+        public static string E_PROF009 {
+            get {
+                return ResourceManager.GetString("E_PROF009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while editing inputs.
+        /// </summary>
+        public static string E_PROF010 {
+            get {
+                return ResourceManager.GetString("E_PROF010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while designing custom window.
+        /// </summary>
+        public static string E_PROF011 {
+            get {
+                return ResourceManager.GetString("E_PROF011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while editing screen regions.
+        /// </summary>
+        public static string E_PROF012 {
+            get {
+                return ResourceManager.GetString("E_PROF012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while refreshing the action list.
+        /// </summary>
+        public static string E_PROF013 {
+            get {
+                return ResourceManager.GetString("E_PROF013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while selecting an input.
+        /// </summary>
+        public static string E_PROF014 {
+            get {
+                return ResourceManager.GetString("E_PROF014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while selecting a control.
+        /// </summary>
+        public static string E_PROF015 {
+            get {
+                return ResourceManager.GetString("E_PROF015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while navigating to the next action list.
+        /// </summary>
+        public static string E_PROF016 {
+            get {
+                return ResourceManager.GetString("E_PROF016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while navigating to the previous action list.
+        /// </summary>
+        public static string E_PROF017 {
+            get {
+                return ResourceManager.GetString("E_PROF017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while selecting a reason.
+        /// </summary>
+        public static string E_PROF018 {
+            get {
+                return ResourceManager.GetString("E_PROF018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing the execution mode.
+        /// </summary>
+        public static string E_PROF019 {
+            get {
+                return ResourceManager.GetString("E_PROF019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while loading the screen region editor.
+        /// </summary>
+        public static string E_REG001 {
+            get {
+                return ResourceManager.GetString("E_REG001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while selecting a region.
+        /// </summary>
+        public static string E_REG002 {
+            get {
+                return ResourceManager.GetString("E_REG002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while enabling region drawing.
+        /// </summary>
+        public static string E_REG003 {
+            get {
+                return ResourceManager.GetString("E_REG003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} after editing region.
+        /// </summary>
+        public static string E_REG004 {
+            get {
+                return ResourceManager.GetString("E_REG004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while adding a new region.
+        /// </summary>
+        public static string E_REG005 {
+            get {
+                return ResourceManager.GetString("E_REG005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while deleting the selected region.
+        /// </summary>
+        public static string E_REG006 {
+            get {
+                return ResourceManager.GetString("E_REG006", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while navigating to the previous region.
+        /// </summary>
+        public static string E_REG007 {
+            get {
+                return ResourceManager.GetString("E_REG007", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while navigating to the next region.
+        /// </summary>
+        public static string E_REG008 {
+            get {
+                return ResourceManager.GetString("E_REG008", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting the background image.
+        /// </summary>
+        public static string E_REG009 {
+            get {
+                return ResourceManager.GetString("E_REG009", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while clearing the background image.
+        /// </summary>
+        public static string E_REG010 {
+            get {
+                return ResourceManager.GetString("E_REG010", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting the region background image.
+        /// </summary>
+        public static string E_REG011 {
+            get {
+                return ResourceManager.GetString("E_REG011", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while clearing the region background image.
+        /// </summary>
+        public static string E_REG012 {
+            get {
+                return ResourceManager.GetString("E_REG012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting the region translucency.
+        /// </summary>
+        public static string E_REG013 {
+            get {
+                return ResourceManager.GetString("E_REG013", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while renaming the selected region.
+        /// </summary>
+        public static string E_REG014 {
+            get {
+                return ResourceManager.GetString("E_REG014", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing the region colour.
+        /// </summary>
+        public static string E_REG015 {
+            get {
+                return ResourceManager.GetString("E_REG015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing &apos;Show in mode&apos;.
+        /// </summary>
+        public static string E_REG016 {
+            get {
+                return ResourceManager.GetString("E_REG016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing &apos;Show in app&apos;.
+        /// </summary>
+        public static string E_REG017 {
+            get {
+                return ResourceManager.GetString("E_REG017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing overlay mode.
+        /// </summary>
+        public static string E_REG018 {
+            get {
+                return ResourceManager.GetString("E_REG018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting region X.
+        /// </summary>
+        public static string E_REG019 {
+            get {
+                return ResourceManager.GetString("E_REG019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting region Y.
+        /// </summary>
+        public static string E_REG020 {
+            get {
+                return ResourceManager.GetString("E_REG020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting region width.
+        /// </summary>
+        public static string E_REG021 {
+            get {
+                return ResourceManager.GetString("E_REG021", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting region height.
+        /// </summary>
+        public static string E_REG022 {
+            get {
+                return ResourceManager.GetString("E_REG022", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while setting region shape.
+        /// </summary>
+        public static string E_REG023 {
+            get {
+                return ResourceManager.GetString("E_REG023", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing hole size.
+        /// </summary>
+        public static string E_REG024 {
+            get {
+                return ResourceManager.GetString("E_REG024", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing start angle.
+        /// </summary>
+        public static string E_REG025 {
+            get {
+                return ResourceManager.GetString("E_REG025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while changing sweep angle.
+        /// </summary>
+        public static string E_REG026 {
+            get {
+                return ResourceManager.GetString("E_REG026", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0}: selection of multiple regions is not allowed.
+        /// </summary>
+        public static string E_REGCTRL001 {
+            get {
+                return ResourceManager.GetString("E_REGCTRL001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error {0} while upgrading profile to the latest version.
+        /// </summary>
+        public static string E_UPGR001 {
+            get {
+                return ResourceManager.GetString("E_UPGR001", resourceCulture);
             }
         }
         
@@ -1348,6 +2221,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _View.
+        /// </summary>
+        public static string Main_ViewMenu {
+            get {
+                return ResourceManager.GetString("Main_ViewMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profile _notes....
         /// </summary>
         public static string Main_ViewProfileNotes {
@@ -1389,6 +2271,24 @@ namespace AltController.Properties {
         public static string Main_WindowMenu {
             get {
                 return ResourceManager.GetString("Main_WindowMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show _title bars.
+        /// </summary>
+        public static string Main_WindowShowTitleBars {
+            get {
+                return ResourceManager.GetString("Main_WindowShowTitleBars", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show custom window title bars.
+        /// </summary>
+        public static string Main_WindowShowTitleBarsToolTip {
+            get {
+                return ResourceManager.GetString("Main_WindowShowTitleBarsToolTip", resourceCulture);
             }
         }
         
@@ -1515,6 +2415,15 @@ namespace AltController.Properties {
         public static string Options_ControlCheck {
             get {
                 return ResourceManager.GetString("Options_ControlCheck", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Turn on &apos;Sho_w title bars&apos;.
+        /// </summary>
+        public static string Options_CustomWindowTitleBarsCheckbox {
+            get {
+                return ResourceManager.GetString("Options_CustomWindowTitleBarsCheckbox", resourceCulture);
             }
         }
         
@@ -1762,6 +2671,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Program restart required.
+        /// </summary>
+        public static string Options_RestartRequiredLabel {
+            get {
+                return ResourceManager.GetString("Options_RestartRequiredLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sh_ift.
         /// </summary>
         public static string Options_ShiftCheck {
@@ -1951,6 +2869,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perform actions simultaneously.
+        /// </summary>
+        public static string Profile_ParallelRadioButtonToolTip {
+            get {
+                return ResourceManager.GetString("Profile_ParallelRadioButtonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Perform in:.
         /// </summary>
         public static string Profile_PerformInLabel {
@@ -2059,6 +2986,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perform actions one at a time.
+        /// </summary>
+        public static string Profile_SeriesRadioButtonToolTip {
+            get {
+                return ResourceManager.GetString("Profile_SeriesRadioButtonToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit profile.
         /// </summary>
         public static string Profile_Title {
@@ -2073,6 +3009,15 @@ namespace AltController.Properties {
         public static string Regions_AddRegionButton {
             get {
                 return ResourceManager.GetString("Regions_AddRegionButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new region.
+        /// </summary>
+        public static string Regions_AddRegionButtonToolTip {
+            get {
+                return ResourceManager.GetString("Regions_AddRegionButtonToolTip", resourceCulture);
             }
         }
         
@@ -2136,6 +3081,15 @@ namespace AltController.Properties {
         public static string Regions_DeleteRegionButton {
             get {
                 return ResourceManager.GetString("Regions_DeleteRegionButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the selected region.
+        /// </summary>
+        public static string Regions_DeleteRegionButtonToolTip {
+            get {
+                return ResourceManager.GetString("Regions_DeleteRegionButtonToolTip", resourceCulture);
             }
         }
         
@@ -2599,6 +3553,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (All).
+        /// </summary>
+        public static string String_All_Option {
+            get {
+                return ResourceManager.GetString("String_All_Option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annulus.
         /// </summary>
         public static string String_Annulus {
@@ -2631,6 +3594,15 @@ namespace AltController.Properties {
         public static string String_AppLabel {
             get {
                 return ResourceManager.GetString("String_AppLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apps.
+        /// </summary>
+        public static string String_Apps {
+            get {
+                return ResourceManager.GetString("String_Apps", resourceCulture);
             }
         }
         
@@ -2694,6 +3666,15 @@ namespace AltController.Properties {
         public static string String_Click {
             get {
                 return ResourceManager.GetString("String_Click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright.
+        /// </summary>
+        public static string String_Copyright {
+            get {
+                return ResourceManager.GetString("String_Copyright", resourceCulture);
             }
         }
         
@@ -2869,7 +3850,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image files (*.bmp; *jpeg; *.jpg; *.png)|*.bmp;*jpeg;*.jpg;*.png|All files (*.*)|*.*.
+        ///   Looks up a localized string similar to Image files (*.bmp; *.gif; *jpeg; *.jpg; *.png)|*.bmp;*.gif;*.jpeg;*.jpg;*.png|All files (*.*)|*.*.
         /// </summary>
         public static string String_Image_files_filter {
             get {
@@ -3009,6 +3990,15 @@ namespace AltController.Properties {
         public static string String_ModeLabel {
             get {
                 return ResourceManager.GetString("String_ModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modes.
+        /// </summary>
+        public static string String_Modes {
+            get {
+                return ResourceManager.GetString("String_Modes", resourceCulture);
             }
         }
         
@@ -3153,6 +4143,15 @@ namespace AltController.Properties {
         public static string String_None {
             get {
                 return ResourceManager.GetString("String_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (None).
+        /// </summary>
+        public static string String_None_Option {
+            get {
+                return ResourceManager.GetString("String_None_Option", resourceCulture);
             }
         }
         
@@ -3675,6 +4674,15 @@ namespace AltController.Properties {
         public static string String_Toggle_state_overlay {
             get {
                 return ResourceManager.GetString("String_Toggle_state_overlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle title bars.
+        /// </summary>
+        public static string String_Toggle_title_bars {
+            get {
+                return ResourceManager.GetString("String_Toggle_title_bars", resourceCulture);
             }
         }
         

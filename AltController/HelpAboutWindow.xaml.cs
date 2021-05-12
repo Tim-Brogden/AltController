@@ -50,7 +50,9 @@ namespace AltController
         /// <param name="e"></param>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.VersionText.Text = string.Format("{0}: {1}", Properties.Resources.String_Version, Constants.AppVersion);
+            this.VersionText.Text = string.Format("{0} {1}", Properties.Resources.String_Version, Constants.AppVersion);
+            this.CopyrightText.Text = string.Format("{0} 2013-{1} {2}", Properties.Resources.String_Copyright, DateTime.Now.Year, Constants.AuthorName);
+            this.TranslatorNamesText.Text = Constants.TranslatorNames;
         }
 
         /// <summary>

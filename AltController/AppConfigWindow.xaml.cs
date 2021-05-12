@@ -88,6 +88,8 @@ namespace AltController
             this.KeyboardKeyCombo.ItemsSource = _keyListItems;
 
             DisplayConfig();
+
+            LanguageCombo.SelectedLanguageChanged += this.LanguageCombo_SelectedLanguageChanged;
         }
 
         /// <summary>
@@ -96,12 +98,14 @@ namespace AltController
         private void DisplayConfig() 
         {
             // Start up
+            this.LanguageCombo.SelectedLanguage = _appConfig.GetStringVal(Constants.ConfigLanguageCode, Constants.DefaultLanguageCode);
             this.AutoLoadCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigAutoLoadLastProfile, Constants.DefaultAutoLoadLastProfile);
             this.AutoOpenCustomWindowsCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigAutoOpenCustomWindows, Constants.DefaultAutoOpenCustomWindows);
             this.DrawScreenRegionsCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawScreenRegions, Constants.DefaultDrawScreenRegions);
             this.DrawScreenRegionNamesCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigShowScreenRegionNames, Constants.DefaultShowScreenRegionNames);
             this.DrawPointerIndicatorCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawPointerIndicatorLine, Constants.DefaultDrawPointerIndicatorLine);
             this.DrawStateOverlayCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawStateOverlay, Constants.DefaultDrawStateOverlay);
+            this.CustomWindowTitleBarsCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigCustomWindowTitleBars, Constants.DefaultCustomWindowTitleBars);
             this.DrawRegionForceSquareCheckbox.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawRegionForceSquare, Constants.DefaultDrawRegionForceSquare);
 
             // Timing
@@ -149,6 +153,8 @@ namespace AltController
             _hotkeys.Add(new NamedItem(indicatorLineHotkey, Properties.Resources.String_Toggle_pointer_indicator));
             int stateOverlayHotkey = _appConfig.GetIntVal(Constants.ConfigDrawStateOverlayHotkey, 0);
             _hotkeys.Add(new NamedItem(stateOverlayHotkey, Properties.Resources.String_Toggle_state_overlay));
+            int titleBarsHotkey = _appConfig.GetIntVal(Constants.ConfigCustomWindowTitleBarsHotkey, 0);
+            _hotkeys.Add(new NamedItem(titleBarsHotkey, Properties.Resources.String_Toggle_title_bars));
             this.HotkeyList.DataContext = _hotkeys;
             this.HotkeyList.SelectedItem = _hotkeys[0];
 
@@ -180,10 +186,10 @@ namespace AltController
                 _appConfig = new AppConfig();
 
                 // Keep certain settings
-                _appConfig.SetVal(Constants.ConfigProfilesDir, folder);
-                _appConfig.SetVal(Constants.ConfigLastUsedProfile, lastUsedProfile);
-                _appConfig.SetVal(Constants.ConfigDPIXSetting, dpiX);
-                _appConfig.SetVal(Constants.ConfigDPIYSetting, dpiY);
+                _appConfig.SetStringVal(Constants.ConfigProfilesDir, folder);
+                _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, lastUsedProfile);
+                _appConfig.SetDoubleVal(Constants.ConfigDPIXSetting, dpiX);
+                _appConfig.SetDoubleVal(Constants.ConfigDPIYSetting, dpiY);
 
                 // Force hotkey update
                 _hotkeysChanged = true;
@@ -201,51 +207,54 @@ namespace AltController
         private void OKButton_Click(object sender, RoutedEventArgs e)
         {
             // Start up
-            _appConfig.SetVal(Constants.ConfigAutoLoadLastProfile, this.AutoLoadCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigAutoOpenCustomWindows, this.AutoOpenCustomWindowsCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigDrawScreenRegions, this.DrawScreenRegionsCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigShowScreenRegionNames, this.DrawScreenRegionNamesCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigDrawPointerIndicatorLine, this.DrawPointerIndicatorCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigDrawStateOverlay, this.DrawStateOverlayCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigDrawRegionForceSquare, this.DrawRegionForceSquareCheckbox.IsChecked == true);
+            _appConfig.SetStringVal(Constants.ConfigLanguageCode, this.LanguageCombo.SelectedLanguage);
+            _appConfig.SetBoolVal(Constants.ConfigAutoLoadLastProfile, this.AutoLoadCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigAutoOpenCustomWindows, this.AutoOpenCustomWindowsCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigDrawScreenRegions, this.DrawScreenRegionsCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigShowScreenRegionNames, this.DrawScreenRegionNamesCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigDrawPointerIndicatorLine, this.DrawPointerIndicatorCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigDrawStateOverlay, this.DrawStateOverlayCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigCustomWindowTitleBars, this.CustomWindowTitleBarsCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigDrawRegionForceSquare, this.DrawRegionForceSquareCheckbox.IsChecked == true);
 
             // Timing
-            _appConfig.SetVal(Constants.ConfigInputPollingIntervalMS, (int)(this.InputPollingIntervalSlider.Value * 1000));
-            _appConfig.SetVal(Constants.ConfigUIUpdateIntervalMS, (int)(this.UIUpdateIntervalSlider.Value * 1000));
-            _appConfig.SetVal(Constants.ConfigDwellTimeMS, (int)(this.DwellTimeSlider.Value * 1000));
+            _appConfig.SetIntVal(Constants.ConfigInputPollingIntervalMS, (int)(this.InputPollingIntervalSlider.Value * 1000));
+            _appConfig.SetIntVal(Constants.ConfigUIUpdateIntervalMS, (int)(this.UIUpdateIntervalSlider.Value * 1000));
+            _appConfig.SetIntVal(Constants.ConfigDwellTimeMS, (int)(this.DwellTimeSlider.Value * 1000));
 
             // Actions
-            _appConfig.SetVal(Constants.ConfigAutoStopPressActions, this.AutoStopPressCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigAutoStopInsideActions, this.AutoStopInsideCheckbox.IsChecked == true);
-            _appConfig.SetVal(Constants.ConfigUseScanCodes, this.UseScanCodesRadioButton.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigAutoStopPressActions, this.AutoStopPressCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigAutoStopInsideActions, this.AutoStopInsideCheckbox.IsChecked == true);
+            _appConfig.SetBoolVal(Constants.ConfigUseScanCodes, this.UseScanCodesRadioButton.IsChecked == true);
 
             // Display
-            _appConfig.SetVal(Constants.ConfigPointerIndicatorStyle, this.CircleRadioButton.IsChecked == true ? Constants.PointerCircle : Constants.PointerLine);
-            _appConfig.SetVal(Constants.ConfigPointerIndicatorColour, this.PointerIndicatorColourCombo.SelectedColour);
-            _appConfig.SetVal(Constants.ConfigPointerIndicatorRadius, (int)this.PointerIndicatorRadiusSlider.Value);
-            _appConfig.SetVal(Constants.ConfigStateOverlayBgColour, this.StateOverlayBgColourCombo.SelectedColour);
-            _appConfig.SetVal(Constants.ConfigStateOverlayTextColour, this.StateOverlayTextColourCombo.SelectedColour);
-            _appConfig.SetVal(Constants.ConfigStateOverlayTranslucency, 0.01 * this.StateOverlayTranslucencySlider.Value);
-            _appConfig.SetVal(Constants.ConfigStateOverlayFontSize, this.StateOverlayFontSizeSlider.Value);
-            _appConfig.SetVal(Constants.ConfigStateOverlayXPos, 0.01 * this.StateOverlayXPosSlider.Value);
-            _appConfig.SetVal(Constants.ConfigStateOverlayYPos, 0.01 * this.StateOverlayYPosSlider.Value);
+            _appConfig.SetIntVal(Constants.ConfigPointerIndicatorStyle, this.CircleRadioButton.IsChecked == true ? Constants.PointerCircle : Constants.PointerLine);
+            _appConfig.SetStringVal(Constants.ConfigPointerIndicatorColour, this.PointerIndicatorColourCombo.SelectedColour);
+            _appConfig.SetIntVal(Constants.ConfigPointerIndicatorRadius, (int)this.PointerIndicatorRadiusSlider.Value);
+            _appConfig.SetStringVal(Constants.ConfigStateOverlayBgColour, this.StateOverlayBgColourCombo.SelectedColour);
+            _appConfig.SetStringVal(Constants.ConfigStateOverlayTextColour, this.StateOverlayTextColourCombo.SelectedColour);
+            _appConfig.SetDoubleVal(Constants.ConfigStateOverlayTranslucency, 0.01 * this.StateOverlayTranslucencySlider.Value);
+            _appConfig.SetDoubleVal(Constants.ConfigStateOverlayFontSize, this.StateOverlayFontSizeSlider.Value);
+            _appConfig.SetDoubleVal(Constants.ConfigStateOverlayXPos, 0.01 * this.StateOverlayXPosSlider.Value);
+            _appConfig.SetDoubleVal(Constants.ConfigStateOverlayYPos, 0.01 * this.StateOverlayYPosSlider.Value);
 
             // Hotkeys
-            _appConfig.SetVal(Constants.ConfigDrawScreenRegionsHotkey, _hotkeys[0].ID);
-            _appConfig.SetVal(Constants.ConfigShowScreenRegionNamesHotkey, _hotkeys[1].ID);
-            _appConfig.SetVal(Constants.ConfigDrawPointerIndicatorLineHotkey, _hotkeys[2].ID);
-            _appConfig.SetVal(Constants.ConfigDrawStateOverlayHotkey, _hotkeys[3].ID);
+            _appConfig.SetIntVal(Constants.ConfigDrawScreenRegionsHotkey, (int)_hotkeys[0].ID);
+            _appConfig.SetIntVal(Constants.ConfigShowScreenRegionNamesHotkey, (int)_hotkeys[1].ID);
+            _appConfig.SetIntVal(Constants.ConfigDrawPointerIndicatorLineHotkey, (int)_hotkeys[2].ID);
+            _appConfig.SetIntVal(Constants.ConfigDrawStateOverlayHotkey, (int)_hotkeys[3].ID);
+            _appConfig.SetIntVal(Constants.ConfigCustomWindowTitleBarsHotkey, (int)_hotkeys[4].ID);
 
             // Folders
             string defaultProfilesDir = Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
             string profilesDir = ProfilesFolderTextBox.Text;
             if (profilesDir != defaultProfilesDir)
             {
-                _appConfig.SetVal(Constants.ConfigProfilesDir, profilesDir);
+                _appConfig.SetStringVal(Constants.ConfigProfilesDir, profilesDir);
             }
             else
             {
-                _appConfig.SetVal(Constants.ConfigProfilesDir, null);
+                _appConfig.SetStringVal(Constants.ConfigProfilesDir, null);
             }            
 
             // Config changed
@@ -392,5 +401,14 @@ namespace AltController
             PointerIndicatorRadiusSlider.IsEnabled = CircleRadioButton.IsChecked == true;
         }
 
+        /// <summary>
+        /// Handle language change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LanguageCombo_SelectedLanguageChanged(object sender, RoutedEventArgs e)
+        {
+            RestartRequiredLabel.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -224,6 +224,9 @@
     <Compile Include="UserControls\ColourPickerControl.xaml.cs">
       <DependentUpon>ColourPickerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LanguagePickerControl.xaml.cs">
+      <DependentUpon>LanguagePickerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ToggleMouseButtonActionControl.xaml.cs">
       <DependentUpon>ToggleMouseButtonActionControl.xaml</DependentUpon>
     </Compile>
@@ -361,6 +364,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\LanguagePickerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ToggleMouseButtonActionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -452,6 +459,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
+    <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -609,6 +618,10 @@
     </Resource>
     <Resource Include="Images\icons\lightning.png" />
     <Resource Include="Images\icons\information.png" />
+    <Resource Include="Images\minimise.png" />
+    <Resource Include="Images\lang-icons\de-DE.png" />
+    <Resource Include="Images\lang-icons\en-US.png" />
+    <Resource Include="Images\lang-icons\en-GB.png" />
     <Content Include="Images\readme.html" />
     <Resource Include="Profiles\TmForever LRUD A Driving Esc Default.alt.xml" />
     <Resource Include="Profiles\TmForever WASD A Driving Esc Default.alt.xml" />

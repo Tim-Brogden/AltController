@@ -405,6 +405,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_11E5799AEDEA45B18234AE344FC18EAB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_12161C93BA2B403BA7F0DA967A360423"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -838,6 +844,12 @@
         "Entry"
         {
         "MsmKey" = "8:_279DC5E9B7ED4A5CA434A9FBEF6F85EA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_27A5A57524144EAEAF86A59BEAF07731"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2320,6 +2332,12 @@
         "Entry"
         {
         "MsmKey" = "8:_612911BCDA8F4C9F8E8BDE57A1A23973"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_617D42D16DDC42FD863485504B5D377B"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -4389,6 +4407,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BB563E7004444AACAF39665E7A4B0F4C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BBA95E8638434CB4B51900408D5E8143"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5613,6 +5637,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_EA9B2C4ED47A4FF6AC5E81683BA82A5D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_EA9D115553E7423CA1F5C960B637218E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -5997,6 +6027,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FAB4D9666C2F43CFB4720B8CF60E111B"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_FBBDB7E9718C443FBB1AF3A28ADEA170"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -6131,6 +6167,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_0F46A8DAAEB947158068D045C60D5A47"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_FAB4D9666C2F43CFB4720B8CF60E111B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_27A5A57524144EAEAF86A59BEAF07731"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -7566,6 +7614,26 @@
             "TargetName" = "8:chart_pie_link.png"
             "Tag" = "8:"
             "Folder" = "8:_AAD44E2E888D47F292D0C299FE82F579"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_11E5799AEDEA45B18234AE344FC18EAB"
+            {
+            "SourcePath" = "8:..\\AltController\\Images\\lang-icons\\de-DE.png"
+            "TargetName" = "8:de-DE.png"
+            "Tag" = "8:"
+            "Folder" = "8:_04A381FF89B241F2BB398D4E592F6FAA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -9026,6 +9094,37 @@
             "TargetName" = "8:package_add.png"
             "Tag" = "8:"
             "Folder" = "8:_AAD44E2E888D47F292D0C299FE82F579"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_27A5A57524144EAEAF86A59BEAF07731"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AltController.resources, Version=1.9.2.0, Culture=de-DE, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_27A5A57524144EAEAF86A59BEAF07731"
+                    {
+                    "Name" = "8:AltController.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\AltController\\bin\\Release\\de-DE\\AltController.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_27257AF4DF2A4C7CB2B9E7D14F722592"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -13966,6 +14065,26 @@
             "TargetName" = "8:page_code.png"
             "Tag" = "8:"
             "Folder" = "8:_AAD44E2E888D47F292D0C299FE82F579"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_617D42D16DDC42FD863485504B5D377B"
+            {
+            "SourcePath" = "8:..\\AltController\\Images\\lang-icons\\en-US.png"
+            "TargetName" = "8:en-US.png"
+            "Tag" = "8:"
+            "Folder" = "8:_04A381FF89B241F2BB398D4E592F6FAA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -20840,6 +20959,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BB563E7004444AACAF39665E7A4B0F4C"
+            {
+            "SourcePath" = "8:..\\AltController\\Images\\minimise.png"
+            "TargetName" = "8:minimise.png"
+            "Tag" = "8:"
+            "Folder" = "8:_0867963D0A004C0084F4BC50C8748DD0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BBA95E8638434CB4B51900408D5E8143"
             {
             "SourcePath" = "8:..\\AltController\\Images\\icons\\film_link.png"
@@ -24920,6 +25059,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA9B2C4ED47A4FF6AC5E81683BA82A5D"
+            {
+            "SourcePath" = "8:..\\AltController\\Images\\lang-icons\\en-GB.png"
+            "TargetName" = "8:en-GB.png"
+            "Tag" = "8:"
+            "Folder" = "8:_04A381FF89B241F2BB398D4E592F6FAA"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EA9D115553E7423CA1F5C960B637218E"
             {
             "SourcePath" = "8:..\\AltController\\Images\\icons\\world_go.png"
@@ -26200,6 +26359,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_FAB4D9666C2F43CFB4720B8CF60E111B"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AltController.resources, Version=1.9.2.0, Culture=en-US, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_FAB4D9666C2F43CFB4720B8CF60E111B"
+                    {
+                    "Name" = "8:AltController.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\AltController\\bin\\Release\\en-US\\AltController.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_65DF0E4441E14FF1A0F9165A8AC41A90"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FBBDB7E9718C443FBB1AF3A28ADEA170"
             {
             "SourcePath" = "8:..\\AltController\\Images\\icons\\database_edit.png"
@@ -26698,6 +26888,17 @@
                     "Property" = "8:_BF095052A41A4EA4A45358F8CA33A082"
                         "Folders"
                         {
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_04A381FF89B241F2BB398D4E592F6FAA"
+                            {
+                            "Name" = "8:lang-icons"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_1E37EA72462C4905883C2A8164FA1787"
+                                "Folders"
+                                {
+                                }
+                            }
                             "{9EF0B969-E518-4E46-987F-47570745A589}:_AAD44E2E888D47F292D0C299FE82F579"
                             {
                             "Name" = "8:icons"
@@ -26718,6 +26919,28 @@
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_3AA348D5A4214F31BD0C5C5070EAFD93"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_27257AF4DF2A4C7CB2B9E7D14F722592"
+                    {
+                    "Name" = "8:de-DE"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_88414CD62EE54DF6AAFF4F2901A471C9"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_65DF0E4441E14FF1A0F9165A8AC41A90"
+                    {
+                    "Name" = "8:en-US"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_361B27943EC14253A79D24828F49C784"
                         "Folders"
                         {
                         }
@@ -26762,15 +26985,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Alt Controller"
-        "ProductCode" = "8:{C3453D45-6580-43DB-A038-83ED958071E6}"
-        "PackageCode" = "8:{83C5C7ED-548F-495E-954D-5408901E12AD}"
+        "ProductCode" = "8:{F68541B3-A023-44D9-BDD2-87D86B7FA3F6}"
+        "PackageCode" = "8:{ECCBB671-E3B0-40E5-B8C9-34CF3A4377C2}"
         "UpgradeCode" = "8:{BA3B7DB1-4994-4CFE-BBA5-8873A32155C1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.91"
+        "ProductVersion" = "8:1.93"
         "Manufacturer" = "8:Tim Brogden"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://altcontroller.net"
@@ -26778,7 +27001,7 @@
         "Subject" = "8:Installs Alt Controller on your computer"
         "ARPCONTACT" = "8:Tim Brogden"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:A program to help make PC games more accessible"
+        "ARPCOMMENTS" = "8:A program to help make computer games more accessible"
         "ARPURLINFOABOUT" = "8:http://altcontroller.net"
         "ARPPRODUCTICON" = "8:_4BD456D5F0354F279CC9E431977F0544"
         "ARPIconIndex" = "3:0"
@@ -27401,8 +27624,8 @@
                             "Type" = "3:15"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1258"
+                            "Setting" = "3:2"
+                            "Value" = "8:"
                             "DefaultValue" = "8:#1258"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -27418,7 +27641,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0F46A8DAAEB947158068D045C60D5A47"
             {
-            "SourcePath" = "8:..\\AltController\\obj\\x86\\Release\\AltController.exe"
+            "SourcePath" = "8:..\\AltController\\obj\\x86\\Debug\\AltController.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B396D0D407FE49E89F875E5BE3711B0C"
@@ -27446,7 +27669,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7B6B2AF3978C4504817884D564D385AD"
             {
-            "SourcePath" = "8:..\\AltController.InstallUtils\\obj\\Release\\AltController.InstallUtils.dll"
+            "SourcePath" = "8:..\\AltController.InstallUtils\\obj\\Debug\\AltController.InstallUtils.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_B396D0D407FE49E89F875E5BE3711B0C"

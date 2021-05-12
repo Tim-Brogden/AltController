@@ -165,8 +165,8 @@ A significant update to the software, including the following changes.
 - Added program options for assigning global hotkeys to the View menu options (to show / hide screen regions, pointer indicator etc.) See Tools – Options – Hotkeys tab.
 - Added a program option to show a circle for the pointer indicator instead of a radial line. This is now the default. If you prefer the previous behaviour, select the Radial line option. See Tools – Options – Display tab.
 - Added a program option to change the display update interval which determines the rate at which the pointer indicator circle / line is updated. See Tools – Options – Timing tab.
-- Added a program option to automatically stop ongoing Pressed actions when a key or mouse button or custom button is released. This is useful for automatically interrupting a list of actions separated by Wait actions, so certain actions are only performed when the key or button is held for long enough.  It can also be used to cycle through a number of modes or pages. This option is now enabled by default. If you prefer the previous behaviour, turn this option off. See Tools – Options – Actions tab.
-- Added a program option to automatically stop ongoing Inside actions when the pointer moves outside a screen region or custom button. This is useful for automatically interrupting a list of actions separated by Wait actions, so certain actions are only performed when the screen region or custom button is hovered over for long enough. It can also be used to cycle through a number of modes or pages. This option is now enabled by default. If you prefer the previous behaviour, turn this option off.  See Tools – Options – Actions tab.
+- Added a program option to automatically stop ongoing Pressed actions when a key or mouse button or custom button is released. This is useful for automatically interrupting a list of actions separated by Wait actions, so certain actions are only performed when the key or button is held for long enough.  It can also be used to cycle through a number of modes or pages. See Tools – Options – Actions tab.
+- Added a program option to automatically stop ongoing Inside actions when the pointer moves outside a screen region or custom button. This is useful for automatically interrupting a list of actions separated by Wait actions, so certain actions are only performed when the screen region or custom button is hovered over for long enough. It can also be used to cycle through a number of modes or pages. See Tools – Options – Actions tab.
 - Added F13 – F24 keys to the keyboard input.
 - Fixed incorrect scan code for the backslash key.
 - Added ‘Release after’ (duration) option to the Hold key action type.
@@ -189,3 +189,19 @@ Version 1.91
 - Removed the installed documentation, which can now be found on the website.
 - Added a link to the online documentation to the Help menu.
 - Added source code to GitHub.
+
+Version 1.93
+Several improvements to custom windows:
+- Custom windows can be positioned by clicking and dragging the background as well as the title bar.
+- Added minimise button to custom window title bar.
+- Option to show or hide the title bars of custom windows (hotkeyable).
+- Better default custom window positions. (Added to avoid overlapping head mouse toolbars.)
+- Positions of custom windows and the main Alt Controller window are now remembered. (This is not profile-specific.)
+- New custom buttons are added next to the currently selected button.
+- Additional properties for custom window buttons: text colour, font and font size, coloured border.
+- Improved vertical centring of custom button text.
+- Positioning and editing of multiple custom buttons using Ctrl-click selection.
+- Fixed resizing of custom window using slider and arrow keys.
+Added language selector to the program options with German language now available.
+The two options to automatically stop ongoing Pressed or Inside actions (added in v1.82) are no longer enabled by default. See Tools – Options – Actions tab.
+

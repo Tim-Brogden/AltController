@@ -118,71 +118,71 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="About_AboutTab" xml:space="preserve">
-    <value>_About</value>
+    <value>Ü_ber</value>
     <comment>About</comment>
   </data>
   <data name="About_CreditsLabel" xml:space="preserve">
-    <value>Credits</value>
+    <value>Dank</value>
     <comment>About</comment>
   </data>
   <data name="About_CreditsTab" xml:space="preserve">
-    <value>C_redits</value>
+    <value>_Dank</value>
     <comment>About</comment>
   </data>
   <data name="About_CreditsText" xml:space="preserve">
-    <value>Alt Controller uses some free icons from the Silk icon set 1.3 by Mark James, which is available from www.famfamfam.com/lab/icons/silk/ and is licensed under the Creative Commons Attribution 2.5 License (http://creativecommons.org/licenses/by/2.5). The installer was packaged using NSIS (http://nsis.sourceforge.net).</value>
+    <value>Alt Controller nutzt einige kostenlose Icons aus dem "Silk Icon Set 1.3" von Mark James, das unter http://www.famfamfam.com/lab/icons/silk/ erhältlich ist. Es ist Lizenziert unter der Creative Commons Attribution 2.5 Lizenz (http://creativecommons.org/licenses/by/2.5). Die Installationsdatei wurde mithilfe des Programms NSIS erstellt. (http://nsis.sourceforge.net).</value>
     <comment>About</comment>
   </data>
   <data name="About_DescriptionLabel" xml:space="preserve">
-    <value>Description</value>
+    <value>Beschreibung</value>
     <comment>About</comment>
   </data>
   <data name="About_LicenceLabel" xml:space="preserve">
-    <value>Licence</value>
+    <value>Lizenz</value>
     <comment>About</comment>
   </data>
   <data name="About_LicenceTab" xml:space="preserve">
-    <value>_Licence</value>
+    <value>_Lizenz</value>
     <comment>About</comment>
   </data>
   <data name="About_LicenceText1" xml:space="preserve">
-    <value>Alt Controller is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</value>
+    <value>Alt Controller ist kostenlose Software, die Sie im Rahmen der GNU General Public Lizenz, welche durch die Free Software Foundation veröffentlicht wurde, weiterverteilen und/oder modifizieren dürfen. Es gilt mindestens Version 3 der genannten Lizenz, oder eine höhere, die Sie nach eigenem Ermessen wählen können. </value>
     <comment>About</comment>
   </data>
   <data name="About_LicenceText2" xml:space="preserve">
-    <value>Alt Controller is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</value>
+    <value>Alt Controller wurde in der Hoffnung zur Verfügung gestellt, nützlich zu sein, jedoch ohne jegliche Garantie. Auch keiner anzunehmenden Garantie hinsichtlich Weiterverkaufs oder der Eignung für einen bestimmten Zweck. Konsultieren Sie die GNU General Public Lizenz für weitere Details.</value>
     <comment>About</comment>
   </data>
   <data name="About_LicenceText3" xml:space="preserve">
-    <value>You should have received a copy of the GNU General Public License along with Alt Controller. If not, see http://www.gnu.org/licenses/.</value>
+    <value>Neben Alt Controller sollte Ihnen auch eine Kopie der GNU Public Lizenz zugänglich gemacht worden sein. Sollte dies nicht zutreffen, besuchen Sie bitte diese Website: http://www.gnu.org/licenses/.</value>
     <comment>About</comment>
   </data>
   <data name="About_ProgramDescription" xml:space="preserve">
-    <value>A program to help make computer games more accessible. Alt Controller maps computer inputs, such as pointer movements and button presses, to actions, such as key presses.</value>
+    <value>Ein Programm, das Computerspiele zugänglicher machen soll. Alt Controller ordnet Eingaben wie Mausbewegungen, Mausklicks, sowie Tastendrücken und weiteren Aktionen zu.</value>
     <comment>About</comment>
   </data>
   <data name="About_SpecialEffect" xml:space="preserve">
-    <value>Alt Controller was developed as a volunteer project for SpecialEffect, a fantastic charity that helps disabled people to enjoy computer games. If you like this program, please consider making a donation to them.</value>
+    <value>Alt Controller wurde auf Freiwilligenbasis für SpecialEffect entwickelt. SpecialEffect ist ein fantastisches Sozialprojekt, das Menschen mit Behinderungen helfen möchte, Spaß mit Computerspielen haben zu können. Sollte Ihnen dieses Programm gefallen, ziehen Sie bitte in Erwägung, dieser Organisation eine Spende angedeihen zu lassen. </value>
     <comment>About</comment>
   </data>
   <data name="About_Title" xml:space="preserve">
-    <value>About Alt Controller</value>
+    <value>Über Alt Controller</value>
     <comment>About</comment>
   </data>
   <data name="About_TranslatorsLabel" xml:space="preserve">
-    <value>Translators</value>
+    <value>Übersetzer</value>
     <comment>About</comment>
   </data>
   <data name="About_TranslatorsText" xml:space="preserve">
-    <value>Translations kindly provided by:</value>
+    <value>Die Übersetzungen wurden freundlicherweise zur Verfügung gestellt von:</value>
     <comment>About</comment>
   </data>
   <data name="Action_AbsoluteRadioButton" xml:space="preserve">
-    <value>To absolute position</value>
+    <value>Auf absolute Position</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_ActionTypeLabel" xml:space="preserve">
-    <value>Action type:</value>
+    <value>Art der Aktion:</value>
     <comment>Edit action</comment>
   </data>
   <data name="Action_AltLabel" xml:space="preserve">
@@ -190,111 +190,111 @@
     <comment>Edit action - Type key</comment>
   </data>
   <data name="Action_AmountGroupBox" xml:space="preserve">
-    <value>To position</value>
+    <value>Zu Position</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_ChangeModeLabel" xml:space="preserve">
-    <value>Change to mode:</value>
+    <value>Modus wechseln zu:</value>
     <comment>Edit action - Change mode</comment>
   </data>
   <data name="Action_ChangePageLabel" xml:space="preserve">
-    <value>Change to page:</value>
+    <value>Seite wechseln zu:</value>
     <comment>Edit action - Change page</comment>
   </data>
   <data name="Action_ControlLabel" xml:space="preserve">
-    <value>Control:</value>
+    <value>Strg:</value>
     <comment>Edit action - Type key</comment>
   </data>
   <data name="Action_HiddenRadioButton" xml:space="preserve">
-    <value>Hide the mouse pointer</value>
+    <value>Mauszeiger ausblenden</value>
     <comment>Edit action - Change pointer</comment>
   </data>
   <data name="Action_HoldDownKeyLabel" xml:space="preserve">
-    <value>Hold down key:</value>
+    <value>Taste gedrückt halten:</value>
     <comment>Edit action - Hold key</comment>
   </data>
   <data name="Action_HoldForLabel" xml:space="preserve">
-    <value>Hold each press for (s):</value>
+    <value>Halten für (Sek.):</value>
     <comment>Edit action - Repeat key</comment>
   </data>
   <data name="Action_KeyToPressLabel" xml:space="preserve">
-    <value>Press key:</value>
+    <value>Taste drücken:</value>
     <comment>Edit action - Repeat key</comment>
   </data>
   <data name="Action_KeyToReleaseLabel" xml:space="preserve">
-    <value>Release key:</value>
+    <value>Taste loslassen:</value>
     <comment>Edit action - Release key</comment>
   </data>
   <data name="Action_KeyToToggleLabel" xml:space="preserve">
-    <value>Toggle key:</value>
+    <value>Taste umschalten:</value>
     <comment>Edit action - Toggle key</comment>
   </data>
   <data name="Action_KeyToTypeLabel" xml:space="preserve">
-    <value>Key to type:</value>
+    <value>Zu tippende Taste: </value>
     <comment>Edit action - Type key</comment>
   </data>
   <data name="Action_LongerTowardsLabel" xml:space="preserve">
-    <value>Longer presses towards:</value>
+    <value>drücke länger Richtung:</value>
     <comment>Edit action - Repeat key directional</comment>
   </data>
   <data name="Action_MouseButtonLabel" xml:space="preserve">
-    <value>Mouse button:</value>
+    <value>Maustaste:</value>
     <comment>Edit action - Mouse button</comment>
   </data>
   <data name="Action_PercentRadioButton" xml:space="preserve">
-    <value>Percent</value>
+    <value>Prozent</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_PixelsRadioButton" xml:space="preserve">
-    <value>Pixels</value>
+    <value>Pixel</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_PressEveryLabel" xml:space="preserve">
-    <value>Press every (s):</value>
+    <value>Drücke Taste alle (n) Sek.:</value>
     <comment>Edit action - Repeat key directional</comment>
   </data>
   <data name="Action_RelativeRadioButton" xml:space="preserve">
-    <value>By relative amount</value>
+    <value>Um relativen Wert</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_RelativeToGroupBox" xml:space="preserve">
-    <value>Relative to</value>
+    <value>Relativ zu</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_ReleaseAfterLabel" xml:space="preserve">
-    <value>Release after (s):</value>
+    <value>Loslassen nach (n) Sek.:</value>
     <comment>Edit action - Hold key</comment>
   </data>
   <data name="Action_ReleaseKeyLabel" xml:space="preserve">
-    <value>Release the key?</value>
+    <value>Taste loslassen?</value>
     <comment>Edit action - Hold key</comment>
   </data>
   <data name="Action_RepeatDirectionalInfoLabel" xml:space="preserve">
-    <value>Visual representation of % of time the key is held for (black = 100%, white = 0%):</value>
+    <value>Visuelle Wiedergabe in % bezüglich der Dauer, des Tastendrucks (schwarz = 100%, weiß = 0%):</value>
     <comment>Edit action - Repeat key directional</comment>
   </data>
   <data name="Action_RepeatEveryLabel" xml:space="preserve">
-    <value>Once every (s):</value>
+    <value>Alle (n) Sek.:</value>
     <comment>Edit action - Repeat key</comment>
   </data>
   <data name="Action_RepeatInfoLabel" xml:space="preserve">
-    <value>To repeat the key presses indefinitely while this action is active, set 'Stop after' to zero</value>
+    <value>Um die Tastendrücke während dieser Aktion fortwährend wiederholen zu lassen, muss 'Stop nach' auf Null gesetzt werden. </value>
     <comment>Edit action - Repeat key</comment>
   </data>
   <data name="Action_RepeatScrollInfoLabel" xml:space="preserve">
-    <value>To scroll indefinitely while this action is active, set 'Stop after' to zero</value>
+    <value>Um fortwährendes scrollen während dieser Aktion zu ermöglichen, muss 'Stopp nach' auf Null gesetzt werden. </value>
     <comment>Edit action - Repeat key directional</comment>
   </data>
   <data name="Action_RestoreUserRadioButton" xml:space="preserve">
-    <value>Restore the original mouse pointer</value>
+    <value>Zum ursprünglichen Mauszeiger zurückkehren</value>
     <comment>Edit action - Change pointer</comment>
   </data>
   <data name="Action_SensitivityLabel" xml:space="preserve">
-    <value>Sensitivity:</value>
+    <value>Empfindlichkeit:</value>
     <comment>Edit action - Repeat key directional</comment>
   </data>
   <data name="Action_SettingsGroupBox" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen:</value>
     <comment>Edit action</comment>
   </data>
   <data name="Action_ShiftLabel" xml:space="preserve">
@@ -302,39 +302,39 @@
     <comment>Edit action - Type key</comment>
   </data>
   <data name="Action_StandardRadioButton" xml:space="preserve">
-    <value>Display a standard mouse pointer</value>
+    <value>Normalen Mauszeiger verwenden</value>
     <comment>Edit action - Change pointer</comment>
   </data>
   <data name="Action_StopAfterLabel" xml:space="preserve">
-    <value>Stop after (s):</value>
+    <value>Stoppen nach (Sek.):</value>
     <comment>Edit action - Repeat key</comment>
   </data>
   <data name="Action_TextToTypeLabel" xml:space="preserve">
-    <value>Text to type:</value>
+    <value>Zu tippender Text:</value>
     <comment>Edit action - Type text</comment>
   </data>
   <data name="Action_Title" xml:space="preserve">
-    <value>Edit action</value>
+    <value>Aktion bearbeiten</value>
     <comment>Edit action</comment>
   </data>
   <data name="Action_TypeOfActionGroupBox" xml:space="preserve">
-    <value>Type of action</value>
+    <value>Aktionstyp</value>
     <comment>Edit action</comment>
   </data>
   <data name="Action_TypeOfMoveGroupBox" xml:space="preserve">
-    <value>Type of move</value>
+    <value>Bewegungstyp:</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_UnitsGroupBox" xml:space="preserve">
-    <value>Units</value>
+    <value>Einheiten</value>
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="Action_WaitForLabel" xml:space="preserve">
-    <value>Wait for (s):</value>
+    <value>Warte (Sek.):</value>
     <comment>Edit action - Wait</comment>
   </data>
   <data name="Action_WindowsLabel" xml:space="preserve">
-    <value>Windows:</value>
+    <value>Fenster:</value>
     <comment>Edit action - Type key</comment>
   </data>
   <data name="Action_XLabel" xml:space="preserve">
@@ -346,139 +346,139 @@
     <comment>Edit action - Move pointer</comment>
   </data>
   <data name="CancelButton" xml:space="preserve">
-    <value>_Cancel</value>
+    <value>Abbrechen</value>
     <comment>Strings</comment>
   </data>
   <data name="CloseButton" xml:space="preserve">
-    <value>_Close</value>
+    <value>S_chließen</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_AddButton" xml:space="preserve">
-    <value>_Add button</value>
+    <value>Weiteren</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_BrowseButtonImageButton" xml:space="preserve">
-    <value>C_hoose...</value>
+    <value>Auswählen…</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_BrowseButtonImageToolTip" xml:space="preserve">
-    <value>Choose a background image for this button</value>
+    <value>Hintergrundbild für diesen Button auswählen</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonBgColorLabel" xml:space="preserve">
-    <value>Background colour:</value>
+    <value>Hintergrundfarbe:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonBgImageLabel" xml:space="preserve">
-    <value>Background image:</value>
+    <value>Hintergrundbild:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonBorderColourLabel" xml:space="preserve">
-    <value>Border colour:</value>
+    <value>Farbe der Umrandung:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonBorderThicknessLabel" xml:space="preserve">
-    <value>Border width (pixels):</value>
+    <value>Breite des Randes (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonFontLabel" xml:space="preserve">
-    <value>Font:</value>
+    <value>Schriftart:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonFontSizeLabel" xml:space="preserve">
-    <value>Font size:</value>
+    <value>Schriftgröße:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonGroupBox" xml:space="preserve">
-    <value>Button properties</value>
+    <value>Buttoneigenschaften</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonHeightLabel" xml:space="preserve">
-    <value>Height (pixels):</value>
+    <value>Höhe (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonNameLabel" xml:space="preserve">
-    <value>Button name:</value>
+    <value>Buttonname:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonTextColourLabel" xml:space="preserve">
-    <value>Text colour:</value>
+    <value>Textfarbe:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonTextLabel" xml:space="preserve">
-    <value>Button text:</value>
+    <value>Buttonaufschrift:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonTranslucencyLabel" xml:space="preserve">
-    <value>Translucency:</value>
+    <value>Transparenz:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonWidthLabel" xml:space="preserve">
-    <value>Width (pixels):</value>
+    <value>Breite (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonXLabel" xml:space="preserve">
-    <value>Left (pixels):</value>
+    <value>Von links (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonYLabel" xml:space="preserve">
-    <value>Top (pixels):</value>
+    <value>Von oben (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ClearButtonImageToolTip" xml:space="preserve">
-    <value>Clear background image for this button</value>
+    <value>Hintergrund für diesen Button entfernen</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_DeleteButton" xml:space="preserve">
-    <value>_Delete button</value>
+    <value>_Löschen</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ExtendedButtonGroupBox" xml:space="preserve">
-    <value>Extended button properties</value>
+    <value>Erweiterte Buttoneigenschaften</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_GhostBgLabel" xml:space="preserve">
-    <value>Ghost background?</value>
+    <value>Ohne Hintergrund?</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_PreviewGroupBox" xml:space="preserve">
-    <value>Custom window preview</value>
+    <value>Vorschau des Designs</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_Title" xml:space="preserve">
-    <value>Design custom window</value>
+    <value>Eigenes Design gestalten</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_TopMostLabel" xml:space="preserve">
-    <value>Always on top?</value>
+    <value>Immer im Vordergrund? </value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_TranslucencyLabel" xml:space="preserve">
-    <value>Translucency:</value>
+    <value>Transparenz:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowBgColorLabel" xml:space="preserve">
-    <value>Background colour:</value>
+    <value>Hintergrundfarbe:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowGroupBox" xml:space="preserve">
-    <value>Window properties</value>
+    <value>Fenstereigenschaften</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowHeightLabel" xml:space="preserve">
-    <value>Height (pixels):</value>
+    <value>Höhe (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowTitleLabel" xml:space="preserve">
-    <value>Window title:</value>
+    <value>Name des Layouts:</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowTitleTextBox" xml:space="preserve">
-    <value>My controls</value>
+    <value>Meine Steuerung</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowWidthLabel" xml:space="preserve">
-    <value>Width (pixels):</value>
+    <value>Breite (Pixel):</value>
     <comment>Custom window</comment>
   </data>
   <data name="E_ACTION001" xml:space="preserve">
@@ -838,71 +838,71 @@
     <comment>Error message</comment>
   </data>
   <data name="Inputs_AddButton" xml:space="preserve">
-    <value>_Add</value>
+    <value>_Hinzufügen</value>
     <comment>Edit inputs</comment>
   </data>
   <data name="Inputs_AddInputGroupBox" xml:space="preserve">
-    <value>Add new input</value>
+    <value>Eingabetyp hinzufügen</value>
     <comment>Edit inputs</comment>
   </data>
   <data name="Inputs_DeleteButton" xml:space="preserve">
-    <value>_Delete</value>
+    <value>_Löschen</value>
     <comment>Edit inputs</comment>
   </data>
   <data name="Inputs_HeadingLabel" xml:space="preserve">
-    <value>Current inputs:</value>
+    <value>Vorhandene Eingabetypen:</value>
     <comment>Edit inputs</comment>
   </data>
   <data name="Inputs_IntroLabel" xml:space="preserve">
-    <value>Add the inputs you wish to control your computer with. You can use the mouse pointer, the keyboard, or your own custom windows containing buttons.</value>
+    <value>Fügen Sie Eingabetypen ein, mit denen Sie Ihren Computer steuern möchten. Sie können Mauszeiger und Keyboard verwenden, oder eigene Layouts mit Schaltflächen erstellen. </value>
     <comment>Edit inputs</comment>
   </data>
   <data name="Inputs_Title" xml:space="preserve">
-    <value>Edit inputs</value>
+    <value>Eingabetypen bearbeiten…</value>
     <comment>Edit inputs</comment>
   </data>
   <data name="Items_AddButton" xml:space="preserve">
-    <value>_Add...</value>
+    <value>_Hinzufügen…</value>
     <comment>Items list</comment>
   </data>
   <data name="Items_DeleteButton" xml:space="preserve">
-    <value>_Delete</value>
+    <value>_Löschen </value>
     <comment>Items list</comment>
   </data>
   <data name="Items_EditButton" xml:space="preserve">
-    <value>_Edit...</value>
+    <value>B_earbeiten…</value>
     <comment>Items list</comment>
   </data>
   <data name="Items_MoveDownButton" xml:space="preserve">
-    <value>Move down</value>
+    <value>Tiefer setzen</value>
     <comment>Items list</comment>
   </data>
   <data name="Items_MoveUpButton" xml:space="preserve">
-    <value>Move up</value>
+    <value>Höher setzen</value>
     <comment>Items list</comment>
   </data>
   <data name="Log_ClearButton" xml:space="preserve">
-    <value>C_lear</value>
+    <value>_Leeren</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_DetailedRadioButton" xml:space="preserve">
-    <value>_Detailed</value>
+    <value>_Detailliert</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_DetailsColumn" xml:space="preserve">
-    <value>Event Details</value>
+    <value>Ereignisdetails</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_EventTypeColumn" xml:space="preserve">
-    <value>Event Type</value>
+    <value>Ereignistyp</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_IntroLabel" xml:space="preserve">
-    <value>Use the 'Start' and 'Stop' buttons to record information about the actions Alt Controller is performing. This may be useful for testing profiles and diagnosing problems.</value>
+    <value>Mit dem 'Start' und 'Stopp' Buttons können Sie mitschneiden, welche Aktionen Alt Controller ausführt. Dies kann nützlich sein, das Profil zu testen und Fehler schneller zu finden.</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_SaveButton" xml:space="preserve">
-    <value>S_ave to file...</value>
+    <value>_In Datei speichern…</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_StartButton" xml:space="preserve">
@@ -910,103 +910,103 @@
     <comment>Log window</comment>
   </data>
   <data name="Log_StopButton" xml:space="preserve">
-    <value>S_top</value>
+    <value>S_topp</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_SummaryRadioButton" xml:space="preserve">
-    <value>S_ummary</value>
+    <value>Z_usammenfassung</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_TimeColumn" xml:space="preserve">
-    <value>Time</value>
+    <value>Zeit</value>
     <comment>Log window</comment>
   </data>
   <data name="Log_Title" xml:space="preserve">
-    <value>Log information</value>
+    <value>Log Info</value>
     <comment>Log window</comment>
   </data>
   <data name="Main_CurrentActionsGroupBox" xml:space="preserve">
-    <value>Applying controls for</value>
+    <value>Einstellungen zuweisen auf</value>
     <comment>Main</comment>
   </data>
   <data name="Main_CurrentStateGroupBox" xml:space="preserve">
-    <value>Current profile</value>
+    <value>Gegenwärtiges Profil</value>
     <comment>Main</comment>
   </data>
   <data name="Main_DevelopedForLabel" xml:space="preserve">
-    <value>Developed for SpecialEffect</value>
+    <value>Entwickelt für SpecialEffect</value>
     <comment>Main</comment>
   </data>
   <data name="Main_EditMenu" xml:space="preserve">
-    <value>_Edit</value>
+    <value>B_earbeiten</value>
     <comment>Main</comment>
   </data>
   <data name="Main_EditProfile" xml:space="preserve">
-    <value>Edit _profile...</value>
+    <value>_Profil bearbeiten…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_EditProfileToolTip" xml:space="preserve">
-    <value>Edit the currently loaded profile</value>
+    <value>Geladenes Profil bearbeiten</value>
     <comment>Main</comment>
   </data>
   <data name="Main_EditScreenRegions" xml:space="preserve">
-    <value>Edit _screen regions...</value>
+    <value>_Region bearbeiten…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_EditScreenRegionsToolTip" xml:space="preserve">
-    <value>Edit the profile's screen regions</value>
+    <value>Regionen dieses Profils bearbeiten</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileClose" xml:space="preserve">
-    <value>_Close</value>
+    <value>S_chließen </value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileCloseToolTip" xml:space="preserve">
-    <value>Close the program</value>
+    <value>Programm beenden </value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileMenu" xml:space="preserve">
-    <value>_File</value>
+    <value>_Datei</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileNew" xml:space="preserve">
-    <value>_New</value>
+    <value>_Neu</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileNewToolTip" xml:space="preserve">
-    <value>Create a new profile</value>
+    <value>Neues Profil erstellen</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileOpen" xml:space="preserve">
-    <value>_Open...</value>
+    <value>Ö_ffnen…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileOpenToolTip" xml:space="preserve">
-    <value>Open an existing profile</value>
+    <value>Gespeichertes Profil laden </value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileSave" xml:space="preserve">
-    <value>_Save</value>
+    <value>_Speichern </value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileSaveAs" xml:space="preserve">
-    <value>Save _As...</value>
+    <value>Speichern _unter…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileSaveAsToolTip" xml:space="preserve">
-    <value>Choose a file to save the current profile to</value>
+    <value>Wählen Sie einen Ort zum abspeichern des Profils, das sie gerade bearbeiten</value>
     <comment>Main</comment>
   </data>
   <data name="Main_FileSaveToolTip" xml:space="preserve">
-    <value>Save the current profile</value>
+    <value>Dieses Profil speichern </value>
     <comment>Main</comment>
   </data>
   <data name="Main_HelpAbout" xml:space="preserve">
-    <value>_About Alt Controller...</value>
+    <value>Über _Alt Controller…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_HelpAboutToolTip" xml:space="preserve">
-    <value>View information about the program</value>
+    <value>Informationen über Alt Controller </value>
     <comment>Main</comment>
   </data>
   <data name="Main_HelpEventLog" xml:space="preserve">
@@ -1014,111 +1014,111 @@
     <comment>Main</comment>
   </data>
   <data name="Main_HelpEventLogToolTip" xml:space="preserve">
-    <value>Record information about inputs and actions as they occur</value>
+    <value>Aufzeichnen von Abläufen während das Profil ausgeführt wird </value>
     <comment>Main</comment>
   </data>
   <data name="Main_HelpMenu" xml:space="preserve">
-    <value>_Help</value>
+    <value>_Hilfe </value>
     <comment>Main</comment>
   </data>
   <data name="Main_HelpUserGuide" xml:space="preserve">
-    <value>_Online help...</value>
+    <value>_Online-Hilfe…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_HelpUserGuideToolTip" xml:space="preserve">
-    <value>Online help (opens in web browser)</value>
+    <value>Online-Hilfe (wird im Webbrowser geöffnet)</value>
     <comment>Main</comment>
   </data>
   <data name="Main_InfoButton" xml:space="preserve">
-    <value>Learn more...</value>
+    <value>Mehr erfahren…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ToolsMenu" xml:space="preserve">
-    <value>_Tools</value>
+    <value>_Werkzeuge </value>
     <comment>Main</comment>
   </data>
   <data name="Main_ToolsOptions" xml:space="preserve">
-    <value>_Options...</value>
+    <value>Pr_ogrammeinstellungen…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ToolsOptionsToolTip" xml:space="preserve">
-    <value>Edit options which apply to all profiles</value>
+    <value>Grundeinstellungen für alle Profile bearbeiten</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawPointerIndicator" xml:space="preserve">
-    <value>Draw _pointer indicator</value>
+    <value>O_ptische Zeigerhervorhebung</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawPointerIndicatorToolTip" xml:space="preserve">
-    <value>Show current pointer position</value>
+    <value>Zeigt fortwährend eine Linie von der Bilschirmmitte bis zur Position des Mauszeigers</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegionNames" xml:space="preserve">
-    <value>S_how region names</value>
+    <value>_Namen der Regionen anzeigen</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegionNamesToolTip" xml:space="preserve">
-    <value>Show screen region names</value>
+    <value>Regionssnamen anzeigen</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegions" xml:space="preserve">
-    <value>_Draw screen regions</value>
+    <value>_Regionen zeichnen </value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegionsToolTip" xml:space="preserve">
-    <value>Show screen regions</value>
+    <value>Regionen sichtbar machen</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawStateOverlay" xml:space="preserve">
-    <value>Show _mode/page overlay</value>
+    <value>Unterseiten und _Modi anzeigen </value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawStateOverlayToolTip" xml:space="preserve">
-    <value>Show mode and page name overlay</value>
+    <value>Zeig die Bezeichnungen der Seiten und Modi an</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewMenu" xml:space="preserve">
-    <value>_View</value>
+    <value>An_zeige</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileNotes" xml:space="preserve">
-    <value>Profile _notes...</value>
+    <value>_Anmerkungen zum Profil…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileNotesToolTip" xml:space="preserve">
-    <value>View and edit notes for the current profile</value>
+    <value>Anmerkungen zum geladenen Profil anzeigen oder bearbeiten</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileSummary" xml:space="preserve">
-    <value>Profile _summary...</value>
+    <value>Über_sicht für dieses Profil…</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileSummaryToolTip" xml:space="preserve">
-    <value>View a summary of the current profile's inputs and actions</value>
+    <value>Informationen über Aktionen und Eingabetypen des geladenen Profils anzeigen</value>
     <comment>Main</comment>
   </data>
   <data name="Main_WindowMenu" xml:space="preserve">
-    <value>_Window</value>
+    <value>_Fenster</value>
     <comment>Main</comment>
   </data>
   <data name="Main_WindowShowTitleBars" xml:space="preserve">
-    <value>Show _title bars</value>
+    <value>Titelleisten anzeigen</value>
     <comment>Main</comment>
   </data>
   <data name="Main_WindowShowTitleBarsToolTip" xml:space="preserve">
-    <value>Show custom window title bars</value>
+    <value>Titelleisten anzeigen</value>
     <comment>Main</comment>
   </data>
   <data name="Mouse_RegionLabel" xml:space="preserve">
-    <value>Region:</value>
+    <value>Region</value>
     <comment>Mouse</comment>
   </data>
   <data name="Notes_IntroLabel" xml:space="preserve">
-    <value>Here you can enter any notes or instructions for this profile.</value>
+    <value>Geben Sie hier Anmerkungen und Benutzunshinweise für das Profil ein.</value>
     <comment>Notes</comment>
   </data>
   <data name="Notes_Title" xml:space="preserve">
-    <value>Profile notes</value>
+    <value>Anmerkungen zum Profil </value>
     <comment>Notes</comment>
   </data>
   <data name="OKButton" xml:space="preserve">
@@ -1126,167 +1126,167 @@
     <comment>Strings</comment>
   </data>
   <data name="Options_ActionsTab" xml:space="preserve">
-    <value>_Actions</value>
+    <value>_Aktionen</value>
     <comment>Options - Actions</comment>
   </data>
   <data name="Options_AltCheck" xml:space="preserve">
-    <value>A_lt</value>
+    <value>Alt</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_AutoLoadCheckbox" xml:space="preserve">
-    <value>Automatically _load last-used profile</value>
+    <value>Zuletzt verwendetes Profil laden</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_AutoOpenCustomWindowsCheckbox" xml:space="preserve">
-    <value>Automatically open custom _windows</value>
+    <value>Eigene Tastenlayouts laden</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_AutoStopInsideCheckbox" xml:space="preserve">
-    <value>Automatically stop _Inside actions on Outside</value>
+    <value>Aktionen innerhalb stoppen, wenn außerhalb</value>
     <comment>Options - Actions</comment>
   </data>
   <data name="Options_AutoStopPressCheckbox" xml:space="preserve">
-    <value>Automatically stop _Press actions on Release</value>
+    <value>Nach loslassen von Taste-Halte-Aktionen automatisch stoppen</value>
     <comment>Options - Actions</comment>
   </data>
   <data name="Options_BrowseButton" xml:space="preserve">
-    <value>_Browse...</value>
+    <value>_Durchsuchen…</value>
     <comment>Options - Folders</comment>
   </data>
   <data name="Options_BrowseToolTip" xml:space="preserve">
-    <value>Choose a profiles folder</value>
+    <value>Einen Dateiordner für Profile festlegen </value>
     <comment>Options - Folders</comment>
   </data>
   <data name="Options_CircleRadioButton" xml:space="preserve">
-    <value>C_ircle</value>
+    <value>Kreis</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ControlCheck" xml:space="preserve">
-    <value>Co_ntrol</value>
+    <value>Strg</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_CustomWindowTitleBarsCheckbox" xml:space="preserve">
-    <value>Turn on 'Sho_w title bars'</value>
+    <value>Titelleisten immer anzeigen</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_DisplayTab" xml:space="preserve">
-    <value>_Display</value>
+    <value>An_zeige</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_DrawPointerIndicatorCheckbox" xml:space="preserve">
-    <value>Turn on 'Draw pointer _indicator'</value>
+    <value>Zeigerhervorhebung immer zeigen</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_DrawRegionForceSquareCheckbox" xml:space="preserve">
-    <value>Turn on 'Only draw s_quares'</value>
+    <value>Quadrate erzwingen</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_DrawScreenRegionNamesCheckbox" xml:space="preserve">
-    <value>Turn on 'Show region _names'</value>
+    <value>Regionsnamen immer anzeigen </value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_DrawScreenRegionsCheckbox" xml:space="preserve">
-    <value>Turn on 'Draw screen _regions'</value>
+    <value>Regionen immer anzeigen </value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_DrawStateOverlayCheckbox" xml:space="preserve">
-    <value>Turn on 'Show _mode/page overlay'</value>
+    <value>Modi und Unterseiten immer anzeigen</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_DwellTimeLabel" xml:space="preserve">
-    <value>Pointer dwell time (s):</value>
+    <value>Schwebezeit (Sek.):</value>
     <comment>Options - Timing</comment>
   </data>
   <data name="Options_EditHotkeyGroupBox" xml:space="preserve">
-    <value>Edit hotkey</value>
+    <value>Tastenkürzel bearbeiten </value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_FeatureColumn" xml:space="preserve">
-    <value>Feature</value>
+    <value>Funktion</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_FolderLabel" xml:space="preserve">
-    <value>Profiles folder:</value>
+    <value>Dateiordner für Profile:</value>
     <comment>Options - Folders</comment>
   </data>
   <data name="Options_FoldersTab" xml:space="preserve">
-    <value>_Folders</value>
+    <value>_Ordner</value>
     <comment>Options - Folders</comment>
   </data>
   <data name="Options_GenerateKeyStrokesLabel" xml:space="preserve">
-    <value>Generate key strokes using:</value>
+    <value>Tastendrücke generieren mit:</value>
     <comment>Options - Actions</comment>
   </data>
   <data name="Options_HotkeyColumn" xml:space="preserve">
-    <value>Hotkey</value>
+    <value>Tastenkürzel</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_HotkeysTab" xml:space="preserve">
-    <value>_Hotkeys</value>
+    <value>Tasten_kürzel</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_InputPollingIntervalLabel" xml:space="preserve">
-    <value>Input polling interval (s):</value>
+    <value>Abfrageintervall (Sek.):</value>
     <comment>Options - Timing</comment>
   </data>
   <data name="Options_LineRadioButton" xml:space="preserve">
-    <value>_Radial line</value>
+    <value>Kreislinie</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ModeOverlayBgColorLabel" xml:space="preserve">
-    <value>Mode/page overlay background:</value>
+    <value>Modus/Seite Hintergrundfarbe:</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ModeOverlayColorLabel" xml:space="preserve">
-    <value>Mode/page overlay text colour:</value>
+    <value>Modus/Seite Textfarbe:</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ModeOverlayFontSizeLabel" xml:space="preserve">
-    <value>Mode/page overlay font size:</value>
+    <value>Modus/Seite Schriftgröße:</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ModeOverlayTranslucencyLabel" xml:space="preserve">
-    <value>Mode/page overlay translucency (%):</value>
+    <value>Modus/Seite Transparenz (%):</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ModeOverlayXPosLabel" xml:space="preserve">
-    <value>Mode/page overlay X position (%):</value>
+    <value>Modus/Seite X (%):</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ModeOverlayYPosLabel" xml:space="preserve">
-    <value>Mode/page overlay Y position (%):</value>
+    <value>Modus/Seite Y (%):</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_PointerColourLabel" xml:space="preserve">
-    <value>Pointer indicator colour:</value>
+    <value>Zeigerhervorhebung Farbe:</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_PointerRadiusLabel" xml:space="preserve">
-    <value>Pointer indicator radius:</value>
+    <value>Zeigerhervorhebung Radius:</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_PointerStyleLabel" xml:space="preserve">
-    <value>Pointer indicator style:</value>
+    <value>Zeigerhervorhebung Stil:</value>
     <comment>Options - Display</comment>
   </data>
   <data name="Options_ResetButton" xml:space="preserve">
-    <value>R_eset</value>
+    <value>Zu_rücksetzen</value>
     <comment>Options</comment>
   </data>
   <data name="Options_ResetToolTip" xml:space="preserve">
-    <value>Resets all options to their default values</value>
+    <value>Alle Programmeinstellungen zurücksetzen</value>
     <comment>Options</comment>
   </data>
   <data name="Options_RestartRequiredLabel" xml:space="preserve">
-    <value>Program restart required</value>
+    <value>Programmneustart erforderlich</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_ShiftCheck" xml:space="preserve">
-    <value>Sh_ift</value>
+    <value>Großschreibtaste Shift</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Options_StartUpTab" xml:space="preserve">
-    <value>_Start up</value>
+    <value>Programm_start</value>
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_TimingTab" xml:space="preserve">
@@ -1294,23 +1294,23 @@
     <comment>Options - Timing</comment>
   </data>
   <data name="Options_Title" xml:space="preserve">
-    <value>Program options</value>
+    <value>Programmeinstellungen</value>
     <comment>Options</comment>
   </data>
   <data name="Options_UIUpdateIntervalLabel" xml:space="preserve">
-    <value>Display update interval (s):</value>
+    <value>Abfrageintervall anzeigen (Sek.):</value>
     <comment>Options - Timing</comment>
   </data>
   <data name="Options_UseScanCodesRadioButton" xml:space="preserve">
-    <value>Sca_n codes (recommended)</value>
+    <value>Sca_ncodes (empfohlen)</value>
     <comment>Options - Actions</comment>
   </data>
   <data name="Options_VirtualKeysRadioButton" xml:space="preserve">
-    <value>_Virtual key codes</value>
+    <value>_Virtuelle Keycodes</value>
     <comment>Options - Actions</comment>
   </data>
   <data name="Options_WinCheck" xml:space="preserve">
-    <value>_Windows</value>
+    <value>Fenster</value>
     <comment>Options - Hotkeys</comment>
   </data>
   <data name="Overlay_Title" xml:space="preserve">
@@ -1318,263 +1318,263 @@
     <comment>Overlay</comment>
   </data>
   <data name="Profile_ActionsGroupBox" xml:space="preserve">
-    <value>Actions to perform</value>
+    <value>Auszuführende Aktionen </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ApplyButton" xml:space="preserve">
-    <value>Appl_y</value>
+    <value>Übernehmen</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_DesignButton" xml:space="preserve">
-    <value>Design _window...</value>
+    <value>_Design bearbeiten…</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_EditInputs" xml:space="preserve">
-    <value>Edit _inputs...</value>
+    <value>E_ingabetypen bearbeiten…</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_EditRegionsButton" xml:space="preserve">
-    <value>Edit re_gions...</value>
+    <value>Re_gionen bearbeiten…</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_EditSituations" xml:space="preserve">
-    <value>Edit _situations...</value>
+    <value>_Situationen bearbeiten…</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_InputGroupBox" xml:space="preserve">
-    <value>Which input?</value>
+    <value>Eingabetyp?</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_InputLabel" xml:space="preserve">
-    <value>Input:</value>
+    <value>Eingabe:</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_LogicalStateGroupBox" xml:space="preserve">
-    <value>Which situation?</value>
+    <value>Situation?</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_NavigateActionListsTextBlock" xml:space="preserve">
-    <value>Action list {0} of {1}</value>
+    <value>Aktionsliste {0} von {1}</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_NextActionListButton" xml:space="preserve">
-    <value>Go to next action list (Ctrl+N)</value>
+    <value>Nächste Aktionsliste (Strg+N)? </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ParallelRadioButton" xml:space="preserve">
-    <value>Parallel</value>
+    <value>Gleichzeitig </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ParallelRadioButtonToolTip" xml:space="preserve">
-    <value>Perform actions simultaneously</value>
+    <value>Aktionen gleichzeitig ausführen</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_PerformInLabel" xml:space="preserve">
-    <value>Perform in:</value>
+    <value>Ausführen in:</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_PreviewButton" xml:space="preserve">
-    <value>Pre_view...</value>
+    <value>_Vorschau…</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_PreviousActionListButton" xml:space="preserve">
-    <value>Go to previous action list (Ctrl+P)</value>
+    <value>Vorherige Aktionsliste (Strg+P)</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonDwelled" xml:space="preserve">
-    <value>Dwe_lled</value>
+    <value>Verweilt</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonGroupBox" xml:space="preserve">
-    <value>Which reason?</value>
+    <value>Grund?</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonInside" xml:space="preserve">
-    <value>I_nside</value>
+    <value>Innerhalb </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonMoved" xml:space="preserve">
-    <value>_Moved</value>
+    <value>Bewegt</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonOutside" xml:space="preserve">
-    <value>O_utside</value>
+    <value>Außerhalb </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonPressed" xml:space="preserve">
-    <value>_Pressed</value>
+    <value>Gedrückt </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonReleased" xml:space="preserve">
-    <value>_Released</value>
+    <value>Losgelassen</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_ReasonUpdated" xml:space="preserve">
-    <value>Upda_ted</value>
+    <value>Aktualisiert</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_SeriesRadioButton" xml:space="preserve">
-    <value>Series</value>
+    <value>Serie</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_SeriesRadioButtonToolTip" xml:space="preserve">
-    <value>Perform actions one at a time</value>
+    <value>Aktionen nacheinander ausführen</value>
     <comment>Edit profile</comment>
   </data>
   <data name="Profile_Title" xml:space="preserve">
-    <value>Edit profile</value>
+    <value>Profil bearbeiten </value>
     <comment>Edit profile</comment>
   </data>
   <data name="Regions_AddRegionButton" xml:space="preserve">
-    <value>_Add...</value>
+    <value>_Hinzufügen...</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_AddRegionButtonToolTip" xml:space="preserve">
-    <value>Add a new region</value>
+    <value>Hinzufügen einer neuen Region</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_BrowseRegionImageButton" xml:space="preserve">
-    <value>C_hoose...</value>
+    <value>Au_swählen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_BrowseRegionImageToolTip" xml:space="preserve">
-    <value>Choose a background image for this region</value>
+    <value>Hintergrundbild für Region wählen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_BrowseScreenshotButton" xml:space="preserve">
-    <value>_Background...</value>
+    <value>Hinter_grund…</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_BrowseScreenshotToolTip" xml:space="preserve">
-    <value>Choose a screenshot of your desktop or application</value>
+    <value>Wähle einen Screenshot eines Programms oder des Desktops</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_ClearRegionImageToolTip" xml:space="preserve">
-    <value>Clear the background image for this region</value>
+    <value>Hintergrundbild aus Region entfernen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_ClearScreenshotToolTip" xml:space="preserve">
-    <value>Clear background</value>
+    <value>Hintergrundbild löschen </value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_DeleteRegionButton" xml:space="preserve">
-    <value>_Delete</value>
+    <value>_Löschen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_DeleteRegionButtonToolTip" xml:space="preserve">
-    <value>Delete the selected region</value>
+    <value>Löschen der gewählten Region</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_DrawButton" xml:space="preserve">
-    <value>D_raw region</value>
+    <value>_Region zeichnen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_DrawToolTip" xml:space="preserve">
-    <value>Enable drawing using click and drag</value>
+    <value>Erlaube Regionen mit klicken und ziehen einzuzeichnen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_ForceSquareCheckbox" xml:space="preserve">
-    <value>Only draw s_quares</value>
+    <value>Nur _Quadrate zeichnen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_ForceSquareToolTip" xml:space="preserve">
-    <value>Force drawing of square areas (ignore Y-axis)</value>
+    <value>Quadratische Regionen erzwingen</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_HeightLabel" xml:space="preserve">
-    <value>Height (%):</value>
+    <value>Höhe (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_HoleSizeLabel" xml:space="preserve">
-    <value>Hole size (%):</value>
+    <value>Lochgröße (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_ImageLabel" xml:space="preserve">
-    <value>Image:</value>
+    <value>Bild:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_IntroLabel" xml:space="preserve">
-    <value>Here you can define regions of the screen to use as mouse pointer controls. Click and drag to draw or move regions, or use the sliders. Hold down Control and click to select multiple regions. You may find setting a background image (screenshot) helpful.</value>
+    <value>Hier können Sie Bereiche des Bildschirms definieren, die Sie mit der Maus verwenden möchten. Durch klicken und ziehen der Maus, können Sie Regionen einzeichnen. Alternativ können Sie das auch über die Schieberegler tunn. Sie können die Regionen mit klicken und ziehen bewegen. Halten Sie Strg gedrückt, um mehrere Regionen durch anklicken auszuwählen.</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_LeftLabel" xml:space="preserve">
-    <value>Left (%):</value>
+    <value>Links (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_NavigateTextBlock" xml:space="preserve">
-    <value>Region {0} of {1}</value>
+    <value>Region {0} von {1}</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_NextButton" xml:space="preserve">
-    <value>Select next region (Ctrl+N)</value>
+    <value>Nächste Region (Strg+N)</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_PreviousButton" xml:space="preserve">
-    <value>Select previous region (Ctrl+P)</value>
+    <value>Vorige Region (Strg+P)</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionAppLabel" xml:space="preserve">
-    <value>Draw in app:</value>
+    <value>In App zeichnen:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionColorLabel" xml:space="preserve">
-    <value>Colour:</value>
+    <value>Farbe:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionDetailsGroupBox" xml:space="preserve">
-    <value>Region details</value>
+    <value>Regiondetails</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionModeLabel" xml:space="preserve">
-    <value>Draw in mode:</value>
+    <value>In Modus zeichnen:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionNameLabel" xml:space="preserve">
-    <value>Region name:</value>
+    <value>Regionsname:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionPositionLabel" xml:space="preserve">
-    <value>Draw regions over:</value>
+    <value>Breiche zeichnen über:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_ShapeLabel" xml:space="preserve">
-    <value>Shape:</value>
+    <value>Form:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_StartAngleLabel" xml:space="preserve">
-    <value>Start angle (deg):</value>
+    <value>Anfangswinkel (Grad):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_SweepAngleLabel" xml:space="preserve">
-    <value>Sweep angle (deg):</value>
+    <value>Endwinkel (Grad):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_Title" xml:space="preserve">
-    <value>Edit screen regions</value>
+    <value>Regionen bearbeiten</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_TopLabel" xml:space="preserve">
-    <value>Top (%):</value>
+    <value>Oben (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_TranslucencyLabel" xml:space="preserve">
-    <value>Image translucency:</value>
+    <value>Transparenz:</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_WidthLabel" xml:space="preserve">
-    <value>Width (%):</value>
+    <value>Breite (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Situations_AddAppButton" xml:space="preserve">
-    <value>_Add</value>
+    <value>_Hinzufügen </value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_AppNameLabel" xml:space="preserve">
-    <value>App name:</value>
+    <value>Appname:</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_AppsIntroLabel" xml:space="preserve">
-    <value>Apps are the programs you want to use Alt Controller with. When you switch to a program defined here, Alt Controller automatically applies the controls for it.</value>
+    <value>Apps sind Programme, die Sie mit Alt Controller bedienen wollen. Wenn eines der hier festgelegten Programme in den Vordergrund gelangt, schaltet sich Alt Controller automatisch ein.</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_AppsTab" xml:space="preserve">
@@ -1582,19 +1582,19 @@
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_CurrentAppsLabel" xml:space="preserve">
-    <value>Current apps:</value>
+    <value>Vorhandene Apps:</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_CurrentModesLabel" xml:space="preserve">
-    <value>Current modes:</value>
+    <value>Vorhandene Modi:</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_CurrentPagesLabel" xml:space="preserve">
-    <value>Current pages:</value>
+    <value>Vorhandene Seiten:</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_DeleteAppButton" xml:space="preserve">
-    <value>_Delete</value>
+    <value>_Löschen</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_DetailsLabel" xml:space="preserve">
@@ -1602,83 +1602,83 @@
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_ModeNameLabel" xml:space="preserve">
-    <value>Mode name:</value>
+    <value>Modusname:</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_ModesIntroLabel" xml:space="preserve">
-    <value>Modes allow you to create different controls for different situations or tasks. You use 'Change mode' actions to switch between them.</value>
+    <value>Modi ermöglichen Ihnen, verschiedene Interaktionen für unterschiedliche Situationen und Aufgaben zu definieren. Benutzen Sie 'Modus wechseln'-Aktionen um zwischen ihnen zu wechseln.</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_ModesTab" xml:space="preserve">
-    <value>_Modes</value>
+    <value>Modi</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_PageNameLabel" xml:space="preserve">
-    <value>Page name:</value>
+    <value>Seitenname:</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_PagesIntroLabel" xml:space="preserve">
-    <value>Pages are like 'sub-modes'. When you change the current page, the controls for the current mode and app still apply, but any controls for the page take precedence.</value>
+    <value>Seiten verhalten sich wie "Unter-Modi". Wenn Sie die aktuell aufgerufene Seite bearbeiten, bleiben die Interaktionen des auktuellen Modus und der eingestellten App bestehen, doch die Interaktionen dieser Seite erhalten Vorrang.</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_PagesTab" xml:space="preserve">
-    <value>_Pages</value>
+    <value>Seiten</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_RefreshButton" xml:space="preserve">
-    <value>Refresh the list of running programs</value>
+    <value>Liste aktualisieren</value>
     <comment>Edit situations</comment>
   </data>
   <data name="Situations_Title" xml:space="preserve">
-    <value>Edit situations</value>
+    <value>Situationen bearbeiten </value>
     <comment>Edit situations</comment>
   </data>
   <data name="String_Actions" xml:space="preserve">
-    <value>Actions</value>
+    <value>Aktionen </value>
     <comment>Strings</comment>
   </data>
   <data name="String_ActionsToPerformLabel" xml:space="preserve">
-    <value>Actions to perform when:</value>
+    <value>Aktionen ausführen, wenn:</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Actions_defined" xml:space="preserve">
-    <value>This input has some actions defined for this situation</value>
+    <value>Dieser Eingabetyp definiert mehrere Aktionen für diese Situation. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Active_window" xml:space="preserve">
-    <value>Active window</value>
+    <value>Aktives Fenster </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Add_action_error_description" xml:space="preserve">
-    <value>Unable to create an action - check that that you have entered valid values for all the settings</value>
+    <value>Aktion konnte nicht angelegt werden. Bitte überprüfen Sie, dass keine falschen Werte festgelegt wurden.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Add_action_error_title" xml:space="preserve">
-    <value>Unable to create action</value>
+    <value>Aktion konnte nicht angelegt werden. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Add_input_error_title" xml:space="preserve">
-    <value>Can't add input</value>
+    <value>Eingabetyp konnte nicht angelegt werden. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Add_keyboard_error_description" xml:space="preserve">
-    <value>Can't create input - only 1 keyboard allowed</value>
+    <value>Eingabetyp konnte nicht angelegt werden. Nur 1 Tastatur möglich. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Add_mouse_error_description" xml:space="preserve">
-    <value>Can't create input - only 1 mouse allowed</value>
+    <value>Eingabetyp konnte nicht angelegt werden. Nur 1 Maus möglich. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_All_Option" xml:space="preserve">
-    <value>(All)</value>
+    <value>(Alle)</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Annulus" xml:space="preserve">
-    <value>Annulus</value>
+    <value>Ring</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Annulus_sector" xml:space="preserve">
-    <value>Annulus sector</value>
+    <value>Ringausschnitt</value>
     <comment>Strings</comment>
   </data>
   <data name="String_App" xml:space="preserve">
@@ -1694,31 +1694,31 @@
     <comment>Strings</comment>
   </data>
   <data name="String_Bottom" xml:space="preserve">
-    <value>Bottom</value>
+    <value>Unten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_By_amount" xml:space="preserve">
-    <value>By amount</value>
+    <value>Um den Wert</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Change_mode" xml:space="preserve">
-    <value>Change mode</value>
+    <value>Modus wechseln</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Change_page" xml:space="preserve">
-    <value>Change page</value>
+    <value>Seite wechseln </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Change_pointer" xml:space="preserve">
-    <value>Change pointer</value>
+    <value>Zeiger wechseln</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Choose_folder_description" xml:space="preserve">
-    <value>Choose the folder in which to store your {0} profiles</value>
+    <value>Ordner zum speichern Ihrer {0} Profile auswählen.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Click" xml:space="preserve">
-    <value>Click</value>
+    <value>Klick</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Copyright" xml:space="preserve">
@@ -1726,43 +1726,43 @@
     <comment>Strings</comment>
   </data>
   <data name="String_Custom_Button" xml:space="preserve">
-    <value>Custom Button</value>
+    <value>Eigener Button</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Custom_Window" xml:space="preserve">
-    <value>Custom Window</value>
+    <value>Eigenes Layout </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Standard</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Double_click" xml:space="preserve">
-    <value>Double-click</value>
+    <value>Doppelklick</value>
     <comment>Strings</comment>
   </data>
   <data name="String_down" xml:space="preserve">
-    <value>down</value>
+    <value>Runter</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_app_description" xml:space="preserve">
-    <value>Please ensure that no apps have been added more than once</value>
+    <value>Bitte vergewissern Sie sich, das keine App doppelt hinzugefügt wurde. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_app_title" xml:space="preserve">
-    <value>App added twice</value>
+    <value>App schon vorhanden. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_regions_description" xml:space="preserve">
-    <value>Two or more identical regions are exactly on top of each other. Are you sure you want to close anyway?</value>
+    <value>Zwei oder mehr identische Regionen liegen exakt übereinander. Trotzdem schließen?</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_regions_title" xml:space="preserve">
-    <value>Duplicate regions</value>
+    <value>Region doppelt vorhanden </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Dwelled" xml:space="preserve">
-    <value>Dwelled</value>
+    <value>Geschwebt</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Ellipse" xml:space="preserve">
@@ -1770,239 +1770,239 @@
     <comment>Strings</comment>
   </data>
   <data name="String_Ellipse_sector" xml:space="preserve">
-    <value>Ellipse sector</value>
+    <value>Ellipsenausscnitt</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Enter_text" xml:space="preserve">
-    <value>(Enter text)</value>
+    <value>(Text eingeben)</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Event" xml:space="preserve">
-    <value>Event</value>
+    <value>Ereignis</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Hide_pointer" xml:space="preserve">
-    <value>Hide pointer</value>
+    <value>Mauszeiger ausblenden</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Hold" xml:space="preserve">
-    <value>Hold</value>
+    <value>Halten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Hold_down_key_for_X" xml:space="preserve">
-    <value>Hold down key '{0}' for {1}s</value>
+    <value>Taste '{0}' für {1} Sek. halten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Hold_down_key_X" xml:space="preserve">
-    <value>Hold down key '{0}'</value>
+    <value>Taste '{0}' halten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Hold_key" xml:space="preserve">
-    <value>Hold key</value>
+    <value>Taste halten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Image_files_filter" xml:space="preserve">
-    <value>Image files (*.bmp; *.gif; *jpeg; *.jpg; *.png)|*.bmp;*.gif;*.jpeg;*.jpg;*.png|All files (*.*)|*.*</value>
+    <value>Bilddateien (*.bmp; *jpeg; *.jpg; *.png)|*.bmp;*jpeg;*.jpg;*.png|Alle Dateien (*.*)|*.*</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Inherits_actions" xml:space="preserve">
-    <value>This input has some actions defined for a parent situation</value>
+    <value>In diesem Eingabetyp sind Aktionen für eine übergeordnete Situation definiert</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Input" xml:space="preserve">
-    <value>Input</value>
+    <value>Eingabe</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Input_Event" xml:space="preserve">
-    <value>Input Event</value>
+    <value>Eingabeereignis</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Inside" xml:space="preserve">
-    <value>Inside</value>
+    <value>Innerhalb </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Internal" xml:space="preserve">
-    <value>Internal</value>
+    <value>Intern</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Key" xml:space="preserve">
-    <value>Key</value>
+    <value>Taste</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Keyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>Tastatur </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Key_Toggled" xml:space="preserve">
-    <value>Key Toggled</value>
+    <value>Taste umgeschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Last_used" xml:space="preserve">
-    <value>Last used</value>
+    <value>Zuletzt verwendet </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Left" xml:space="preserve">
-    <value>Left</value>
+    <value>Links</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Level_of_detail" xml:space="preserve">
-    <value>Level of detail</value>
+    <value>Genauigkeit</value>
     <comment>Strings</comment>
   </data>
   <data name="String_longer_presses_towards" xml:space="preserve">
-    <value>longer presses towards</value>
+    <value>länger in Richtung</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Middle" xml:space="preserve">
-    <value>Middle</value>
+    <value>Mitte</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>Modus</value>
     <comment>Strings</comment>
   </data>
   <data name="String_ModeLabel" xml:space="preserve">
-    <value>Mode:</value>
+    <value>Modus:</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Modes" xml:space="preserve">
-    <value>Modes</value>
+    <value>Modi</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mouse" xml:space="preserve">
-    <value>Mouse</value>
+    <value>Maus</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mouse_Button" xml:space="preserve">
-    <value>Mouse Button</value>
+    <value>Maustaste</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mouse_click" xml:space="preserve">
-    <value>Mouse click</value>
+    <value>Mausklick</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mouse_double_click" xml:space="preserve">
-    <value>Mouse double-click</value>
+    <value>Maus Doppelklick </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mouse_hold" xml:space="preserve">
-    <value>Mouse hold</value>
+    <value>Maus halten </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Mouse_release" xml:space="preserve">
-    <value>Mouse release</value>
+    <value>Maus loslassen </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Moved" xml:space="preserve">
-    <value>Moved</value>
+    <value>Bewegt</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Move_by" xml:space="preserve">
-    <value>Move by</value>
+    <value>Bewegen um</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Move_pointer_by" xml:space="preserve">
-    <value>Move pointer by</value>
+    <value>Zeiger bewegen um</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Move_pointer_to" xml:space="preserve">
-    <value>Move pointer to</value>
+    <value>Zeiger bewegen nach </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Move_the_pointer" xml:space="preserve">
-    <value>Move the pointer</value>
+    <value>Zeiger bewegen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Move_to" xml:space="preserve">
-    <value>Move to</value>
+    <value>Bewegen zu</value>
     <comment>Strings</comment>
   </data>
   <data name="String_NewProfile" xml:space="preserve">
-    <value>New profile</value>
+    <value>Neues Profil </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Next" xml:space="preserve">
-    <value>Next</value>
+    <value>Nächste</value>
     <comment>Strings</comment>
   </data>
   <data name="String_None" xml:space="preserve">
-    <value>None</value>
+    <value>Keine</value>
     <comment>Strings</comment>
   </data>
   <data name="String_None_Option" xml:space="preserve">
-    <value>(None)</value>
+    <value>(Keine)</value>
     <comment>Strings</comment>
   </data>
   <data name="String_N_regions_selected" xml:space="preserve">
-    <value>({0} regions selected)</value>
+    <value>({0} Regionen ausgewählt)</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Open" xml:space="preserve">
-    <value>Open</value>
+    <value>Öffnen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Open_all" xml:space="preserve">
-    <value>Open all</value>
+    <value>Alle öffnen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Other" xml:space="preserve">
-    <value>Other</value>
+    <value>Andere</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Outside" xml:space="preserve">
-    <value>Outside</value>
+    <value>Außerhalb</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Page" xml:space="preserve">
-    <value>Page</value>
+    <value>Seite</value>
     <comment>Strings</comment>
   </data>
   <data name="String_PageLabel" xml:space="preserve">
-    <value>Page:</value>
+    <value>Seite:</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Pointer" xml:space="preserve">
-    <value>Pointer</value>
+    <value>Mauszeiger</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Pressed" xml:space="preserve">
-    <value>Pressed</value>
+    <value>Gedrückt</value>
     <comment>Strings</comment>
   </data>
   <data name="String_press_every" xml:space="preserve">
-    <value>press every</value>
+    <value>Wiederholt drücken</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Press_key_for_X" xml:space="preserve">
-    <value>Press key '{0}' for {1}s every {2}s</value>
+    <value>Drücke Taste '{0}' {1} Sek. lang alle {2} Sek.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Previous" xml:space="preserve">
-    <value>Previous</value>
+    <value>Vorige</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Primary_screen" xml:space="preserve">
-    <value>Primary screen</value>
+    <value>Hauptseite</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Primary_working_area" xml:space="preserve">
-    <value>Primary working area</value>
+    <value>Hauptarbeitsbereich</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Profile_applied_X" xml:space="preserve">
-    <value>Profile '{0}' was applied</value>
+    <value>Profil '{0}' zugewiesen.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Profile_files_filter" xml:space="preserve">
-    <value>Profile files (*.alt.xml)|*.alt.xml</value>
+    <value>Profildateien (*.alt.xml)|*.alt.xml</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Rectangle" xml:space="preserve">
-    <value>Rectangle</value>
+    <value>Rechteck</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Region" xml:space="preserve">
@@ -2010,191 +2010,191 @@
     <comment>Strings</comment>
   </data>
   <data name="String_relative_to_X" xml:space="preserve">
-    <value>relative to {0}</value>
+    <value>relativ zu {0}</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Release" xml:space="preserve">
-    <value>Release</value>
+    <value>Loslassen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Released" xml:space="preserve">
-    <value>Released</value>
+    <value>Losgelassen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Release_key" xml:space="preserve">
-    <value>Release key</value>
+    <value>Taste loslassen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Release_key_X" xml:space="preserve">
-    <value>Release key '{0}'</value>
+    <value>Taste '{0}' loslassen. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Repeat_key" xml:space="preserve">
-    <value>Repeat key</value>
+    <value>Taste wiederholen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Repeat_key_directional" xml:space="preserve">
-    <value>Repeat key (directional)</value>
+    <value>Richtungstaste wiederholen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Repeat_key_X" xml:space="preserve">
-    <value>Repeat key '{0}'</value>
+    <value>Taste '{0}' wiederholen. </value>
     <comment>Strings</comment>
   </data>
   <data name="String_Repeat_scroll_down" xml:space="preserve">
-    <value>Repeat scroll down</value>
+    <value>Abwärtsscrollen wiederholen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Repeat_scroll_up" xml:space="preserve">
-    <value>Repeat scroll up</value>
+    <value>Aufwärtsscrollen wiederholen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Repeat_scroll_X" xml:space="preserve">
-    <value>Scroll {0} every {1}s</value>
+    <value>Scrolle {0} alle {1} Sek.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Reset_options_description" xml:space="preserve">
-    <value>Reset all options to their default values?</value>
+    <value>Wirklich alle Programmeinstellungen auf Standard zurücksetzen?</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Reset_options_title" xml:space="preserve">
-    <value>Reset all options?</value>
+    <value>Wirklich alle Programmeinstellungen zurücksetzen?</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Restore_pointer" xml:space="preserve">
-    <value>Restore pointer</value>
+    <value>Zeiger zurücksetzen?</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Right" xml:space="preserve">
-    <value>Right</value>
+    <value>Rechts</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Save_profile_description" xml:space="preserve">
-    <value>Save current profile?</value>
+    <value>Dieses Profil speichern?</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Save_profile_title" xml:space="preserve">
-    <value>Save profile?</value>
+    <value>Profil speichern?+D391</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Scroll_down" xml:space="preserve">
-    <value>Scroll down</value>
+    <value>Nach unten scrollen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Scroll_repeatedly_X" xml:space="preserve">
-    <value>Scroll {0} repeatedly</value>
+    <value>{0} forwährend scrollen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Scroll_up" xml:space="preserve">
-    <value>Scroll up</value>
+    <value>Nach oben scrollen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Scroll_Wheel" xml:space="preserve">
-    <value>Scroll Wheel</value>
+    <value>Mausrad</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Scroll_X" xml:space="preserve">
-    <value>Scroll {0}</value>
+    <value>Scrolle {0}</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Select_mode" xml:space="preserve">
-    <value>Select mode</value>
+    <value>Modus auswählen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Select_page" xml:space="preserve">
-    <value>Select page</value>
+    <value>Seite auswählen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_sensitivity" xml:space="preserve">
-    <value>sensitivity</value>
+    <value>Empfindlichkeit</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Situation_Changed" xml:space="preserve">
-    <value>Situation Changed</value>
+    <value>Situation geändert</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Standard_pointer" xml:space="preserve">
-    <value>Standard pointer</value>
+    <value>Standard Mauszeiger</value>
     <comment>Strings</comment>
   </data>
   <data name="String_stop_after_X" xml:space="preserve">
-    <value>stop after {0}s</value>
+    <value>stoppen nach {0} Sek.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Stop_ongoing_actions" xml:space="preserve">
-    <value>Stop ongoing actions</value>
+    <value>Laufende Aktionen stoppen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Stop_scrolling" xml:space="preserve">
-    <value>Stop scrolling</value>
+    <value>Scrollen stoppen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Text_files_filter" xml:space="preserve">
-    <value>Text files (*.txt)|*.txt|All files (*.*)|*.*</value>
+    <value>Textdateien (*.txt)|*.txt|Alle Dateien (*.*)|*.*</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_key" xml:space="preserve">
-    <value>Toggle key</value>
+    <value>Taste umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_key_X" xml:space="preserve">
-    <value>Toggle key '{0}'</value>
+    <value>Taste '{0}' umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_mouse_button" xml:space="preserve">
-    <value>Toggle mouse button</value>
+    <value>Mausttaste umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_mouse_button_X" xml:space="preserve">
-    <value>Toggle '{0}' mouse button</value>
+    <value>Maustaste '{0}' umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_pointer_indicator" xml:space="preserve">
-    <value>Toggle pointer indicator</value>
+    <value>Mauszeigers umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_region_names" xml:space="preserve">
-    <value>Toggle region names</value>
+    <value>Regionsnamen umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_screen_regions" xml:space="preserve">
-    <value>Toggle screen regions</value>
+    <value>Regionen umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_state_overlay" xml:space="preserve">
-    <value>Toggle mode/page overlay</value>
+    <value>Modus/Seiten Überlagerung umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Toggle_title_bars" xml:space="preserve">
-    <value>Toggle title bars</value>
+    <value>Titelleisten umschalten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Top" xml:space="preserve">
-    <value>Top</value>
+    <value>Oben</value>
     <comment>Strings</comment>
   </data>
   <data name="String_To_position" xml:space="preserve">
-    <value>To position</value>
+    <value>Zu Position</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Type" xml:space="preserve">
-    <value>Type</value>
+    <value>Tippe</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Type_key" xml:space="preserve">
-    <value>Type key</value>
+    <value>Taste tippen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Type_text" xml:space="preserve">
-    <value>Type text</value>
+    <value>Text tippen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_up" xml:space="preserve">
-    <value>up</value>
+    <value>hoch</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Updated" xml:space="preserve">
-    <value>Updated</value>
+    <value>Aktualisiert</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Version" xml:space="preserve">
@@ -2202,23 +2202,23 @@
     <comment>Strings</comment>
   </data>
   <data name="String_Virtual_desktop" xml:space="preserve">
-    <value>Virtual desktop</value>
+    <value>Virtueller Desktop</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Virtual_working_area" xml:space="preserve">
-    <value>Virtual working area</value>
+    <value>Virtueller Arbeitsbereich</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Wait" xml:space="preserve">
-    <value>Wait</value>
+    <value>Warten</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Wait_for_X" xml:space="preserve">
-    <value>Wait for {0}s</value>
+    <value>Warte für {0} Sek.</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Window" xml:space="preserve">
-    <value>Window</value>
+    <value>Fenster</value>
     <comment>Strings</comment>
   </data>
   <data name="String_X1" xml:space="preserve">
@@ -2230,7 +2230,7 @@
     <comment>Strings</comment>
   </data>
   <data name="Summary_Title" xml:space="preserve">
-    <value>Profile summary</value>
+    <value>Über dieses Profil</value>
     <comment>Summary</comment>
   </data>
 </root>

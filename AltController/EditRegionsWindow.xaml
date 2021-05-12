@@ -17,7 +17,7 @@
     </Window.InputBindings>
     <Grid Name="OuterGrid" Margin="5">
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="25"/>
@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="310"/>
         </Grid.ColumnDefinitions>
         <TextBlock Name="IntroLabel" Text="{x:Static p:Resources.Regions_IntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
@@ -44,20 +44,20 @@
             </Border>
             <Grid Margin="0,2" Grid.Row="1" VerticalAlignment="Top">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <Button Name="AddRegionButton" Width="80" Height="23" Click="AddRegionButton_Click">
-                        <StackPanel Orientation="Horizontal" ToolTip="Add a new region">
+                    <Button Name="AddRegionButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Click="AddRegionButton_Click">
+                        <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Regions_AddRegionButtonToolTip}">
                             <Image Source="/AltController;component/Images/icons/add.png" />
                             <AccessText Margin="5,0" Text="{x:Static p:Resources.Regions_AddRegionButton}"/>
                         </StackPanel>
                     </Button>
-                    <Button Name="DeleteRegionButton" Width="80" Height="23" Margin="5,0" IsEnabled="False" Click="DeleteRegionButton_Click">
-                        <StackPanel Orientation="Horizontal" ToolTip="Deleted the selected region">
+                    <Button Name="DeleteRegionButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="5,0" IsEnabled="False" Click="DeleteRegionButton_Click">
+                        <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Regions_DeleteRegionButtonToolTip}">
                             <Image Source="/AltController;component/Images/icons/delete.png" />
                             <AccessText Margin="5,0" Text="{x:Static p:Resources.Regions_DeleteRegionButton}"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <StackPanel Name="NavigationButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Name="NavigationButtonsPanel" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Name="PreviousButton" Height="23" IsEnabled="False" ToolTip="{x:Static p:Resources.Regions_PreviousButton}" Command="{x:Static ac:EditRegionsWindow.PreviousCommand}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/AltController;component/Images/icons/control_rewind_blue.png" Stretch="None" />
@@ -67,19 +67,6 @@
                     <Button Name="NextButton" Height="23" IsEnabled="False" ToolTip="{x:Static p:Resources.Regions_NextButton}" Command="{x:Static ac:EditRegionsWindow.NextCommand}">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/AltController;component/Images/icons/control_fastforward_blue.png" Stretch="None" />
-                        </StackPanel>
-                    </Button>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Name="BrowseScreenshotButton" Click="BrowseScreenshotButton_Click" Height="23" Margin="5,0">
-                        <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Regions_BrowseScreenshotToolTip}">
-                            <Image Source="/AltController;component/Images/icons/image_edit.png" />
-                            <AccessText Margin="5,0" Text="{x:Static p:Resources.Regions_BrowseScreenshotButton}"/>
-                        </StackPanel>
-                    </Button>
-                    <Button Name="ClearScreenshotButton" Height="23" Click="ClearScreenshotButton_Click">
-                        <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Regions_ClearScreenshotToolTip}">
-                            <Image Source="/AltController;component/Images/icons/image_delete.png" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -105,8 +92,8 @@
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="130"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="150"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Name="RegionNameLabel" Text="{x:Static p:Resources.Regions_RegionNameLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></TextBlock>
                 <TextBox Name="RegionNameText" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1" IsEnabled="False" LostKeyboardFocus="RegionNameText_LostKeyboardFocus"></TextBox>
@@ -149,20 +136,33 @@
                 <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Regions_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="13" Grid.Column="0"></TextBlock>
                 <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="13" Grid.Column="1" IsEnabled="False" Minimum="0" Maximum="0.99" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" ValueChanged="TranslucencySlider_ValueChanged" />
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2">
-                    <Button Name="DrawButton" VerticalAlignment="Center" Width="80" Height="23" Margin="0,0,5,0" Click="DrawButton_Click" Content="{x:Static p:Resources.Regions_DrawButton}" ToolTip="{x:Static p:Resources.Regions_DrawToolTip}" IsEnabled="False"/>
+                    <Button Name="DrawButton" VerticalAlignment="Center" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="DrawButton_Click" Content="{x:Static p:Resources.Regions_DrawButton}" ToolTip="{x:Static p:Resources.Regions_DrawToolTip}" IsEnabled="False"/>
                     <CheckBox Name="ForceSquareCheckbox" VerticalAlignment="Center" Margin="5,0,0,0" Content="{x:Static p:Resources.Regions_ForceSquareCheckbox}" ToolTip="{x:Static p:Resources.Regions_ForceSquareToolTip}"></CheckBox>
                 </StackPanel>
             </Grid>
         </GroupBox>
         <local:ErrorMessageControl x:Name="ErrorMessage" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom" />
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <Button Name="BrowseScreenshotButton" Click="BrowseScreenshotButton_Click" Height="23">
+                <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Regions_BrowseScreenshotToolTip}">
+                    <Image Source="/AltController;component/Images/icons/image_edit.png" />
+                    <AccessText Margin="5,0" Text="{x:Static p:Resources.Regions_BrowseScreenshotButton}"/>
+                </StackPanel>
+            </Button>
+            <Button Name="ClearScreenshotButton" Height="23" Margin="5,0" Click="ClearScreenshotButton_Click">
+                <StackPanel Orientation="Horizontal" ToolTip="{x:Static p:Resources.Regions_ClearScreenshotToolTip}">
+                    <Image Source="/AltController;component/Images/icons/image_delete.png" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
         <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button Name="OKButton" Width="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click">
+            <Button Name="OKButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/accept.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
                 </StackPanel>
             </Button>
-            <Button Name="CancelButton" Width="70" Height="23" IsCancel="True" Click="CancelButton_Click">
+            <Button Name="CancelButton" HorizontalAlignment="Left" MinWidth="70" Height="23" IsCancel="True" Click="CancelButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/cancel.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>

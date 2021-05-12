@@ -154,7 +154,7 @@ namespace AltController.UserControls
             {
                 if (!_allowMultiSelect && regions.Count > 1)
                 {
-                    throw new Exception("Multiple selection of regions is not allowed.");
+                    throw new Exception(Properties.Resources.E_REGCTRL001);
                 }
 
                 _selectedRegions.AddRange(regions);

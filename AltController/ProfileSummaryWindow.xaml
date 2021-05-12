@@ -15,7 +15,7 @@
                 </Grid>
             </Border>
         </ScrollViewer>
-        <Button Name="CloseButton" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" Width="70" Margin="5" Click="CloseButton_Click">
+        <Button Name="CloseButton" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" MinWidth="70" Margin="5" Click="CloseButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/AltController;component/Images/icons/cross.png" />
                 <AccessText Margin="5,0" Text="{x:Static p:Resources.CloseButton}"/>

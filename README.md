@@ -45,4 +45,4 @@ In order to build the installer, there is a script CreateAltControllerSetup.bat 
 ## Future plans
 The Change pointer action type will likely be removed in a coming version of the software. This was an experimental action type which now seems to serve no purpose. If you are using this action type, please let me know.
 
-Future plans for the software include gradually improving the website and and sharing user-created profiles and information there. If you have created a useful Alt Controller profile that you are willing to share, feel free to send it to me via the contact page at altcontroller.net.
+Future plans for the software include gradually improving the website and sharing user-created profiles and information there. If you have created a useful Alt Controller profile that you are willing to share, feel free to send it to me via the contact page at altcontroller.net.

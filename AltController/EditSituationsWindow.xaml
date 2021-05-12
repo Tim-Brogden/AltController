@@ -6,7 +6,7 @@
         ResizeMode="CanMinimize" Title="{x:Static p:Resources.Situations_Title}" 
         Icon="/AltController;component/Images/AltController.png" Loaded="Window_Loaded" mc:Ignorable="d" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        Height="355" Width="520">
+        Height="355" Width="620">
     <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -16,17 +16,17 @@
             <TabItem Name="ModesTab" Header="{x:Static p:Resources.Situations_ModesTab}">
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="300"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Name="ModesIntroLabel" Text="{x:Static p:Resources.Situations_ModesIntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Name="CurrentModesLabel" Text="{x:Static p:Resources.Situations_CurrentModesLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontWeight="Bold"></TextBlock>
-                    <local:EditItemsControl x:Name="EditModesControl" AddEnabled="True" EditVisible="False" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="175"/>
+                    <local:EditItemsControl x:Name="EditModesControl" AddEnabled="True" EditVisible="False" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="275"/>
                     <GroupBox Name="ModeDetailsGroupBox" Header="{x:Static p:Resources.Situations_DetailsLabel}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top">
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
@@ -45,12 +45,12 @@
             <TabItem Name="AppsTab" Header="{x:Static p:Resources.Situations_AppsTab}">
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="300"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Name="AppsIntroLabel" Text="{x:Static p:Resources.Situations_AppsIntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
@@ -60,15 +60,15 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="25"/>
                         </Grid.RowDefinitions>
-                        <ListBox Name="AppList" Grid.Row="0" Width="150" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="AppList_SelectionChanged" />
+                        <ListBox Name="AppList" Grid.Row="0" Width="245" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="AppList_SelectionChanged" />
                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Button Name="AddAppButton" Width="70" Height="23" Margin="0,0,5,0" HorizontalAlignment="Center" Click="AddAppButton_Click">
+                            <Button Name="AddAppButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="AddAppButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/AltController;component/Images/icons/add.png" />
                                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Situations_AddAppButton}"/>
                                 </StackPanel>
                             </Button>
-                            <Button Name="DeleteAppButton" HorizontalAlignment="Left" IsEnabled="False" Height="23" Width="70" Click="DeleteAppButton_Click">
+                            <Button Name="DeleteAppButton" HorizontalAlignment="Left" MinWidth="70" IsEnabled="False" Height="23" Click="DeleteAppButton_Click">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/AltController;component/Images/icons/delete.png" />
                                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Situations_DeleteAppButton}"/>
@@ -100,17 +100,17 @@
             <TabItem Name="PagesTab" Header="{x:Static p:Resources.Situations_PagesTab}">
                 <Grid Margin="5">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="60"/>
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>                        
-                        <ColumnDefinition Width="200"/>
+                        <ColumnDefinition Width="300"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Name="PagesIntroLabel" Text="{x:Static p:Resources.Situations_PagesIntroLabel}" VerticalAlignment="Top" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"></TextBlock>
                     <TextBlock Name="CurrentPagesLabel" Text="{x:Static p:Resources.Situations_CurrentPagesLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" FontWeight="Bold"></TextBlock>
-                    <local:EditItemsControl x:Name="EditPagesControl" AddEnabled="True" EditVisible="False" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="175"/>
+                    <local:EditItemsControl x:Name="EditPagesControl" AddEnabled="True" EditVisible="False" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="0" Width="275"/>
                     <GroupBox Name="PageDetailsGroupBox" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Header="{x:Static p:Resources.Situations_DetailsLabel}">
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
@@ -128,13 +128,13 @@
             </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button Name="OKButton" Width="70" Height="23" Margin="5,0" Click="OKButton_Click">
+            <Button Name="OKButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="5,0" Click="OKButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/accept.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
                 </StackPanel>
             </Button>
-            <Button Name="CancelButton" Width="70" Height="23" IsCancel="True" Click="CancelButton_Click">
+            <Button Name="CancelButton" HorizontalAlignment="Left" MinWidth="70" Height="23" IsCancel="True" Click="CancelButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/cancel.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>

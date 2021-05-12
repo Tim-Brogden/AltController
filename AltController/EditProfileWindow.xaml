@@ -6,7 +6,7 @@
         xmlns:ac="clr-namespace:AltController"
         Title="{x:Static p:Resources.Profile_Title}" Loaded="Window_Loaded" Closing="Window_Closing" mc:Ignorable="d" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Icon="/AltController;component/Images/AltController.png" Height="680" Width="765">
+        Icon="/AltController;component/Images/AltController.png" Height="680" Width="800">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static ac:EditProfileWindow.PreviousCommand}" CanExecute="PreviousCommand_CanExecute" Executed="PreviousCommand_Executed" />
         <CommandBinding Command="{x:Static ac:EditProfileWindow.NextCommand}" CanExecute="NextCommand_CanExecute" Executed="NextCommand_Executed" />
@@ -23,20 +23,24 @@
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox Name="LogicalStateGroupBox" Grid.Row="0" Header="{x:Static p:Resources.Profile_LogicalStateGroupBox}" Margin="5">
-            <StackPanel Orientation="Horizontal" Height="25" VerticalAlignment="Top" Margin="5">
-                <TextBlock Name="ModeLabel" Text="{x:Static p:Resources.String_ModeLabel}" VerticalAlignment="Center"></TextBlock>
-                <ComboBox Name="ModeCombo" Width="150" Margin="5,0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LogicalStateCombo_SelectionChanged"/>
-                <TextBlock Name="AppLabel" Text="{x:Static p:Resources.String_AppLabel}" VerticalAlignment="Center"></TextBlock>
-                <ComboBox Name="AppCombo" Width="150" Margin="5,0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LogicalStateCombo_SelectionChanged"/>
-                <TextBlock Name="PageLabel" Text="{x:Static p:Resources.String_PageLabel}" VerticalAlignment="Center"></TextBlock>
-                <ComboBox Name="PageCombo" Width="150" Margin="5,0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LogicalStateCombo_SelectionChanged"/>
-                <Button Name="EditSituations" Click="EditSituations_Click">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="/AltController;component/Images/icons/application_form_edit.png" />
-                        <AccessText Margin="5,0" Text="{x:Static p:Resources.Profile_EditSituations}"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+            <Grid Margin="5">
+                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock Name="ModeLabel" Text="{x:Static p:Resources.String_ModeLabel}" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="ModeCombo" Width="150" Margin="5,0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LogicalStateCombo_SelectionChanged"/>
+                    <TextBlock Name="AppLabel" Text="{x:Static p:Resources.String_AppLabel}" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="AppCombo" Width="150" Margin="5,0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LogicalStateCombo_SelectionChanged"/>
+                    <TextBlock Name="PageLabel" Text="{x:Static p:Resources.String_PageLabel}" VerticalAlignment="Center"></TextBlock>
+                    <ComboBox Name="PageCombo" Width="150" Margin="5,0" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LogicalStateCombo_SelectionChanged"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="25" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <Button Name="EditSituations" Click="EditSituations_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="/AltController;component/Images/icons/application_form_edit.png" />
+                            <AccessText Margin="5,0" Text="{x:Static p:Resources.Profile_EditSituations}"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
         </GroupBox>
         <GroupBox Name="InputGroupBox" Grid.Row="1" Header="{x:Static p:Resources.Profile_InputGroupBox}" Margin="5">
             <Grid>
@@ -79,14 +83,13 @@
         </GroupBox>
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="230" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <GroupBox Name="ReasonGroupBox" Header="{x:Static p:Resources.Profile_ReasonGroupBox}" Grid.Column="0" Margin="5">
                 <WrapPanel Orientation="Vertical" VerticalAlignment="Top" Height="110" Margin="5">
                     <RadioButton Name="ReasonPressed" Content="{x:Static p:Resources.Profile_ReasonPressed}" GroupName="Reason" IsEnabled="False" Margin="5" Checked="ReasonButtons_SelectionChanged"></RadioButton>
                     <RadioButton Name="ReasonReleased" Content="{x:Static p:Resources.Profile_ReasonReleased}" GroupName="Reason" IsEnabled="False" Margin="5" Checked="ReasonButtons_SelectionChanged"></RadioButton>
-                    <RadioButton Name="ReasonMoved" Content="{x:Static p:Resources.Profile_ReasonMoved}" GroupName="Reason" IsEnabled="False" Margin="5" Checked="ReasonButtons_SelectionChanged"></RadioButton>
                     <RadioButton Name="ReasonUpdated" Content="{x:Static p:Resources.Profile_ReasonUpdated}" GroupName="Reason" IsEnabled="False" Margin="5" Checked="ReasonButtons_SelectionChanged"></RadioButton>
                     <RadioButton Name="ReasonDwelled" Content="{x:Static p:Resources.Profile_ReasonDwelled}" GroupName="Reason" IsEnabled="False" Margin="5" Checked="ReasonButtons_SelectionChanged"></RadioButton>
                     <RadioButton Name="ReasonInside" Content="{x:Static p:Resources.Profile_ReasonInside}" GroupName="Reason" IsEnabled="False" Margin="5" Checked="ReasonButtons_SelectionChanged"></RadioButton>
@@ -101,8 +104,8 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Horizontal">
                         <TextBlock Name="PerformInLabel" Text="{x:Static p:Resources.Profile_PerformInLabel}" VerticalAlignment="Center"></TextBlock>
-                        <RadioButton Name="SeriesRadioButton" Content="{x:Static p:Resources.Profile_SeriesRadioButton}" GroupName="ExecutionMode" VerticalAlignment="Center" Margin="5,0" IsChecked="True" Click="ExecutionModeButtons_Click"></RadioButton>
-                        <RadioButton Name="ParallelRadioButton" Content="{x:Static p:Resources.Profile_ParallelRadioButton}" GroupName="ExecutionMode" VerticalAlignment="Center" Margin="5,0" Click="ExecutionModeButtons_Click"></RadioButton>
+                        <RadioButton Name="SeriesRadioButton" Content="{x:Static p:Resources.Profile_SeriesRadioButton}" ToolTip="{x:Static p:Resources.Profile_SeriesRadioButtonToolTip}" GroupName="ExecutionMode" VerticalAlignment="Center" Margin="5,0" IsChecked="True" Click="ExecutionModeButtons_Click"></RadioButton>
+                        <RadioButton Name="ParallelRadioButton" Content="{x:Static p:Resources.Profile_ParallelRadioButton}" ToolTip="{x:Static p:Resources.Profile_ParallelRadioButtonToolTip}" GroupName="ExecutionMode" VerticalAlignment="Center" Margin="5,0" Click="ExecutionModeButtons_Click"></RadioButton>
                     </StackPanel>
                     <local:EditItemsControl x:Name="ActionsList" Grid.Row="1" AddEnabled="False" EditVisible="True" />
                     <StackPanel Name="NavigationButtonsPanel" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,30,0">
@@ -132,19 +135,19 @@
                 <local:ErrorMessageControl x:Name="ErrorMessage" Margin="5" MaxWidth="400"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                <Button Name="OKButton" Width="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click">
+                <Button Name="OKButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/AltController;component/Images/icons/accept.png" />
                         <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
                     </StackPanel>
                 </Button>
-                <Button Name="ApplyButton" IsEnabled="False" Width="70" Height="23" Margin="0,0,5,0" Click="ApplyButton_Click">
+                <Button Name="ApplyButton" IsEnabled="False" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="ApplyButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/AltController;component/Images/icons/tick.png" />
                         <AccessText Margin="5,0" Text="{x:Static p:Resources.Profile_ApplyButton}"/>
                     </StackPanel>
                 </Button>
-                <Button Name="CancelButton" Width="70" Height="23" Click="CancelButton_Click">
+                <Button Name="CancelButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Click="CancelButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/AltController;component/Images/icons/cancel.png" />
                         <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>

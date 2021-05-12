@@ -113,8 +113,8 @@ namespace AltController
 
                 // Populate modes
                 _modesList.Clear();
-                _modesList.Add(new NamedItem(Constants.DefaultID, "(All)"));
-                _modesList.Add(new NamedItem(Constants.NoneID, "(None)"));
+                _modesList.Add(new NamedItem(Constants.DefaultID, Properties.Resources.String_All_Option));
+                _modesList.Add(new NamedItem(Constants.NoneID, Properties.Resources.String_None_Option));
                 foreach (NamedItem item in _profile.ModeDetails)
                 {
                     if (item.ID != Constants.DefaultID)
@@ -126,8 +126,8 @@ namespace AltController
 
                 // Populate apps
                 _appsList.Clear();
-                _appsList.Add(new NamedItem(Constants.DefaultID, "(All)"));
-                _appsList.Add(new NamedItem(Constants.NoneID, "(None)"));
+                _appsList.Add(new NamedItem(Constants.DefaultID, Properties.Resources.String_All_Option));
+                _appsList.Add(new NamedItem(Constants.NoneID, Properties.Resources.String_None_Option));
                 foreach (NamedItem item in _profile.AppDetails)
                 {
                     if (item.ID != Constants.DefaultID)
@@ -147,7 +147,7 @@ namespace AltController
                 this.ShapeComboBox.ItemsSource = _shapesList;
 
                 // Initial combo selections
-                this.ColoursCombo.SelectedColour = "LightGray";
+                this.ColoursCombo.SelectedColour = Constants.DefaultScreenRegionColour;
                 this.ModeCombo.SelectedIndex = 0;
                 this.AppCombo.SelectedIndex = (_appsList.Count > 2) ? 2 : 0;    // First app, or (All) if no apps in profile
                 this.ShapeComboBox.SelectedIndex = 0;
@@ -169,7 +169,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error loading window", ex);
+                ShowError(Properties.Resources.E_REG001, ex);
             }
         }
 
@@ -240,7 +240,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error handling selection of new region", ex);
+                ShowError(Properties.Resources.E_REG002, ex);
             }
         }
 
@@ -258,7 +258,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error when enabling region drawing", ex);
+                ShowError(Properties.Resources.E_REG003, ex);
             }
         }
 
@@ -291,7 +291,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error after editing region", ex);
+                ShowError(Properties.Resources.E_REG004, ex);
             }
         }
 
@@ -340,7 +340,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error when trying to add a new region", ex);
+                ShowError(Properties.Resources.E_REG005, ex);
             }
         }
 
@@ -376,7 +376,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error when deleting the selected region", ex);
+                ShowError(Properties.Resources.E_REG006, ex);
             }
         }
 
@@ -431,7 +431,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error navigating to previous action list", ex);
+                ShowError(Properties.Resources.E_REG007, ex);
             }
             e.Handled = true;
         }
@@ -455,7 +455,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error navigating to the next region", ex);
+                ShowError(Properties.Resources.E_REG008, ex);
             }
             e.Handled = true;
         }
@@ -616,7 +616,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while setting background image", ex);
+                ShowError(Properties.Resources.E_REG009, ex);
             }
         }
 
@@ -634,7 +634,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while clearing background image", ex);
+                ShowError(Properties.Resources.E_REG010, ex);
             }
         }
 
@@ -700,7 +700,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while setting region background image", ex);
+                ShowError(Properties.Resources.E_REG011, ex);
             }            
         }
 
@@ -726,7 +726,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while clearing background image", ex);
+                ShowError(Properties.Resources.E_REG012, ex);
             }
         }
 
@@ -754,7 +754,7 @@ namespace AltController
                 }
                 catch (Exception ex)
                 {
-                    ErrorMessage.Show("Error while setting window translucency", ex);
+                    ShowError(Properties.Resources.E_REG013, ex);
                 }
             }
         }
@@ -773,7 +773,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error renaming selected region", ex);
+                ShowError(Properties.Resources.E_REG014, ex);
             }
         }
 
@@ -811,7 +811,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error changing region colour", ex);
+                ShowError(Properties.Resources.E_REG015, ex);
             }
         }
 
@@ -835,7 +835,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while changing mode in which to show region", ex);
+                ShowError(Properties.Resources.E_REG016, ex);
             }
         }
 
@@ -859,7 +859,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while changing app for which to show the region", ex);
+                ShowError(Properties.Resources.E_REG017, ex);
             }
         }
 
@@ -882,7 +882,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error handling change of overlay mode", ex);
+                ShowError(Properties.Resources.E_REG018, ex);
             }
         }
 
@@ -1003,7 +1003,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while positioning region", ex);
+                ShowError(Properties.Resources.E_REG019, ex);
             }
         }
 
@@ -1040,7 +1040,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while positioning region", ex);
+                ShowError(Properties.Resources.E_REG020, ex);
             }
         }
 
@@ -1074,7 +1074,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while resizing region", ex);
+                ShowError(Properties.Resources.E_REG021, ex);
             }
         }
 
@@ -1108,7 +1108,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while resizing region", ex);
+                ShowError(Properties.Resources.E_REG022, ex);
             }
         }
 
@@ -1153,7 +1153,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error when changing region shape", ex);
+                ShowError(Properties.Resources.E_REG023, ex);
             }
         }
 
@@ -1218,7 +1218,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error when changing hole size", ex);
+                ShowError(Properties.Resources.E_REG024, ex);
             }
         }
 
@@ -1251,7 +1251,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while changing start angle", ex);
+                ShowError(Properties.Resources.E_REG025, ex);
             }
         }
 
@@ -1284,7 +1284,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error while changing sweep angle", ex);
+                ShowError(Properties.Resources.E_REG026, ex);
             }
         }
 

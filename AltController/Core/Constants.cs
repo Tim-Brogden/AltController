@@ -35,8 +35,8 @@ namespace AltController.Core
     /// </summary>
     public class Constants
     {
-        public const string FileVersion = "1.90";    // Update this when the profile file format changes
-        public const string AppVersion = "1.91";    // Update this when the application version changes
+        public const string FileVersion = "1.93";    // Update this when the profile file format changes
+        public const string AppVersion = "1.93";    // Update this when the application version changes
         
         public const long LastUsedID = -4;
         public const long NextID = -3;
@@ -44,6 +44,8 @@ namespace AltController.Core
         public const long DefaultID = -1;
         public const long NoneID = 0;
         public const string ApplicationName = "Alt Controller";
+        public const string AuthorName = "Tim Brogden";
+        public const string TranslatorNames = "Georg Niedermeier (DE)";
         public const string UserGuideURL = "https://altcontroller.net/docs/user-guide/";
         public const string MessageLogFileName = "Message Log.txt";
         public const string ProfilesFolderName = "Profiles";
@@ -60,8 +62,10 @@ namespace AltController.Core
         public const string ConfigDrawPointerIndicatorLineHotkey = "draw_pointer_indicator_line_hotkey";
         public const string ConfigDrawStateOverlay = "draw_state_overlay";
         public const string ConfigDrawStateOverlayHotkey = "draw_state_overlay_hotkey";
+        public const string ConfigCustomWindowTitleBarsHotkey = "custom_window_title_bars_hotkey";
         public const string ConfigDrawRegionForceSquare = "draw_region_force_square";
         public const string ConfigLastUsedProfile = "last_profile";
+        public const string ConfigLanguageCode = "language_code";
         public const string ConfigAutoLoadLastProfile = "auto_load_last_profile";
         public const string ConfigAutoOpenCustomWindows = "auto_open_custom_windows";
         public const string ConfigUseScanCodes = "use_directx_key_strokes";
@@ -81,6 +85,7 @@ namespace AltController.Core
         public const string ConfigStateOverlayFontSize = "state_overlay_font_size";
         public const string ConfigStateOverlayXPos = "state_overlay_x_pos";
         public const string ConfigStateOverlayYPos = "state_overlay_y_pos";
+        public const string ConfigCustomWindowTitleBars = "custom_window_title_bars";
         public const string ConfigAutoStopPressActions = "auto_stop_press_actions";
         public const string ConfigAutoStopInsideActions = "auto_stop_inside_actions";
 
@@ -90,6 +95,8 @@ namespace AltController.Core
         public const bool DefaultDrawPointerIndicatorLine = false;
         public const bool DefaultDrawStateOverlay = false;
         public const bool DefaultDrawRegionForceSquare = false;
+        public const string DefaultLanguageCode = "en-GB";
+        public const string DefaultLanguageName = "English (GB)";
         public const bool DefaultAutoLoadLastProfile = true;
         public const bool DefaultAutoOpenCustomWindows = true;
         public const bool DefaultUseScanCodes = true;
@@ -108,14 +115,22 @@ namespace AltController.Core
         public const double DefaultStateOverlayFontSize = 20.0;
         public const double DefaultStateOverlayXPos = 0.05;
         public const double DefaultStateOverlayYPos = 0.05;
-        public const bool DefaultAutoStopPressActions = true;
-        public const bool DefaultAutoStopInsideActions = true;
+        public const bool DefaultCustomWindowTitleBars = true;
+        public const bool DefaultAutoStopPressActions = false;
+        public const bool DefaultAutoStopInsideActions = false;
 
         // Other defaults
         public const int DefaultPressTimeMS = 50;
-        public const int DefaultCustomWindowSizePx = 200;
+        public const int DefaultCustomWindowWidthPx = 300;
+        public const int DefaultCustomWindowHeightPx = 200;
         public const double DefaultCustomWindowTranslucency = 0.5;
         public const double DefaultCustomButtonTranslucency = 0.5;
+        public const double DefaultCustomButtonBorderThickness = 1.0;
+        public const string DefaultCustomButtonBorderColour = "Black";
+        public const string DefaultCustomButtonBackgroundColour = "LightGray";
+        public const string DefaultScreenRegionColour = "LightGray";
+        public const double DefaultCustomButtonFontSize = 12.0;
+        public const string DefaultCustomButtonTextColour = "Black";
         public const double DefaultScreenRegionTranslucency = 0.5;
         public const bool DefaultIsGhostBackground = true;
         public const bool DefaultIsTopMost = true;

@@ -18,13 +18,13 @@
         <TextBlock Name="IntroLabel" Text="{x:Static p:Resources.Log_IntroLabel}" Grid.Row="0" Grid.Column="0" TextWrapping="Wrap">
             </TextBlock>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Grid.Row="1" Grid.Column="0">
-            <Button Name="StartButton" Width="70" Height="23" Margin="0,0,5,0" Click="StartButton_Click">
+            <Button Name="StartButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="StartButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/control_play_blue.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Log_StartButton}"/>
                 </StackPanel>
             </Button>
-            <Button Name="StopButton" Width="70" Height="23" IsEnabled="False" Click="StopButton_Click">
+            <Button Name="StopButton" HorizontalAlignment="Left" MinWidth="70" Height="23" IsEnabled="False" Click="StopButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/control_stop_blue.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.Log_StopButton}"/>
@@ -37,13 +37,13 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" Orientation="Horizontal">
-                <Button Name="SaveButton" IsEnabled="False" Width="110" Height="23" Margin="0,0,5,0" Click="SaveButton_Click">
+                <Button Name="SaveButton" IsEnabled="False" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="SaveButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/disk.png" />
                         <AccessText Margin="5,0" Text="{x:Static p:Resources.Log_SaveButton}"/>
                 </StackPanel>
             </Button>
-            <Button Name="ClearButton" IsEnabled="False" Width="70" Height="23" Click="ClearButton_Click">
+                <Button Name="ClearButton" IsEnabled="False" HorizontalAlignment="Left" MinWidth="70" Height="23" Click="ClearButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/table_lightning.png" />
                         <AccessText Margin="5,0" Text="{x:Static p:Resources.Log_ClearButton}"/>
@@ -55,7 +55,7 @@
                 <RadioButton Name="DetailedRadioButton" Content="{x:Static p:Resources.Log_DetailedRadioButton}" IsChecked="True" GroupName="RadioButtonsGroup" Margin="5"></RadioButton>
             </StackPanel>
         </Grid>
-        <Button Name="CloseButton" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="70" Height="23" Command="Close">
+        <Button Name="CloseButton" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Bottom" MinWidth="70" Height="23" Command="Close">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/AltController;component/Images/icons/cross.png" />
                 <AccessText Margin="5,0" Text="{x:Static p:Resources.CloseButton}"/>

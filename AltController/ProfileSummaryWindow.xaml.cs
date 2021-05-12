@@ -128,11 +128,11 @@ namespace AltController
 
             // Add headings
             Panel panel = CreateCell(0, 0, 2, 1, blueBrush, HorizontalAlignment.Center, VerticalAlignment.Center);
-            TextBlock textBlock = AddTextToCell(panel, "Modes");
+            TextBlock textBlock = AddTextToCell(panel, Properties.Resources.String_Modes);
             textBlock.FontSize = 14.0;
 
             panel = CreateCell(0, 1, 1, _profile.AppDetails.Count, redBrush, HorizontalAlignment.Center, VerticalAlignment.Center);
-            textBlock = AddTextToCell(panel, "Apps");
+            textBlock = AddTextToCell(panel, Properties.Resources.String_Apps);
             textBlock.FontSize = 14.0;
 
             int colIndex = 1;

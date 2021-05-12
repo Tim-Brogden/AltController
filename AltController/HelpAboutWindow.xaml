@@ -23,8 +23,8 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel Orientation="Vertical" Grid.Column="0">
                             <TextBlock VerticalAlignment="Center" FontWeight="Bold">Alt Controller</TextBlock>
-                            <TextBlock VerticalAlignment="Center" Name="VersionText">Version:</TextBlock>
-                            <TextBlock VerticalAlignment="Center">Copyright 2013-2021 Tim Brogden</TextBlock>
+                            <TextBlock Name="VersionText" VerticalAlignment="Center">Version</TextBlock>
+                            <TextBlock Name="CopyrightText" VerticalAlignment="Center">Copyright 2013-2021 Tim Brogden</TextBlock>
                             <TextBlock VerticalAlignment="Center"><Hyperlink NavigateUri="https://altcontroller.net/" RequestNavigate="Hyperlink_RequestNavigate" Cursor="Hand">https://altcontroller.net</Hyperlink></TextBlock>
                             <TextBlock Name="DescriptionLabel" Text="{x:Static p:Resources.About_DescriptionLabel}" VerticalAlignment="Center" FontWeight="Bold" Margin="0,10,0,0"></TextBlock>
                             <TextBlock TextWrapping="Wrap" Text="{x:Static p:Resources.About_ProgramDescription}"/>
@@ -59,12 +59,15 @@
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Vertical">
                         <TextBlock Name="CreditsLabel" Text="{x:Static p:Resources.About_CreditsLabel}" VerticalAlignment="Center" FontWeight="Bold"></TextBlock>
-                        <TextBlock TextWrapping="Wrap" Text="{x:Static p:Resources.About_CreditsText}"/>
+                        <TextBlock Name="CreditsText" TextWrapping="Wrap" Text="{x:Static p:Resources.About_CreditsText}"/>
+                        <TextBlock Name="TranslatorsLabel" Margin="0,10,0,0" Text="{x:Static p:Resources.About_TranslatorsLabel}" FontWeight="Bold"></TextBlock>
+                        <TextBlock Name="TranslatorsText" Text="{x:Static p:Resources.About_TranslatorsText}" />
+                        <TextBlock Name="TranslatorNamesText" TextWrapping="Wrap" Text=""/>
                     </StackPanel>
                 </ScrollViewer>
             </TabItem>
         </TabControl>
-        <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" Width="70" Height="23" Margin="5" Command="Close">
+        <Button Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" IsCancel="True" MinWidth="70" Height="23" Margin="5" Command="Close">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/AltController;component/Images/icons/cross.png" />
                 <AccessText Margin="5,0" Text="{x:Static p:Resources.CloseButton}"/>

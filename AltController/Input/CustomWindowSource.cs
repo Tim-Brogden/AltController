@@ -40,8 +40,8 @@ namespace AltController.Input
     public class CustomWindowSource : BaseSource
     {
         private string _windowTitle;
-        private double _windowWidthPx = Constants.DefaultCustomWindowSizePx;
-        private double _windowHeightPx = Constants.DefaultCustomWindowSizePx;
+        private double _windowWidthPx = Constants.DefaultCustomWindowWidthPx;
+        private double _windowHeightPx = Constants.DefaultCustomWindowHeightPx;
         private string _backgroundColour = "";
         private bool _topMost = Constants.DefaultIsTopMost;
         private bool _ghostBackground = Constants.DefaultIsGhostBackground;

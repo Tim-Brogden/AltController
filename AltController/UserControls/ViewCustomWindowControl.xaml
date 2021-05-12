@@ -5,7 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              Loaded="UserControl_Loaded" d:DesignHeight="220" d:DesignWidth="220">
+    <UserControl.Resources>
+        <Style x:Key="CustomButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <TextBlock Text="{TemplateBinding Content}" LineStackingStrategy="BlockLineHeight" LineHeight="{TemplateBinding FontSize}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
     <Canvas Name="CustomWindowCanvas" ClipToBounds="True">
-        <Button Name="InvisibleButton" Visibility="Hidden"/>
     </Canvas>
 </UserControl>

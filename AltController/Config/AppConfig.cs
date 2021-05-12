@@ -27,6 +27,7 @@ You should have received a copy of the GNU General Public License
 along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Xml;
 using System.IO;
@@ -95,6 +96,18 @@ namespace AltController.Config
                 }
 
                 return _userDataDir;
+            }
+        }
+
+        public static Dictionary<string, string> SupportedLanguages
+        {
+            get
+            {
+                Dictionary<string, string> languages = new Dictionary<string, string>();
+                languages[Constants.DefaultLanguageCode] = Constants.DefaultLanguageName;
+                languages["en-US"] = "English (US)";
+                languages["de-DE"] = "Deutsch";
+                return languages;
             }
         }
 
@@ -236,20 +249,50 @@ namespace AltController.Config
         }
 
         /// <summary>
-        /// Set a param value
+        /// Set a string param value
         /// </summary>
         /// <param name="key"></param>
         /// <param name="val"></param>
-        public void SetVal(string key, object val)
+        public void SetStringVal(string key, string val)
         {
             if (val != null)
             {
-                _keyValueDictionary[key] = val.ToString();
+                _keyValueDictionary[key] = val;
             }
             else if (_keyValueDictionary.ContainsKey(key))
             {
                 _keyValueDictionary.Remove(key);
             }
+        }
+
+        /// <summary>
+        /// Set a bool param value
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="val"></param>
+        public void SetBoolVal(string key, bool val)
+        {
+            _keyValueDictionary[key] = val.ToString(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Set an integer param value
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="val"></param>
+        public void SetIntVal(string key, int val)
+        {
+            _keyValueDictionary[key] = val.ToString(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Set a double param value
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="val"></param>
+        public void SetDoubleVal(string key, double val)
+        {
+            _keyValueDictionary[key] = val.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -280,7 +323,7 @@ namespace AltController.Config
         {
             int intVal;
             string val = GetStringVal(key, null);
-            if (val == null || !int.TryParse(val, out intVal))
+            if (val == null || !int.TryParse(val, NumberStyles.Integer, CultureInfo.InvariantCulture, out intVal))
             {
                 intVal = defaultVal;
             }
@@ -298,30 +341,21 @@ namespace AltController.Config
         {
             double dblVal;
             string val = GetStringVal(key, null);
-            if (val == null || !double.TryParse(val, out dblVal))
+            if (val != null)
+            {
+                // Legacy: fix comma number style
+                val = val.Replace(',', '.');
+                if (!double.TryParse(val, NumberStyles.Float, CultureInfo.InvariantCulture, out dblVal))
+                {
+                    dblVal = defaultVal;
+                }
+            }
+            else
             {
                 dblVal = defaultVal;
             }
 
             return dblVal;
-        }
-
-        /// <summary>
-        /// Get a float param value
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="defaultVal"></param>
-        /// <returns></returns>
-        public float GetFloatVal(string key, float defaultVal)
-        {
-            float fVal;
-            string val = GetStringVal(key, null);
-            if (val == null || !float.TryParse(val, out fVal))
-            {
-                fVal = defaultVal;
-            }
-
-            return fVal;
         }
 
         /// <summary>

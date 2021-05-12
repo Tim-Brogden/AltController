@@ -48,26 +48,23 @@ namespace AltController.UserControls
         private AppConfig _appConfig;
         private bool _isLoaded = false;
         private bool _isDesignMode = false;
+        private bool _allowMultiSelect;
         private bool _enableColours = true;
         private CustomWindowSource _source;
-        private AltControlEventArgs _currentSelection;
-        private Button _selectedButton = null;
+        private AltControlEventArgs _currentControl;
+        private List<Button> _selectedButtons = new List<Button>();
         private Dictionary<Button, HighlightInfo> _buttonHighlighting = new Dictionary<Button, HighlightInfo>();
-        private Brush _defaultForegroundBrush;
-        private FontWeight _defaultFontWeight;
-        private Brush _defaultBorderBrush;
-        private Thickness _defaultBorderThickness;
-        private Brush _selectedBrush;
         private Brush _defaultsBrush;
         private Brush _configuredBrush;
         private Brush _noHighlightBrush;
         private const int _tabOrderGranularity = 50;
-        private Button _dragButton;
+        private Button _dragButton = null;
         private bool _dragStarted;
         private Point _dragStartPoint;
 
         // Properties
         public bool IsDesignMode { get { return _isDesignMode; } set { _isDesignMode = value; } }
+        public bool AllowMultiSelect { get { return _allowMultiSelect; } set { _allowMultiSelect = value; } }
         public bool EnableColours { get { return _enableColours; } set { _enableColours = value; } }
 
         // Events
@@ -116,14 +113,9 @@ namespace AltController.UserControls
                 _isLoaded = true;
 
                 // Button brushes
-                _selectedBrush = Brushes.Red;
                 _defaultsBrush = new LinearGradientBrush(Colors.LightGray, Colors.Gray, 90.0);
                 _configuredBrush = new LinearGradientBrush(Colors.LightBlue, Colors.SteelBlue, 90.0);
-                _noHighlightBrush = this.InvisibleButton.Background;
-                _defaultForegroundBrush = this.InvisibleButton.Foreground;
-                _defaultFontWeight = this.InvisibleButton.FontWeight;
-                _defaultBorderBrush = this.InvisibleButton.BorderBrush;
-                _defaultBorderThickness = this.InvisibleButton.BorderThickness;
+                _noHighlightBrush = SystemColors.ControlBrush;
 
                 // Enable drag drop if required
                 if (AllowDrop)
@@ -141,7 +133,7 @@ namespace AltController.UserControls
         /// <returns></returns>
         public AltControlEventArgs GetSelectedControl()
         {
-            return _currentSelection;
+            return _currentControl;
         }
 
         /// <summary>
@@ -150,13 +142,13 @@ namespace AltController.UserControls
         /// <param name="args"></param>
         public void SetSelectedControl(AltControlEventArgs args)
         {
-            _currentSelection = args;
+            _currentControl = args;
             if (_isLoaded)
             {
                 Button button = GetButtonFromEvent(args);
                 if (button != null)
                 {
-                    SetCurrentButton(button, EEventReason.None);
+                    SelectButtons(new List<Button>() { button }, EEventReason.None);
                 }
             }
         }
@@ -168,8 +160,26 @@ namespace AltController.UserControls
         /// <param name="e"></param>
         private void CustomButton_Click(object sender, RoutedEventArgs e)
         {
-            SetCurrentButton((Button)sender, EEventReason.None);
-            RaiseEventIfRequired(_currentSelection);
+            Button button = (Button)sender;
+            if (_allowMultiSelect && Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                List<Button> buttons = new List<Button>(_selectedButtons);
+                if (buttons.Contains(button))
+                {
+                    buttons.Remove(button);
+                }
+                else
+                {
+                    buttons.Add(button);
+                }
+                SelectButtons(buttons, EEventReason.None);
+                RaiseEventIfRequired(_currentControl);
+            }
+            else
+            {
+                SelectButtons(new List<Button>() { button }, EEventReason.None);
+                RaiseEventIfRequired(_currentControl);
+            }
             e.Handled = true;
         }
 
@@ -182,19 +192,27 @@ namespace AltController.UserControls
         {
             if (_isDesignMode)
             {
-                if (AllowDrop)
+                // Disallow drag while Ctrl held
+                Button button = (Button)sender;
+                if (AllowDrop && !Keyboard.IsKeyDown(Key.LeftCtrl))
                 {
-                    Button button = (Button)sender;
+                    // Select button if not already selected
+                    if (!_selectedButtons.Contains(button))
+                    {
+                        SelectButtons(new List<Button>() { button }, EEventReason.None);
+                        RaiseEventIfRequired(_currentControl);
+                    }
+
+                    _dragButton = (Button)sender;
                     _dragStartPoint = e.GetPosition(CustomWindowCanvas);
-                    _dragButton = button;
                     _dragStarted = false;
                     CustomWindowCanvas.PreviewMouseMove += CustomWindowCanvas_PreviewMouseMove;
-                }
+                }               
             }
             else
             {
-                SetCurrentButton((Button)sender, EEventReason.Pressed);
-                RaiseEventIfRequired(_currentSelection);
+                SelectButtons(new List<Button>() { (Button)sender }, EEventReason.Pressed);
+                RaiseEventIfRequired(_currentControl);
             }
         }
 
@@ -205,49 +223,44 @@ namespace AltController.UserControls
         /// <param name="e"></param>
         private void CustomWindowCanvas_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            if (_dragButton != null)
+            if (e.LeftButton == MouseButtonState.Pressed)
             {
-                if (e.LeftButton == MouseButtonState.Pressed)
+                Point mousePos = e.GetPosition(CustomWindowCanvas);
+                Vector diff = mousePos - _dragStartPoint;
+
+                if (!_dragStarted)
                 {
-                    Point mousePos = e.GetPosition(CustomWindowCanvas);
-                    Vector diff = mousePos - _dragStartPoint;
-
-                    if (!_dragStarted)
+                    if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
+                        Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
                     {
-                        if (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
-                            Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance)
+                        // Perform drag & drop operation
+                        _dragStarted = true;
+                        DataObject dragData = new DataObject(typeof(CustomButtonData).FullName, new object());
+                        try
                         {
-                            CustomButtonData buttonData = (CustomButtonData)_dragButton.Tag;
-
-                            // Perform drag & drop operation
-                            _dragStarted = true;
-                            DataObject dragData = new DataObject(typeof(CustomButtonData).FullName, buttonData);
-                            try
-                            {
-                                //DragDrop.AddGiveFeedbackHandler(CustomWindowCanvas, CustomWindowCanvas_GiveFeedback);
-                                CustomWindowCanvas.DragOver += new DragEventHandler(CustomWindowCanvas_DragOver);
-                                DragDrop.DoDragDrop(_dragButton, dragData, DragDropEffects.Move);
-                            }
-                            finally
-                            {
-                                //DragDrop.RemoveGiveFeedbackHandler(CustomWindowCanvas, CustomWindowCanvas_GiveFeedback);
-                                CustomWindowCanvas.DragOver -= CustomWindowCanvas_DragOver;
-                            }
+                            //DragDrop.AddGiveFeedbackHandler(CustomWindowCanvas, CustomWindowCanvas_GiveFeedback);
+                            CustomWindowCanvas.DragOver += new DragEventHandler(CustomWindowCanvas_DragOver);
+                            DragDrop.DoDragDrop(_dragButton, dragData, DragDropEffects.Move);
+                        }
+                        finally
+                        {
+                            //DragDrop.RemoveGiveFeedbackHandler(CustomWindowCanvas, CustomWindowCanvas_GiveFeedback);
+                            CustomWindowCanvas.DragOver -= CustomWindowCanvas_DragOver;
                         }
                     }
                 }
-                else
-                {
-                    if (_dragStarted)
-                    {
-                        _dragStarted = false;
-                        // Reposition button in case mouse button released outside canvas area
-                        RefreshButtonLayout(_dragButton);
-                    }
-                    CustomWindowCanvas.PreviewMouseMove -= CustomWindowCanvas_PreviewMouseMove;
-                    _dragButton = null;
-                }
             }
+            else
+            {
+                if (_dragStarted)
+                {
+                    _dragStarted = false;
+                    _dragButton = null;
+                    // Reposition button in case mouse button released outside canvas area
+                    RefreshSelectedButtons();
+                }
+                CustomWindowCanvas.PreviewMouseMove -= CustomWindowCanvas_PreviewMouseMove;
+            }            
         }
 
         /// <summary>
@@ -257,16 +270,18 @@ namespace AltController.UserControls
         /// <param name="e"></param>
         private void CustomWindowCanvas_DragOver(object sender, DragEventArgs e)
         {
-            if (_dragButton != null)
+            if (_dragStarted)
             {
                 Point mousePos = e.GetPosition(CustomWindowCanvas);
                 Vector diff = mousePos - _dragStartPoint;
-                CustomButtonData buttonData = (CustomButtonData)_dragButton.Tag;
-
-                double x = Math.Max(0.0, Math.Min(buttonData.X + diff.X, CustomWindowCanvas.Width - buttonData.Width));
-                double y = Math.Max(0.0, Math.Min(buttonData.Y + diff.Y, CustomWindowCanvas.Height - buttonData.Height));
-                Canvas.SetLeft(_dragButton, x);
-                Canvas.SetTop(_dragButton, y);
+                foreach (Button button in _selectedButtons)
+                {
+                    CustomButtonData buttonData = (CustomButtonData)button.Tag;
+                    double x = Math.Max(0.0, Math.Min(buttonData.X + diff.X, CustomWindowCanvas.Width - buttonData.Width));
+                    double y = Math.Max(0.0, Math.Min(buttonData.Y + diff.Y, CustomWindowCanvas.Height - buttonData.Height));
+                    Canvas.SetLeft(button, x);
+                    Canvas.SetTop(button, y);
+                }
                 e.Handled = true;
             }
         }
@@ -279,31 +294,33 @@ namespace AltController.UserControls
         private void CustomWindowCanvas_Drop(object sender, DragEventArgs e)
         {
             if ((e.Effects & DragDropEffects.Move) != 0 &&
-                e.Data.GetDataPresent(typeof(CustomButtonData).FullName) &&
-                _dragButton != null)
+                e.Data.GetDataPresent(typeof(CustomButtonData).FullName))
             {
-                CustomButtonData buttonData = (CustomButtonData)_dragButton.Tag;
                 Point mousePos = e.GetPosition(CustomWindowCanvas);
                 Vector diff = mousePos - _dragStartPoint;
+                foreach (Button button in _selectedButtons)
+                {
+                    CustomButtonData buttonData = (CustomButtonData)button.Tag;
 
-                // Reposition the button
-                double x = Math.Max(0.0, Math.Min(buttonData.X + diff.X, CustomWindowCanvas.Width - buttonData.Width));
-                double y = Math.Max(0.0, Math.Min(buttonData.Y + diff.Y, CustomWindowCanvas.Height - buttonData.Height));
-                Canvas.SetLeft(_dragButton, x);
-                Canvas.SetTop(_dragButton, y);
+                    // Reposition the button
+                    double x = Math.Max(0.0, Math.Min(buttonData.X + diff.X, CustomWindowCanvas.Width - buttonData.Width));
+                    double y = Math.Max(0.0, Math.Min(buttonData.Y + diff.Y, CustomWindowCanvas.Height - buttonData.Height));
+                    Canvas.SetLeft(button, x);
+                    Canvas.SetTop(button, y);
 
-                // Update the button data on completion of drag drop
-                buttonData.X = x;
-                buttonData.Y = y;
-
-                // Raise event to select the button we moved
-                SetCurrentButton(_dragButton, EEventReason.None);
-                RaiseEventIfRequired(_currentSelection);
+                    // Update the button data on completion of drag drop
+                    buttonData.X = x;
+                    buttonData.Y = y;
+                }
 
                 // Mark drag as complete
                 _dragStarted = false;
                 _dragButton = null;
                 CustomWindowCanvas.PreviewMouseMove -= CustomWindowCanvas_PreviewMouseMove;
+
+                // Refresh parent control
+                RaiseEventIfRequired(_currentControl);
+
                 e.Handled = true;
             }
         }
@@ -315,8 +332,8 @@ namespace AltController.UserControls
         /// <param name="e"></param>
         private void CustomButton_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            SetCurrentButton((Button)sender, EEventReason.Released);
-            RaiseEventIfRequired(_currentSelection);
+            SelectButtons(new List<Button>() { (Button)sender }, EEventReason.Released);
+            RaiseEventIfRequired(_currentControl);
         }
 
         /// <summary>
@@ -326,8 +343,8 @@ namespace AltController.UserControls
         /// <param name="e"></param>
         private void CustomButton_MouseEnter(object sender, MouseEventArgs e)
         {
-            SetCurrentButton((Button)sender, EEventReason.Inside);
-            RaiseEventIfRequired(_currentSelection);
+            SelectButtons(new List<Button>() { (Button)sender }, EEventReason.Inside);
+            RaiseEventIfRequired(_currentControl);
         }
 
         /// <summary>
@@ -337,8 +354,8 @@ namespace AltController.UserControls
         /// <param name="e"></param>
         private void CustomButton_MouseLeave(object sender, MouseEventArgs e)
         {
-            SetCurrentButton((Button)sender, EEventReason.Outside);
-            RaiseEventIfRequired(_currentSelection);
+            SelectButtons(new List<Button>() { (Button)sender }, EEventReason.Outside);
+            RaiseEventIfRequired(_currentControl);
         }
 
         /// <summary>
@@ -360,8 +377,8 @@ namespace AltController.UserControls
 
                 // Clear highlighting and selection
                 _buttonHighlighting.Clear();
-                _selectedButton = null;
-                _currentSelection = null;
+                _selectedButtons.Clear();
+                _currentControl = null;
 
                 // Add buttons to display
                 foreach (CustomButtonData buttonData in _source.CustomButtons)
@@ -372,19 +389,19 @@ namespace AltController.UserControls
                 // Select an initial button if we're in design mode
                 if (_isDesignMode)
                 {
-                    if (_currentSelection == null)
+                    if (_currentControl == null)
                     {
                         Button button = GetFirstButton();
                         if (button != null)
                         {
-                            SetCurrentButton(button, EEventReason.None);
+                            SelectButtons(new List<Button>() { button }, EEventReason.None);
                         }
                     }
                     else
                     {
-                        SetSelectedControl(_currentSelection);
+                        SetSelectedControl(_currentControl);
                     }
-                    RaiseEventIfRequired(_currentSelection);
+                    RaiseEventIfRequired(_currentControl);
                 }
 
                 // Update the tab order
@@ -408,8 +425,8 @@ namespace AltController.UserControls
             RefreshTabOrder();
 
             // Select button
-            SetCurrentButton(button, EEventReason.None);
-            RaiseEventIfRequired(_currentSelection);
+            SelectButtons(new List<Button>() { button }, EEventReason.None);
+            RaiseEventIfRequired(_currentControl);
         }
 
         /// <summary>
@@ -420,6 +437,7 @@ namespace AltController.UserControls
         {
             // Add button to display
             Button button = new Button();
+            button.Style = this.Resources["CustomButtonStyle"] as Style;
             button.Tag = buttonData;
             if (_isDesignMode)
             {
@@ -447,29 +465,32 @@ namespace AltController.UserControls
         }
 
         /// <summary>
-        /// Remove selected custom button
+        /// Remove selected custom buttons
         /// </summary>
         /// <param name="buttonData"></param>
         public void RemoveSelectedButton()
         {
-            if (_selectedButton != null)
+            if (_selectedButtons.Count != 0)
             {
-                // Remove selected button
-                CustomWindowCanvas.Children.Remove(_selectedButton);
-                _source.CustomButtons.Remove((CustomButtonData)_selectedButton.Tag);
+                // Remove selected buttons
+                foreach (Button button in _selectedButtons)
+                {
+                    CustomWindowCanvas.Children.Remove(button);
+                    _source.CustomButtons.Remove((CustomButtonData)button.Tag);
+                }
 
                 // Select first button
-                Button button = GetFirstButton();
-                if (button != null)
+                Button firstButton = GetFirstButton();
+                if (firstButton != null)
                 {
-                    SetCurrentButton(button, EEventReason.None);
+                    SelectButtons(new List<Button>() { firstButton }, EEventReason.None);
                 }
                 else
                 {
-                    _currentSelection = null;
-                    _selectedButton = null;
+                    _currentControl = null;
+                    _selectedButtons.Clear();
                 }
-                RaiseEventIfRequired(_currentSelection);
+                RaiseEventIfRequired(_currentControl);
             }
         }
 
@@ -545,24 +566,31 @@ namespace AltController.UserControls
         /// </summary>
         /// <param name="buttonData"></param>
         /// <param name="reason">Reason=None signifies selection in design mode</param>
-        private void SetCurrentButton(Button button, EEventReason reason)
+        private void SelectButtons(List<Button> buttons, EEventReason reason)
         {
             // Highlight
             if (_isDesignMode)
             {
-                HighlightSelectedButton(button);
+                HighlightSelectedButtons(buttons);
             }
 
-            // Set current button
-            CustomButtonData buttonData = (CustomButtonData)button.Tag;
-            _currentSelection = new AltControlEventArgs(_source.ID,
-                                                        EControlType.CustomButton,
-                                                        ESide.None,
-                                                        0,
-                                                        ELRUDState.None,
-                                                        reason);
-            _currentSelection.Data = (byte)buttonData.ID;
-            _currentSelection.Name = buttonData.Name;
+            // Set current control
+            if (buttons.Count != 0)
+            {
+                CustomButtonData buttonData = (CustomButtonData)buttons[0].Tag;
+                _currentControl = new AltControlEventArgs(_source.ID,
+                                                            EControlType.CustomButton,
+                                                            ESide.None,
+                                                            0,
+                                                            ELRUDState.None,
+                                                            reason);
+                _currentControl.Data = (byte)buttonData.ID;
+                _currentControl.Name = buttonData.Name;
+            }
+            else
+            {
+                _currentControl = null;
+            }
         }
 
         /// <summary>
@@ -611,23 +639,16 @@ namespace AltController.UserControls
         /// Highlight the selected button
         /// </summary>
         /// <param name="button"></param>
-        private void HighlightSelectedButton(Button button)
+        private void HighlightSelectedButtons(List<Button> buttons)
         {
-            if (_selectedButton != null)
+            foreach (Button button in _selectedButtons)
             {
-                _selectedButton.Foreground = _defaultForegroundBrush;
-                _selectedButton.FontWeight = _defaultFontWeight;
-                _selectedButton.BorderBrush = _defaultBorderBrush;
-                _selectedButton.BorderThickness = _defaultBorderThickness;
+                button.FontWeight = FontWeights.Normal;
             }
-            _selectedButton = button;
-            if (button != null)
+            _selectedButtons = buttons;
+            foreach (Button button in _selectedButtons)
             {
-                button.Foreground = _selectedBrush;
                 button.FontWeight = FontWeights.Bold;
-                button.BorderBrush = _selectedBrush;
-                button.BorderThickness = new Thickness(2);
-                button.Focus();
             }
         }
 
@@ -712,12 +733,12 @@ namespace AltController.UserControls
         /// Get the data for the selected button
         /// </summary>
         /// <returns></returns>
-        public CustomButtonData GetSelectedButtonData()
+        public List<CustomButtonData> GetSelectionData()
         {
-            CustomButtonData buttonData = null;
-            if (_selectedButton != null)
+            List<CustomButtonData> buttonData = new List<CustomButtonData>();
+            foreach (Button button in _selectedButtons)
             {
-                buttonData = (CustomButtonData)_selectedButton.Tag;
+                buttonData.Add((CustomButtonData)button.Tag);
             }
 
             return buttonData;
@@ -726,11 +747,14 @@ namespace AltController.UserControls
         /// <summary>
         /// Redisplay the selected button (size, position, text)
         /// </summary>
-        public void RefreshSelectedButtonLayout()
+        public void RefreshSelectedButtons()
         {
-            if (_isLoaded && _selectedButton != null)
+            if (_isLoaded)
             {
-                RefreshButtonLayout(_selectedButton);
+                foreach (Button button in _selectedButtons)
+                {
+                    RefreshButtonLayout(button);
+                }
             }
         }
 
@@ -739,9 +763,12 @@ namespace AltController.UserControls
         /// </summary>
         public void RefreshSelectedButtonBackground()
         {
-            if (_isLoaded && _selectedButton != null)
+            if (_isLoaded)
             {
-                RefreshButtonBackground(_selectedButton);
+                foreach (Button button in _selectedButtons)
+                {
+                    RefreshButtonBackground(button);
+                }
             }
         }        
 
@@ -752,10 +779,21 @@ namespace AltController.UserControls
         private void RefreshButtonLayout(Button button)
         {
             CustomButtonData buttonData = (CustomButtonData)button.Tag;
-
+            
             button.Content = buttonData.Text;
             button.Width = buttonData.Width;
             button.Height = buttonData.Height;
+            byte alpha = (byte)(0xFF & (int)(255.0 * (1.0 - buttonData.BackgroundTranslucency)));
+            button.BorderBrush = GUIUtils.GetBrushFromColour(buttonData.BorderColour, alpha, Brushes.Gray);
+            button.BorderThickness = new Thickness(buttonData.BorderThickness);
+            FontFamily fontFamily = SystemFonts.MessageFontFamily;
+            if (buttonData.FontName != "")
+            {
+                fontFamily = new FontFamily(buttonData.FontName + "," + fontFamily.Source);
+            }
+            button.FontFamily = fontFamily;
+            button.FontSize = buttonData.FontSize;
+            button.Foreground = GUIUtils.GetBrushFromColour(buttonData.TextColour, 0xFF, Brushes.Black);
             Canvas.SetLeft(button, buttonData.X);
             Canvas.SetTop(button, buttonData.Y);
         }

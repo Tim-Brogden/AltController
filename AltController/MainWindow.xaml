@@ -4,10 +4,10 @@
         xmlns:p="clr-namespace:AltController.Properties"
         xmlns:local="clr-namespace:AltController.UserControls"
         xmlns:ac="clr-namespace:AltController"
-        Title="Alt Controller" Loaded="Window_Loaded" Closing="Window_Closing" 
+        Title="Alt Controller" Loaded="Window_Loaded" Closing="Window_Closing" LocationChanged="Window_LocationChanged"
         mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        Icon="/AltController;component/Images/AltController.png" ResizeMode="CanMinimize" Height="270" Width="320">
+        Icon="/AltController;component/Images/AltController.png" ResizeMode="CanMinimize" Height="270" Width="350">
     <Window.CommandBindings>
         <CommandBinding Command="New" CanExecute="NewCanExecute" Executed="NewExecuted" />
         <CommandBinding Command="Open" CanExecute="OpenCanExecute" Executed="OpenExecuted" />
@@ -98,7 +98,7 @@
                     </MenuItem.ToolTip>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Name="ViewMenu" Header="_View">
+            <MenuItem Name="ViewMenu" Header="{x:Static p:Resources.Main_ViewMenu}">
                 <MenuItem Name="ViewProfileSummary" Header="{x:Static p:Resources.Main_ViewProfileSummary}" Click="ViewProfileSummary_Click">
                     <MenuItem.Icon>
                         <Image Source="/AltController;component/Images/icons/application_view_tile.png" />
@@ -148,6 +148,12 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Name="WindowMenu" Header="{x:Static p:Resources.Main_WindowMenu}" Visibility="Hidden">
+                <Separator/>
+                <MenuItem Name="WindowShowTitleBars" IsCheckable="True" IsChecked="False" Header="{x:Static p:Resources.Main_WindowShowTitleBars}" Checked="WindowShowTitleBars_Changed" Unchecked="WindowShowTitleBars_Changed">
+                    <MenuItem.ToolTip>
+                        <ToolTip Content="{x:Static p:Resources.Main_WindowShowTitleBarsToolTip}"></ToolTip>
+                    </MenuItem.ToolTip>
+                </MenuItem>
             </MenuItem>
             <MenuItem Name="HelpMenu" Header="{x:Static p:Resources.Main_HelpMenu}" HorizontalAlignment="Right">
                 <MenuItem Name="HelpUserGuide" Header="{x:Static p:Resources.Main_HelpUserGuide}" Click="HelpUserGuide_Click">

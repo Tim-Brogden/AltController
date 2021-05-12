@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="AltController.UserControls.LanguagePickerControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"              
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="150" Loaded="UserControl_Loaded">
+    <ComboBox Name="LanguageCombo" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="150" ItemsSource="{Binding LanguageItems}" SelectedValuePath="LanguageCode" SelectedValue="{Binding SelectedLanguage}">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding Image}" Grid.Column="0" />
+                    <TextBlock Text="{Binding Name}" Grid.Column="1" Margin="5,0" VerticalAlignment="Center" />
+                </Grid>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>
+</UserControl>

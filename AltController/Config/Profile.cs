@@ -189,7 +189,7 @@ namespace AltController.Config
             }
             catch (Exception ex)
             {
-                throw new Exception("Unable to load profile from Xml", ex);
+                throw new Exception(Properties.Resources.E_PR001, ex);
             }
         }
 
@@ -319,7 +319,7 @@ namespace AltController.Config
             }
             catch (Exception)
             {
-                throw new Exception("Unable to write profile to Xml");
+                throw new Exception(Properties.Resources.E_PR002);
             }
         }
 

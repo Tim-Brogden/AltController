@@ -28,6 +28,7 @@ along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 using System.Windows.Interop;
@@ -94,6 +95,18 @@ namespace AltController
         /// </summary>
         public MainWindow()
         {
+            try
+            {
+                // Load the application config
+                _appConfig.Load();
+
+                // Set UI language
+                SetUILanguage();
+            }
+            catch (Exception)
+            {
+            }
+
             InitializeComponent();
         }
 
@@ -135,6 +148,9 @@ namespace AltController
                                             break;
                                         case Constants.ConfigDrawStateOverlayHotkey:
                                             ViewDrawStateOverlay.IsChecked = !ViewDrawStateOverlay.IsChecked;
+                                            break;
+                                        case Constants.ConfigCustomWindowTitleBarsHotkey:
+                                            WindowShowTitleBars.IsChecked = !WindowShowTitleBars.IsChecked;
                                             break;
                                     }
                                 }
@@ -202,13 +218,10 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error initialising folders", ex);
+                ShowError(Properties.Resources.E_MAIN001, ex);
             }
 
             try {
-                // Load the application config
-                _appConfig.Load();
-
                 // Store update rate
                 _uiUpdateIntervalMS = _appConfig.GetIntVal(Constants.ConfigUIUpdateIntervalMS, Constants.DefaultUIUpdateIntervalMS);
 
@@ -218,14 +231,18 @@ namespace AltController
                 // Set window title
                 this.Title = Constants.ApplicationName;
 
+                // Position window
+                PositionWindow();
+
                 // Register hotkeys
                 RegisterHotkeys();
 
-                // Initialise whether or not to show overlays
+                // Initialise display options
                 this.ViewDrawScreenRegions.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawScreenRegions, Constants.DefaultDrawScreenRegions);
                 this.ViewShowScreenRegionNames.IsChecked = _appConfig.GetBoolVal(Constants.ConfigShowScreenRegionNames, Constants.DefaultShowScreenRegionNames);
                 this.ViewDrawPointerIndicator.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawPointerIndicatorLine, Constants.DefaultDrawPointerIndicatorLine);
                 this.ViewDrawStateOverlay.IsChecked = _appConfig.GetBoolVal(Constants.ConfigDrawStateOverlay, Constants.DefaultDrawStateOverlay);
+                this.WindowShowTitleBars.IsChecked = _appConfig.GetBoolVal(Constants.ConfigCustomWindowTitleBars, Constants.DefaultCustomWindowTitleBars);
 
                 // Tell this window to handle a change in logical state
                 AttachEventReportHandler(HandleEventReport);
@@ -250,7 +267,64 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error initialising application", ex);
+                ShowError(Properties.Resources.E_MAIN002, ex);
+            }
+        }
+
+        /// <summary>
+        /// Set the window position
+        /// </summary>
+        private void PositionWindow()
+        {
+            try
+            {
+                string positionKey = "window_pos_main";
+                if (System.Windows.Forms.SystemInformation.MonitorCount > 1)
+                {
+                    positionKey += "_multiscreen";
+                }
+                string posStr = _appConfig.GetStringVal(positionKey, "");
+                if (posStr != "")
+                {
+                    Point windowPos = Point.Parse(posStr);
+                    if (windowPos.X >= 0.0 && windowPos.X < SystemParameters.VirtualScreenWidth &&
+                        windowPos.Y >= 0.0 && windowPos.Y < SystemParameters.VirtualScreenHeight)
+                    {
+                        this.Left = windowPos.X;
+                        this.Top = windowPos.Y;
+                    }
+                }
+                else
+                {
+                    // Position somewhere centre-left by default, out of the way of any custom windows
+                    this.Left = 0.3 * SystemParameters.PrimaryScreenWidth;
+                    this.Top = 0.4 * SystemParameters.PrimaryScreenHeight;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(Properties.Resources.E_MAIN003, ex);
+            }
+        }
+
+        /// <summary>
+        /// Window moved
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_LocationChanged(object sender, EventArgs e)
+        {            
+            if (IsLoaded && 
+                !double.IsNaN(this.Left) && !double.IsNaN(this.Top) &&
+                this.Left >= 0.0 && this.Top >= 0.0)
+            {
+                string positionKey = "window_pos_main";
+                if (System.Windows.Forms.SystemInformation.MonitorCount > 1)
+                {
+                    positionKey += "_multiscreen";
+                }
+                Point windowPos = new Point(this.Left, this.Top);
+                _appConfig.SetStringVal(positionKey, windowPos.ToString(CultureInfo.InvariantCulture));
             }
         }
 
@@ -297,7 +371,7 @@ namespace AltController
                     // Register hotkeys
                     if (WindowsAPI.RegisterHotKey(_windowHandle, WindowsAPI.HOTKEY_ID, modifiers, keyCode))
                     {
-                        description = "\t" + (string)converter.Convert((long)hotkey, typeof(string), null, System.Globalization.CultureInfo.InvariantCulture);
+                        description = "\t" + (string)converter.Convert((long)hotkey, typeof(string), null, CultureInfo.InvariantCulture);
                     }
                 }
 
@@ -316,6 +390,9 @@ namespace AltController
                     case Constants.ConfigDrawStateOverlayHotkey:
                         ViewDrawStateOverlay.Header = Properties.Resources.Main_ViewDrawStateOverlay + description;
                         break;
+                    case Constants.ConfigCustomWindowTitleBarsHotkey:
+                        WindowShowTitleBars.Header = Properties.Resources.Main_WindowShowTitleBars + description;
+                        break;
                 }
             }
         }
@@ -330,6 +407,7 @@ namespace AltController
             _hotkeys[Constants.ConfigShowScreenRegionNamesHotkey] = (uint)_appConfig.GetIntVal(Constants.ConfigShowScreenRegionNamesHotkey, 0);
             _hotkeys[Constants.ConfigDrawPointerIndicatorLineHotkey] = (uint)_appConfig.GetIntVal(Constants.ConfigDrawPointerIndicatorLineHotkey, 0);
             _hotkeys[Constants.ConfigDrawStateOverlayHotkey] = (uint)_appConfig.GetIntVal(Constants.ConfigDrawStateOverlayHotkey, 0);
+            _hotkeys[Constants.ConfigCustomWindowTitleBarsHotkey] = (uint)_appConfig.GetIntVal(Constants.ConfigCustomWindowTitleBarsHotkey, 0);
         }
 
         /// <summary>
@@ -380,8 +458,8 @@ namespace AltController
                 _dpiX = source.CompositionTarget.TransformToDevice.M11;
                 _dpiY = source.CompositionTarget.TransformToDevice.M22;
 
-                _appConfig.SetVal(Constants.ConfigDPIXSetting, _dpiX);
-                _appConfig.SetVal(Constants.ConfigDPIYSetting, _dpiY);
+                _appConfig.SetDoubleVal(Constants.ConfigDPIXSetting, _dpiX);
+                _appConfig.SetDoubleVal(Constants.ConfigDPIYSetting, _dpiY);
 
                 success = true;
             }
@@ -520,7 +598,7 @@ namespace AltController
                     this.ProfileLabel.ToolTip = profile.Name;
 
                     // Clear last used profile in app settings
-                    _appConfig.SetVal(Constants.ConfigLastUsedProfile, null);
+                    _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, null);
 
                     // Reset the logical state
                     _logicalState = new LogicalState();
@@ -533,7 +611,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error creating new profile", ex);
+                ShowError(Properties.Resources.E_MAIN004, ex);
             }
 
             e.Handled = true;
@@ -610,7 +688,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening profile", ex);
+                ShowError(Properties.Resources.E_MAIN005, ex);
             }
 
             e.Handled = true;
@@ -657,7 +735,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error saving profile", ex);
+                ShowError(Properties.Resources.E_MAIN006, ex);
             }
 
             if (e != null)
@@ -719,7 +797,7 @@ namespace AltController
                     this.ProfileLabel.ToolTip = _profile.Name;
 
                     // Store last used profile in app settings
-                    _appConfig.SetVal(Constants.ConfigLastUsedProfile, dialog.FileName);
+                    _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, dialog.FileName);
 
                     // Disable the save button
                     _profileChanged = false;
@@ -727,7 +805,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error saving profile", ex);
+                ShowError(Properties.Resources.E_MAIN007, ex);
             }
 
             if (e != null)
@@ -788,7 +866,7 @@ namespace AltController
             }        
             catch (Exception ex)
             {
-                ShowError("Error opening profile editor window", ex);
+                ShowError(Properties.Resources.E_MAIN008, ex);
             }
         }
 
@@ -819,7 +897,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening screen regions window", ex);
+                ShowError(Properties.Resources.E_MAIN009, ex);
             }
         }
 
@@ -848,7 +926,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening Profile Summary window", ex);
+                ShowError(Properties.Resources.E_MAIN010, ex);
             }
         }
 
@@ -964,15 +1042,15 @@ namespace AltController
                     //profile.Directory = fi.DirectoryName;
 
                     // Update last used profile
-                    _appConfig.SetVal(Constants.ConfigLastUsedProfile, filePath);
+                    _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, filePath);
                 }
                 catch (Exception ex)
                 {
-                    ShowError("Unable to load profile", ex);
+                    ShowError(Properties.Resources.E_MAIN011, ex);
                     profile = null;
 
                     // Remove invalid profile from app config
-                    _appConfig.SetVal(Constants.ConfigLastUsedProfile, null);
+                    _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, null);
                 }
             }
 
@@ -1222,7 +1300,12 @@ namespace AltController
             windowsToClose.Clear();
 
             // Recreate window menu items
-            WindowMenu.Items.Clear();
+            while (WindowMenu.Items.Count > 0 &&
+                WindowMenu.Items[0] is MenuItem)
+            {
+                WindowMenu.Items.RemoveAt(0);
+            }
+            
             int customWindowIndex = 0;
             foreach (BaseSource source in _profile.InputSources)
             {
@@ -1240,7 +1323,7 @@ namespace AltController
                         // Can open upto 4 custom windows using Ctrl+1...4
                         menuItem.InputGestureText = string.Format("Ctrl+{0}", customWindowIndex + 1);
                     }
-                    WindowMenu.Items.Add(menuItem);
+                    WindowMenu.Items.Insert(customWindowIndex, menuItem);
 
                     customWindowIndex++;
                 }
@@ -1254,9 +1337,6 @@ namespace AltController
                 menuItem.Header = Properties.Resources.String_Open_all + "...";
                 menuItem.InputGestureText = "Ctrl+0";
                 WindowMenu.Items.Insert(0, menuItem);
-
-                // Add separator
-                WindowMenu.Items.Insert(1, new Separator());
 
                 // Show menu
                 WindowMenu.Visibility = Visibility.Visible;
@@ -1281,7 +1361,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening all custom windows", ex);
+                ShowError(Properties.Resources.E_MAIN012, ex);
             }
         }
 
@@ -1343,7 +1423,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening custom window", ex);
+                ShowError(Properties.Resources.E_MAIN013, ex);
             }
             
             e.Handled = true;
@@ -1366,7 +1446,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening custom window", ex);
+                ShowError(Properties.Resources.E_MAIN014, ex);
             }
         }
 
@@ -1407,33 +1487,10 @@ namespace AltController
                 {
                     // Custom window not open
                     CustomWindow customWindow = new CustomWindow(this);
+                    customWindow.ShowTitleBar = WindowShowTitleBars.IsChecked;
+                    customWindow.WindowIndex = customWindowIndex;
                     customWindow.CustomWindowSource = customWindowSource;
                     customWindow.Show();
-
-                    // Position windows in the corners of the screen
-                    switch (customWindowIndex % 4)
-                    {
-                        case 0:
-                            // Top left
-                            customWindow.Left = 0;
-                            customWindow.Top = 0;
-                            break;
-                        case 1:
-                            // Top right
-                            customWindow.Left = SystemParameters.WorkArea.Width - customWindowSource.WindowWidth - 4;
-                            customWindow.Top = 0;
-                            break;
-                        case 2:
-                            // Bottom left
-                            customWindow.Left = 0;
-                            customWindow.Top = SystemParameters.WorkArea.Height - customWindowSource.WindowHeight - 30;
-                            break;
-                        case 3:
-                            // Bottom right
-                            customWindow.Left = SystemParameters.WorkArea.Width - customWindowSource.WindowWidth - 4;
-                            customWindow.Top = SystemParameters.WorkArea.Height - customWindowSource.WindowHeight - 30;
-                            break;
-                    }
 
                     // Record that window is open
                     _openCustomWindows[customWindowSource.ID] = customWindow;
@@ -1519,7 +1576,21 @@ namespace AltController
                 _overlayDialog.DrawStateOverlay = this.ViewDrawStateOverlay.IsChecked;
             }
         }
-       
+
+        /// <summary>
+        /// Window menu - show title bars option
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void WindowShowTitleBars_Changed(object sender, RoutedEventArgs e)
+        {
+            bool show = this.WindowShowTitleBars.IsChecked;
+            foreach (CustomWindow window in _openCustomWindows.Values)
+            {
+                window.ShowTitleBar = show;
+            }
+        }
+
         /// <summary>
         /// Tools - options menu item
         /// </summary>
@@ -1566,6 +1637,29 @@ namespace AltController
         }
 
         /// <summary>
+        /// Set UI language
+        /// </summary>
+        private void SetUILanguage()
+        {            
+            string languageCode = _appConfig.GetStringVal(Constants.ConfigLanguageCode, "");
+            if (AppConfig.SupportedLanguages.ContainsKey(languageCode))
+            {
+                CultureInfo culture = new CultureInfo(languageCode);
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = culture;
+            }
+            else
+            {
+                languageCode = Thread.CurrentThread.CurrentUICulture.Name;
+                if (!AppConfig.SupportedLanguages.ContainsKey(languageCode))
+                {
+                    languageCode = Constants.DefaultLanguageCode;
+                }
+                _appConfig.SetStringVal(Constants.ConfigLanguageCode, languageCode);
+            }
+        }
+
+        /// <summary>
         /// Show Log information window
         /// </summary>
         /// <param name="sender"></param>
@@ -1587,21 +1681,8 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError("Error opening Log information window", ex);
+                ShowError(Properties.Resources.E_MAIN015, ex);
             }
-        }
-
-        /// <summary>
-        /// Show error message link
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="ex"></param>
-        private void ShowInfoMessage(string message)
-        {
-            AboutPanel.Visibility = Visibility.Collapsed;
-            ErrorMessage.Clear();
-            InfoMessage.Text = message;
-            InfoMessage.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -1625,6 +1706,5 @@ namespace AltController
             ErrorMessage.Clear();
             AboutPanel.Visibility = System.Windows.Visibility.Visible;
         }
-
     }
 }

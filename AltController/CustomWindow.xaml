@@ -3,30 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:AltController.UserControls"
         WindowStyle="None" AllowsTransparency="True" Background="{x:Null}" 
-        Loaded="Window_Loaded" Closing="Window_Closing"
+        Loaded="Window_Loaded" Closing="Window_Closing" LocationChanged="Window_LocationChanged"
         Title="Custom Window" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="300" d:DesignWidth="300" SizeToContent="WidthAndHeight" Icon="/AltController;component/Images/AltController.png" Focusable="False">
     <Window.Resources>
-        <LinearGradientBrush x:Key="WindowFrameBrush" StartPoint="0,0.5" EndPoint="1,0.5">
-            <GradientStop Color="LightGray" Offset="0"/>
-            <GradientStop Color="Gray" Offset="1"/>
+        <LinearGradientBrush x:Key="TitleBarBrush" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStop Color="#EEEEEE" Offset="0"/>
+            <GradientStop Color="#CCCCCC" Offset="1"/>
         </LinearGradientBrush>
     </Window.Resources>
-    <Border Name="CustomWindowBorder" Background="{x:Null}" CornerRadius="5" BorderBrush="{StaticResource WindowFrameBrush}" BorderThickness="2,0,2,2">
-        <Grid Background="{x:Null}">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Border Background="{StaticResource WindowFrameBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-              CornerRadius="5,5,0,0" Margin="-1,0,-1,0" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Name="CustomWindowBorder" Background="{x:Null}" 
+            BorderBrush="DarkGray" BorderThickness="1"
+             MouseLeftButtonDown="Border_MouseLeftButtonDown">
+        <StackPanel Orientation="Vertical" Background="{x:Null}">
+            <Border x:Name="TitleBar" Background="{StaticResource TitleBarBrush}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid>
-                    <TextBlock Name="TitleTextBlock" Foreground="Black" VerticalAlignment="Center" Margin="10,2,10,2" Text="Title" />
-                    <Button Height="20" Name="CloseButton" Width="23" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Center" Command="ApplicationCommands.Close">
-                        <Image Source="/AltController;component/Images/icons/cancel.png"/>
-                    </Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Name="TitleTextBlock" Grid.Column="0" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,2,10,2" Text="Title" TextTrimming="CharacterEllipsis" />
+                    <StackPanel Name="ButtonsPanel" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Name="MinimiseButton" Margin="2" Click="MinimiseButton_Click">
+                            <Image Source="/AltController;component/Images/minimise.png" Stretch="None" />
+                        </Button>
+                        <Button Name="CloseButton" Margin="2" VerticalAlignment="Center" Command="ApplicationCommands.Close">
+                            <Image Source="/AltController;component/Images/icons/cancel.png" Stretch="None" />
+                        </Button>
+                    </StackPanel>
                 </Grid>
             </Border>
             <local:ViewCustomWindowControl x:Name="CustomControl" Background="{x:Null}" IsDesignMode="False" EnableColours="True" Grid.Row="1" />
-        </Grid>
+        </StackPanel>
     </Border>
 </Window>

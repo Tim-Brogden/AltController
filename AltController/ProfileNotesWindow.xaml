@@ -14,13 +14,13 @@
         <TextBlock Name="IntroLabel" Text="{x:Static p:Resources.Notes_IntroLabel}" VerticalAlignment="Center" Grid.Row="0" Margin="5,0"></TextBlock>
         <TextBox Name="ProfileNotesText" Grid.Row="1" Margin="5,0" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" TextWrapping="Wrap"></TextBox>
         <StackPanel Grid.Row="3" Margin="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button Height="23" Name="OKButton" Width="70" Margin="0,0,5,0" Click="OKButton_Click">
+            <Button Height="23" Name="OKButton" HorizontalAlignment="Left" MinWidth="70" Margin="0,0,5,0" Click="OKButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/accept.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
                 </StackPanel>
             </Button>
-            <Button Height="23" Name="CancelButton" Width="70" IsCancel="True" Click="CancelButton_Click">
+            <Button Height="23" Name="CancelButton" HorizontalAlignment="Left" MinWidth="70" IsCancel="True" Click="CancelButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/cancel.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>

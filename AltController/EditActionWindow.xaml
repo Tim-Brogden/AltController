@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:AltController.UserControls" ResizeMode="CanMinimize"
         Title="{x:Static p:Resources.Action_Title}" Loaded="Window_Loaded" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        Icon="/AltController;component/Images/AltController.png" Height="450" Width="355">
+        Icon="/AltController;component/Images/AltController.png" Height="450" Width="385">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
@@ -19,8 +19,8 @@
                     <RowDefinition Height="25"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="180"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Name="ActionTypeLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_ActionTypeLabel}" Grid.Row="0" Grid.Column="0"/>
                 <ComboBox Name="ActionTypeCombo" Grid.Row="0" Grid.Column="1" Height="23" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="ActionTypeCombo_SelectionChanged"></ComboBox>
@@ -49,13 +49,13 @@
             <local:ErrorMessageControl x:Name="ErrorMessage" MaxWidth="320" />
         </StackPanel>
         <StackPanel Grid.Row="3" Margin="5" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button Name="OKButton" Width="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click" >
+            <Button Name="OKButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="OKButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/accept.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.OKButton}"/>
                 </StackPanel>
             </Button>
-            <Button Name="CancelButton" Width="70" Height="23" IsCancel="True" Click="CancelButton_Click" >
+            <Button Name="CancelButton" HorizontalAlignment="Left" MinWidth="70" Height="23" IsCancel="True" Click="CancelButton_Click" >
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/AltController;component/Images/icons/cancel.png" />
                     <AccessText Margin="5,0" Text="{x:Static p:Resources.CancelButton}"/>

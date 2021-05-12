@@ -248,7 +248,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ErrorMessage.Show("Error while changing action type", ex);
+                ErrorMessage.Show(Properties.Resources.E_ACTION001, ex);
             }
         }
 
