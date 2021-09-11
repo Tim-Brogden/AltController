@@ -101,6 +101,16 @@ namespace AltController
             Brush yellowBrush = Brushes.LightYellow;
             Brush blueBrush = new LinearGradientBrush(Colors.LightBlue, Colors.RoyalBlue, 90.0);
 
+            // Get the apps in the profile which are not marked as 'snooze'
+            NamedItemList activeApps = new NamedItemList();
+            foreach (AppItem item in _profile.AppDetails)
+            {
+                if (!item.Snooze)
+                {
+                    activeApps.Add(item);
+                }
+            }
+
             // Add rows
             RowDefinition rowDef = new RowDefinition();
             rowDef.Height = new GridLength(25);
@@ -118,12 +128,12 @@ namespace AltController
             ColumnDefinition colDef = new ColumnDefinition();
             colDef.Width = new GridLength(100);
             ProfileSummaryGrid.ColumnDefinitions.Add(colDef);
-            foreach (NamedItem appDetails in _profile.AppDetails)
+            foreach (AppItem appDetails in activeApps)
             {
                 colDef = new ColumnDefinition();
                 colDef.MinWidth = 100;
                 //colDef.Width = new GridLength(280);
-                ProfileSummaryGrid.ColumnDefinitions.Add(colDef);
+                ProfileSummaryGrid.ColumnDefinitions.Add(colDef);                
             }
 
             // Add headings
@@ -131,12 +141,12 @@ namespace AltController
             TextBlock textBlock = AddTextToCell(panel, Properties.Resources.String_Modes);
             textBlock.FontSize = 14.0;
 
-            panel = CreateCell(0, 1, 1, _profile.AppDetails.Count, redBrush, HorizontalAlignment.Center, VerticalAlignment.Center);
+            panel = CreateCell(0, 1, 1, activeApps.Count, redBrush, HorizontalAlignment.Center, VerticalAlignment.Center);
             textBlock = AddTextToCell(panel, Properties.Resources.String_Apps);
             textBlock.FontSize = 14.0;
 
             int colIndex = 1;
-            foreach (NamedItem appDetails in _profile.AppDetails)
+            foreach (NamedItem appDetails in activeApps)
             {
                 panel = CreateCell(1, colIndex, 1, 1, yellowBrush, HorizontalAlignment.Center, VerticalAlignment.Center);
                 textBlock = AddTextToCell(panel, appDetails.Name);
@@ -153,7 +163,7 @@ namespace AltController
                 textBlock.FontSize = 12.0;
 
                 colIndex = 1;
-                foreach (NamedItem appDetails in _profile.AppDetails)
+                foreach (AppItem appDetails in activeApps)
                 {
                     panel = CreateCell(rowIndex, colIndex, 1, 1, Brushes.White, HorizontalAlignment.Left, VerticalAlignment.Top);
 

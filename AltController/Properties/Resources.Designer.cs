@@ -3463,6 +3463,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Snooze profile when using this app.
+        /// </summary>
+        public static string Situations_SnoozeLabel {
+            get {
+                return ResourceManager.GetString("Situations_SnoozeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t perform any actions while this app is active.
+        /// </summary>
+        public static string Situations_SnoozeToolTip {
+            get {
+                return ResourceManager.GetString("Situations_SnoozeToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit situations.
         /// </summary>
         public static string Situations_Title {
@@ -4548,6 +4566,15 @@ namespace AltController.Properties {
         public static string String_Situation_Changed {
             get {
                 return ResourceManager.GetString("String_Situation_Changed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to snooze.
+        /// </summary>
+        public static string String_snooze {
+            get {
+                return ResourceManager.GetString("String_snooze", resourceCulture);
             }
         }
         

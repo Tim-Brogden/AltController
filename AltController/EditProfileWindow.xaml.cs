@@ -198,7 +198,7 @@ namespace AltController
 
             // Bind situations
             this.ModeCombo.ItemsSource = _profile.ModeDetails;
-            this.AppCombo.ItemsSource = _profile.AppDetails;
+            this.AppCombo.ItemsSource = GetActiveAppsList();
             this.PageCombo.ItemsSource = _profile.PageDetails;
 
             // Bind inputs
@@ -223,6 +223,23 @@ namespace AltController
                     InputCombo.SelectedIndex = 0;
                 }
             }
+        }
+
+        /// <summary>
+        /// Get the apps defined in the profile which are not marked as 'snooze'.
+        /// </summary>
+        /// <returns></returns>
+        private NamedItemList GetActiveAppsList()
+        {
+            NamedItemList activeApps = new NamedItemList();
+            foreach (AppItem item in _profile.AppDetails)
+            {
+                if (!item.Snooze)
+                {
+                    activeApps.Add(item);
+                }
+            }
+            return activeApps;
         }
 
         /// <summary>
@@ -492,7 +509,12 @@ namespace AltController
                 // Create dialog for editing modes, apps and pages
                 EditSituationsWindow dialog = new EditSituationsWindow();
                 dialog.ModeDetailsList = new NamedItemList(_profile.ModeDetails);
-                dialog.AppDetailsList = new NamedItemList(_profile.AppDetails);
+                NamedItemList appDetails = new NamedItemList();
+                foreach (AppItem item in _profile.AppDetails)
+                {
+                    appDetails.Add(new AppItem(item));
+                }
+                dialog.AppDetailsList = appDetails;
                 dialog.PageDetailsList = new NamedItemList(_profile.PageDetails);
 
                 // Show dialog
@@ -522,9 +544,9 @@ namespace AltController
                     if (this.AppCombo.SelectedItem != null)
                     {
                         appID = ((NamedItem)this.AppCombo.SelectedItem).ID;
-                        if (_profile.GetAppDetails(appID) == null)
+                        if (_profile.GetAppDetails(appID, false) == null)
                         {
-                            // App has been deleted so will select default
+                            // App has been deleted or snoozed so will select default
                             appID = Constants.DefaultID;
                         }
                     }
@@ -541,7 +563,7 @@ namespace AltController
 
                     // Rebind situations
                     this.ModeCombo.ItemsSource = _profile.ModeDetails;
-                    this.AppCombo.ItemsSource = _profile.AppDetails;
+                    this.AppCombo.ItemsSource = GetActiveAppsList();
                     this.PageCombo.ItemsSource = _profile.PageDetails;
 
                     // Select appropriate values

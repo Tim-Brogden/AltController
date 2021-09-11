@@ -89,7 +89,7 @@ namespace AltController.Config
 
             // Create default mode, app, page
             _modeDetails.Add(new NamedItem(Constants.DefaultID, Properties.Resources.String_Default));
-            _appDetails.Add(new NamedItem(Constants.DefaultID, Properties.Resources.String_Default));
+            _appDetails.Add(new AppItem(Constants.DefaultID, Properties.Resources.String_Default));
             _pageDetails.Add(new NamedItem(Constants.DefaultID, Properties.Resources.String_Default));
             _modeMappings[Constants.DefaultID] = new ModeMappingTable(Constants.DefaultID);
         }
@@ -163,9 +163,23 @@ namespace AltController.Config
                     _screenRegions.FromXml(regionsElement);
                 }
                 
-                // Read modes, apps and pages
+                // Read modes
                 ReadNameValueDetailsList(_modeDetails, doc.SelectNodes("/profile/modes/mode"));
-                ReadNameValueDetailsList(_appDetails, doc.SelectNodes("/profile/apps/app"));
+                
+                // Read apps
+                _appDetails = new NamedItemList();
+                XmlNodeList appNodes = doc.SelectNodes("/profile/apps/app");
+                if (appNodes != null)
+                {
+                    foreach (XmlNode node in appNodes)
+                    {
+                        AppItem item = new AppItem();
+                        item.FromXml((XmlElement)node);
+                        _appDetails.Add(item);
+                    }
+                }
+
+                // Read pages
                 ReadNameValueDetailsList(_pageDetails, doc.SelectNodes("/profile/pages/page"));
 
                 // Read action lists
@@ -385,9 +399,14 @@ namespace AltController.Config
         /// </summary>
         /// <param name="appID"></param>
         /// <returns></returns>
-        public NamedItem GetAppDetails(long appID)
+        public AppItem GetAppDetails(long appID, bool includeSnoozed = true)
         {
-            return AppDetails.GetItemByID(appID);
+            AppItem item = (AppItem)AppDetails.GetItemByID(appID);
+            if (!includeSnoozed && item != null && item.Snooze)
+            {
+                item = null;
+            }
+            return item;
         }
 
         /// <summary>
@@ -395,17 +414,20 @@ namespace AltController.Config
         /// </summary>
         /// <param name="appName"></param>
         /// <returns></returns>
-        public NamedItem GetAppDetails(string appName)
+        public AppItem GetAppDetails(string appName, bool includeSnoozed = true)
         {
             // Make it case insensitive
             string appNameLower = appName.ToLower();
 
-            NamedItem appDetails = null;
-            foreach (NamedItem item in AppDetails)
+            AppItem appDetails = null;
+            foreach (AppItem item in AppDetails)
             {
                 if (item.Name.ToLower() == appNameLower)
                 {
-                    appDetails = item;
+                    if (includeSnoozed || !item.Snooze)
+                    {
+                        appDetails = item;
+                    }
                     break;
                 }
             }
@@ -714,7 +736,7 @@ namespace AltController.Config
                 {
                     region.ShowInState.ModeID = Constants.NoneID;
                 }
-                if (region.ShowInState.AppID > 0 && GetAppDetails(region.ShowInState.AppID) == null)
+                if (region.ShowInState.AppID > 0 && GetAppDetails(region.ShowInState.AppID, false) == null) 
                 {
                     region.ShowInState.AppID = Constants.NoneID;
                 }

@@ -1629,6 +1629,14 @@
     <value>Refresh the list of running programs</value>
     <comment>Edit situations</comment>
   </data>
+  <data name="Situations_SnoozeLabel" xml:space="preserve">
+    <value>Snooze profile when using this app</value>
+    <comment>Edit situations</comment>
+  </data>
+  <data name="Situations_SnoozeToolTip" xml:space="preserve">
+    <value>Don't perform any actions while this app is active</value>
+    <comment>Edit situations</comment>
+  </data>
   <data name="Situations_Title" xml:space="preserve">
     <value>Edit situations</value>
     <comment>Edit situations</comment>
@@ -2111,6 +2119,10 @@
   </data>
   <data name="String_Situation_Changed" xml:space="preserve">
     <value>Situation Changed</value>
+    <comment>Strings</comment>
+  </data>
+  <data name="String_snooze" xml:space="preserve">
+    <value>snooze</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Standard_pointer" xml:space="preserve">

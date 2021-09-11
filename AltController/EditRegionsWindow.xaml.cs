@@ -128,9 +128,9 @@ namespace AltController
                 _appsList.Clear();
                 _appsList.Add(new NamedItem(Constants.DefaultID, Properties.Resources.String_All_Option));
                 _appsList.Add(new NamedItem(Constants.NoneID, Properties.Resources.String_None_Option));
-                foreach (NamedItem item in _profile.AppDetails)
+                foreach (AppItem item in _profile.AppDetails)
                 {
-                    if (item.ID != Constants.DefaultID)
+                    if (item.ID != Constants.DefaultID && !item.Snooze)
                     {
                         _appsList.Add(item);
                     }

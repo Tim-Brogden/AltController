@@ -60,7 +60,7 @@ namespace AltController.Core
                 }
             } 
         }
-        public string Name 
+        public virtual string Name 
         { 
             get 
             { 
@@ -127,7 +127,7 @@ namespace AltController.Core
         /// Notify change
         /// </summary>
         /// <param name="info"></param>
-        private void NotifyPropertyChanged(String info)
+        protected void NotifyPropertyChanged(String info)
         {
             if (PropertyChanged != null)
             {

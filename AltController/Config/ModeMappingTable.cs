@@ -120,7 +120,7 @@ namespace AltController.Config
                 itemToDelete = -1;
                 foreach (long itemID in _appMappings.Keys)
                 {
-                    if (profile.GetAppDetails(itemID) == null)
+                    if (profile.GetAppDetails(itemID, false) == null)
                     {
                         itemToDelete = itemID;
                         break;

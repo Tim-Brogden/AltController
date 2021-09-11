@@ -168,8 +168,9 @@ namespace AltController
                 // Add the currently selected app
                 string appName = selectedApp.Name;
                 long id = _appDetailsList.GetFirstUnusedID();
+                bool snooze = SnoozeCheckbox.IsChecked == true;
 
-                NamedItem newItem = new NamedItem(id, appName);
+                AppItem newItem = new AppItem(id, appName, snooze);
                 _appDetailsList.Add(newItem);
 
                 // Select the new app
@@ -237,18 +238,21 @@ namespace AltController
         /// <param name="e"></param>
         private void AppList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NamedItem selectedItem = (NamedItem)this.AppList.SelectedItem;
+            AppItem selectedItem = (AppItem)this.AppList.SelectedItem;
             if (selectedItem != null && selectedItem.ID != Constants.DefaultID)
             {
                 // Select the app in the list
                 long id = selectedItem.Name.ToLower().GetHashCode();
                 this.AppCombo.SelectedValue = id;
-
+                this.SnoozeCheckbox.IsChecked = selectedItem.Snooze;
                 this.DeleteAppButton.IsEnabled = true;
+                this.AppDetailsGroupBox.IsEnabled = true;
             }
             else
             {
+                this.SnoozeCheckbox.IsChecked = false;
                 this.DeleteAppButton.IsEnabled = false;
+                this.AppDetailsGroupBox.IsEnabled = false;
             }
         }
 
@@ -259,12 +263,26 @@ namespace AltController
         /// <param name="e"></param>
         private void AppCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            NamedItem selectedItem = (NamedItem)this.AppList.SelectedItem;
+            AppItem selectedItem = (AppItem)this.AppList.SelectedItem;
             NamedItem selectedApp = (NamedItem)this.AppCombo.SelectedItem;
             if (selectedItem != null && selectedItem.ID != Constants.DefaultID &&
                 selectedApp != null && selectedApp.Name != selectedItem.Name)
             {
                 selectedItem.Name = selectedApp.Name;
+            }
+        }
+
+        /// <summary>
+        /// Snooze option changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SnoozeCheckbox_Changed(object sender, RoutedEventArgs e)
+        {
+            AppItem selectedItem = (AppItem)this.AppList.SelectedItem;
+            if (selectedItem != null && selectedItem.ID != Constants.DefaultID)
+            {
+                selectedItem.Snooze = SnoozeCheckbox.IsChecked == true;
             }
         }
 
@@ -425,5 +443,6 @@ namespace AltController
                 }
             }
         }
+
     }
 }

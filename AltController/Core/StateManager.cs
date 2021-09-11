@@ -55,6 +55,7 @@ namespace AltController.Core
         // State
         private LogicalState _lastUsedLogicalState = new LogicalState();
         private LogicalState _logicalState = new LogicalState();
+        private string _currentProcessName = "";
         private Rect _currentWindowRect = new Rect();
         private Rect _overlayWindowRect = new Rect();
         private KeyPressManager _keyStateManager;
@@ -65,6 +66,7 @@ namespace AltController.Core
         private double _dpiY = 1.0;
         private bool _autoStopPressActions = Constants.DefaultAutoStopPressActions;
         private bool _autoStopInsideActions = Constants.DefaultAutoStopInsideActions;
+        private bool _snoozed = false;
 
         // Internal inputs
         private InternalSource _internalInputSource = new InternalSource();
@@ -153,6 +155,9 @@ namespace AltController.Core
                 inputSource.Connect(HandleEvent, true);
             }
 
+            // Set the current app
+            SetApp(_currentProcessName);
+
             // Initialise the set of actions to perform
             UpdateCurrentActionSet();
         }
@@ -236,6 +241,11 @@ namespace AltController.Core
         /// <param name="eventTypeID"></param>
         public void HandleEvent(object sender, AltControlEventArgs args)
         {
+            if (_snoozed)
+            {
+                return;
+            }
+
             // Perform actions required
             ActionList actionList = _currentActionSet.GetActions(args.ToID());
             if (actionList != null && actionList.IsActive)
@@ -369,16 +379,23 @@ namespace AltController.Core
         /// <summary>
         /// Change the current app
         /// </summary>
-        /// <param name="appID"></param>
-        public void SetApp(string appName)
+        /// <param name="processName"></param>
+        public void SetApp(string processName)
         {
-            // Calculate new state
+            // Store current process name
+            _currentProcessName = processName;
+
+            // Calculate new state            
+            _snoozed = false;
             LogicalState newState = new LogicalState(_logicalState);
-            NamedItem appDetails = _profile.GetAppDetails(appName);
+            AppItem appDetails = _profile.GetAppDetails(processName);
             if (appDetails != null)
             {
                 // This app is in the profile
                 newState.AppID = appDetails.ID;
+
+                // Disable actions while this app is active if required
+                _snoozed = appDetails.Snooze;
             }
             else 
             {
@@ -481,7 +498,7 @@ namespace AltController.Core
         private void UpdateCurrentActionSet()
         {
             // Determine new actions
-            ActionMappingTable newActionSet = _profile.GetActionsForState(_logicalState, true);
+            ActionMappingTable newActionSet = _snoozed ? new ActionMappingTable() : _profile.GetActionsForState(_logicalState, true);
 
             // Deactivate old actions
             Dictionary<long, ActionList>.Enumerator eOld = _currentActionSet.GetEnumerator();

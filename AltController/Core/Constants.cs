@@ -35,8 +35,8 @@ namespace AltController.Core
     /// </summary>
     public class Constants
     {
-        public const string FileVersion = "1.93";    // Update this when the profile file format changes
-        public const string AppVersion = "1.93";    // Update this when the application version changes
+        public const string FileVersion = "1.94";    // Update this when the profile file format changes
+        public const string AppVersion = "1.94";    // Update this when the application version changes
         
         public const long LastUsedID = -4;
         public const long NextID = -3;

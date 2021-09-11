@@ -1239,10 +1239,10 @@ namespace AltController
             {
                 ModeName.Text = "N/K";
             }
-            NamedItem appDetails = _profile.GetAppDetails(logicalState.AppID);
+            AppItem appDetails = _profile.GetAppDetails(logicalState.AppID);
             if (appDetails != null)
             {
-                AppName.Text = appDetails.Name;
+                AppName.Text = appDetails.LongName;
             }
             else
             {

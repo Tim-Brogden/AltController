@@ -125,6 +125,7 @@
     <Compile Include="Config\ScreenRegion.cs" />
     <Compile Include="Config\ScreenRegionList.cs" />
     <Compile Include="Controls\CustomWindowButtonSet.cs" />
+    <Compile Include="Core\AppItem.cs" />
     <Compile Include="Core\CustomButtonData.cs" />
     <Compile Include="Core\HighlightInfo.cs" />
     <Compile Include="Core\HotkeyBindingConverter.cs" />

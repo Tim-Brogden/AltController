@@ -205,3 +205,5 @@ Several improvements to custom windows:
 Added language selector to the program options with German language now available.
 The two options to automatically stop ongoing Pressed or Inside actions (added in v1.82) are no longer enabled by default. See Tools – Options – Actions tab.
 
+Version 1.94
+- Added option to 'snooze' Alt Controller (stop actions being performed) when certain applications are active (e.g. Alt Controller itself). See Edit situations window - Apps tab.

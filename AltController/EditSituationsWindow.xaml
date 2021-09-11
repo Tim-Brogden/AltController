@@ -60,7 +60,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="25"/>
                         </Grid.RowDefinitions>
-                        <ListBox Name="AppList" Grid.Row="0" Width="245" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="AppList_SelectionChanged" />
+                        <ListBox Name="AppList" Grid.Row="0" Width="245" HorizontalAlignment="Left" DisplayMemberPath="LongName" SelectedValuePath="ID" SelectionChanged="AppList_SelectionChanged"/>
                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
                             <Button Name="AddAppButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="AddAppButton_Click">
                                 <StackPanel Orientation="Horizontal">
@@ -80,6 +80,8 @@
                         <Grid Margin="5">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="25"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="80"/>
@@ -93,6 +95,7 @@
                                     <Image Source="/AltController;component/Images/icons/arrow_refresh.png" Stretch="None" />
                                 </StackPanel>
                             </Button>
+                            <CheckBox Name="SnoozeCheckbox" Content="{x:Static p:Resources.Situations_SnoozeLabel}" ToolTip="{x:Static p:Resources.Situations_SnoozeToolTip}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Checked="SnoozeCheckbox_Changed" Unchecked="SnoozeCheckbox_Changed"></CheckBox>
                         </Grid>
                     </GroupBox>
                 </Grid>
@@ -104,7 +107,7 @@
                         <RowDefinition Height="25"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>                        
+                    <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="300"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
