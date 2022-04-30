@@ -23,6 +23,6 @@
         <TextBlock Name="ReleaseKeyLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_ReleaseKeyLabel}" Grid.Row="1" Grid.Column="0" IsEnabled="False"/>
         <CheckBox Name="ReleaseCheckbox" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Checked="ReleaseCheckbox_Changed" Unchecked="ReleaseCheckbox_Changed"/>
         <TextBlock Name="ReleaseAfterLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_ReleaseAfterLabel}" Grid.Row="2" Grid.Column="0" IsEnabled="False"/>
-        <local:CustomSliderControl x:Name="HoldForSlider" Grid.Row="2" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="1.0" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2" IsEnabled="False"/>
+        <local:CustomSliderControl x:Name="HoldForSlider" Grid.Row="2" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="1.0" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" IsEnabled="False"/>
     </Grid>
 </UserControl>

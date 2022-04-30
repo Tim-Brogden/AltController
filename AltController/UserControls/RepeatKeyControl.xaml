@@ -23,11 +23,11 @@
         <TextBlock Name="KeyToPressLabel" Text="{x:Static p:Resources.Action_KeyToPressLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
         <ComboBox Name="KeyToPressCombo" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name"  SelectedValuePath="ID"/>
         <TextBlock Name="RepeatEveryLabel" Text="{x:Static p:Resources.Action_RepeatEveryLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="1" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.5" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="1" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2"/>
         <TextBlock Name="HoldForLabel" Text="{x:Static p:Resources.Action_HoldForLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="HoldForSlider" Grid.Row="2" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.05" SmallChange="0.05" LargeChange="0.1" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="HoldForSlider" Grid.Row="2" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.05" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2"/>
         <TextBlock Name="StopAfterLabel" Text="{x:Static p:Resources.Action_StopAfterLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="StopAfterSlider" Grid.Row="3" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="0.0" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="StopAfterSlider" Grid.Row="3" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="0.0" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2"/>
         <TextBlock Name="RepeatInfoLabel" Text="{x:Static p:Resources.Action_RepeatInfoLabel}" VerticalAlignment="Top" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
     </Grid>
 </UserControl>

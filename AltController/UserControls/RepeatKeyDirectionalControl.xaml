@@ -6,14 +6,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AltController.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="330" Loaded="UserControl_Loaded">
+             d:DesignHeight="330" d:DesignWidth="330" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
             <RowDefinition Height="25"></RowDefinition>
-            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -25,10 +25,26 @@
         <TextBlock Name="LongerTowardsLabel" Text="{x:Static p:Resources.Action_LongerTowardsLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
         <ComboBox Name="LongerTowardsCombo" Grid.Row="1" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="LongerTowardsCombo_SelectionChanged"/>
         <TextBlock Name="PressEveryLabel" Text="{x:Static p:Resources.Action_PressEveryLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="2" Grid.Column="1" Value="1.0" Maximum="5.0" LargeChange="0.2" SmallChange="0.1" Minimum="0.2" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="2" Grid.Column="1" Value="1.0" Maximum="5.0" LargeChange="0.05" SmallChange="0.01" Minimum="0.05" DecimalPlaces="2"/>
         <TextBlock Name="SensitivityLabel" Text="{x:Static p:Resources.Action_SensitivityLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="SensitivitySlider" Grid.Row="3" Grid.Column="1" Value="1.0" Maximum="5.0" LargeChange="0.2" SmallChange="0.1" Minimum="0.2" DecimalPlaces="2" ValueChanged="SensitivitySlider_ValueChanged"/>
-        <TextBlock x:Name="RepeatDirectionalInfoLabel" Text="{x:Static p:Resources.Action_RepeatDirectionalInfoLabel}" VerticalAlignment="Top" TextWrapping="Wrap" Grid.Row="5" Grid.Column="0"/>
-        <Label VerticalAlignment="Top" HorizontalAlignment="Left" Name="VisualRepresentationLabel" Width="100" Height="100" Grid.Row="5" Grid.Column="1" BorderThickness="1" BorderBrush="Gray"></Label>
+        <local:CustomSliderControl x:Name="SensitivitySlider" Grid.Row="3" Grid.Column="1" Value="1.0" Maximum="5.0" LargeChange="0.05" SmallChange="0.01" Minimum="0.05" DecimalPlaces="2" ValueChanged="SensitivitySlider_ValueChanged"/>
+        <TextBlock x:Name="RepeatDirectionalInfoLabel" Text="{x:Static p:Resources.Action_RepeatDirectionalInfoLabel}" Margin="0,0,5,0" VerticalAlignment="Top" TextWrapping="Wrap" Grid.Row="4" Grid.Column="0"/>
+        <Label VerticalAlignment="Top" HorizontalAlignment="Left" Name="VisualRepresentationLabel" Width="80" Height="80" Grid.Row="4" Grid.Column="1" BorderThickness="1" BorderBrush="Gray"></Label>
+        <Expander Name="AdditionalOptionsGroupBox" ToolTip="{x:Static p:Resources.String_CompatibilityLabel}" Grid.Row="5" Grid.ColumnSpan="2" Header="{x:Static p:Resources.String_Additional_options}" IsExpanded="False" VerticalAlignment="Top">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="175"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="TimeToMaxLabel" Text="{x:Static p:Resources.Action_TimeToMaxLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                <local:CustomSliderControl x:Name="TimeToMaxSlider" Grid.Row="0" Grid.Column="1" Value="0.0" Maximum="5.0" LargeChange="0.05" SmallChange="0.01" Minimum="0" DecimalPlaces="2"/>
+                <TextBlock Name="TimeToMinLabel" Text="{x:Static p:Resources.Action_TimeToMinLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                <local:CustomSliderControl x:Name="TimeToMinSlider" Grid.Row="1" Grid.Column="1" Value="0.0" Maximum="5.0" LargeChange="0.05" SmallChange="0.01" Minimum="0" DecimalPlaces="2"/>
+            </Grid>
+        </Expander>
     </Grid>
 </UserControl>

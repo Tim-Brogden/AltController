@@ -502,6 +502,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time to reach max (s):.
+        /// </summary>
+        public static string Action_TimeToMaxLabel {
+            get {
+                return ResourceManager.GetString("Action_TimeToMaxLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time to auto cancel (s):.
+        /// </summary>
+        public static string Action_TimeToMinLabel {
+            get {
+                return ResourceManager.GetString("Action_TimeToMinLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Edit action.
         /// </summary>
         public static string Action_Title {
@@ -3571,6 +3589,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Additional options.
+        /// </summary>
+        public static string String_Additional_options {
+            get {
+                return ResourceManager.GetString("String_Additional_options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (All).
         /// </summary>
         public static string String_All_Option {
@@ -3684,6 +3711,15 @@ namespace AltController.Properties {
         public static string String_Click {
             get {
                 return ResourceManager.GetString("String_Click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided for compatibility with previous versions.
+        /// </summary>
+        public static string String_CompatibilityLabel {
+            get {
+                return ResourceManager.GetString("String_CompatibilityLabel", resourceCulture);
             }
         }
         
@@ -4624,11 +4660,29 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to to auto cancel.
+        /// </summary>
+        public static string String_to_auto_cancel {
+            get {
+                return ResourceManager.GetString("String_to_auto_cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To position.
         /// </summary>
         public static string String_To_position {
             get {
                 return ResourceManager.GetString("String_To_position", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to to reach max.
+        /// </summary>
+        public static string String_to_reach_max {
+            get {
+                return ResourceManager.GetString("String_to_reach_max", resourceCulture);
             }
         }
         

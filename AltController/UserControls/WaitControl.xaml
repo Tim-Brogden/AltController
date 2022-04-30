@@ -16,6 +16,6 @@
             <ColumnDefinition Width="180"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Name="WaitForLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_WaitForLabel}" Grid.Row="0" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="DurationSlider" Grid.Row="0" Grid.Column="1" Minimum="0.05" Maximum="60.0" Value="1.0" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="DurationSlider" Grid.Row="0" Grid.Column="1" Minimum="0.05" Maximum="60.0" Value="1.0" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2"/>
     </Grid>
 </UserControl>

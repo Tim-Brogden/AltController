@@ -207,3 +207,7 @@ The two options to automatically stop ongoing Pressed or Inside actions (added i
 
 Version 1.94
 - Added option to 'snooze' Alt Controller (stop actions being performed) when certain applications are active (e.g. Alt Controller itself). See Edit situations window - Apps tab.
+
+Version 1.96
+- Added additional options to Repeat key (directional) action for backwards compatibility with previous versions.
+- Fixed bug which was preventing Repeat key (directional) actions from automatically stopping. 

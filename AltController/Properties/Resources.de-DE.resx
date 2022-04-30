@@ -313,6 +313,14 @@
     <value>Zu tippender Text:</value>
     <comment>Edit action - Type text</comment>
   </data>
+  <data name="Action_TimeToMaxLabel" xml:space="preserve">
+    <value>Zeit bis max (Sek.):</value>
+    <comment>Edit action - Repeat key directional</comment>
+  </data>
+  <data name="Action_TimeToMinLabel" xml:space="preserve">
+    <value>Runterfahrzeit (Sek.):</value>
+    <comment>Edit action - Repeat key directional</comment>
+  </data>
   <data name="Action_Title" xml:space="preserve">
     <value>Aktion bearbeiten</value>
     <comment>Edit action</comment>
@@ -1649,6 +1657,10 @@
     <value>Aktives Fenster </value>
     <comment>Strings</comment>
   </data>
+  <data name="String_Additional_options" xml:space="preserve">
+    <value>Zusätzliche Optionen</value>
+    <comment>Strings</comment>
+  </data>
   <data name="String_Add_action_error_description" xml:space="preserve">
     <value>Aktion konnte nicht angelegt werden. Bitte überprüfen Sie, dass keine falschen Werte festgelegt wurden.</value>
     <comment>Strings</comment>
@@ -1719,6 +1731,10 @@
   </data>
   <data name="String_Click" xml:space="preserve">
     <value>Klick</value>
+    <comment>Strings</comment>
+  </data>
+  <data name="String_CompatibilityLabel" xml:space="preserve">
+    <value>Zur Kompatibilität mit früheren Versionen vorgesehen</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Copyright" xml:space="preserve">
@@ -2173,8 +2189,16 @@
     <value>Oben</value>
     <comment>Strings</comment>
   </data>
+  <data name="String_to_auto_cancel" xml:space="preserve">
+    <value>runterfahren</value>
+    <comment>Strings</comment>
+  </data>
   <data name="String_To_position" xml:space="preserve">
     <value>Zu Position</value>
+    <comment>Strings</comment>
+  </data>
+  <data name="String_to_reach_max" xml:space="preserve">
+    <value>bis max</value>
     <comment>Strings</comment>
   </data>
   <data name="String_Type" xml:space="preserve">

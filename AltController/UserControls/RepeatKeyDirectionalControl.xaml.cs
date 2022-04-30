@@ -74,6 +74,7 @@ namespace AltController.UserControls
                 VisualRepresentationLabel.Background = _visualRepresentationBrush;
 
                 _directionListItems.Clear();
+                _directionListItems.Add(new NamedItem((long)ELRUDState.None, Properties.Resources.String_None_Option));
                 _directionListItems.Add(new NamedItem((long)ELRUDState.Left, Properties.Resources.String_Left));
                 _directionListItems.Add(new NamedItem((long)ELRUDState.Right, Properties.Resources.String_Right));
                 _directionListItems.Add(new NamedItem((long)ELRUDState.Up, Properties.Resources.String_Top));
@@ -90,8 +91,12 @@ namespace AltController.UserControls
                 {
                     this.KeyToPressCombo.SelectedValue = _currentAction.UniqueKeyID;
                     this.RepeatEverySlider.Value = _currentAction.UpdateEveryMS * 0.001;
+                    this.TimeToMaxSlider.Value = _currentAction.TimeToMaxValueMS * 0.001;
+                    this.TimeToMinSlider.Value = _currentAction.TimeToMinValueMS * 0.001;
                     this.SensitivitySlider.Value = _currentAction.Sensitivity;
                     this.LongerTowardsCombo.SelectedValue = (long)_currentAction.LongerPressesDirection;
+
+                    this.AdditionalOptionsGroupBox.IsExpanded = _currentAction.TimeToMaxValueMS > 0 || _currentAction.TimeToMinValueMS > 0;
                 }
             }
         }
@@ -123,6 +128,8 @@ namespace AltController.UserControls
                 _currentAction = new RepeatKeyDirectionalAction();
                 _currentAction.UniqueKeyID = keyItem.ID;
                 _currentAction.UpdateEveryMS = (int)(this.RepeatEverySlider.Value * 1000);
+                _currentAction.TimeToMaxValueMS = (int)(this.TimeToMaxSlider.Value * 1000);
+                _currentAction.TimeToMinValueMS = (int)(this.TimeToMinSlider.Value * 1000);
                 if (this.SensitivitySlider.Value > 0.0)
                 {
                     _currentAction.Sensitivity = this.SensitivitySlider.Value;
@@ -167,6 +174,10 @@ namespace AltController.UserControls
                         case ELRUDState.Down:
                             _visualRepresentationBrush.StartPoint = new Point(0.0, 0.0);
                             _visualRepresentationBrush.EndPoint = new Point(0.0, 1.0);
+                            break;
+                        default:
+                            _visualRepresentationBrush.StartPoint = new Point(-1000, -1000.0);
+                            _visualRepresentationBrush.EndPoint = new Point(1000.0, 1000.0);
                             break;
                     }
                 }

@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:AltController.UserControls" ResizeMode="CanMinimize"
         Title="{x:Static p:Resources.Action_Title}" Loaded="Window_Loaded" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-        Icon="/AltController;component/Images/AltController.png" Height="450" Width="385">
+        Icon="/AltController;component/Images/AltController.png" Height="480" Width="385">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>

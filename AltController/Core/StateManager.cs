@@ -28,7 +28,6 @@ along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
 using System.Threading;
 using AltController.Sys;
@@ -67,6 +66,7 @@ namespace AltController.Core
         private bool _autoStopPressActions = Constants.DefaultAutoStopPressActions;
         private bool _autoStopInsideActions = Constants.DefaultAutoStopInsideActions;
         private bool _snoozed = false;
+        private int _seqNumber = 0;
 
         // Internal inputs
         private InternalSource _internalInputSource = new InternalSource();
@@ -81,6 +81,7 @@ namespace AltController.Core
         public double DPI_X { get { return _dpiX; } }
         public double DPI_Y { get { return _dpiY; } }
         public bool IsDiagnosticsEnabled { get { return _isDiagnosticsEnabled; } }
+        public int SeqNumber { get { return _seqNumber; } }
 
         /// <summary>
         /// Constructor
@@ -183,9 +184,6 @@ namespace AltController.Core
                 // Check for configuration updates
                 _parent.ReceiveConfigUpdates(this);
 
-                // Continue any existing actions
-                ContinueOngoingTasks();
-
                 // Handle any events submitted from other threads
                 foreach (AltControlEventArgs args in _parent.GetNewEventSubmissions())
                 {
@@ -204,6 +202,12 @@ namespace AltController.Core
                 {
                     source.UpdateState(this);
                 }
+
+                // Continue any existing actions
+                ContinueOngoingTasks();
+
+                // Increment loop counter
+                _seqNumber++;
 
                 Thread.Sleep(_pollingIntervalMS);
             }
@@ -246,27 +250,38 @@ namespace AltController.Core
                 return;
             }
 
-            // Perform actions required
-            ActionList actionList = _currentActionSet.GetActions(args.ToID());
-            if (actionList != null && actionList.IsActive)
-            {
-                // Start the action list
-                bool ongoing = actionList.IsOngoing;
-                actionList.Start(this, args);
-
-                // Add to ongoing actions if required
-                if (!ongoing && actionList.IsOngoing)
-                {
-                    _ongoingActionLists.Add(actionList);
-                }
-            }
-
             // Auto stop corresponding press / inside events
             AutoStopOppositeActions(args);
+
+            // Perform actions required
+            ActionList actionList = _currentActionSet.GetActions(args.ToID());
+            if (actionList != null)
+            {
+                if (!actionList.IsOngoing)
+                {
+                    // Start the actions
+                    actionList.Start(this, args);
+
+                    // Add to ongoing actions if required
+                    if (actionList.IsOngoing)
+                    {
+                        _ongoingActionLists.Add(actionList);
+                    }
+                }
+                else
+                {
+                    // Continue the actions
+                    actionList.Continue(this, args);
+                    if (!actionList.IsOngoing)
+                    {
+                        PurgeOngoingActionsList();
+                    }
+                }
+            }
         }
 
         /// <summary>
-        /// Auto stop corresponding press / inside events when key / button is released or on leaving region
+        /// Auto stop corresponding press / inside / updated events when key / button is released or on leaving region
         /// </summary>
         private void AutoStopOppositeActions(AltControlEventArgs args)
         {
@@ -286,11 +301,29 @@ namespace AltController.Core
                 // Stop actions for opposite event
                 AltControlEventArgs stopArgs = new AltControlEventArgs(args);
                 stopArgs.EventReason = oppositeReason;
-                ActionList actionList = _currentActionSet.GetActions(stopArgs.ToID());
-                if (actionList != null && actionList.IsOngoing)
-                {
-                    actionList.Stop(this);
-                }
+                StopActionsForEvent(stopArgs);
+            }
+
+            if (args.EventReason == EEventReason.Outside)
+            {
+                // Stop actions for corresponding Updated event
+                AltControlEventArgs stopArgs = new AltControlEventArgs(args);
+                stopArgs.EventReason = EEventReason.Updated;
+                StopActionsForEvent(stopArgs);
+            }
+        }
+
+        /// <summary>
+        /// Stop any ongoing actions for the given event
+        /// </summary>
+        /// <param name="args"></param>
+        private void StopActionsForEvent(AltControlEventArgs args)
+        {
+            ActionList actionList = _currentActionSet.GetActions(args.ToID());
+            if (actionList != null && actionList.IsOngoing)
+            {
+                actionList.Stop(this);
+                PurgeOngoingActionsList();
             }
         }
 
@@ -308,25 +341,18 @@ namespace AltController.Core
         /// </summary>
         private void ContinueOngoingTasks()
         {
-            // Actions
             int i = 0;
+            bool completed = false;
             while (i < _ongoingActionLists.Count)
             {
                 ActionList actionList = _ongoingActionLists[i];
-                if (actionList.IsActive)
-                {
-                    actionList.Continue(this);
-                }
-
-                // Prepare to remove completed or inactive actions from the ongoing list
-                if ((!actionList.IsActive || !actionList.IsOngoing) && i < _ongoingActionLists.Count)
-                {
-                    _ongoingActionLists.RemoveAt(i);
-                }
-                else
-                {
-                    i++;
-                }
+                actionList.Continue(this);
+                completed |= !actionList.IsOngoing;
+                i++;
+            }
+            if (completed)
+            {
+                PurgeOngoingActionsList();
             }
         }
 
@@ -336,10 +362,7 @@ namespace AltController.Core
         public void Reset()
         {
             // Clear all ongoing actions
-            foreach (ActionList actionList in _ongoingActionLists)
-            {
-                actionList.Stop(this);
-            }
+            PurgeOngoingActionsList();
             _ongoingActionLists.Clear();
 
             // Reset the keyboard state
@@ -517,20 +540,7 @@ namespace AltController.Core
             }
 
             // Stop ongoing actions that have been deactivated
-            int i = 0;
-            while (i < _ongoingActionLists.Count)
-            {
-                ActionList actionList = _ongoingActionLists[i];
-                if (!actionList.IsActive)
-                {
-                    actionList.Stop(this);
-                    _ongoingActionLists.RemoveAt(i);
-                }
-                else
-                {
-                    i++;
-                }
-            }
+            PurgeOngoingActionsList();
 
             // Activate new actions
             Dictionary<long, ActionList>.Enumerator eNew = newActionSet.GetEnumerator();
@@ -549,6 +559,31 @@ namespace AltController.Core
             }
 
             _currentActionSet = newActionSet;
+        }
+
+        /// <summary>
+        /// Remove completed or deactivated action lists from the ongoing list
+        /// </summary>
+        private void PurgeOngoingActionsList()
+        {
+            int i = 0;
+            while (i < _ongoingActionLists.Count)
+            {
+                ActionList actionList = _ongoingActionLists[i];
+                if (!actionList.IsOngoing)
+                {
+                    _ongoingActionLists.RemoveAt(i);
+                }
+                else if (!actionList.IsActive)
+                {
+                    actionList.Stop(this);
+                    _ongoingActionLists.RemoveAt(i);
+                }
+                else
+                {
+                    i++;
+                }
+            }
         }
 
     }

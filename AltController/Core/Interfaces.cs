@@ -62,8 +62,8 @@ namespace AltController.Core
         double DPI_X { get; }
         double DPI_Y { get; }
         bool IsDiagnosticsEnabled { get; }
+        int SeqNumber { get; }
         void ReportEvent(EventReport report);
-
         void Reset();
         void SetMode(long modeID);
         void SetApp(string appName);

@@ -46,6 +46,7 @@ namespace AltController.Config
         private LogicalState _logicalState;
         private AltControlEventArgs _eventArgs;
         private int _id = 0;
+        private int _seqNumber = 0;
 
         // Execution
         private bool _isActive = false;
@@ -56,11 +57,7 @@ namespace AltController.Config
         public LogicalState LogicalState { get { return _logicalState; } set { _logicalState = value; } }
         public AltControlEventArgs EventArgs { get { return _eventArgs; } set { _eventArgs = value; } }
         public int ID { get { return _id; } set { _id = value; } }
-        public bool IsActive 
-        { 
-            get { return _isActive; } 
-            set { _isActive = value; _isOngoing = false; } 
-        }
+        public bool IsActive { get { return _isActive; } set { _isActive = value; } }
         public bool IsOngoing { get { return _isOngoing; } protected set { _isOngoing = value; } }
 
         /// <summary>
@@ -91,6 +88,7 @@ namespace AltController.Config
             // Reset ongoing status
             IsOngoing = false;
             _currentEvent = args;
+            _seqNumber = stateHandler.SeqNumber;
 
             // Start performing actions
             foreach (BaseAction action in this)
@@ -116,8 +114,22 @@ namespace AltController.Config
         /// Continue the actions
         /// </summary>
         /// <param name="stateHandler"></param>
-        public void Continue(IStateManager stateHandler)
+        /// <param name="args"></param>
+        public void Continue(IStateManager stateHandler, AltControlEventArgs args = null)
         {
+            // Don't start or continue actions twice in the same update cycle
+            if (_seqNumber == stateHandler.SeqNumber)
+            {
+                return;
+            }
+            _seqNumber = stateHandler.SeqNumber;
+
+            // Update triggering event if provided
+            if (args != null)
+            {
+                _currentEvent = args;
+            }
+
             // Reset ongoing status
             IsOngoing = false;
             bool foundCurrentAction = false;

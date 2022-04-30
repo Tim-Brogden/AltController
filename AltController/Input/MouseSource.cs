@@ -155,7 +155,7 @@ namespace AltController.Input
         /// <returns></returns>
         public bool IsPointerInRegion(byte regionID)
         {
-            return _isInRegion[regionID];
+            return _isActive && _isInRegion[regionID];
         }
 
         /// <summary>

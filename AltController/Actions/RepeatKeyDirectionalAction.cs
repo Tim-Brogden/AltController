@@ -27,10 +27,12 @@ You should have received a copy of the GNU General Public License
 along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
+using System.Globalization;
 using System.Xml;
 using System.Windows;
 using AltController.Core;
 using AltController.Event;
+using AltController.Input;
 
 namespace AltController.Actions
 {
@@ -43,6 +45,8 @@ namespace AltController.Actions
         private const long _defaultUpdateEveryTicks = 500L * TimeSpan.TicksPerMillisecond;
         private const long _minPressTimeTicks = 20L * TimeSpan.TicksPerMillisecond;
         private long _configUpdateEveryTicks = _defaultUpdateEveryTicks;
+        private long _configTimeToMaxValueTicks = 0L;
+        private long _configTimeToMinValueTicks = 0L;
         private double _configSensitivity = 1.0;
         private ELRUDState _longerPressesDirection = ELRUDState.Right;
 
@@ -50,11 +54,15 @@ namespace AltController.Actions
         private long _lastPressTimeTicks;
         private bool _isPressed = false;
         private long _pressDurationTicks;
+        private long _lastReleaseTimeTicks = DateTime.Now.Ticks;
+        private double _currentPressAmount = 0.0;
 
         // Properties
         public int UpdateEveryMS { get { return (int)(_configUpdateEveryTicks / TimeSpan.TicksPerMillisecond); } set { _configUpdateEveryTicks = value * TimeSpan.TicksPerMillisecond; Updated(); } }
+        public int TimeToMaxValueMS { get { return (int)(_configTimeToMaxValueTicks / TimeSpan.TicksPerMillisecond); } set { _configTimeToMaxValueTicks = value * TimeSpan.TicksPerMillisecond; Updated(); } }
+        public int TimeToMinValueMS { get { return (int)(_configTimeToMinValueTicks / TimeSpan.TicksPerMillisecond); } set { _configTimeToMinValueTicks = value * TimeSpan.TicksPerMillisecond; Updated(); } }
         public ELRUDState LongerPressesDirection { get { return _longerPressesDirection; } set { _longerPressesDirection = value; Updated(); } }
-        public double Sensitivity { get { return _configSensitivity; } set { _configSensitivity = value; } }
+        public double Sensitivity { get { return _configSensitivity; } set { _configSensitivity = value; Updated(); } }
 
         /// <summary>
         /// Return what type of action this is
@@ -96,11 +104,13 @@ namespace AltController.Actions
                     case ELRUDState.Down:
                         longerPressesText = Properties.Resources.String_Bottom; break;
                 }
-                return string.Format(Properties.Resources.String_Repeat_key + " '{0}', " + Properties.Resources.String_press_every + " {1}s{2}, " + Properties.Resources.String_sensitivity + " {3}",
+                return string.Format(Properties.Resources.String_Repeat_key + " '{0}', " + Properties.Resources.String_press_every + " {1}s{2}, " + Properties.Resources.String_sensitivity + " {3}{4}{5}",
                                                 base.KeyName,
                                                 UpdateEveryMS * 0.001,
                                                 longerPressesText != "" ? ", " + Properties.Resources.String_longer_presses_towards + " " + longerPressesText.ToLower() : "",
-                                                _configSensitivity.ToString("0.00"));
+                                                _configSensitivity.ToString("0.00"),
+                                                TimeToMaxValueMS > 0 ? ", " + (TimeToMaxValueMS * 0.001).ToString("0.00") + "s " + Properties.Resources.String_to_reach_max : "",
+                                                TimeToMinValueMS > 0 ? ", " + (TimeToMinValueMS * 0.001).ToString("0.00") + "s " + Properties.Resources.String_to_auto_cancel : "");
             }
         }
         public override string ShortName
@@ -119,7 +129,7 @@ namespace AltController.Actions
             base.Updated();
 
             // Validate settings
-            if (_configUpdateEveryTicks < 0L)
+            if (_configUpdateEveryTicks <= 0L)
             {
                 _configUpdateEveryTicks = _defaultUpdateEveryTicks;
             }
@@ -135,8 +145,16 @@ namespace AltController.Actions
         /// <param name="element"></param>
         public override void FromXml(XmlElement element)
         {
-            _configUpdateEveryTicks = long.Parse(element.GetAttribute("updateevery"), System.Globalization.CultureInfo.InvariantCulture);
-            _configSensitivity = double.Parse(element.GetAttribute("sensitivity"), System.Globalization.CultureInfo.InvariantCulture);
+            _configUpdateEveryTicks = long.Parse(element.GetAttribute("updateevery"), CultureInfo.InvariantCulture);
+            if (element.HasAttribute("timetomax"))
+            {
+                _configTimeToMaxValueTicks = long.Parse(element.GetAttribute("timetomax"), CultureInfo.InvariantCulture);
+            }
+            if (element.HasAttribute("timetomin"))
+            {
+                _configTimeToMinValueTicks = long.Parse(element.GetAttribute("timetomin"), CultureInfo.InvariantCulture);
+            }
+            _configSensitivity = double.Parse(element.GetAttribute("sensitivity"), CultureInfo.InvariantCulture);
             _longerPressesDirection = (ELRUDState)Enum.Parse(typeof(ELRUDState), element.GetAttribute("direction"));
 
             base.FromXml(element);
@@ -150,8 +168,10 @@ namespace AltController.Actions
         {
             base.ToXml(element, doc);
 
-            element.SetAttribute("updateevery", _configUpdateEveryTicks.ToString(System.Globalization.CultureInfo.InvariantCulture));
-            element.SetAttribute("sensitivity", _configSensitivity.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture));
+            element.SetAttribute("updateevery", _configUpdateEveryTicks.ToString(CultureInfo.InvariantCulture));
+            element.SetAttribute("timetomax", _configTimeToMaxValueTicks.ToString(CultureInfo.InvariantCulture));
+            element.SetAttribute("timetomin", _configTimeToMinValueTicks.ToString(CultureInfo.InvariantCulture));
+            element.SetAttribute("sensitivity", _configSensitivity.ToString("0.00", CultureInfo.InvariantCulture));
             element.SetAttribute("direction", _longerPressesDirection.ToString());
         }
 
@@ -160,9 +180,25 @@ namespace AltController.Actions
         /// </summary>
         public override void StartAction(IStateManager parent, AltControlEventArgs cargs)
         {
-            long currentTime = DateTime.Now.Ticks;
+            // Check that the pointer is still inside the region
+            MouseSource source = (MouseSource)parent.CurrentProfile.GetInputSource(ESourceType.Mouse);
+            if (source == null || !source.IsPointerInRegion(cargs.Data))
+            {
+                StopAction(parent);
+                return;
+            }
 
-            // See if time to press            
+            long currentTime = DateTime.Now.Ticks;
+            IsOngoing = true;
+
+            // See if it's time to release the key
+            if (_isPressed && currentTime - _lastPressTimeTicks > _pressDurationTicks)
+            {
+                parent.KeyStateManager.SetKeyState(VirtualKey, false);
+                _isPressed = false;
+            }
+            
+            // See if it's time to press the key
             if (currentTime - _lastPressTimeTicks > _configUpdateEveryTicks)
             {
                 _lastPressTimeTicks = currentTime;
@@ -174,30 +210,93 @@ namespace AltController.Actions
                 Point normalisedPos = new Point((double)xValue.Value, (double)yValue.Value);
                 
                 // Get reqd press time
-                double targetAmount = GetRequiredPressAmount(normalisedPos);                    
-                _pressDurationTicks = (long)(_configUpdateEveryTicks * targetAmount);
+                double targetAmount = GetRequiredPressAmount(normalisedPos);
+
+                // Legacy: Support old time to max and time to auto cancel settings from around v1.31
+                if (_configTimeToMinValueTicks > 0L)
+                {
+                    // Decay the current press amount if applicable
+                    _currentPressAmount -= (currentTime - _lastReleaseTimeTicks) / (double)_configTimeToMinValueTicks;
+                    _currentPressAmount = Math.Max(0.0, _currentPressAmount);
+
+                    // Calc proportion of the repeat interval to press for
+                    if (_configTimeToMaxValueTicks > 0L)
+                    {
+                        // Calculate the press amount required to get to the target value
+                        // and the remaining time if that takes less than the update period
+                        long remainingTimeTicks;
+                        if (targetAmount > _currentPressAmount)
+                        {
+                            // Press the key until we reach the target value
+                            _pressDurationTicks = Math.Min(_configUpdateEveryTicks, (long)((targetAmount - _currentPressAmount) * _configTimeToMaxValueTicks));
+                            remainingTimeTicks = _configUpdateEveryTicks - _pressDurationTicks;
+                        }
+                        else
+                        {
+                            // Release the key until we reach the target value
+                            _pressDurationTicks = 0L;
+                            remainingTimeTicks = Math.Min(_configUpdateEveryTicks, (long)((_currentPressAmount - targetAmount) * _configTimeToMinValueTicks));
+                        }
+
+                        if (remainingTimeTicks > 0L)
+                        {
+                            // Adjust for decay during times the key isn't pressed after the target value is reached
+
+                            // Default adjustment is equal to non-pressing time shared proportionately between press and non-press!
+                            long defaultDecayTicks = (long)(remainingTimeTicks * (_configTimeToMinValueTicks / (double)(_configTimeToMaxValueTicks + _configTimeToMinValueTicks)));
+                            long adjustmentTicks;
+                            if (defaultDecayTicks > targetAmount * _configTimeToMinValueTicks)
+                            {
+                                // Can't decay by more than target amount (decay stops when zero is reached)
+                                adjustmentTicks = (long)(targetAmount * _configTimeToMaxValueTicks);
+                            }
+                            else if (defaultDecayTicks > _configTimeToMinValueTicks * (1.0 - targetAmount))
+                            {
+                                // Can't decay by more than 1.0 - target amount (max value is 1.0)
+                                adjustmentTicks = remainingTimeTicks - (long)(_configTimeToMinValueTicks * (1.0 - targetAmount));
+                            }
+                            else
+                            {
+                                adjustmentTicks = remainingTimeTicks - defaultDecayTicks;
+                            }
+                            _pressDurationTicks += adjustmentTicks;
+                        }
+                    }
+                }
+                else
+                {
+                    _currentPressAmount = 0.0;
+                    _pressDurationTicks = (long)(_configUpdateEveryTicks * targetAmount);
+                }
 
                 // If release is due to be less than min press time before next update, don't bother releasing
-                if (_configUpdateEveryTicks - _pressDurationTicks < _minPressTimeTicks)
-                {
-                    _pressDurationTicks = _configUpdateEveryTicks;
-                }
+                //if (_configUpdateEveryTicks - _pressDurationTicks < _minPressTimeTicks)
+                //{
+                //    _pressDurationTicks = _configUpdateEveryTicks;
+                //}
 
                 // Don't press if already pressed or the duration is very short
                 if (!_isPressed && _pressDurationTicks > _minPressTimeTicks)
                 {
+                    // Legacy: Support old time to max and time to auto cancel settings from around v1.31
+                    // Update the current press amount for the time at which the press will finish
+                    // I.e. only decay press amount while not pressed
+                    if (_configTimeToMaxValueTicks > 0L)
+                    {
+                        _currentPressAmount += _pressDurationTicks / (double)_configTimeToMaxValueTicks;
+                        _currentPressAmount = Math.Min(1.0, _currentPressAmount);
+                    }
+                    else
+                    {
+                        _currentPressAmount = 1.0;
+                    }
+                    _lastReleaseTimeTicks = currentTime + _pressDurationTicks;
+
                     // Press key
                     parent.KeyStateManager.SetKeyState(VirtualKey, true);
+                    _lastPressTimeTicks = currentTime;
                     _isPressed = true;
-                    IsOngoing = true;
                 }
-            }
-            else if (_isPressed && currentTime - _lastPressTimeTicks > _pressDurationTicks)
-            {
-                // Time to release the key
-                parent.KeyStateManager.SetKeyState(VirtualKey, false);
-                _isPressed = false;
-                IsOngoing = false;
             }
         }
 
@@ -208,20 +307,7 @@ namespace AltController.Actions
         /// <param name="args"></param>
         public override void ContinueAction(IStateManager parent, AltControlEventArgs args)
         {
-            if (_isPressed)
-            {
-                if (DateTime.Now.Ticks - _lastPressTimeTicks > _pressDurationTicks)
-                {
-                    // Release the key
-                    parent.KeyStateManager.SetKeyState(VirtualKey, false);
-                    _isPressed = false;
-                    IsOngoing = false;
-                }
-            }
-            else
-            {
-                IsOngoing = false;
-            }
+            this.StartAction(parent, args);
         }
 
         /// <summary>

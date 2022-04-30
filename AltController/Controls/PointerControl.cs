@@ -200,9 +200,10 @@ namespace AltController.Controls
                             stateManager.ReportEvent(report);
                         }
 
-                        // Raise Outside event whenever Inside is mapped
-                        // to enable auto stopping of ongoing Inside actions on leaving the region.
+                        // Raise Outside event also whenever Inside or Updated is mapped
+                        // to enable auto stopping of ongoing actions for them on leaving the region.
                         if (IsMapped(EEventReason.Outside) ||
+                            IsMapped(EEventReason.Updated) ||
                             IsMapped(EEventReason.Inside))
                         {
                             args = new AltControlEventArgs();

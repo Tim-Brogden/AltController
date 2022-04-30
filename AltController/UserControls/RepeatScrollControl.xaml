@@ -19,9 +19,9 @@
             <ColumnDefinition Width="180"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Name="RepeatEveryLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_RepeatEveryLabel}" Grid.Row="0" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="0" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.5" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="RepeatEverySlider" Grid.Row="0" Grid.Column="1" Minimum="0.05" Maximum="5.0" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2"/>
         <TextBlock Name="StopAfterLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_StopAfterLabel}" Grid.Row="1" Grid.Column="0"/>
-        <local:CustomSliderControl x:Name="StopAfterSlider" Grid.Row="1" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="0.0" SmallChange="0.1" LargeChange="0.5" DecimalPlaces="2"/>
+        <local:CustomSliderControl x:Name="StopAfterSlider" Grid.Row="1" Grid.Column="1" Minimum="0.0" Maximum="60.0" Value="0.0" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2"/>
         <TextBlock Name="RepeatScrollInfoLabel" Text="{x:Static p:Resources.Action_RepeatScrollInfoLabel}" VerticalAlignment="Top" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextWrapping="Wrap"/>
     </Grid>
 </UserControl>
