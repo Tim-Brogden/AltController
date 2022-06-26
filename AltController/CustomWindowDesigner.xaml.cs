@@ -83,7 +83,7 @@ namespace AltController
                 this.WindowWidthSlider.Value = _customWindowSource.WindowWidth;
                 this.WindowHeightSlider.Maximum = SystemParameters.PrimaryScreenHeight;
                 this.WindowHeightSlider.Value = _customWindowSource.WindowHeight;
-                this.TranslucencySlider.Value = _customWindowSource.Translucency;
+                this.TranslucencySlider.Value = 100.0 * _customWindowSource.Translucency;
                 this.TopMostCheckBox.IsChecked = _customWindowSource.TopMost;
                 this.GhostBackgroundCheckBox.IsChecked = _customWindowSource.GhostBackground;
                 this.WindowBackgroundColourCombo.SelectedColour = _customWindowSource.BackgroundColour;
@@ -192,7 +192,7 @@ namespace AltController
                         this.ButtonBorderColourCombo.SelectedColour,
                         this.ButtonBackgroundColourCombo.SelectedColour,
                         "",
-                        this.ButtonTranslucencySlider.Value,
+                        0.01 * this.ButtonTranslucencySlider.Value,
                         (string)this.ButtonFontCombo.SelectedValue,
                         this.ButtonFontSizeSlider.Value,
                         this.ButtonTextColourCombo.SelectedColour);
@@ -254,7 +254,7 @@ namespace AltController
                         ButtonBorderThicknessSlider.Value = buttonData.BorderThickness;
                         ButtonBorderColourCombo.SelectedColour = buttonData.BorderColour;
                         ButtonBackgroundColourCombo.SelectedColour = buttonData.BackgroundColour;
-                        ButtonTranslucencySlider.Value = buttonData.BackgroundTranslucency;
+                        ButtonTranslucencySlider.Value = 100.0 * buttonData.BackgroundTranslucency;
                         ButtonFontCombo.SelectedValue = buttonData.FontName;
                         ButtonFontSizeSlider.Value = buttonData.FontSize;
                         ButtonTextColourCombo.SelectedColour = buttonData.TextColour;
@@ -388,7 +388,7 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    _customWindowSource.Translucency = this.TranslucencySlider.Value;
+                    _customWindowSource.Translucency = 0.01 * this.TranslucencySlider.Value;
                     PreviewControl.RefreshBackgroundColours();
                 }
                 catch (Exception ex)
@@ -874,9 +874,9 @@ namespace AltController
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
                     foreach (CustomButtonData buttonData in data)
                     {
-                        if (buttonData.BackgroundTranslucency != ButtonTranslucencySlider.Value)
+                        if (buttonData.BackgroundTranslucency != 0.01 * ButtonTranslucencySlider.Value)
                         {
-                            buttonData.BackgroundTranslucency = ButtonTranslucencySlider.Value;
+                            buttonData.BackgroundTranslucency = 0.01 * ButtonTranslucencySlider.Value;
                             updated = true;
                         }
                     }

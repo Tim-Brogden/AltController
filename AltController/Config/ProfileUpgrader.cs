@@ -43,19 +43,13 @@ namespace AltController.Config
     /// </summary>
     public class ProfileUpgrader
     {
-        private Dictionary<string, string> _upgradeStages = new Dictionary<string, string>();
+        private List<string> _upgradeVersions = new List<string> { "0.3", "0.5", "1.3", "1.5", "1.96" };
 
         /// <summary>
         /// Constructor
         /// </summary>
         public ProfileUpgrader()
         {
-            // Upgrade stages
-            _upgradeStages["0.3"] = "0.5";
-            _upgradeStages["0.5"] = "1.3";
-            _upgradeStages["1.3"] = "1.4";
-            _upgradeStages["1.4"] = "1.5";
-            _upgradeStages["1.5"] = "1.6";
         }
 
         /// <summary>
@@ -68,15 +62,15 @@ namespace AltController.Config
             bool upgraded = false;
             try
             {
-                // Upgrade the profile one version at a time
-                string prevVersion = "0";
-                string version;
-                
                 // Incrementally apply the sequence of upgrades
-                while ((version = GetProfileVersionNumber(doc)) != prevVersion &&
-                        version != Constants.FileVersion.ToString())
+                double currVersionNum = double.Parse(GetProfileVersionNumber(doc));
+                foreach (string version in this._upgradeVersions)
                 {
-                    prevVersion = version;
+                    if (currVersionNum > double.Parse(version))
+                    {
+                        continue;
+                    }
+                    upgraded = true;
                     
                     // Find the upgrade XSL
                     string upgradeFileName = string.Format("Upgrade from v{0}.xsl", version);
@@ -95,27 +89,20 @@ namespace AltController.Config
                         // Replace doc with transformed doc
                         doc = new XmlDocument();
                         doc.LoadXml(sb.ToString());
-
-                        upgraded = true;
                     }
 
-                    // Programmatic upgrades (which don't change the version number)
+                    // Programmatic upgrades
                     if (version == "1.3")
                     {
                         UpgradeFrom_v1_3(doc);
-                        upgraded = true;
                     }
-
-                    if (version == "1.5")
+                    else if (version == "1.5")
                     {
                         UpgradeFrom_v1_5(doc);
-                        upgraded = true;
                     }
-
-                    if (_upgradeStages.ContainsKey(version))
+                    else if (version == "1.96")
                     {
-                        SetProfileVersionNumber(doc, _upgradeStages[version]);
-                        upgraded = true;    
+                        UpgradeFrom_v1_96(doc);
                     }
                 }
             }
@@ -266,12 +253,32 @@ namespace AltController.Config
                 }
             }
         }
-        
+
         /// <summary>
-                 /// Get the version number of a profile
-                 /// </summary>
-                 /// <param name="filePath"></param>
-                 /// <returns></returns>
+        /// Upgrade from version 1.96
+        /// </summary>
+        /// <param name="doc"></param>
+        private void UpgradeFrom_v1_96(XmlDocument doc)
+        {
+            // Set region translucency to -1 (default) if no background image provided.
+            // This is because translucency also applies to region borders from version 1.97 onwards.
+            XmlNodeList regionElements = doc.SelectNodes("/profile/regions/region");
+            foreach (XmlElement regionElement in regionElements)
+            {
+                string bgImage = regionElement.GetAttribute("bgimage");
+                if (bgImage == "")
+                {
+                    regionElement.SetAttribute("translucency", "-1");
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Get the version number of a profile
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         private string GetProfileVersionNumber(XmlDocument doc)
         {
             string version = "0.0";
@@ -286,18 +293,5 @@ namespace AltController.Config
             return version;
         }
 
-        /// <summary>
-        /// Set the profile version number
-        /// </summary>
-        /// <param name="doc"></param>
-        /// <param name="version"></param>
-        private void SetProfileVersionNumber(XmlDocument doc, string version)
-        {
-            XmlNode versionNode = doc.SelectSingleNode("/profile/@version");
-            if (versionNode != null)
-            {
-                versionNode.Value = version;
-            }
-        }
     }
 }

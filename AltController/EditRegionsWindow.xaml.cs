@@ -103,6 +103,12 @@ namespace AltController
             {                
                 _isLoaded = true;
 
+                // Default translucency label
+                this.DefaultTranslucencyLabel.Text = string.Format("{0} ({1}%)", 
+                    Properties.Resources.String_Default, 
+                    (int)(100 * _appConfig.GetDoubleVal(Constants.ConfigDefaultRegionTranslucency, Constants.DefaultRegionTranslucency))
+                    );
+
                 // Force square region option
                 bool forceSquare = _appConfig.GetBoolVal(Constants.ConfigDrawRegionForceSquare, Constants.DefaultDrawRegionForceSquare);
                 this.ForceSquareCheckbox.IsChecked = forceSquare;
@@ -317,7 +323,7 @@ namespace AltController
                     double holeSizeFraction = 0.01 * HoleSizeSlider.Value;
                     double startAngleDeg = StartAngleSlider.Value;
                     double sweepAngleDeg = SweepAngleSlider.Value;
-                    double translucency = TranslucencySlider.Value;
+                    double translucency = DefaultTranslucencyCheckbox.IsChecked == false ? 0.01 * TranslucencySlider.Value : -1.0;
                     ScreenRegion newRegion = new ScreenRegion(id,
                         name,
                         (EShape)selectedShape.ID,
@@ -469,26 +475,26 @@ namespace AltController
             int regionIndex = -1;
             if (_selectedRegions.Count > 0)
             {
-                ScreenRegion firstSelected = _selectedRegions[0];
-                regionIndex = _regionsList.IndexOf(firstSelected);
+                ScreenRegion region = _selectedRegions[0];
+                regionIndex = _regionsList.IndexOf(region);
             }
 
             return regionIndex;
         }
 
         /// <summary>
-        /// Display details for the last selected region
+        /// Display details for the (first) selected region
         /// </summary>
         private void RefreshRegionDetails()
         {
             bool isSelection = _selectedRegions.Count > 0;
             if (isSelection)
             {
-                ScreenRegion firstSelected = _selectedRegions[0];
+                ScreenRegion region = _selectedRegions[0];
 
                 if (_selectedRegions.Count == 1)
                 {
-                    this.RegionNameText.Text = firstSelected.Name;
+                    this.RegionNameText.Text = region.Name;
                     this.RegionNameText.IsEnabled = true;
                     DrawButton.IsEnabled = true;
                     EnableOrDisableShapeOptions();   // Show shape options according to shape type when single region selected
@@ -503,22 +509,30 @@ namespace AltController
                     StartAngleSlider.IsEnabled = true;
                     SweepAngleSlider.IsEnabled = true;
                 }
-                this.ColoursCombo.SelectedColour = firstSelected.Colour;
+                this.ColoursCombo.SelectedColour = region.Colour;
                 // Check that the mode is valid to avoid deselecting mode option
-                if (_modesList.GetItemByID(firstSelected.ShowInState.ModeID) != null)
+                if (_modesList.GetItemByID(region.ShowInState.ModeID) != null)
                 {
-                    this.ModeCombo.SelectedValue = firstSelected.ShowInState.ModeID;
+                    this.ModeCombo.SelectedValue = region.ShowInState.ModeID;
                 }                
                 // Check that the app is valid to avoid deselecting app option
-                if (_appsList.GetItemByID(firstSelected.ShowInState.AppID) != null)
+                if (_appsList.GetItemByID(region.ShowInState.AppID) != null)
                 {
-                    this.AppCombo.SelectedValue = firstSelected.ShowInState.AppID;
+                    this.AppCombo.SelectedValue = region.ShowInState.AppID;
                 }                
-                DisplayRegionCoords(firstSelected);
-                ShapeComboBox.SelectedValue = (long)firstSelected.Shape;
-                HoleSizeSlider.Value = 100.0 * firstSelected.HoleSize;
-                StartAngleSlider.Value = firstSelected.StartAngle;
-                SweepAngleSlider.Value = firstSelected.SweepAngle;
+                DisplayRegionCoords(region);
+                ShapeComboBox.SelectedValue = (long)region.Shape;
+                HoleSizeSlider.Value = 100.0 * region.HoleSize;
+                StartAngleSlider.Value = region.StartAngle;
+                SweepAngleSlider.Value = region.SweepAngle;
+                bool defaultTranslucency = region.Translucency < 0.0 || region.Translucency > 1.0;
+                if (!defaultTranslucency)
+                {
+                    TranslucencySlider.Value = 100.0 * region.Translucency;
+                }
+                DefaultTranslucencyCheckbox.IsChecked = defaultTranslucency;
+                TranslucencySlider.Visibility = defaultTranslucency ? Visibility.Hidden : Visibility.Visible;
+                DefaultTranslucencyLabel.Visibility = defaultTranslucency ? Visibility.Visible : Visibility.Hidden;
             }
             else
             {
@@ -541,6 +555,7 @@ namespace AltController
             BrowseRegionImageButton.IsEnabled = isSelection;
             ClearRegionImageButton.IsEnabled = isSelection;
             TranslucencySlider.IsEnabled = isSelection;
+            DefaultTranslucencyCheckbox.IsEnabled = isSelection;
             DeleteRegionButton.IsEnabled = isSelection;
 
             RefreshNavigatePanel();
@@ -731,7 +746,40 @@ namespace AltController
         }
 
         /// <summary>
-        /// Region background translucency changed
+        /// Set translucency checkbox changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DefaultTranslucencyCheckbox_Changed(object sender, RoutedEventArgs e)
+        {
+            if (_isLoaded)
+            {
+                try
+                {
+                    ClearMessages();
+                    bool defaultTranslucency = DefaultTranslucencyCheckbox.IsChecked == true;
+                    TranslucencySlider.Visibility = defaultTranslucency ? Visibility.Hidden : Visibility.Visible;
+                    DefaultTranslucencyLabel.Visibility = defaultTranslucency ? Visibility.Visible : Visibility.Hidden;
+                    if (_selectedRegions.Count > 0)
+                    {
+                        double val = defaultTranslucency ? -1.0 : 0.01 * TranslucencySlider.Value;
+                        foreach (ScreenRegion region in _selectedRegions)
+                        {
+                            region.Translucency = val;
+                        }
+
+                        RegionsControl.RefreshSelectedRegionOpacity();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ShowError(Properties.Resources.E_REG013, ex);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Region translucency changed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -744,9 +792,10 @@ namespace AltController
                     ClearMessages();
                     if (_selectedRegions.Count > 0)
                     {
+                        double val = TranslucencySlider.Value;
                         foreach (ScreenRegion region in _selectedRegions)
                         {
-                            region.BackgroundTranslucency = TranslucencySlider.Value;
+                            region.Translucency = 0.01 * val;
                         }
 
                         RegionsControl.RefreshSelectedRegionOpacity();

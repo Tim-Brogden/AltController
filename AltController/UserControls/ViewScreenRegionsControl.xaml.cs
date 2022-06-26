@@ -55,6 +55,7 @@ namespace AltController.UserControls
         private bool _allowMultiSelect;
         private bool _showBackground;
         private bool _showRegionNames;
+        private double _defaultRegionTranslucency = Constants.DefaultRegionTranslucency;
 
         // State
         private Brush _defaultBackgroundBrush;
@@ -117,6 +118,8 @@ namespace AltController.UserControls
         public void SetAppConfig(AppConfig appConfig)
         {
             _appConfig = appConfig;
+            _defaultRegionTranslucency = appConfig.GetDoubleVal(Constants.ConfigDefaultRegionTranslucency, Constants.DefaultRegionTranslucency);
+            RefreshDisplay();
         }
 
         /// <summary>
@@ -225,7 +228,7 @@ namespace AltController.UserControls
             if (_showBackground)
             {
                 Brush brush = null;
-                if (_regionsList != null)
+                if (_regionsList != null && _regionsList.RefImage != "")
                 {
                     string defaultProfilesDir = System.IO.Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
                     string profilesDir = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
@@ -318,10 +321,7 @@ namespace AltController.UserControls
                 Path path = FindControlForRegion(region);
                 if (path != null)
                 {
-                    if (path.Fill is ImageBrush)
-                    {
-                        ((ImageBrush)path.Fill).Opacity = Math.Max(0.0, Math.Min(1.0, 1.0 - region.BackgroundTranslucency));
-                    }
+                    path.Opacity = region.Translucency >= 0.0 && region.Translucency <= 1.0 ? 1.0 - region.Translucency : 1.0 - _defaultRegionTranslucency;
                 }
             }
         }
@@ -338,15 +338,19 @@ namespace AltController.UserControls
                 {
                     // Set stroke
                     path.Stroke = GUIUtils.GetBrushFromColour(region.Colour, 0xFF, Brushes.LightGray);
+                    path.Opacity = region.Translucency >= 0.0 && region.Translucency <= 1.0 ? 1.0 - region.Translucency : 1.0 - _defaultRegionTranslucency;
 
                     // Set background image or colour
-                    string defaultProfilesDir = System.IO.Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
-                    string profilesDir = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
-                    ImageBrush imageBrush = GUIUtils.CreateImageBrush(region.BackgroundImage, profilesDir);
+                    ImageBrush imageBrush = null;
+                    if (region.BackgroundImage != "")
+                    {
+                        string defaultProfilesDir = System.IO.Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
+                        string profilesDir = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
+                        imageBrush = GUIUtils.CreateImageBrush(region.BackgroundImage, profilesDir);
+                    }
                     if (imageBrush != null)
                     {
                         imageBrush.Stretch = Stretch.Fill;
-                        imageBrush.Opacity = Math.Max(0.0, Math.Min(1.0, 1.0 - region.BackgroundTranslucency));
                         path.Fill = imageBrush;
                     }
                     else
@@ -377,15 +381,19 @@ namespace AltController.UserControls
             // Set border
             path.Stroke = GUIUtils.GetBrushFromColour(region.Colour, 0xFF, Brushes.LightGray);
             path.StrokeThickness = _defaultStrokeThickness;
+            path.Opacity = region.Translucency >= 0.0 && region.Translucency <= 1.0 ? 1.0 - region.Translucency : 1.0 - _defaultRegionTranslucency;
 
             // Set background image or colour
-            string defaultProfilesDir = System.IO.Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
-            string profilesDir = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
-            ImageBrush imageBrush = GUIUtils.CreateImageBrush(region.BackgroundImage, profilesDir);
+            ImageBrush imageBrush = null;
+            if (region.BackgroundImage != "")
+            {
+                string defaultProfilesDir = System.IO.Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
+                string profilesDir = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
+                imageBrush = GUIUtils.CreateImageBrush(region.BackgroundImage, profilesDir);
+            }
             if (imageBrush != null)
             {
                 imageBrush.Stretch = Stretch.Fill;
-                imageBrush.Opacity = Math.Max(0.0, Math.Min(1.0, 1.0 - region.BackgroundTranslucency));
                 path.Fill = imageBrush;
             }
             else if (_isDesignMode)

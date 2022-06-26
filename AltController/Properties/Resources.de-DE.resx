@@ -418,7 +418,7 @@
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonTranslucencyLabel" xml:space="preserve">
-    <value>Transparenz:</value>
+    <value>Transparenz (%):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonWidthLabel" xml:space="preserve">
@@ -462,7 +462,7 @@
     <comment>Custom window</comment>
   </data>
   <data name="Custom_TranslucencyLabel" xml:space="preserve">
-    <value>Transparenz:</value>
+    <value>Transparenz (%):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowBgColorLabel" xml:space="preserve">
@@ -1177,6 +1177,10 @@
     <value>Titelleisten immer anzeigen</value>
     <comment>Options - Start up</comment>
   </data>
+  <data name="Options_DefaultRegionTranslucencyLabel" xml:space="preserve">
+    <value>Region Transparenz (%):</value>
+    <comment>Options - Display</comment>
+  </data>
   <data name="Options_DisplayTab" xml:space="preserve">
     <value>An_zeige</value>
     <comment>Options - Display</comment>
@@ -1566,7 +1570,7 @@
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_TranslucencyLabel" xml:space="preserve">
-    <value>Transparenz:</value>
+    <value>Transparenz (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_WidthLabel" xml:space="preserve">

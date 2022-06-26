@@ -35,8 +35,8 @@ namespace AltController.Core
     /// </summary>
     public class Constants
     {
-        public const string FileVersion = "1.96";    // Update this when the profile file format changes
-        public const string AppVersion = "1.96";    // Update this when the application version changes
+        public const string FileVersion = "1.97";    // Update this when the profile file format changes
+        public const string AppVersion = "1.97";    // Update this when the application version changes
         
         public const long LastUsedID = -4;
         public const long NextID = -3;
@@ -85,6 +85,7 @@ namespace AltController.Core
         public const string ConfigStateOverlayFontSize = "state_overlay_font_size";
         public const string ConfigStateOverlayXPos = "state_overlay_x_pos";
         public const string ConfigStateOverlayYPos = "state_overlay_y_pos";
+        public const string ConfigDefaultRegionTranslucency = "default_region_translucency";
         public const string ConfigCustomWindowTitleBars = "custom_window_title_bars";
         public const string ConfigAutoStopPressActions = "auto_stop_press_actions";
         public const string ConfigAutoStopInsideActions = "auto_stop_inside_actions";
@@ -115,6 +116,7 @@ namespace AltController.Core
         public const double DefaultStateOverlayFontSize = 20.0;
         public const double DefaultStateOverlayXPos = 0.05;
         public const double DefaultStateOverlayYPos = 0.05;
+        public const double DefaultRegionTranslucency = 0.0;
         public const bool DefaultCustomWindowTitleBars = true;
         public const bool DefaultAutoStopPressActions = false;
         public const bool DefaultAutoStopInsideActions = false;
@@ -131,7 +133,6 @@ namespace AltController.Core
         public const string DefaultScreenRegionColour = "LightGray";
         public const double DefaultCustomButtonFontSize = 12.0;
         public const string DefaultCustomButtonTextColour = "Black";
-        public const double DefaultScreenRegionTranslucency = 0.5;
         public const bool DefaultIsGhostBackground = true;
         public const bool DefaultIsTopMost = true;
         public const int MinCustomButtonSize = 1;

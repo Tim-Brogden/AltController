@@ -418,7 +418,7 @@
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonTranslucencyLabel" xml:space="preserve">
-    <value>Translucency:</value>
+    <value>Translucency (%):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_ButtonWidthLabel" xml:space="preserve">
@@ -462,7 +462,7 @@
     <comment>Custom window</comment>
   </data>
   <data name="Custom_TranslucencyLabel" xml:space="preserve">
-    <value>Translucency:</value>
+    <value>Translucency (%):</value>
     <comment>Custom window</comment>
   </data>
   <data name="Custom_WindowBgColorLabel" xml:space="preserve">
@@ -1177,6 +1177,10 @@
     <value>Turn on 'Sho_w title bars'</value>
     <comment>Options - Start up</comment>
   </data>
+  <data name="Options_DefaultRegionTranslucencyLabel" xml:space="preserve">
+    <value>Default region translucency (%):</value>
+    <comment>Options - Display</comment>
+  </data>
   <data name="Options_DisplayTab" xml:space="preserve">
     <value>_Display</value>
     <comment>Options - Display</comment>
@@ -1566,7 +1570,7 @@
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_TranslucencyLabel" xml:space="preserve">
-    <value>Image translucency:</value>
+    <value>Translucency (%):</value>
     <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_WidthLabel" xml:space="preserve">

@@ -134,7 +134,9 @@
                     </Button>
                 </StackPanel>
                 <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Regions_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="13" Grid.Column="0"></TextBlock>
-                <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="13" Grid.Column="1" IsEnabled="False" Minimum="0" Maximum="0.99" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" ValueChanged="TranslucencySlider_ValueChanged" />
+                <CheckBox Name="DefaultTranslucencyCheckbox" ToolTip="{x:Static p:Resources.String_Default}" Grid.Row="13" Grid.Column="0" IsEnabled="False" IsChecked="True" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Checked="DefaultTranslucencyCheckbox_Changed" Unchecked="DefaultTranslucencyCheckbox_Changed"/>
+                <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="13" Grid.Column="1" Visibility="Hidden" IsEnabled="False" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="TranslucencySlider_ValueChanged" />
+                <TextBlock Name="DefaultTranslucencyLabel" Text="{x:Static p:Resources.String_Default}" VerticalAlignment="Center" Grid.Row="13" Grid.Column="1"></TextBlock>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2">
                     <Button Name="DrawButton" VerticalAlignment="Center" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="DrawButton_Click" Content="{x:Static p:Resources.Regions_DrawButton}" ToolTip="{x:Static p:Resources.Regions_DrawToolTip}" IsEnabled="False"/>
                     <CheckBox Name="ForceSquareCheckbox" VerticalAlignment="Center" Margin="5,0,0,0" Content="{x:Static p:Resources.Regions_ForceSquareCheckbox}" ToolTip="{x:Static p:Resources.Regions_ForceSquareToolTip}"></CheckBox>

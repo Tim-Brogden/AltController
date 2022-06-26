@@ -48,7 +48,7 @@ namespace AltController.Config
         private double _sweepAngleDeg = 90.0;
         private string _colour = "";
         private string _bgImage = "";
-        private double _bgTranslucency = Constants.DefaultScreenRegionTranslucency;
+        private double _translucency = -1.0;    // Between 0 and 1 if set, or -1 to signify default translucency
         private LogicalState _showInState = new LogicalState();
 
         // Properties
@@ -59,7 +59,7 @@ namespace AltController.Config
         public double SweepAngle { get { return _sweepAngleDeg; } set { _sweepAngleDeg = value; } }
         public string Colour { get { return _colour; } set { _colour = value; } }
         public string BackgroundImage { get { return _bgImage; } set { _bgImage = value; } }
-        public double BackgroundTranslucency { get { return _bgTranslucency; } set { _bgTranslucency = value; } }
+        public double Translucency { get { return _translucency; } set { _translucency = value; } }
         public LogicalState ShowInState { get { return _showInState; } set { _showInState = value; } }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace AltController.Config
                             double sweepAngleDeg,
                             string colour,
                             string bgImage,
-                            double bgTranslucency,
+                            double translucency,
                             LogicalState showInState)
             :base(id,name)
         {
@@ -95,7 +95,7 @@ namespace AltController.Config
             _sweepAngleDeg = sweepAngleDeg;
             _colour = colour;
             _bgImage = bgImage;
-            _bgTranslucency = bgTranslucency;
+            _translucency = translucency;
             _showInState = showInState;
         }
 
@@ -113,7 +113,7 @@ namespace AltController.Config
             _sweepAngleDeg = region._sweepAngleDeg;
             _colour = region._colour;
             _bgImage = region._bgImage;
-            _bgTranslucency = region._bgTranslucency;
+            _translucency = region._translucency;
             _showInState = new LogicalState(region._showInState);
         }
         
@@ -466,7 +466,7 @@ namespace AltController.Config
             _sweepAngleDeg = double.Parse(element.GetAttribute("sweepangle"), CultureInfo.InvariantCulture);
             _colour = element.GetAttribute("colour");
             _bgImage = element.GetAttribute("bgimage");
-            _bgTranslucency = double.Parse(element.GetAttribute("translucency"), CultureInfo.InvariantCulture);
+            _translucency = double.Parse(element.GetAttribute("translucency"), CultureInfo.InvariantCulture);
             _showInState.FromXml(element);
         }
 
@@ -488,7 +488,7 @@ namespace AltController.Config
             element.SetAttribute("sweepangle", _sweepAngleDeg.ToString(CultureInfo.InvariantCulture));
             element.SetAttribute("colour", _colour);
             element.SetAttribute("bgimage", _bgImage);
-            element.SetAttribute("translucency", _bgTranslucency.ToString(CultureInfo.InvariantCulture));
+            element.SetAttribute("translucency", _translucency.ToString(CultureInfo.InvariantCulture));
             _showInState.ToXml(element, doc);
         }
     }

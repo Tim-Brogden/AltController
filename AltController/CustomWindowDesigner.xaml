@@ -44,7 +44,7 @@
                         <TextBlock Name="WindowHeightLabel" Text="{x:Static p:Resources.Custom_WindowHeightLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></TextBlock>
                         <local:CustomSliderControl x:Name="WindowHeightSlider" Grid.Row="2" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="10" LargeChange="10" DecimalPlaces="0" ValueChanged="WindowHeightSlider_ValueChanged"/>
                         <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Custom_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="3" Grid.Column="1" Minimum="0.0" Maximum="1.0" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" ValueChanged="TranslucencySlider_ValueChanged" />
+                        <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="3" Grid.Column="1" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="TranslucencySlider_ValueChanged" />
                         <TextBlock Name="TopMostLabel" Text="{x:Static p:Resources.Custom_TopMostLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
                         <CheckBox Grid.Row="4" Grid.Column="1" Name="TopMostCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Width="50" Checked="TopMostCheckBox_Changed" Unchecked="TopMostCheckBox_Changed"></CheckBox>
                         <TextBlock Name="GhostBgLabel" Text="{x:Static p:Resources.Custom_GhostBgLabel}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></TextBlock>
@@ -124,7 +124,7 @@
                             </Button>
                         </StackPanel>
                         <TextBlock Name="ButtonTranslucencyLabel" Text="{x:Static p:Resources.Custom_ButtonTranslucencyLabel}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonTranslucencySlider" Grid.Row="6" Grid.Column="1" Minimum="0" Maximum="0.99" Value="0.5" SmallChange="0.01" LargeChange="0.05" DecimalPlaces="2" ValueChanged="ButtonTranslucencySlider_ValueChanged" />
+                        <local:CustomSliderControl x:Name="ButtonTranslucencySlider" Grid.Row="6" Grid.Column="1" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonTranslucencySlider_ValueChanged" />
                     </Grid>
                 </Expander>
             </StackPanel>

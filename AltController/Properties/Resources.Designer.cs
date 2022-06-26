@@ -736,7 +736,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translucency:.
+        ///   Looks up a localized string similar to Translucency (%):.
         /// </summary>
         public static string Custom_ButtonTranslucencyLabel {
             get {
@@ -835,7 +835,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Translucency:.
+        ///   Looks up a localized string similar to Translucency (%):.
         /// </summary>
         public static string Custom_TranslucencyLabel {
             get {
@@ -2446,6 +2446,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default region translucency (%):.
+        /// </summary>
+        public static string Options_DefaultRegionTranslucencyLabel {
+            get {
+                return ResourceManager.GetString("Options_DefaultRegionTranslucencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Display.
         /// </summary>
         public static string Options_DisplayTab {
@@ -3319,7 +3328,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Image translucency:.
+        ///   Looks up a localized string similar to Translucency (%):.
         /// </summary>
         public static string Regions_TranslucencyLabel {
             get {

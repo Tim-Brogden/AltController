@@ -142,6 +142,7 @@ namespace AltController
             this.StateOverlayFontSizeSlider.Value = _appConfig.GetDoubleVal(Constants.ConfigStateOverlayFontSize, Constants.DefaultStateOverlayFontSize);
             this.StateOverlayXPosSlider.Value = 100.0 * _appConfig.GetDoubleVal(Constants.ConfigStateOverlayXPos, Constants.DefaultStateOverlayXPos);
             this.StateOverlayYPosSlider.Value = 100.0 * _appConfig.GetDoubleVal(Constants.ConfigStateOverlayYPos, Constants.DefaultStateOverlayYPos);
+            this.DefaultRegionTranslucencySlider.Value = 100.0 * _appConfig.GetDoubleVal(Constants.ConfigDefaultRegionTranslucency, Constants.DefaultRegionTranslucency);
 
             // Hotkeys
             _hotkeys.Clear();
@@ -237,6 +238,7 @@ namespace AltController
             _appConfig.SetDoubleVal(Constants.ConfigStateOverlayFontSize, this.StateOverlayFontSizeSlider.Value);
             _appConfig.SetDoubleVal(Constants.ConfigStateOverlayXPos, 0.01 * this.StateOverlayXPosSlider.Value);
             _appConfig.SetDoubleVal(Constants.ConfigStateOverlayYPos, 0.01 * this.StateOverlayYPosSlider.Value);
+            _appConfig.SetDoubleVal(Constants.ConfigDefaultRegionTranslucency, 0.01 * this.DefaultRegionTranslucencySlider.Value);
 
             // Hotkeys
             _appConfig.SetIntVal(Constants.ConfigDrawScreenRegionsHotkey, (int)_hotkeys[0].ID);

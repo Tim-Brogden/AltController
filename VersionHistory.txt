@@ -211,3 +211,6 @@ Version 1.94
 Version 1.96
 - Added additional options to Repeat key (directional) action for backwards compatibility with previous versions.
 - Fixed bug which was preventing Repeat key (directional) actions from automatically stopping. 
+
+Version 1.97
+- Introduced transparent screen region borders: the transparency setting is now applied to the region border as well as the background image.
