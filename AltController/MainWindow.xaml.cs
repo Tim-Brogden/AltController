@@ -1217,6 +1217,11 @@ namespace AltController
                 _logicalState = args.LogicalState;
                 UpdateGUI_Situation(_logicalState);
             }
+            else if (report.EventType == EEventType.MenuOptionEvent)
+            {
+                MenuOptionEventArgs args = (MenuOptionEventArgs)report.Args;
+                ToggleMenuOption(args.Option);
+            }
             //else if (report.EventType == EEventType.AppChange)
             //{
             //    AltAppChangeEventArgs args = (AltAppChangeEventArgs)report.Args;
@@ -1682,6 +1687,32 @@ namespace AltController
             catch (Exception ex)
             {
                 ShowError(Properties.Resources.E_MAIN015, ex);
+            }
+        }
+
+        /// <summary>
+        /// Toggle a main menu option
+        /// </summary>
+        /// <param name="option"></param>
+        private void ToggleMenuOption(EMainMenuOption option)
+        {
+            switch (option)
+            {
+                case EMainMenuOption.DrawScreenRegions:
+                    ViewDrawScreenRegions.IsChecked = !ViewDrawScreenRegions.IsChecked;
+                    break;
+                case EMainMenuOption.ShowScreenRegionNames:
+                    ViewShowScreenRegionNames.IsChecked = !ViewShowScreenRegionNames.IsChecked;
+                    break;
+                case EMainMenuOption.DrawPointerIndicatorLine:
+                    ViewDrawPointerIndicator.IsChecked = !ViewDrawPointerIndicator.IsChecked;
+                    break;
+                case EMainMenuOption.DrawStateOverlay:
+                    ViewDrawStateOverlay.IsChecked = !ViewDrawStateOverlay.IsChecked;
+                    break;
+                case EMainMenuOption.ShowTitleBars:
+                    WindowShowTitleBars.IsChecked = !WindowShowTitleBars.IsChecked;
+                    break;
             }
         }
 

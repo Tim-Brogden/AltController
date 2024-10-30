@@ -331,6 +331,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menu action:.
+        /// </summary>
+        public static string Action_MenuActionLabel {
+            get {
+                return ResourceManager.GetString("Action_MenuActionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mouse button:.
         /// </summary>
         public static string Action_MouseButtonLabel {
@@ -898,7 +907,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing the action type.
+        ///   Looks up a localized string similar to Error while changing the action type.
         /// </summary>
         public static string E_ACTION001 {
             get {
@@ -907,7 +916,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while loading window.
+        ///   Looks up a localized string similar to Error while loading window.
         /// </summary>
         public static string E_CUST001 {
             get {
@@ -916,7 +925,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while adding new custom button.
+        ///   Looks up a localized string similar to Error while adding new custom button.
         /// </summary>
         public static string E_CUST002 {
             get {
@@ -925,7 +934,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while deleting custom button.
+        ///   Looks up a localized string similar to Error while deleting custom button.
         /// </summary>
         public static string E_CUST003 {
             get {
@@ -934,7 +943,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while handling selection of custom button.
+        ///   Looks up a localized string similar to Error while handling selection of custom button.
         /// </summary>
         public static string E_CUST004 {
             get {
@@ -943,7 +952,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting window width.
+        ///   Looks up a localized string similar to Error while setting window width.
         /// </summary>
         public static string E_CUST005 {
             get {
@@ -952,7 +961,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting window height.
+        ///   Looks up a localized string similar to Error while setting window height.
         /// </summary>
         public static string E_CUST006 {
             get {
@@ -961,7 +970,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while selecting background colour.
+        ///   Looks up a localized string similar to Error while selecting background colour.
         /// </summary>
         public static string E_CUST007 {
             get {
@@ -970,7 +979,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting window translucency.
+        ///   Looks up a localized string similar to Error while setting window translucency.
         /// </summary>
         public static string E_CUST008 {
             get {
@@ -979,7 +988,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing ghost background option.
+        ///   Looks up a localized string similar to Error while changing ghost background option.
         /// </summary>
         public static string E_CUST009 {
             get {
@@ -988,7 +997,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button X slider.
+        ///   Looks up a localized string similar to Error while changing button X slider.
         /// </summary>
         public static string E_CUST010 {
             get {
@@ -997,7 +1006,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button Y slider.
+        ///   Looks up a localized string similar to Error while changing button Y slider.
         /// </summary>
         public static string E_CUST011 {
             get {
@@ -1006,7 +1015,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting button width.
+        ///   Looks up a localized string similar to Error while setting button width.
         /// </summary>
         public static string E_CUST012 {
             get {
@@ -1015,7 +1024,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button height.
+        ///   Looks up a localized string similar to Error while changing button height.
         /// </summary>
         public static string E_CUST013 {
             get {
@@ -1024,7 +1033,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button border width.
+        ///   Looks up a localized string similar to Error while changing button border width.
         /// </summary>
         public static string E_CUST014 {
             get {
@@ -1033,7 +1042,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button name.
+        ///   Looks up a localized string similar to Error while changing button name.
         /// </summary>
         public static string E_CUST015 {
             get {
@@ -1042,7 +1051,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button text.
+        ///   Looks up a localized string similar to Error while changing button text.
         /// </summary>
         public static string E_CUST016 {
             get {
@@ -1051,7 +1060,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button border colour.
+        ///   Looks up a localized string similar to Error while changing button border colour.
         /// </summary>
         public static string E_CUST017 {
             get {
@@ -1060,7 +1069,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button background colour.
+        ///   Looks up a localized string similar to Error while changing button background colour.
         /// </summary>
         public static string E_CUST018 {
             get {
@@ -1069,7 +1078,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button background image.
+        ///   Looks up a localized string similar to Error while changing button background image.
         /// </summary>
         public static string E_CUST019 {
             get {
@@ -1078,7 +1087,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while clearing button background image.
+        ///   Looks up a localized string similar to Error while clearing button background image.
         /// </summary>
         public static string E_CUST020 {
             get {
@@ -1087,7 +1096,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button translucency.
+        ///   Looks up a localized string similar to Error while changing button translucency.
         /// </summary>
         public static string E_CUST021 {
             get {
@@ -1096,7 +1105,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button font.
+        ///   Looks up a localized string similar to Error while changing button font.
         /// </summary>
         public static string E_CUST022 {
             get {
@@ -1105,7 +1114,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button font size.
+        ///   Looks up a localized string similar to Error while changing button font size.
         /// </summary>
         public static string E_CUST023 {
             get {
@@ -1114,7 +1123,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing button text colour.
+        ///   Looks up a localized string similar to Error while changing button text colour.
         /// </summary>
         public static string E_CUST024 {
             get {
@@ -1123,7 +1132,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while initialising folders.
+        ///   Looks up a localized string similar to Error while initialising folders.
         /// </summary>
         public static string E_MAIN001 {
             get {
@@ -1132,7 +1141,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while initialising application.
+        ///   Looks up a localized string similar to Error while initialising application.
         /// </summary>
         public static string E_MAIN002 {
             get {
@@ -1141,7 +1150,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while positioning window.
+        ///   Looks up a localized string similar to Error while positioning window.
         /// </summary>
         public static string E_MAIN003 {
             get {
@@ -1150,7 +1159,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while creating new profile.
+        ///   Looks up a localized string similar to Error while creating new profile.
         /// </summary>
         public static string E_MAIN004 {
             get {
@@ -1159,7 +1168,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening profile.
+        ///   Looks up a localized string similar to Error while opening profile.
         /// </summary>
         public static string E_MAIN005 {
             get {
@@ -1168,7 +1177,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while saving profile.
+        ///   Looks up a localized string similar to Error while saving profile.
         /// </summary>
         public static string E_MAIN006 {
             get {
@@ -1177,7 +1186,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} during Save As.
+        ///   Looks up a localized string similar to Error during Save As.
         /// </summary>
         public static string E_MAIN007 {
             get {
@@ -1186,7 +1195,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening the profile editor.
+        ///   Looks up a localized string similar to Error while opening the profile editor.
         /// </summary>
         public static string E_MAIN008 {
             get {
@@ -1195,7 +1204,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening the screen region editor.
+        ///   Looks up a localized string similar to Error while opening the screen region editor.
         /// </summary>
         public static string E_MAIN009 {
             get {
@@ -1204,7 +1213,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening the profile summary.
+        ///   Looks up a localized string similar to Error while opening the profile summary.
         /// </summary>
         public static string E_MAIN010 {
             get {
@@ -1213,7 +1222,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while loading profile.
+        ///   Looks up a localized string similar to Error while loading profile.
         /// </summary>
         public static string E_MAIN011 {
             get {
@@ -1222,7 +1231,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening all custom windows.
+        ///   Looks up a localized string similar to Error while opening all custom windows.
         /// </summary>
         public static string E_MAIN012 {
             get {
@@ -1231,7 +1240,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} during open custom window command.
+        ///   Looks up a localized string similar to Error during open custom window command.
         /// </summary>
         public static string E_MAIN013 {
             get {
@@ -1240,7 +1249,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening custom window.
+        ///   Looks up a localized string similar to Error while opening custom window.
         /// </summary>
         public static string E_MAIN014 {
             get {
@@ -1249,7 +1258,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while opening the Log information window.
+        ///   Looks up a localized string similar to Error while opening the Log information window.
         /// </summary>
         public static string E_MAIN015 {
             get {
@@ -1258,7 +1267,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while loading profile from Xml.
+        ///   Looks up a localized string similar to Error while loading profile from Xml.
         /// </summary>
         public static string E_PR001 {
             get {
@@ -1267,7 +1276,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while converting profile to Xml.
+        ///   Looks up a localized string similar to Error while converting profile to Xml.
         /// </summary>
         public static string E_PR002 {
             get {
@@ -1276,7 +1285,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while loading profile editor window.
+        ///   Looks up a localized string similar to Error while loading profile editor window.
         /// </summary>
         public static string E_PROF001 {
             get {
@@ -1285,7 +1294,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while applying changes and closing.
+        ///   Looks up a localized string similar to Error while applying changes and closing.
         /// </summary>
         public static string E_PROF002 {
             get {
@@ -1294,7 +1303,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while applying changes.
+        ///   Looks up a localized string similar to Error while applying changes.
         /// </summary>
         public static string E_PROF003 {
             get {
@@ -1303,7 +1312,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while adding new action.
+        ///   Looks up a localized string similar to Error while adding new action.
         /// </summary>
         public static string E_PROF004 {
             get {
@@ -1312,7 +1321,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while editing action.
+        ///   Looks up a localized string similar to Error while editing action.
         /// </summary>
         public static string E_PROF005 {
             get {
@@ -1321,7 +1330,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while deleting action.
+        ///   Looks up a localized string similar to Error while deleting action.
         /// </summary>
         public static string E_PROF006 {
             get {
@@ -1330,7 +1339,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while moving action up.
+        ///   Looks up a localized string similar to Error while moving action up.
         /// </summary>
         public static string E_PROF007 {
             get {
@@ -1339,7 +1348,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while moving action down.
+        ///   Looks up a localized string similar to Error while moving action down.
         /// </summary>
         public static string E_PROF008 {
             get {
@@ -1348,7 +1357,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while editing situations.
+        ///   Looks up a localized string similar to Error while editing situations.
         /// </summary>
         public static string E_PROF009 {
             get {
@@ -1357,7 +1366,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while editing inputs.
+        ///   Looks up a localized string similar to Error while editing inputs.
         /// </summary>
         public static string E_PROF010 {
             get {
@@ -1366,7 +1375,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while designing custom window.
+        ///   Looks up a localized string similar to Error while designing custom window.
         /// </summary>
         public static string E_PROF011 {
             get {
@@ -1375,7 +1384,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while editing screen regions.
+        ///   Looks up a localized string similar to Error while editing screen regions.
         /// </summary>
         public static string E_PROF012 {
             get {
@@ -1384,7 +1393,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while refreshing the action list.
+        ///   Looks up a localized string similar to Error while refreshing the action list.
         /// </summary>
         public static string E_PROF013 {
             get {
@@ -1393,7 +1402,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while selecting an input.
+        ///   Looks up a localized string similar to Error while selecting an input.
         /// </summary>
         public static string E_PROF014 {
             get {
@@ -1402,7 +1411,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while selecting a control.
+        ///   Looks up a localized string similar to Error while selecting a control.
         /// </summary>
         public static string E_PROF015 {
             get {
@@ -1411,7 +1420,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while navigating to the next action list.
+        ///   Looks up a localized string similar to Error while navigating to the next action list.
         /// </summary>
         public static string E_PROF016 {
             get {
@@ -1420,7 +1429,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while navigating to the previous action list.
+        ///   Looks up a localized string similar to Error while navigating to the previous action list.
         /// </summary>
         public static string E_PROF017 {
             get {
@@ -1429,7 +1438,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while selecting a reason.
+        ///   Looks up a localized string similar to Error while selecting a reason.
         /// </summary>
         public static string E_PROF018 {
             get {
@@ -1438,7 +1447,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing the execution mode.
+        ///   Looks up a localized string similar to Error while changing the execution mode.
         /// </summary>
         public static string E_PROF019 {
             get {
@@ -1447,7 +1456,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while loading the screen region editor.
+        ///   Looks up a localized string similar to Error while loading the screen region editor.
         /// </summary>
         public static string E_REG001 {
             get {
@@ -1456,7 +1465,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while selecting a region.
+        ///   Looks up a localized string similar to Error while selecting a region.
         /// </summary>
         public static string E_REG002 {
             get {
@@ -1465,7 +1474,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while enabling region drawing.
+        ///   Looks up a localized string similar to Error while enabling region drawing.
         /// </summary>
         public static string E_REG003 {
             get {
@@ -1474,7 +1483,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} after editing region.
+        ///   Looks up a localized string similar to Error after editing region.
         /// </summary>
         public static string E_REG004 {
             get {
@@ -1483,7 +1492,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while adding a new region.
+        ///   Looks up a localized string similar to Error while adding a new region.
         /// </summary>
         public static string E_REG005 {
             get {
@@ -1492,7 +1501,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while deleting the selected region.
+        ///   Looks up a localized string similar to Error while deleting the selected region.
         /// </summary>
         public static string E_REG006 {
             get {
@@ -1501,7 +1510,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while navigating to the previous region.
+        ///   Looks up a localized string similar to Error while navigating to the previous region.
         /// </summary>
         public static string E_REG007 {
             get {
@@ -1510,7 +1519,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while navigating to the next region.
+        ///   Looks up a localized string similar to Error while navigating to the next region.
         /// </summary>
         public static string E_REG008 {
             get {
@@ -1519,7 +1528,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting the background image.
+        ///   Looks up a localized string similar to Error while setting the background image.
         /// </summary>
         public static string E_REG009 {
             get {
@@ -1528,7 +1537,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while clearing the background image.
+        ///   Looks up a localized string similar to Error while clearing the background image.
         /// </summary>
         public static string E_REG010 {
             get {
@@ -1537,7 +1546,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting the region background image.
+        ///   Looks up a localized string similar to Error while setting the region background image.
         /// </summary>
         public static string E_REG011 {
             get {
@@ -1546,7 +1555,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while clearing the region background image.
+        ///   Looks up a localized string similar to Error while clearing the region background image.
         /// </summary>
         public static string E_REG012 {
             get {
@@ -1555,7 +1564,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting the region translucency.
+        ///   Looks up a localized string similar to Error while setting the region translucency.
         /// </summary>
         public static string E_REG013 {
             get {
@@ -1564,7 +1573,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while renaming the selected region.
+        ///   Looks up a localized string similar to Error while renaming the selected region.
         /// </summary>
         public static string E_REG014 {
             get {
@@ -1573,7 +1582,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing the region colour.
+        ///   Looks up a localized string similar to Error while changing the region colour.
         /// </summary>
         public static string E_REG015 {
             get {
@@ -1582,7 +1591,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing &apos;Show in mode&apos;.
+        ///   Looks up a localized string similar to Error while changing &apos;Show in mode&apos;.
         /// </summary>
         public static string E_REG016 {
             get {
@@ -1591,7 +1600,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing &apos;Show in app&apos;.
+        ///   Looks up a localized string similar to Error while changing &apos;Show in app&apos;.
         /// </summary>
         public static string E_REG017 {
             get {
@@ -1600,7 +1609,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing overlay mode.
+        ///   Looks up a localized string similar to Error while changing overlay mode.
         /// </summary>
         public static string E_REG018 {
             get {
@@ -1609,7 +1618,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting region X.
+        ///   Looks up a localized string similar to Error while setting region X.
         /// </summary>
         public static string E_REG019 {
             get {
@@ -1618,7 +1627,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting region Y.
+        ///   Looks up a localized string similar to Error while setting region Y.
         /// </summary>
         public static string E_REG020 {
             get {
@@ -1627,7 +1636,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting region width.
+        ///   Looks up a localized string similar to Error while setting region width.
         /// </summary>
         public static string E_REG021 {
             get {
@@ -1636,7 +1645,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting region height.
+        ///   Looks up a localized string similar to Error while setting region height.
         /// </summary>
         public static string E_REG022 {
             get {
@@ -1645,7 +1654,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while setting region shape.
+        ///   Looks up a localized string similar to Error while setting region shape.
         /// </summary>
         public static string E_REG023 {
             get {
@@ -1654,7 +1663,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing hole size.
+        ///   Looks up a localized string similar to Error while changing hole size.
         /// </summary>
         public static string E_REG024 {
             get {
@@ -1663,7 +1672,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing start angle.
+        ///   Looks up a localized string similar to Error while changing start angle.
         /// </summary>
         public static string E_REG025 {
             get {
@@ -1672,7 +1681,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while changing sweep angle.
+        ///   Looks up a localized string similar to Error while changing sweep angle.
         /// </summary>
         public static string E_REG026 {
             get {
@@ -1681,7 +1690,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0}: selection of multiple regions is not allowed.
+        ///   Looks up a localized string similar to Error: selection of multiple regions is not allowed.
         /// </summary>
         public static string E_REGCTRL001 {
             get {
@@ -1690,7 +1699,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error {0} while upgrading profile to the latest version.
+        ///   Looks up a localized string similar to Error while upgrading profile to the latest version.
         /// </summary>
         public static string E_UPGR001 {
             get {
@@ -3049,6 +3058,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background colour:.
+        /// </summary>
+        public static string Regions_BackgroundColorLabel {
+            get {
+                return ResourceManager.GetString("Regions_BackgroundColorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to C_hoose....
         /// </summary>
         public static string Regions_BrowseRegionImageButton {
@@ -4030,6 +4048,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Menu Option.
+        /// </summary>
+        public static string String_Menu_Option {
+            get {
+                return ResourceManager.GetString("String_Menu_Option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Middle.
         /// </summary>
         public static string String_Middle {
@@ -4710,6 +4737,15 @@ namespace AltController.Properties {
         public static string String_Toggle_key_X {
             get {
                 return ResourceManager.GetString("String_Toggle_key_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Toggle menu option.
+        /// </summary>
+        public static string String_Toggle_menu_option {
+            get {
+                return ResourceManager.GetString("String_Toggle_menu_option", resourceCulture);
             }
         }
         

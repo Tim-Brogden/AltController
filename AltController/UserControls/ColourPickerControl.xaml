@@ -8,11 +8,11 @@
     <ComboBox Name="ColoursCombo" HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Grid.IsSharedSizeScope="True" ItemsSource="{Binding ColourItems}" SelectedValuePath="Name" SelectedValue="{Binding SelectedColour}">
         <ComboBox.ItemTemplate>
             <DataTemplate>
-                <Grid Background="{Binding Name}" Width="120">
+                <Grid Background="{Binding ColourName}" Width="120">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Name}" Foreground="{Binding TextColour}" Padding="5,1" />
+                    <TextBlock Text="{Binding Text}" Foreground="{Binding TextColour}" Padding="5,1" />
                 </Grid>
             </DataTemplate>
         </ComboBox.ItemTemplate>

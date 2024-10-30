@@ -159,6 +159,7 @@ namespace AltController.Core
         StopScrolling,
         ChangePointer,
         MoveThePointer,
+        MenuOption,
         Wait,
         StopOngoingActions
     }
@@ -177,7 +178,8 @@ namespace AltController.Core
         RegionEvent,
         MouseButtonEvent,
         MouseScrollEvent,
-        WindowRegionEvent
+        WindowRegionEvent,
+        MenuOptionEvent
     }
 
     /// <summary>
@@ -256,6 +258,19 @@ namespace AltController.Core
         EllipseSector,
         Annulus,
         AnnulusSector
+    }
+
+    /// <summary>
+    /// Main menu options
+    /// </summary>
+    public enum EMainMenuOption
+    {
+        None,
+        DrawScreenRegions,
+        ShowScreenRegionNames,
+        DrawPointerIndicatorLine,
+        DrawStateOverlay,
+        ShowTitleBars
     }
 
 }

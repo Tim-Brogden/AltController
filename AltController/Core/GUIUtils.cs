@@ -203,6 +203,31 @@ namespace AltController.Core
                     name = Properties.Resources.String_Key_Toggled; break;
                 case EEventType.WindowRegionEvent:
                     name = Properties.Resources.String_Window; break;
+                case EEventType.MenuOptionEvent:
+                    name = Properties.Resources.String_Menu_Option; break;
+                default:
+                    name = Properties.Resources.String_Other; break;
+            }
+
+            return name;
+        }
+
+        // Main menu option to string
+        public static string MainMenuOptionToString(EMainMenuOption option)
+        {
+            string name;
+            switch (option)
+            {
+                case EMainMenuOption.DrawScreenRegions:
+                    name = Properties.Resources.String_Toggle_screen_regions; break;
+                case EMainMenuOption.ShowScreenRegionNames:
+                    name = Properties.Resources.String_Toggle_region_names; break;                    
+                case EMainMenuOption.DrawPointerIndicatorLine:
+                    name = Properties.Resources.String_Toggle_pointer_indicator; break;                    
+                case EMainMenuOption.DrawStateOverlay:
+                    name = Properties.Resources.String_Toggle_state_overlay; break;
+                case EMainMenuOption.ShowTitleBars:
+                    name = Properties.Resources.String_Toggle_title_bars; break;
                 default:
                     name = Properties.Resources.String_Other; break;
             }
@@ -260,7 +285,7 @@ namespace AltController.Core
                             switch (actionType)
                             {
                                 case EActionType.RepeatKeyDirectional:
-                                    add = (args.EventReason == EEventReason.Updated);
+                                    add = args.EventReason == EEventReason.Updated;
                                     break;
                                 case EActionType.MoveThePointer:
                                     // Don't allow controlling the pointer with itself
@@ -274,7 +299,7 @@ namespace AltController.Core
                                     add = (args.EventReason == EEventReason.Dwelled) || (args.EventReason == EEventReason.Inside) || (args.EventReason == EEventReason.Outside);
                                     break;
                                 default:
-                                    add = (args.EventReason != EEventReason.Moved && args.EventReason != EEventReason.Updated);
+                                    add = args.EventReason != EEventReason.Moved && args.EventReason != EEventReason.Updated;
                                     break;
                             }
                             break;

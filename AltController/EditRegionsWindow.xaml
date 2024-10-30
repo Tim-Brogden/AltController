@@ -5,7 +5,7 @@
         xmlns:local="clr-namespace:AltController.UserControls" 
         xmlns:ac="clr-namespace:AltController"
         Icon="/AltController;component/Images/AltController.png" 
-        Title="{x:Static p:Resources.Regions_Title}" Height="600" Width="800" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
+        Title="{x:Static p:Resources.Regions_Title}" Height="625" Width="800" Loaded="Window_Loaded" SizeChanged="Window_SizeChanged">
     <Window.CommandBindings>
         <CommandBinding Command="{x:Static ac:EditRegionsWindow.PreviousCommand}" CanExecute="NavigateCommand_CanExecute" Executed="PreviousCommand_Executed" />
         <CommandBinding Command="{x:Static ac:EditRegionsWindow.NextCommand}" CanExecute="NavigateCommand_CanExecute" Executed="NextCommand_Executed" />
@@ -89,6 +89,7 @@
                     <RowDefinition Height="25"/>
                     <RowDefinition Height="25"/>
                     <RowDefinition Height="25"/>
+                    <RowDefinition Height="25"/>
                     <RowDefinition Height="35"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -119,8 +120,10 @@
                 <local:CustomSliderControl x:Name="StartAngleSlider" Grid.Row="10" Grid.Column="1" IsEnabled="False" Minimum="0" Maximum="360" Value="0" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="StartAngleSlider_ValueChanged" />
                 <TextBlock Name="SweepAngleLabel" Text="{x:Static p:Resources.Regions_SweepAngleLabel}" VerticalAlignment="Center" Grid.Row="11" Grid.Column="0"></TextBlock>
                 <local:CustomSliderControl x:Name="SweepAngleSlider" Grid.Row="11" Grid.Column="1" IsEnabled="False" Minimum="1" Maximum="359" Value="90" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="SweepAngleSlider_ValueChanged" />
-                <TextBlock Name="ImageLabel" Text="{x:Static p:Resources.Regions_ImageLabel}" VerticalAlignment="Center" Grid.Row="12" Grid.Column="0"></TextBlock>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="12" Grid.Column="1">
+                <TextBlock Name="BackgroundColorLabel" Text="{x:Static p:Resources.Regions_BackgroundColorLabel}" VerticalAlignment="Center" Grid.Row="12" Grid.Column="0"></TextBlock>
+                <local:ColourPickerControl x:Name="BackgroundColourCombo" VerticalAlignment="Center" Grid.Row="12" Grid.Column="1" IsEnabled="False" AllowNone="True" SelectedColourChanged="BackgroundColourCombo_SelectionChanged"></local:ColourPickerControl>
+                <TextBlock Name="ImageLabel" Text="{x:Static p:Resources.Regions_ImageLabel}" VerticalAlignment="Center" Grid.Row="13" Grid.Column="0"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="13" Grid.Column="1">
                     <Button Name="BrowseRegionImageButton" Height="23" Click="BrowseRegionImageButton_Click" ToolTip="{x:Static p:Resources.Regions_BrowseRegionImageToolTip}" IsEnabled="False">
                         <StackPanel Orientation="Horizontal">
                             <Image Source="/AltController;component/Images/icons/image_edit.png" />
@@ -133,11 +136,11 @@
                         </StackPanel>
                     </Button>
                 </StackPanel>
-                <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Regions_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="13" Grid.Column="0"></TextBlock>
-                <CheckBox Name="DefaultTranslucencyCheckbox" ToolTip="{x:Static p:Resources.String_Default}" Grid.Row="13" Grid.Column="0" IsEnabled="False" IsChecked="True" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Checked="DefaultTranslucencyCheckbox_Changed" Unchecked="DefaultTranslucencyCheckbox_Changed"/>
-                <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="13" Grid.Column="1" Visibility="Hidden" IsEnabled="False" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="TranslucencySlider_ValueChanged" />
-                <TextBlock Name="DefaultTranslucencyLabel" Text="{x:Static p:Resources.String_Default}" VerticalAlignment="Center" Grid.Row="13" Grid.Column="1"></TextBlock>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2">
+                <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Regions_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="14" Grid.Column="0"></TextBlock>
+                <CheckBox Name="DefaultTranslucencyCheckbox" ToolTip="{x:Static p:Resources.String_Default}" Grid.Row="14" Grid.Column="0" IsEnabled="False" IsChecked="True" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,5,0" Checked="DefaultTranslucencyCheckbox_Changed" Unchecked="DefaultTranslucencyCheckbox_Changed"/>
+                <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="14" Grid.Column="1" Visibility="Hidden" IsEnabled="False" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="TranslucencySlider_ValueChanged" />
+                <TextBlock Name="DefaultTranslucencyLabel" Text="{x:Static p:Resources.String_Default}" VerticalAlignment="Center" Grid.Row="14" Grid.Column="1"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2">
                     <Button Name="DrawButton" VerticalAlignment="Center" HorizontalAlignment="Left" MinWidth="70" Height="23" Margin="0,0,5,0" Click="DrawButton_Click" Content="{x:Static p:Resources.Regions_DrawButton}" ToolTip="{x:Static p:Resources.Regions_DrawToolTip}" IsEnabled="False"/>
                     <CheckBox Name="ForceSquareCheckbox" VerticalAlignment="Center" Margin="5,0,0,0" Content="{x:Static p:Resources.Regions_ForceSquareCheckbox}" ToolTip="{x:Static p:Resources.Regions_ForceSquareToolTip}"></CheckBox>
                 </StackPanel>

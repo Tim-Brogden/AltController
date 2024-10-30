@@ -9112,7 +9112,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AltController.resources, Version=1.9.6.0, Culture=de-DE, PublicKeyToken=b6ee17299ce6ac0a, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:AltController.resources, Version=1.9.7.0, Culture=de-DE, PublicKeyToken=b6ee17299ce6ac0a, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_27A5A57524144EAEAF86A59BEAF07731"
@@ -26363,7 +26363,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AltController.resources, Version=1.9.6.0, Culture=en-US, PublicKeyToken=b6ee17299ce6ac0a, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:AltController.resources, Version=1.9.7.0, Culture=en-US, PublicKeyToken=b6ee17299ce6ac0a, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_FAB4D9666C2F43CFB4720B8CF60E111B"
@@ -26985,15 +26985,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Alt Controller"
-        "ProductCode" = "8:{6CB4E808-212B-4327-B724-A7A2A088117D}"
-        "PackageCode" = "8:{8722F86B-65A5-4CE0-9B89-5C56CCE3A446}"
+        "ProductCode" = "8:{3E85CD9F-D563-4790-B77A-3F1EAA5A5616}"
+        "PackageCode" = "8:{1D6F845B-42F7-46C7-A597-2E388E6B0672}"
         "UpgradeCode" = "8:{BA3B7DB1-4994-4CFE-BBA5-8873A32155C1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.97"
+        "ProductVersion" = "8:1.98"
         "Manufacturer" = "8:Tim Brogden"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://altcontroller.net"

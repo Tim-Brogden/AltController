@@ -146,6 +146,9 @@ namespace AltController
                     case EActionType.RepeatKeyDirectional:
                         this.RepeatKeyDirectionalDetails.SetCurrentAction(_currentAction);
                         break;
+                    case EActionType.MenuOption:
+                        this.MenuActionDetails.SetCurrentAction(_currentAction);
+                        break;
                 }
 
                 // Select action type
@@ -238,6 +241,9 @@ namespace AltController
                             break;
                         case EActionType.RepeatKeyDirectional:
                             ShowActionGrid(this.RepeatKeyDirectionalDetails);
+                            break;
+                        case EActionType.MenuOption:
+                            ShowActionGrid(this.MenuActionDetails);
                             break;
                     }
                 }
@@ -358,6 +364,9 @@ namespace AltController
                         break;
                     case EActionType.RepeatKeyDirectional:
                         action = this.RepeatKeyDirectionalDetails.GetCurrentAction();
+                        break;
+                    case EActionType.MenuOption:
+                        action = this.MenuActionDetails.GetCurrentAction();
                         break;
                 }
             }

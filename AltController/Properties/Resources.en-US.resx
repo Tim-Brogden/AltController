@@ -142,31 +142,31 @@
     <comment>Custom window</comment>
   </data>
   <data name="E_CUST007" xml:space="preserve">
-    <value>Error {0} while selecting background color</value>
+    <value>Error while selecting background color</value>
     <comment>Error message</comment>
   </data>
   <data name="E_CUST017" xml:space="preserve">
-    <value>Error {0} while changing button border color</value>
+    <value>Error while changing button border color</value>
     <comment>Error message</comment>
   </data>
   <data name="E_CUST018" xml:space="preserve">
-    <value>Error {0} while changing button background color</value>
+    <value>Error while changing button background color</value>
     <comment>Error message</comment>
   </data>
   <data name="E_CUST024" xml:space="preserve">
-    <value>Error {0} while changing button text color</value>
+    <value>Error while changing button text color</value>
     <comment>Error message</comment>
   </data>
   <data name="E_MAIN001" xml:space="preserve">
-    <value>Error {0} while initializing folders</value>
+    <value>Error while initializing folders</value>
     <comment>Error message</comment>
   </data>
   <data name="E_MAIN002" xml:space="preserve">
-    <value>Error {0} while initializing application</value>
+    <value>Error while initializing application</value>
     <comment>Error message</comment>
   </data>
   <data name="E_REG015" xml:space="preserve">
-    <value>Error {0} while changing the region color</value>
+    <value>Error while changing the region color</value>
     <comment>Error message</comment>
   </data>
   <data name="Options_ModeOverlayColorLabel" xml:space="preserve">
@@ -176,6 +176,10 @@
   <data name="Options_PointerColourLabel" xml:space="preserve">
     <value>Pointer indicator color:</value>
     <comment>Options - Display</comment>
+  </data>
+  <data name="Regions_BackgroundColorLabel" xml:space="preserve">
+    <value>Background color:</value>
+    <comment>Edit screen regions</comment>
   </data>
   <data name="Regions_RegionColorLabel" xml:space="preserve">
     <value>Color:</value>

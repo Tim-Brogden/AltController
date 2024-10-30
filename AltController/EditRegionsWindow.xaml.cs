@@ -154,6 +154,7 @@ namespace AltController
 
                 // Initial combo selections
                 this.ColoursCombo.SelectedColour = Constants.DefaultScreenRegionColour;
+                this.BackgroundColourCombo.SelectedColour = "";
                 this.ModeCombo.SelectedIndex = 0;
                 this.AppCombo.SelectedIndex = (_appsList.Count > 2) ? 2 : 0;    // First app, or (All) if no apps in profile
                 this.ShapeComboBox.SelectedIndex = 0;
@@ -312,10 +313,11 @@ namespace AltController
             {
                 ClearMessages();
                 string selectedColour = this.ColoursCombo.SelectedColour;
+                string selectedBgColour = this.BackgroundColourCombo.SelectedColour;
                 NamedItem selectedMode = (NamedItem)this.ModeCombo.SelectedItem;
                 NamedItem selectedApp = (NamedItem)this.AppCombo.SelectedItem;
                 NamedItem selectedShape = (NamedItem)this.ShapeComboBox.SelectedItem;
-                if (selectedMode != null && selectedApp != null && selectedShape != null && selectedColour != null && _regionsList != null)
+                if (selectedMode != null && selectedApp != null && selectedShape != null && selectedColour != null && selectedBgColour != null && _regionsList != null)
                 {
                     long id = _regionsList.GetFirstUnusedID();
                     string name = _regionsList.GetFirstUnusedName(Properties.Resources.String_Region, false);
@@ -332,6 +334,7 @@ namespace AltController
                         startAngleDeg,
                         sweepAngleDeg,
                         selectedColour,
+                        selectedBgColour,
                         "",
                         translucency,
                         new LogicalState(selectedMode.ID, selectedApp.ID, Constants.DefaultID));
@@ -510,6 +513,7 @@ namespace AltController
                     SweepAngleSlider.IsEnabled = true;
                 }
                 this.ColoursCombo.SelectedColour = region.Colour;
+                this.BackgroundColourCombo.SelectedColour = region.BackgroundColour;
                 // Check that the mode is valid to avoid deselecting mode option
                 if (_modesList.GetItemByID(region.ShowInState.ModeID) != null)
                 {
@@ -545,6 +549,7 @@ namespace AltController
             }
 
             ColoursCombo.IsEnabled = isSelection;
+            BackgroundColourCombo.IsEnabled = isSelection;
             ModeCombo.IsEnabled = isSelection;
             AppCombo.IsEnabled = isSelection;
             LeftSlider.IsEnabled = isSelection;
@@ -707,8 +712,10 @@ namespace AltController
                         foreach (ScreenRegion region in _selectedRegions)
                         {
                             region.BackgroundImage = fileName;
+                            region.BackgroundColour = "";
                         }
 
+                        BackgroundColourCombo.SelectedColour = "";
                         RegionsControl.RefreshSelectedRegionBorderAndFill();
                     }
                 }
@@ -853,6 +860,37 @@ namespace AltController
                     foreach (ScreenRegion region in _selectedRegions)
                     {
                         region.Colour = colour;
+                    }
+
+                    RegionsControl.RefreshSelectedRegionBorderAndFill();
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(Properties.Resources.E_REG015, ex);
+            }
+        }
+
+        /// <summary>
+        /// Background colour changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BackgroundColourCombo_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ClearMessages();
+                if (_selectedRegions.Count > 0 && this.BackgroundColourCombo.SelectedColour != null)
+                {
+                    string colour = (string)this.BackgroundColourCombo.SelectedColour;
+                    foreach (ScreenRegion region in _selectedRegions)
+                    {
+                        region.BackgroundColour = colour;
+                        if (colour != "")
+                        {
+                            region.BackgroundImage = "";
+                        }
                     }
 
                     RegionsControl.RefreshSelectedRegionBorderAndFill();

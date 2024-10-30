@@ -47,6 +47,7 @@ namespace AltController.Config
         private double _startAngleDeg = 0.0;
         private double _sweepAngleDeg = 90.0;
         private string _colour = "";
+        private string _backgroundColour = "";
         private string _bgImage = "";
         private double _translucency = -1.0;    // Between 0 and 1 if set, or -1 to signify default translucency
         private LogicalState _showInState = new LogicalState();
@@ -58,6 +59,7 @@ namespace AltController.Config
         public double StartAngle { get { return _startAngleDeg; } set { _startAngleDeg = value; } }
         public double SweepAngle { get { return _sweepAngleDeg; } set { _sweepAngleDeg = value; } }
         public string Colour { get { return _colour; } set { _colour = value; } }
+        public string BackgroundColour { get { return _backgroundColour; } set { _backgroundColour = value; } }
         public string BackgroundImage { get { return _bgImage; } set { _bgImage = value; } }
         public double Translucency { get { return _translucency; } set { _translucency = value; } }
         public LogicalState ShowInState { get { return _showInState; } set { _showInState = value; } }
@@ -72,9 +74,6 @@ namespace AltController.Config
         /// <summary>
         /// Full constructor
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="name"></param>
-        /// <param name="rect"></param>
         public ScreenRegion(long id, 
                             string name,
                             EShape shape,
@@ -83,6 +82,7 @@ namespace AltController.Config
                             double startAngleDeg,
                             double sweepAngleDeg,
                             string colour,
+                            string backgroundColour,
                             string bgImage,
                             double translucency,
                             LogicalState showInState)
@@ -94,6 +94,7 @@ namespace AltController.Config
             _startAngleDeg = startAngleDeg;
             _sweepAngleDeg = sweepAngleDeg;
             _colour = colour;
+            _backgroundColour = backgroundColour;
             _bgImage = bgImage;
             _translucency = translucency;
             _showInState = showInState;
@@ -112,6 +113,7 @@ namespace AltController.Config
             _startAngleDeg = region._startAngleDeg;
             _sweepAngleDeg = region._sweepAngleDeg;
             _colour = region._colour;
+            _backgroundColour = region._backgroundColour;
             _bgImage = region._bgImage;
             _translucency = region._translucency;
             _showInState = new LogicalState(region._showInState);
@@ -465,6 +467,10 @@ namespace AltController.Config
             _startAngleDeg = double.Parse(element.GetAttribute("startangle"), CultureInfo.InvariantCulture);
             _sweepAngleDeg = double.Parse(element.GetAttribute("sweepangle"), CultureInfo.InvariantCulture);
             _colour = element.GetAttribute("colour");
+            if (element.HasAttribute("backgroundcolour"))   // Added v1.98
+            {
+                _backgroundColour = element.GetAttribute("backgroundcolour");
+            }
             _bgImage = element.GetAttribute("bgimage");
             _translucency = double.Parse(element.GetAttribute("translucency"), CultureInfo.InvariantCulture);
             _showInState.FromXml(element);
@@ -487,6 +493,7 @@ namespace AltController.Config
             element.SetAttribute("startangle", _startAngleDeg.ToString(CultureInfo.InvariantCulture));
             element.SetAttribute("sweepangle", _sweepAngleDeg.ToString(CultureInfo.InvariantCulture));
             element.SetAttribute("colour", _colour);
+            element.SetAttribute("backgroundcolour", _backgroundColour);
             element.SetAttribute("bgimage", _bgImage);
             element.SetAttribute("translucency", _translucency.ToString(CultureInfo.InvariantCulture));
             _showInState.ToXml(element, doc);

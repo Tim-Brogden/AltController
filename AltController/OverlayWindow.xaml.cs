@@ -29,11 +29,13 @@ along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using AltController.Core;
 using AltController.Config;
 using AltController.Event;
+using AltController.Sys;
 
 namespace AltController
 {
@@ -140,6 +142,19 @@ namespace AltController
             RegionsControl.SetAppConfig(_appConfig);
         }
 
+        /// <summary>
+        /// Window initialisation
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            // Set the window style to noactivate
+            WindowInteropHelper helper = new WindowInteropHelper(this);
+            uint gwlExStyle = WindowsAPI.GetWindowLong(helper.Handle, WindowsAPI.GWL_EXSTYLE);
+            WindowsAPI.SetWindowLong(helper.Handle, WindowsAPI.GWL_EXSTYLE, gwlExStyle | WindowsAPI.WS_EX_NOACTIVATE);
+
+            base.OnSourceInitialized(e);
+        }
         /// <summary>
         /// Set the application configuration
         /// </summary>

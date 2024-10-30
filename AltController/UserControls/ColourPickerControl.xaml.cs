@@ -43,7 +43,7 @@ namespace AltController.UserControls
     public partial class ColourPickerControl : UserControl
     {
         // Fields
-        private List<ColourItem> _colourItems;
+        private List<ColourItem> _colourItems = new List<ColourItem>();
 
         // Properties
         public string SelectedColour
@@ -58,6 +58,19 @@ namespace AltController.UserControls
             typeof(ColourPickerControl),
             new FrameworkPropertyMetadata(SelectedColourPropertyChanged)
         );
+        public bool AllowNone
+        {
+            get { return (bool)GetValue(AllowNoneProperty); }
+            set { SetValue(AllowNoneProperty, value); }
+        }
+        private static readonly DependencyProperty AllowNoneProperty =
+            DependencyProperty.Register(
+            "AllowNone",
+            typeof(bool),
+            typeof(ColourPickerControl),
+            new FrameworkPropertyMetadata(AllowNonePropertyChanged)
+        );
+
         public List<ColourItem> ColourItems { get { return _colourItems; } }
 
         // Routed events
@@ -74,15 +87,15 @@ namespace AltController.UserControls
         /// </summary>
         public ColourPickerControl()
         {
-            PopulateColourList();
-
             InitializeComponent();
 
-            ColoursCombo.DataContext = this;
+            PopulateColourList();
+
+            this.DataContext = this;
         }
 
         /// <summary>
-        /// Design mode changed
+        /// Selected colour changed
         /// </summary>
         private static void SelectedColourPropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
         {
@@ -91,6 +104,15 @@ namespace AltController.UserControls
             {
                 control.RaiseEvent(new RoutedEventArgs(SelectedColourChangedEvent));
             }
+        }
+
+        /// <summary>
+        /// Allow None changed
+        /// </summary>
+        private static void AllowNonePropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
+        {
+            ColourPickerControl control = source as ColourPickerControl;
+            control.PopulateColourList();
         }
 
         /// <summary>
@@ -110,10 +132,10 @@ namespace AltController.UserControls
         /// <summary>
         /// Populate the list of colours
         /// </summary>
-        private void PopulateColourList()
+        public void PopulateColourList()
         {
             // Get standard colours
-            _colourItems = new List<ColourItem>();
+            _colourItems.Clear();
             foreach (PropertyInfo colourInfo in typeof(Colors).GetProperties())
             {
                 if (colourInfo.Name != "Transparent")
@@ -129,8 +151,14 @@ namespace AltController.UserControls
             }
 
             // Sort by ID
-            _colourItems.Sort((x, y) => x.ID.CompareTo(y.ID));            
+            _colourItems.Sort((x, y) => x.ID.CompareTo(y.ID));
+
+            if (this.AllowNone)
+            {
+                _colourItems.Insert(0, new ColourItem(-1, "", "Black"));
+            }
         }
+
     }
 
     /// <summary>
@@ -138,6 +166,8 @@ namespace AltController.UserControls
     /// </summary>
     public class ColourItem : NamedItem
     {
+        public string ColourName { get { return Name != "" ? Name : null; } }
+        public string Text { get { return Name != "" ? Name : "(None)"; } }
         public string TextColour { get; set; }
 
         public ColourItem(long id, string name, string textColour)

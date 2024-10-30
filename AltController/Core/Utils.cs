@@ -54,6 +54,8 @@ namespace AltController.Core
                     name = Properties.Resources.String_Change_pointer; break;
                 case EActionType.HoldKey:
                     name = Properties.Resources.String_Hold_key; break;
+                case EActionType.MenuOption:
+                    name = Properties.Resources.String_Toggle_menu_option; break;
                 case EActionType.MouseClick:
                     name = Properties.Resources.String_Mouse_click; break;
                 case EActionType.MouseDoubleClick:

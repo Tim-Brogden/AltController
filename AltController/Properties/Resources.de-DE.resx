@@ -1445,6 +1445,10 @@
     <value>Hinzufügen einer neuen Region</value>
     <comment>Edit screen regions</comment>
   </data>
+  <data name="Regions_BackgroundColorLabel" xml:space="preserve">
+    <value>Hintergrundfarbe:</value>
+    <comment>Edit screen regions</comment>
+  </data>
   <data name="Regions_BrowseRegionImageButton" xml:space="preserve">
     <value>Au_swählen</value>
     <comment>Edit screen regions</comment>

@@ -329,6 +329,12 @@ namespace AltController
                         eventDetails.Title = string.Format(Properties.Resources.String_Profile_applied_X, args.Val);                        
                     }
                     break;
+                case EEventType.MenuOptionEvent:
+                    {
+                        MenuOptionEventArgs args = (MenuOptionEventArgs)report.Args;
+                        eventDetails.Title = GUIUtils.MainMenuOptionToString(args.Option);
+                    }
+                    break;
                 default:
                     // Don't log
                     eventDetails = null;

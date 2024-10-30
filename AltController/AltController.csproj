@@ -56,7 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AltController.pfx</AssemblyOriginatorKeyFile>
@@ -97,6 +97,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Actions\ToggleKeyAction.cs" />
+    <Compile Include="Actions\MenuOptionAction.cs" />
     <Compile Include="Actions\TypeTextAction.cs" />
     <Compile Include="Actions\HoldKeyAction.cs" />
     <Compile Include="Actions\MouseButtonAction.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Event\AltMouseButtonEventArgs.cs" />
     <Compile Include="Event\AltToggleKeyEventArgs.cs" />
     <Compile Include="Event\AltMouseScrollEventArgs.cs" />
+    <Compile Include="Event\MenuOptionEventArgs.cs" />
     <Compile Include="Event\DoubleValEventArgs.cs" />
     <Compile Include="Event\WindowRegionEventArgs.cs" />
     <Compile Include="Input\CustomWindowSource.cs" />
@@ -215,6 +217,9 @@
     </Compile>
     <Compile Include="UserControls\LanguagePickerControl.xaml.cs">
       <DependentUpon>LanguagePickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MenuActionControl.xaml.cs">
+      <DependentUpon>MenuActionControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ToggleMouseButtonActionControl.xaml.cs">
       <DependentUpon>ToggleMouseButtonActionControl.xaml</DependentUpon>
@@ -357,6 +362,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\MenuActionControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\ToggleMouseButtonActionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -448,7 +457,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.de-DE.resx" />
+    <EmbeddedResource Include="Properties\Resources.de-DE.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

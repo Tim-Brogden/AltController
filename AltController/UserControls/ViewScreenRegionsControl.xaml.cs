@@ -353,9 +353,21 @@ namespace AltController.UserControls
                         imageBrush.Stretch = Stretch.Fill;
                         path.Fill = imageBrush;
                     }
+                    else if (region.BackgroundColour != "")
+                    {
+                        SolidColorBrush brush = GUIUtils.GetBrushFromColour(region.BackgroundColour, 0xFF, null);
+                        path.Fill = brush;
+                    }
                     else
                     {
-                        path.Fill = GUIUtils.GetBrushFromColour(region.Colour, 0x40, Brushes.LightGray);
+                        if (_isDesignMode)
+                        {
+                            path.Fill = GUIUtils.GetBrushFromColour(region.Colour, 0x40, Brushes.LightGray);
+                        }
+                        else
+                        {
+                            path.Fill = null;
+                        } 
                     }
                 }
             }
@@ -396,17 +408,22 @@ namespace AltController.UserControls
                 imageBrush.Stretch = Stretch.Fill;
                 path.Fill = imageBrush;
             }
+            else if (region.BackgroundColour != "")
+            {
+                SolidColorBrush brush = GUIUtils.GetBrushFromColour(region.BackgroundColour, 0xFF, null);
+                path.Fill = brush;
+            }
             else if (_isDesignMode)
             {
                 // Set a coloured background in design mode so that the region is clickable
                 path.Fill = GUIUtils.GetBrushFromColour(region.Colour, 0x40, Brushes.LightGray);
-            }            
-            
+            }
+
             // Set cursor
             if (_isDesignMode)
             {
                 path.Cursor = Cursors.Hand;
-            }
+            }            
 
             // Show selected region on top
             bool isSelected = _selectedRegions.Contains(region);
