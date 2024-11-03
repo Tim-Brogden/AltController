@@ -454,8 +454,10 @@ namespace AltController.UserControls
                 textBlock.FontSize = 20;
                 textBlock.Foreground = GUIUtils.GetBrushFromColour(region.Colour, 0xFF, Brushes.LightGray);
                 RegionCanvas.Children.Add(textBlock);
-                Canvas.SetLeft(textBlock, _canvasWidth * (region.Rectangle.Left + region.Rectangle.Width * textPos.X) - 30.0);
-                Canvas.SetTop(textBlock, _canvasHeight * (region.Rectangle.Top + region.Rectangle.Height * textPos.Y) - 10.0);
+                textBlock.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
+                textBlock.Arrange(new Rect(textBlock.DesiredSize));
+                Canvas.SetLeft(textBlock, _canvasWidth * (region.Rectangle.Left + region.Rectangle.Width * textPos.X) - 0.5 * textBlock.ActualWidth);
+                Canvas.SetTop(textBlock, _canvasHeight * (region.Rectangle.Top + region.Rectangle.Height * textPos.Y) - 0.5 * textBlock.ActualHeight);
             }
 
             return path;
@@ -533,7 +535,7 @@ namespace AltController.UserControls
                     }
                     SetSelectedRegions(newSelections);
                 }
-                else if(!_selectedRegions.Contains(region))
+                else
                 {
                     // Single selection
                     SetSelectedRegions(new List<ScreenRegion> { region });

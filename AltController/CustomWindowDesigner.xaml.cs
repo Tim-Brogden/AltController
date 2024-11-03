@@ -28,11 +28,9 @@ along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Reflection;
 using AltController.Config;
 using AltController.Core;
 using AltController.Event;
@@ -49,6 +47,7 @@ namespace AltController
         private IParentWindow _parentWindow;
         private CustomWindowSource _customWindowSource;
         private bool _isLoaded = false;
+        private NamedItemList _textAlignments = new NamedItemList();
 
         // Properties
         public CustomWindowSource CustomWindow { get { return _customWindowSource; } }
@@ -103,6 +102,19 @@ namespace AltController
                     ButtonFontCombo.Items.Add(item);
                 }
                 ButtonFontCombo.SelectedValue = "";
+
+                // Text alignments
+                _textAlignments.Add(new NamedItem((long)ELRUDState.None, "Centre"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.Up, "Top"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.Down, "Bottom"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.Left, "Left"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.Right, "Right"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.UpLeft, "Top left"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.UpRight, "Top right"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.DownLeft, "Bottom left"));
+                _textAlignments.Add(new NamedItem((long)ELRUDState.DownRight, "Bottom right"));
+                ButtonTextAlignmentCombo.ItemsSource = _textAlignments;
+                ButtonTextAlignmentCombo.SelectedValue = (long)ELRUDState.None;
 
                 // Button properties
                 this.ButtonXSlider.Maximum = _customWindowSource.WindowWidth;
@@ -159,6 +171,17 @@ namespace AltController
         }
 
         /// <summary>
+        /// Allow the user to select all the buttons by pressing Ctrl+A
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectAllCommand_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            PreviewControl.SelectAllButtons();
+            e.Handled = true;
+        }
+
+        /// <summary>
         /// Add button clicked
         /// </summary>
         /// <param name="sender"></param>
@@ -180,6 +203,7 @@ namespace AltController
                         newY = Math.Min(ButtonYSlider.Value + ButtonHeightSlider.Value, WindowHeightSlider.Value - ButtonHeightSlider.Value);
                     }
                     string name = _customWindowSource.CustomButtons.GetFirstUnusedName("Button", false);
+                    long alignmentVal = (long)this.ButtonTextAlignmentCombo.SelectedValue;
                     CustomButtonData buttonData = new CustomButtonData(
                         (byte)id, 
                         name, 
@@ -195,7 +219,8 @@ namespace AltController
                         0.01 * this.ButtonTranslucencySlider.Value,
                         (string)this.ButtonFontCombo.SelectedValue,
                         this.ButtonFontSizeSlider.Value,
-                        this.ButtonTextColourCombo.SelectedColour);
+                        this.ButtonTextColourCombo.SelectedColour,
+                        (ELRUDState)alignmentVal);
 
                     // Add to custom window
                     PreviewControl.CreateButton(buttonData);
@@ -245,8 +270,8 @@ namespace AltController
                     if (data.Count != 0)
                     {
                         CustomButtonData buttonData = data[0];
-                        ButtonNameTextBox.Text = buttonData.Name;
-                        ButtonTextTextBox.Text = buttonData.Text;
+                        ButtonNameTextBox.Text = data.Count == 1 ? buttonData.Name : string.Format(Properties.Resources.String_N_buttons_selected, data.Count);
+                        ButtonTextTextBox.Text = data.Count == 1 ? buttonData.Text : "";
                         ButtonXSlider.Value = buttonData.X;
                         ButtonYSlider.Value = buttonData.Y;
                         ButtonWidthSlider.Value = buttonData.Width;
@@ -258,16 +283,21 @@ namespace AltController
                         ButtonFontCombo.SelectedValue = buttonData.FontName;
                         ButtonFontSizeSlider.Value = buttonData.FontSize;
                         ButtonTextColourCombo.SelectedColour = buttonData.TextColour;
+                        ButtonTextAlignmentCombo.SelectedValue = (long)buttonData.TextAlignment;
                         BrowseButtonImageButton.IsEnabled = true;
                         ClearButtonImageButton.IsEnabled = true;
                         DeleteButton.IsEnabled = true;
                     }
                     else
                     {
+                        ButtonNameTextBox.Text = ""; 
+                        ButtonTextTextBox.Text = "";
                         BrowseButtonImageButton.IsEnabled = false;
                         ClearButtonImageButton.IsEnabled = false;
                         DeleteButton.IsEnabled = false;
                     }
+                    ButtonNameTextBox.IsEnabled = data.Count < 2;
+                    ButtonTextTextBox.IsEnabled = data.Count < 2;
                 }
                 catch (Exception ex)
                 {
@@ -452,7 +482,7 @@ namespace AltController
                         CustomButtonData first = data[0];
                         double x = Math.Max(0, Math.Min(_customWindowSource.WindowWidth - first.Width, args.Value));
                         double diff = x - first.X;
-                        if (diff != 0)
+                        if (Math.Abs(diff) > 0.000001)
                         {
                             foreach (CustomButtonData buttonData in data)
                             {
@@ -487,7 +517,7 @@ namespace AltController
                         CustomButtonData first = data[0];
                         double y = Math.Max(0, Math.Min(_customWindowSource.WindowHeight - first.Height, args.Value));
                         double diff = y - first.Y;
-                        if (diff != 0)
+                        if (Math.Abs(diff) > 0.000001)
                         {
                             foreach (CustomButtonData buttonData in data)
                             {
@@ -516,19 +546,14 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
                     double width = Math.Max(Constants.MinCustomButtonSize, Math.Min(_customWindowSource.WindowWidth, args.Value));
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && Math.Abs(data[0].Width - width) > 0.000001)
                     {
-                        if (buttonData.Width != width)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.Width = width;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -551,19 +576,14 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
                     double height = Math.Max(Constants.MinCustomButtonSize, Math.Min(_customWindowSource.WindowHeight, args.Value));
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && Math.Abs(data[0].Height - height) > 0.000001)
                     {
-                        if (buttonData.Height != height)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.Height = height;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -586,18 +606,13 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data) 
+                    if (data.Count != 0 && Math.Abs(data[0].BorderThickness - args.Value) > 0.000001)
                     {
-                        if (buttonData.BorderThickness != args.Value)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.BorderThickness = args.Value;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -620,18 +635,10 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count == 1 && data[0].Name != ButtonNameTextBox.Text)
                     {
-                        if (buttonData.Name != ButtonNameTextBox.Text)
-                        {
-                            buttonData.Name = ButtonNameTextBox.Text;
-                            updated = true;
-                        }
-                    }
-                    if (updated)
-                    {
+                        data[0].Name = ButtonNameTextBox.Text;
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -654,18 +661,10 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count == 1 && data[0].Text != ButtonTextTextBox.Text)
                     {
-                        if (buttonData.Text != ButtonTextTextBox.Text)
-                        {
-                            buttonData.Text = ButtonTextTextBox.Text;
-                            updated = true;
-                        }
-                    }
-                    if (updated)
-                    {
+                        data[0].Text = ButtonTextTextBox.Text;
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -689,18 +688,13 @@ namespace AltController
                 {
                     ErrorMessage.Clear();
                     string colour = this.ButtonTextColourCombo.SelectedColour;
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && data[0].TextColour != colour)
                     {
-                        if (buttonData.TextColour != colour)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.TextColour = colour;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -723,18 +717,13 @@ namespace AltController
                 {
                     ErrorMessage.Clear();
                     string colour = this.ButtonBorderColourCombo.SelectedColour;
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && data[0].BorderColour != colour) 
                     {
-                        if (buttonData.BorderColour != colour)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.BorderColour = colour;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -758,18 +747,13 @@ namespace AltController
                 {
                     ErrorMessage.Clear();
                     string colour = this.ButtonBackgroundColourCombo.SelectedColour;
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && data[0].BackgroundColour != colour)
                     {
-                        if (buttonData.BackgroundColour != colour)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.BackgroundColour = colour;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtonBackground();
                     }
                 }
@@ -870,18 +854,14 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
+                    double val = 0.01 * ButtonTranslucencySlider.Value;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && Math.Abs(data[0].BackgroundTranslucency - val) > 0.000001)
                     {
-                        if (buttonData.BackgroundTranslucency != 0.01 * ButtonTranslucencySlider.Value)
+                        foreach (CustomButtonData buttonData in data)
                         {
-                            buttonData.BackgroundTranslucency = 0.01 * ButtonTranslucencySlider.Value;
-                            updated = true;
+                            buttonData.BackgroundTranslucency = val;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtonBackground();
                     }
                 }
@@ -905,18 +885,13 @@ namespace AltController
                 {
                     ErrorMessage.Clear();
                     ComboBoxItem item = (ComboBoxItem)ButtonFontCombo.SelectedItem;
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (item != null && data.Count != 0 && data[0].FontName != (string)item.Content)
                     {
-                        if (item != null && buttonData.FontName != (string)item.Content)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.FontName = (string)item.Content;
-                            updated = true;
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -939,18 +914,13 @@ namespace AltController
                 try
                 {
                     ErrorMessage.Clear();
-                    bool updated = false;
                     List<CustomButtonData> data = PreviewControl.GetSelectionData();
-                    foreach (CustomButtonData buttonData in data)
+                    if (data.Count != 0 && Math.Abs(data[0].FontSize - ButtonFontSizeSlider.Value) > 0.000001)
                     {
-                        if (buttonData.FontSize != ButtonFontSizeSlider.Value)
+                        foreach (CustomButtonData buttonData in data)
                         {
                             buttonData.FontSize = ButtonFontSizeSlider.Value;
-                            updated = true;                            
                         }
-                    }
-                    if (updated)
-                    {
                         PreviewControl.RefreshSelectedButtons();
                     }
                 }
@@ -960,5 +930,35 @@ namespace AltController
                 }
             }
         }
+
+        /// <summary>
+        /// Button text alignment changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonTextAlignmentCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_isLoaded && e.AddedItems.Count > 0)
+            {
+                try
+                {
+                    ErrorMessage.Clear();
+                    long val = ((NamedItem)e.AddedItems[0]).ID;
+                    List<CustomButtonData> data = PreviewControl.GetSelectionData();
+                    if (data.Count != 0 && data[0].TextAlignment != (ELRUDState)val) {
+                        foreach (CustomButtonData buttonData in data)
+                        {
+                            buttonData.TextAlignment = (ELRUDState)val;
+                        }
+                        PreviewControl.RefreshSelectedButtons();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ErrorMessage.Show(Properties.Resources.E_CUST025, ex);
+                }
+            }
+        }
+
     }
 }

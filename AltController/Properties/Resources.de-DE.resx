@@ -409,6 +409,10 @@
     <value>Buttonname:</value>
     <comment>Custom window</comment>
   </data>
+  <data name="Custom_ButtonTextAlignmentLabel" xml:space="preserve">
+    <value>Textausrichtung:</value>
+    <comment>Custom window</comment>
+  </data>
   <data name="Custom_ButtonTextColourLabel" xml:space="preserve">
     <value>Textfarbe:</value>
     <comment>Custom window</comment>
@@ -1955,6 +1959,10 @@
   </data>
   <data name="String_None_Option" xml:space="preserve">
     <value>(Keine)</value>
+    <comment>Strings</comment>
+  </data>
+  <data name="String_N_buttons_selected" xml:space="preserve">
+    <value>({0} Buttonen ausgewählt)</value>
     <comment>Strings</comment>
   </data>
   <data name="String_N_regions_selected" xml:space="preserve">

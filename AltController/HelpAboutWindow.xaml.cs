@@ -38,8 +38,12 @@ namespace AltController
     /// </summary>
     public partial class HelpAboutWindow : Window
     {
-        public HelpAboutWindow()
+        private IParentWindow _parentWindow;
+
+        public HelpAboutWindow(IParentWindow parent)
         {
+            _parentWindow = parent;
+
             InitializeComponent();
         }
 
@@ -53,6 +57,17 @@ namespace AltController
             this.VersionText.Text = string.Format("{0} {1}", Properties.Resources.String_Version, Constants.AppVersion);
             this.CopyrightText.Text = string.Format("{0} 2013-{1} {2}", Properties.Resources.String_Copyright, DateTime.Now.Year, Constants.AuthorName);
             this.TranslatorNamesText.Text = Constants.TranslatorNames;
+        }
+
+        /// <summary>
+        /// Window closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // Tell parent when window is closing
+            _parentWindow.ChildWindowClosing(this);
         }
 
         /// <summary>
@@ -93,6 +108,5 @@ namespace AltController
             }
             e.Handled = true;
         }
-
     }
 }

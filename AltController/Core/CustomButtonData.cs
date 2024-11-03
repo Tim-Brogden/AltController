@@ -26,6 +26,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
+using System;
 using System.Xml;
 using System.Globalization;
 
@@ -50,6 +51,7 @@ namespace AltController.Core
         private string _fontName = "";
         private double _fontSize = Constants.DefaultCustomButtonFontSize;
         private string _textColour = Constants.DefaultCustomButtonTextColour;
+        private ELRUDState _textAlignment = ELRUDState.None;
 
         // Properties
         public string Text { get { return _text; } set { _text = value; } }
@@ -65,6 +67,7 @@ namespace AltController.Core
         public string FontName { get { return _fontName; } set { _fontName = value; } }
         public double FontSize { get { return _fontSize; } set { _fontSize = value; } }
         public string TextColour { get { return _textColour; } set { _textColour = value; } }
+        public ELRUDState TextAlignment { get { return _textAlignment; } set { _textAlignment = value; } }
 
         /// <summary>
         /// Default constructor
@@ -91,6 +94,7 @@ namespace AltController.Core
         /// <param name="fontName"></param>
         /// <param name="fontSize"></param>
         /// <param name="textColour"></param>
+        /// <param name="textAlignment"></param>
         public CustomButtonData(byte id,
             string name,
             string text,
@@ -105,7 +109,8 @@ namespace AltController.Core
             double bgTranslucency,
             string fontName,
             double fontSize,
-            string textColour)
+            string textColour,
+            ELRUDState textAlignment)
             : base(id, name)
         {
             _text = text;
@@ -121,6 +126,7 @@ namespace AltController.Core
             _fontName = fontName;
             _fontSize = fontSize;
             _textColour = textColour;
+            _textAlignment = textAlignment;
         }
 
         /// <summary>
@@ -144,6 +150,7 @@ namespace AltController.Core
             _fontName = button.FontName;
             _fontSize = button.FontSize;
             _textColour = button.TextColour;
+            _textAlignment = button.TextAlignment;
         }
 
         /// <summary>
@@ -190,8 +197,14 @@ namespace AltController.Core
             if (element.HasAttribute("textcolour"))
             {
                 _textColour = element.GetAttribute("textcolour");
-            }            
+            }
             // End v1.93
+            // v1.98
+            if (element.HasAttribute("textalignment"))
+            {
+                _textAlignment = (ELRUDState)Enum.Parse(typeof(ELRUDState), element.GetAttribute("textalignment"));
+            }
+            // End v1.98
         }
 
         /// <summary>
@@ -216,6 +229,7 @@ namespace AltController.Core
             element.SetAttribute("fontname", _fontName);
             element.SetAttribute("fontsize", _fontSize.ToString(CultureInfo.InvariantCulture));
             element.SetAttribute("textcolour", _textColour);
+            element.SetAttribute("textalignment", _textAlignment.ToString());
         }
     }
 }

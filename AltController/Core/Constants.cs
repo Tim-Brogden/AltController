@@ -45,15 +45,17 @@ namespace AltController.Core
         public const long NoneID = 0;
         public const string ApplicationName = "Alt Controller";
         public const string AuthorName = "Tim Brogden";
-        public const string TranslatorNames = "Georg Niedermeier (DE)";
+        public const string TranslatorNames = "Georg Niedermeier";
         public const string UserGuideURL = "https://altcontroller.net/docs/user-guide/";
         public const string MessageLogFileName = "Message Log.txt";
         public const string ProfilesFolderName = "Profiles";
+        public const string ProfileFileExtension = ".alt.xml";
         public const string ConfigFileName = "config.xml";
         public const int PointerCircle = 1;
         public const int PointerLine = 2;
 
         // App config settings
+        public const string ConfigUserRecentProfilesList = "user_recent_profiles_list";
         public const string ConfigDrawScreenRegions = "draw_regions";
         public const string ConfigDrawScreenRegionsHotkey = "draw_regions_hotkey";
         public const string ConfigShowScreenRegionNames = "show_region_names";
@@ -137,5 +139,6 @@ namespace AltController.Core
         public const bool DefaultIsTopMost = true;
         public const int MinCustomButtonSize = 1;
         public const EDisplayArea DefaultOverlayArea = EDisplayArea.PrimaryScreen;
+        public const int MaxRecentProfiles = 4;
     }
 }

@@ -562,6 +562,20 @@ namespace AltController.UserControls
         }
 
         /// <summary>
+        /// Select all buttons
+        /// </summary>
+        public void SelectAllButtons()
+        {
+            List<Button> buttons = new List<Button>();
+            foreach (Button button in CustomWindowCanvas.Children)
+            {
+                buttons.Add(button);
+            }
+            SelectButtons(buttons, EEventReason.None);
+            RaiseEventIfRequired(_currentControl);
+        }
+
+        /// <summary>
         /// Handle button selection
         /// </summary>
         /// <param name="buttonData"></param>
@@ -794,8 +808,53 @@ namespace AltController.UserControls
             button.FontFamily = fontFamily;
             button.FontSize = buttonData.FontSize;
             button.Foreground = GUIUtils.GetBrushFromColour(buttonData.TextColour, 0xFF, Brushes.Black);
+            AlignButtonContent(button, buttonData.TextAlignment);
             Canvas.SetLeft(button, buttonData.X);
             Canvas.SetTop(button, buttonData.Y);
+        }
+
+        /// <summary>
+        /// Set button content alignment
+        /// </summary>
+        /// <param name="button"></param>
+        /// <param name="alignment"></param>
+        private void AlignButtonContent(Button button, ELRUDState alignment)
+        {
+            HorizontalAlignment horiz = HorizontalAlignment.Center;
+            VerticalAlignment vert = VerticalAlignment.Center;
+            switch (alignment)
+            {
+                case ELRUDState.Up:
+                    vert = VerticalAlignment.Top;
+                    break;
+                case ELRUDState.Down:
+                    vert = VerticalAlignment.Bottom;
+                    break;
+                case ELRUDState.Left:
+                    horiz = HorizontalAlignment.Left;
+                    break;
+                case ELRUDState.Right:
+                    horiz = HorizontalAlignment.Right;
+                    break;
+                case ELRUDState.UpLeft:
+                    vert = VerticalAlignment.Top;
+                    horiz = HorizontalAlignment.Left;
+                    break;
+                case ELRUDState.UpRight:
+                    vert = VerticalAlignment.Top;
+                    horiz = HorizontalAlignment.Right;
+                    break;
+                case ELRUDState.DownLeft:
+                    vert = VerticalAlignment.Bottom;
+                    horiz = HorizontalAlignment.Left;
+                    break;
+                case ELRUDState.DownRight:
+                    vert = VerticalAlignment.Bottom;
+                    horiz = HorizontalAlignment.Right;
+                    break;
+            }
+            button.HorizontalContentAlignment = horiz;
+            button.VerticalContentAlignment = vert;
         }
 
         /// <summary>

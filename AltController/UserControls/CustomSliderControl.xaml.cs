@@ -288,5 +288,6 @@ namespace AltController.UserControls
         {
             Value += _smallChange * e.Delta / 120;      // Delta is in multiples of 120
         }
+
     }
 }

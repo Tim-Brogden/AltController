@@ -413,6 +413,10 @@
     <value>Button name:</value>
     <comment>Custom window</comment>
   </data>
+  <data name="Custom_ButtonTextAlignmentLabel" xml:space="preserve">
+    <value>Text alignment:</value>
+    <comment>Custom window</comment>
+  </data>
   <data name="Custom_ButtonTextColourLabel" xml:space="preserve">
     <value>Text colour:</value>
     <comment>Custom window</comment>
@@ -593,6 +597,10 @@
     <value>Error while changing button text colour</value>
     <comment>Error message</comment>
   </data>
+  <data name="E_CUST025" xml:space="preserve">
+    <value>Error while changing button text alignment</value>
+    <comment>Error message</comment>
+  </data>
   <data name="E_MAIN001" xml:space="preserve">
     <value>Error while initialising folders</value>
     <comment>Error message</comment>
@@ -651,6 +659,10 @@
   </data>
   <data name="E_MAIN015" xml:space="preserve">
     <value>Error while opening the Log information window</value>
+    <comment>Error message</comment>
+  </data>
+  <data name="E_MAIN016" xml:space="preserve">
+    <value>Error while loading recent profile</value>
     <comment>Error message</comment>
   </data>
   <data name="E_PR001" xml:space="preserve">
@@ -1043,6 +1055,14 @@
   </data>
   <data name="Main_InfoButton" xml:space="preserve">
     <value>Learn more...</value>
+    <comment>Main</comment>
+  </data>
+  <data name="Main_RecentFiles" xml:space="preserve">
+    <value>Recent _Files...</value>
+    <comment>Main</comment>
+  </data>
+  <data name="Main_RecentFilesToolTip" xml:space="preserve">
+    <value>Open a recent profile</value>
     <comment>Main</comment>
   </data>
   <data name="Main_ToolsMenu" xml:space="preserve">
@@ -1971,6 +1991,10 @@
   </data>
   <data name="String_None_Option" xml:space="preserve">
     <value>(None)</value>
+    <comment>Strings</comment>
+  </data>
+  <data name="String_N_buttons_selected" xml:space="preserve">
+    <value>({0} buttons selected)</value>
     <comment>Strings</comment>
   </data>
   <data name="String_N_regions_selected" xml:space="preserve">

@@ -797,12 +797,12 @@ namespace AltController
                 try
                 {
                     ClearMessages();
-                    if (_selectedRegions.Count > 0)
+                    double val = 0.01 * TranslucencySlider.Value;
+                    if (_selectedRegions.Count > 0 && Math.Abs(_selectedRegions[0].Translucency - val) > 0.000001)
                     {
-                        double val = TranslucencySlider.Value;
                         foreach (ScreenRegion region in _selectedRegions)
                         {
-                            region.Translucency = 0.01 * val;
+                            region.Translucency = val;
                         }
 
                         RegionsControl.RefreshSelectedRegionOpacity();
@@ -854,9 +854,9 @@ namespace AltController
             try
             {
                 ClearMessages();
-                if (_selectedRegions.Count > 0 && this.ColoursCombo.SelectedColour != null)
+                string colour = (string)this.ColoursCombo.SelectedColour;
+                if (colour != null && _selectedRegions.Count > 0 && colour != _selectedRegions[0].Colour)
                 {
-                    string colour = (string)this.ColoursCombo.SelectedColour;
                     foreach (ScreenRegion region in _selectedRegions)
                     {
                         region.Colour = colour;
@@ -881,9 +881,9 @@ namespace AltController
             try
             {
                 ClearMessages();
-                if (_selectedRegions.Count > 0 && this.BackgroundColourCombo.SelectedColour != null)
+                string colour = (string)this.BackgroundColourCombo.SelectedColour;
+                if (colour != null && _selectedRegions.Count > 0 && _selectedRegions[0].BackgroundColour != colour)
                 {
-                    string colour = (string)this.BackgroundColourCombo.SelectedColour;
                     foreach (ScreenRegion region in _selectedRegions)
                     {
                         region.BackgroundColour = colour;
@@ -914,9 +914,13 @@ namespace AltController
                 ClearMessages();
                 if (_selectedRegions.Count > 0 && this.ModeCombo.SelectedItem != null)
                 {
-                    foreach (ScreenRegion region in _selectedRegions)
+                    long modeID = ((NamedItem)this.ModeCombo.SelectedItem).ID;
+                    if (modeID != _selectedRegions[0].ShowInState.ModeID)
                     {
-                        region.ShowInState.ModeID = ((NamedItem)this.ModeCombo.SelectedItem).ID;
+                        foreach (ScreenRegion region in _selectedRegions)
+                        {
+                            region.ShowInState.ModeID = modeID;
+                        }
                     }
                 }
             }
@@ -938,9 +942,13 @@ namespace AltController
                 ClearMessages();
                 if (_selectedRegions.Count > 0 && this.AppCombo.SelectedItem != null)
                 {
-                    foreach (ScreenRegion region in _selectedRegions)
+                    long appID = ((NamedItem)this.AppCombo.SelectedItem).ID;
+                    if (appID != _selectedRegions[0].ShowInState.AppID)
                     {
-                        region.ShowInState.AppID = ((NamedItem)this.AppCombo.SelectedItem).ID;
+                        foreach (ScreenRegion region in _selectedRegions)
+                        {
+                            region.ShowInState.AppID = appID;
+                        }
                     }
                 }
             }
@@ -1069,22 +1077,23 @@ namespace AltController
                 if (!_suppressPositionChangeEvents)
                 {
                     ClearMessages();
-                    double val = args.Value * 0.01;
+                    double val = Math.Max(0.0, Math.Min(1.0, args.Value * 0.01));
                     if (_selectedRegions.Count > 0)
                     {
-                        foreach (ScreenRegion region in _selectedRegions)
+                        double diff = val - _selectedRegions[0].Rectangle.X;
+                        if (Math.Abs(diff) > 0.000001)
                         {
-                            if (Math.Abs(region.Rectangle.X - val) > 0.000001)
+                            foreach (ScreenRegion region in _selectedRegions)
                             {
                                 // Update region
                                 Rect rect = region.Rectangle;
-                                rect.X = Math.Max(0.01 - rect.Width, Math.Min(1.0, val));
+                                rect.X = Math.Max(0.0, Math.Min(0.99, rect.X + diff));
                                 region.Rectangle = rect;
                             }
-                        }
 
-                        // Redisplay
-                        RegionsControl.RefreshSelectedRegionGeometry();
+                            // Redisplay
+                            RegionsControl.RefreshSelectedRegionGeometry();
+                        }
                     }
                 }
             }
@@ -1106,22 +1115,23 @@ namespace AltController
                 if (!_suppressPositionChangeEvents)
                 {
                     ClearMessages();
-                    double val = args.Value * 0.01;
+                    double val = Math.Max(0.0, Math.Min(1.0, args.Value * 0.01));
                     if (_selectedRegions.Count > 0)
                     {
-                        foreach (ScreenRegion region in _selectedRegions)
+                        double diff = val - _selectedRegions[0].Rectangle.Y;
+                        if (Math.Abs(diff) > 0.000001)
                         {
-                            if (Math.Abs(region.Rectangle.Y - val) > 0.000001)
+                            foreach (ScreenRegion region in _selectedRegions)
                             {
                                 // Update region
                                 Rect rect = region.Rectangle;
-                                rect.Y = Math.Max(0.01 - rect.Height, Math.Min(1.0, val));
+                                rect.Y = Math.Max(0.0, Math.Min(0.99, rect.Y + diff));
                                 region.Rectangle = rect;
                             }
-                        }
 
-                        // Redisplay
-                        RegionsControl.RefreshSelectedRegionGeometry();
+                            // Redisplay
+                            RegionsControl.RefreshSelectedRegionGeometry();
+                        }
                     }
                 }
             }
@@ -1141,22 +1151,23 @@ namespace AltController
             try
             {
                 ClearMessages();
-                double val = args.Value * 0.01;
+                double val = Math.Max(0.01, Math.Min(1.0, args.Value * 0.01));
                 if (_selectedRegions.Count > 0)
                 {
-                    foreach (ScreenRegion region in _selectedRegions)
+                    double diff = val - _selectedRegions[0].Rectangle.Width;
+                    if (Math.Abs(diff) > 0.000001)
                     {
-                        if (Math.Abs(region.Rectangle.Width - val) > 0.000001)
+                        foreach (ScreenRegion region in _selectedRegions)
                         {
                             // Update region
                             Rect rect = region.Rectangle;
-                            rect.Width = Math.Max(0.01, Math.Min(1.0, val));
+                            rect.Width = Math.Max(0.01, Math.Min(1.0, rect.Width + diff));
                             region.Rectangle = rect;
                         }
-                    }
 
-                    // Redisplay
-                    RegionsControl.RefreshSelectedRegionGeometry();                    
+                        // Redisplay
+                        RegionsControl.RefreshSelectedRegionGeometry();
+                    }
                 }
             }
             catch (Exception ex)
@@ -1175,22 +1186,23 @@ namespace AltController
             try
             {
                 ClearMessages();
-                double val = args.Value * 0.01;
+                double val = Math.Max(0.01, Math.Min(1.0, args.Value * 0.01));
                 if (_selectedRegions.Count > 0)
                 {
-                    foreach (ScreenRegion region in _selectedRegions)
+                    double diff = val - _selectedRegions[0].Rectangle.Height;
+                    if (Math.Abs(diff) > 0.000001)
                     {
-                        if (Math.Abs(region.Rectangle.Height - val) > 0.000001)
+                        foreach (ScreenRegion region in _selectedRegions)
                         {
                             // Update region
                             Rect rect = region.Rectangle;
-                            rect.Height = Math.Max(0.01, Math.Min(1.0, val));
+                            rect.Height = Math.Max(0.01, Math.Min(1.0, rect.Height + diff));
                             region.Rectangle = rect;
                         }
-                    }
 
-                    // Redisplay
-                    RegionsControl.RefreshSelectedRegionGeometry();                    
+                        // Redisplay
+                        RegionsControl.RefreshSelectedRegionGeometry();
+                    }
                 }
             }
             catch (Exception ex)
@@ -1215,13 +1227,16 @@ namespace AltController
                     EShape shape = (EShape)selectedItem.ID;
                     if (_selectedRegions.Count > 0)
                     {
-                        foreach (ScreenRegion region in _selectedRegions)
+                        if (_selectedRegions[0].Shape != shape)
                         {
-                            region.Shape = shape;
-                        }
+                            foreach (ScreenRegion region in _selectedRegions)
+                            {
+                                region.Shape = shape;
+                            }
 
-                        // Redisplay
-                        RegionsControl.RefreshSelectedRegionGeometry();
+                            // Redisplay
+                            RegionsControl.RefreshSelectedRegionGeometry();
+                        }
 
                         if (_selectedRegions.Count == 1)
                         {
@@ -1286,17 +1301,13 @@ namespace AltController
             try
             {
                 ClearMessages();
-                double val = args.Value * 0.01;
-                if (_selectedRegions.Count > 0)
+                double val = Math.Max(0.01, Math.Min(0.99, args.Value * 0.01));
+                if (_selectedRegions.Count > 0 && Math.Abs(_selectedRegions[0].HoleSize - val) > 0.000001)
                 {
                     foreach (ScreenRegion region in _selectedRegions)
                     {
-                        if (Math.Abs(region.HoleSize - val) > 0.000001)
-                        {
-                            // Update region
-                            val = Math.Max(0.01, Math.Min(0.99, val));
-                            region.HoleSize = val;
-                        }
+                        // Update region
+                        region.HoleSize = val;
                     }
 
                     // Redisplay
@@ -1319,17 +1330,13 @@ namespace AltController
             try
             {
                 ClearMessages();
-                double val = args.Value;
-                if (_selectedRegions.Count > 0)
+                double val = Math.Max(0.0, Math.Min(360.0, args.Value));
+                if (_selectedRegions.Count > 0 && Math.Abs(_selectedRegions[0].StartAngle - val) > 0.000001)
                 {
                     foreach (ScreenRegion region in _selectedRegions)
                     {
-                        if (Math.Abs(region.StartAngle - val) > 0.000001)
-                        {
-                            // Update region
-                            val = Math.Max(0.0, Math.Min(360.0, val));
-                            region.StartAngle = val;
-                        }
+                        // Update region
+                        region.StartAngle = val;
                     }
 
                     // Redisplay
@@ -1352,21 +1359,17 @@ namespace AltController
             try
             {
                 ClearMessages();
-                double val = args.Value;
-                if (_selectedRegions.Count > 0)
+                double val = Math.Max(1.0, Math.Min(359.0, args.Value));
+                if (_selectedRegions.Count > 0 && Math.Abs(_selectedRegions[0].SweepAngle - val) > 0.000001)
                 {
                     foreach (ScreenRegion region in _selectedRegions)
                     {
-                        if (Math.Abs(region.SweepAngle - val) > 0.000001)
-                        {
-                            // Update region
-                            val = Math.Max(1.0, Math.Min(359.0, val));
-                            region.SweepAngle = val;
-                        }
-
-                        // Redisplay
-                        RegionsControl.RefreshSelectedRegionGeometry();
+                        // Update region
+                        region.SweepAngle = val;
                     }
+
+                    // Redisplay
+                    RegionsControl.RefreshSelectedRegionGeometry();
                 }
             }
             catch (Exception ex)

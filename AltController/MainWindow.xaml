@@ -56,6 +56,12 @@
                         <ToolTip Content="{x:Static p:Resources.Main_FileOpenToolTip}"></ToolTip>
                     </MenuItem.ToolTip>
                 </MenuItem>
+                <Separator Name="RecentFilesSeparator" Visibility="Collapsed"/>
+                <MenuItem Name="RecentFiles" Header="{x:Static p:Resources.Main_RecentFiles}" Visibility="Collapsed">
+                    <MenuItem.ToolTip>
+                        <ToolTip Content="{x:Static p:Resources.Main_RecentFilesToolTip}"></ToolTip>
+                    </MenuItem.ToolTip>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Name="FileSave" Header="{x:Static p:Resources.Main_FileSave}" Command="ApplicationCommands.Save">
                     <MenuItem.Icon>

@@ -4,7 +4,10 @@
         xmlns:p="clr-namespace:AltController.Properties"
         xmlns:local="clr-namespace:AltController.UserControls"
         Title="{x:Static p:Resources.Custom_Title}" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Icon="/AltController;component/Images/AltController.png"
-        Loaded="Window_Loaded" Height="600" Width="800">
+        Loaded="Window_Loaded" Height="625" Width="800">
+    <Window.CommandBindings>
+        <CommandBinding x:Name="SelectAllCommand" Command="SelectAll" Executed="SelectAllCommand_Executed" />
+    </Window.CommandBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -40,9 +43,9 @@
                         <TextBlock Name="WindowTitleLabel" Text="{x:Static p:Resources.Custom_WindowTitleLabel}" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"></TextBlock>
                         <TextBox Name="WindowTitleTextBox" Text="{x:Static p:Resources.Custom_WindowTitleTextBox}" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" TextChanged="WindowTitleTextBox_TextChanged"></TextBox>
                         <TextBlock Name="WindowWidthLabel" Text="{x:Static p:Resources.Custom_WindowWidthLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="WindowWidthSlider" Grid.Row="1" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="10" LargeChange="10" DecimalPlaces="0" ValueChanged="WindowWidthSlider_ValueChanged" />
+                        <local:CustomSliderControl x:Name="WindowWidthSlider" Grid.Row="1" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="10" LargeChange="5" DecimalPlaces="0" ValueChanged="WindowWidthSlider_ValueChanged" />
                         <TextBlock Name="WindowHeightLabel" Text="{x:Static p:Resources.Custom_WindowHeightLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="WindowHeightSlider" Grid.Row="2" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="10" LargeChange="10" DecimalPlaces="0" ValueChanged="WindowHeightSlider_ValueChanged"/>
+                        <local:CustomSliderControl x:Name="WindowHeightSlider" Grid.Row="2" Grid.Column="1" Minimum="1" Maximum="2000" Value="200" SmallChange="10" LargeChange="5" DecimalPlaces="0" ValueChanged="WindowHeightSlider_ValueChanged"/>
                         <TextBlock Name="TranslucencyLabel" Text="{x:Static p:Resources.Custom_TranslucencyLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
                         <local:CustomSliderControl x:Name="TranslucencySlider" Grid.Row="3" Grid.Column="1" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="TranslucencySlider_ValueChanged" />
                         <TextBlock Name="TopMostLabel" Text="{x:Static p:Resources.Custom_TopMostLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
@@ -73,13 +76,13 @@
                         <TextBlock Name="ButtonTextLabel" Text="{x:Static p:Resources.Custom_ButtonTextLabel}" VerticalAlignment="Top" Margin="0,5"  Grid.Row="1" Grid.Column="0"></TextBlock>
                         <TextBox Grid.Row="1" Grid.Column="1" Name="ButtonTextTextBox" AcceptsReturn="True" TextChanged="ButtonTextTextBox_TextChanged"></TextBox>
                         <TextBlock Name="ButtonXLabel" Text="{x:Static p:Resources.Custom_ButtonXLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonXSlider" Grid.Row="2" Grid.Column="1"  Minimum="0" Maximum="300" Value="0" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonXSlider_ValueChanged" />
+                        <local:CustomSliderControl x:Name="ButtonXSlider" Grid.Row="2" Grid.Column="1"  Minimum="0" Maximum="300" Value="0" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonXSlider_ValueChanged" />
                         <TextBlock Name="ButtonYLabel" Text="{x:Static p:Resources.Custom_ButtonYLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonYSlider" Grid.Row="3" Grid.Column="1"  Minimum="0" Maximum="300" Value="0" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonYSlider_ValueChanged" />
+                        <local:CustomSliderControl x:Name="ButtonYSlider" Grid.Row="3" Grid.Column="1"  Minimum="0" Maximum="300" Value="0" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonYSlider_ValueChanged" />
                         <TextBlock Name="ButtonWidthLabel" Text="{x:Static p:Resources.Custom_ButtonWidthLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonWidthSlider" Grid.Row="4" Grid.Column="1"  Minimum="1" Maximum="300" Value="50" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonWidthSlider_ValueChanged" />
+                        <local:CustomSliderControl x:Name="ButtonWidthSlider" Grid.Row="4" Grid.Column="1"  Minimum="1" Maximum="300" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonWidthSlider_ValueChanged" />
                         <TextBlock Name="ButtonHeightLabel" Text="{x:Static p:Resources.Custom_ButtonHeightLabel}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonHeightSlider" Grid.Row="5" Grid.Column="1"  Minimum="1" Maximum="300" Value="50" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonHeightSlider_ValueChanged"/>
+                        <local:CustomSliderControl x:Name="ButtonHeightSlider" Grid.Row="5" Grid.Column="1"  Minimum="1" Maximum="300" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonHeightSlider_ValueChanged"/>
                         <TextBlock Name="ButtonBgColorLabel" Text="{x:Static p:Resources.Custom_ButtonBgColorLabel}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></TextBlock>
                         <local:ColourPickerControl Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" x:Name="ButtonBackgroundColourCombo" SelectedColourChanged="ButtonBackgroundColourCombo_SelectionChanged"></local:ColourPickerControl>
                     </Grid>
@@ -87,6 +90,7 @@
                 <Expander Name="ExtendedButtonGroupBox" Header="{x:Static p:Resources.Custom_ExtendedButtonGroupBox}" Margin="5" IsExpanded="True">
                     <Grid Margin="5">
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
                             <RowDefinition Height="25"/>
                             <RowDefinition Height="25"/>
                             <RowDefinition Height="25"/>
@@ -104,13 +108,15 @@
                         <TextBlock Name="ButtonFontLabel" Text="{x:Static p:Resources.Custom_ButtonFontLabel}" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"></TextBlock>
                         <ComboBox Name="ButtonFontCombo" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="150" SelectedValuePath="Content" SelectionChanged="ButtonFontCombo_SelectionChanged"/>
                         <TextBlock Name="ButtonFontSizeLabel" Text="{x:Static p:Resources.Custom_ButtonFontSizeLabel}" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonFontSizeSlider" Grid.Row="2" Grid.Column="1"  Minimum="6" Maximum="100" Value="12" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonFontSizeSlider_ValueChanged" />
-                        <TextBlock Name="ButtonBorderThicknessLabel" Text="{x:Static p:Resources.Custom_ButtonBorderThicknessLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonBorderThicknessSlider" Grid.Row="3" Grid.Column="1"  Minimum="0" Maximum="20" Value="1" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonBorderThicknessSlider_ValueChanged" />
-                        <TextBlock Name="ButtonBorderColourLabel" Text="{x:Static p:Resources.Custom_ButtonBorderColourLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
-                        <local:ColourPickerControl Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" x:Name="ButtonBorderColourCombo" SelectedColourChanged="ButtonBorderColourCombo_SelectionChanged"></local:ColourPickerControl>
-                        <TextBlock Name="ButtonBgImageLabel" Text="{x:Static p:Resources.Custom_ButtonBgImageLabel}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></TextBlock>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="5" Grid.Column="1">
+                        <local:CustomSliderControl x:Name="ButtonFontSizeSlider" Grid.Row="2" Grid.Column="1"  Minimum="6" Maximum="100" Value="12" SmallChange="1" LargeChange="4" DecimalPlaces="0" ValueChanged="ButtonFontSizeSlider_ValueChanged" />
+                        <TextBlock Name="ButtonTextAlignmentLabel" Text="{x:Static p:Resources.Custom_ButtonTextAlignmentLabel}" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"></TextBlock>
+                        <ComboBox Name="ButtonTextAlignmentCombo" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Width="150" SelectedValuePath="ID" SelectionChanged="ButtonTextAlignmentCombo_SelectionChanged"/>
+                        <TextBlock Name="ButtonBorderThicknessLabel" Text="{x:Static p:Resources.Custom_ButtonBorderThicknessLabel}" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"></TextBlock>
+                        <local:CustomSliderControl x:Name="ButtonBorderThicknessSlider" Grid.Row="4" Grid.Column="1"  Minimum="0" Maximum="20" Value="1" SmallChange="1" LargeChange="1" DecimalPlaces="0" ValueChanged="ButtonBorderThicknessSlider_ValueChanged" />
+                        <TextBlock Name="ButtonBorderColourLabel" Text="{x:Static p:Resources.Custom_ButtonBorderColourLabel}" VerticalAlignment="Center" Grid.Row="5" Grid.Column="0"></TextBlock>
+                        <local:ColourPickerControl Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" x:Name="ButtonBorderColourCombo" SelectedColourChanged="ButtonBorderColourCombo_SelectionChanged"></local:ColourPickerControl>
+                        <TextBlock Name="ButtonBgImageLabel" Text="{x:Static p:Resources.Custom_ButtonBgImageLabel}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></TextBlock>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="6" Grid.Column="1">
                             <Button Name="BrowseButtonImageButton" Height="23" VerticalAlignment="Center" Click="BrowseButtonImageButton_Click" ToolTip="{x:Static p:Resources.Custom_BrowseButtonImageToolTip}" IsEnabled="False">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="/AltController;component/Images/icons/image_edit.png" />
@@ -123,8 +129,8 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
-                        <TextBlock Name="ButtonTranslucencyLabel" Text="{x:Static p:Resources.Custom_ButtonTranslucencyLabel}" VerticalAlignment="Center" Grid.Row="6" Grid.Column="0"></TextBlock>
-                        <local:CustomSliderControl x:Name="ButtonTranslucencySlider" Grid.Row="6" Grid.Column="1" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonTranslucencySlider_ValueChanged" />
+                        <TextBlock Name="ButtonTranslucencyLabel" Text="{x:Static p:Resources.Custom_ButtonTranslucencyLabel}" VerticalAlignment="Center" Grid.Row="7" Grid.Column="0"></TextBlock>
+                        <local:CustomSliderControl x:Name="ButtonTranslucencySlider" Grid.Row="7" Grid.Column="1" Minimum="0" Maximum="99" Value="50" SmallChange="1" LargeChange="5" DecimalPlaces="0" ValueChanged="ButtonTranslucencySlider_ValueChanged" />
                     </Grid>
                 </Expander>
             </StackPanel>

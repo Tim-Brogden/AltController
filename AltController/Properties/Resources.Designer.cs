@@ -727,6 +727,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text alignment:.
+        /// </summary>
+        public static string Custom_ButtonTextAlignmentLabel {
+            get {
+                return ResourceManager.GetString("Custom_ButtonTextAlignmentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text colour:.
         /// </summary>
         public static string Custom_ButtonTextColourLabel {
@@ -1132,6 +1141,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error while changing button text alignment.
+        /// </summary>
+        public static string E_CUST025 {
+            get {
+                return ResourceManager.GetString("E_CUST025", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error while initialising folders.
         /// </summary>
         public static string E_MAIN001 {
@@ -1263,6 +1281,15 @@ namespace AltController.Properties {
         public static string E_MAIN015 {
             get {
                 return ResourceManager.GetString("E_MAIN015", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while loading recent profile.
+        /// </summary>
+        public static string E_MAIN016 {
+            get {
+                return ResourceManager.GetString("E_MAIN016", resourceCulture);
             }
         }
         
@@ -2145,6 +2172,24 @@ namespace AltController.Properties {
         public static string Main_InfoButton {
             get {
                 return ResourceManager.GetString("Main_InfoButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recent _Files....
+        /// </summary>
+        public static string Main_RecentFiles {
+            get {
+                return ResourceManager.GetString("Main_RecentFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open a recent profile.
+        /// </summary>
+        public static string Main_RecentFilesToolTip {
+            get {
+                return ResourceManager.GetString("Main_RecentFilesToolTip", resourceCulture);
             }
         }
         
@@ -4197,6 +4242,15 @@ namespace AltController.Properties {
         public static string String_Moved {
             get {
                 return ResourceManager.GetString("String_Moved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ({0} buttons selected).
+        /// </summary>
+        public static string String_N_buttons_selected {
+            get {
+                return ResourceManager.GetString("String_N_buttons_selected", resourceCulture);
             }
         }
         

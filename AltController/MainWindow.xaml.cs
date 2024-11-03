@@ -42,6 +42,7 @@ using AltController.Event;
 using AltController.Input;
 using AltController.Sys;
 using Microsoft.Win32;
+using System.Text;
 //using System.Diagnostics;
 
 namespace AltController
@@ -70,6 +71,7 @@ namespace AltController
         private ProfileSummaryWindow _profileSummaryDialog;
         private DiagnosticsWindow _logInformationDialog;
         private OverlayWindow _overlayDialog;
+        private HelpAboutWindow _helpAboutWindow;
         private Dictionary<long, CustomWindow> _openCustomWindows = new Dictionary<long,CustomWindow>();
 
         // State
@@ -155,7 +157,7 @@ namespace AltController
                                     }
                                 }
                             }
-                            handled = true;
+                            //handled = true;
                             break;
                     }
                     break;
@@ -255,7 +257,7 @@ namespace AltController
 
                 // Configure state manager
                 ConfigureStateManager();
-
+                
                 // Load the last used profile
                 LoadProfile(null);
 
@@ -268,6 +270,127 @@ namespace AltController
             catch (Exception ex)
             {
                 ShowError(Properties.Resources.E_MAIN002, ex);
+            }
+        }
+
+        /// <summary>
+        /// Update the list of recent profiles
+        /// </summary>
+        /// <param name="loadedProfile"></param>
+        private void UpdateRecentProfiles(string loadedProfile)
+        {
+            // Add new profile to the recent profiles list
+            List<string> recentProfilesList = new List<string>();
+            int count = 0;
+            if (!string.IsNullOrEmpty(loadedProfile))
+            {
+                recentProfilesList.Add(loadedProfile);
+                count++;
+            }
+            string recentProfilesStr = _appConfig.GetStringVal(Constants.ConfigUserRecentProfilesList, "");
+            string[] recentProfilesArray = recentProfilesStr.Split(',');
+            foreach (string recentProfile in recentProfilesArray)
+            {
+                if (recentProfile != "" && !recentProfilesList.Contains(recentProfile))
+                {
+                    recentProfilesList.Add(recentProfile);
+                    if (++count == Constants.MaxRecentProfiles)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            // If a new profile has been added to the list, save it back to the app config
+            if (!string.IsNullOrEmpty(loadedProfile))
+            {
+                // Convert to string
+                StringBuilder sb = new StringBuilder();
+                bool first = true;
+                foreach (string path in recentProfilesList)
+                {
+                    if (!first)
+                    {
+                        sb.Append(',');
+                    }
+                    sb.Append(path);
+                    first = false;
+                }
+
+                // Update config
+                _appConfig.SetStringVal(Constants.ConfigUserRecentProfilesList, sb.ToString());
+            }
+
+            // Refresh recent profiles menu
+            RefreshRecentProfilesMenu(recentProfilesList);
+        }
+
+        /// <summary>
+        /// Update the recent profiles list
+        /// </summary>
+        /// <param name="recentProfilesList"></param>
+        private void RefreshRecentProfilesMenu(List<string> recentProfilesList)
+        {
+            int menuItemCount = 0;
+            RecentFiles.Items.Clear();
+            foreach (string filePath in recentProfilesList)
+            {
+                try
+                {
+                    // Check that the file exists and get the file name
+                    FileInfo fi = new FileInfo(filePath);
+                    if (fi.Exists)
+                    {
+                        // Get the display name
+                        string fileName = fi.Name;
+                        if (fileName.EndsWith(Constants.ProfileFileExtension))
+                        {
+                            fileName = fileName.Substring(0, fileName.Length - Constants.ProfileFileExtension.Length);
+                        }
+
+                        menuItemCount++;
+
+                        MenuItem menuItem = new MenuItem();
+                        menuItem.Tag = fi.FullName;                        
+                        menuItem.ToolTip = fi.FullName;
+                        menuItem.Header = string.Format("_{0} {1}", menuItemCount, fileName);
+                        menuItem.Click += this.LoadRecentProfile_Click;
+                        RecentFiles.Items.Add(menuItem);
+                    }
+                }
+                catch (Exception)
+                {
+                    // Ignore errors
+                }
+            }
+
+            Visibility visibility = menuItemCount > 0 ? Visibility.Visible : Visibility.Collapsed;
+            RecentFilesSeparator.Visibility = visibility;
+            RecentFiles.Visibility = visibility;
+        }
+
+        /// <summary>
+        /// Load a recent profile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadRecentProfile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (sender is MenuItem)
+                {
+                    MenuItem menuItem = (MenuItem)sender;
+                    if (menuItem.Tag is string)
+                    {
+                        string filePath = (string)menuItem.Tag;
+                        LoadProfile(filePath);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(Properties.Resources.E_MAIN016, ex);
             }
         }
 
@@ -772,7 +895,7 @@ namespace AltController
                 System.Windows.Forms.SaveFileDialog dialog = new System.Windows.Forms.SaveFileDialog();
                 dialog.InitialDirectory = profilesDir;
                 dialog.CheckPathExists = true;
-                dialog.DefaultExt = ".alt.xml";
+                dialog.DefaultExt = Constants.ProfileFileExtension;
                 dialog.Filter = Properties.Resources.String_Profile_files_filter;
                 string filePath = _appConfig.GetStringVal(Constants.ConfigLastUsedProfile, null);
                 if (filePath != null)
@@ -791,13 +914,16 @@ namespace AltController
 
                     // Update the profile name
                     FileInfo fi = new FileInfo(dialog.FileName);
-                    _profile.Name = fi.Name.Replace(".alt.xml", "");
+                    _profile.Name = fi.Name.Replace(Constants.ProfileFileExtension, "");
                     //_profile.Directory = fi.DirectoryName;
                     this.ProfileLabel.Text = _profile.Name;
                     this.ProfileLabel.ToolTip = _profile.Name;
 
                     // Store last used profile in app settings
                     _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, dialog.FileName);
+
+                    // Refresh the recent profiles list
+                    UpdateRecentProfiles(dialog.FileName);
 
                     // Disable the save button
                     _profileChanged = false;
@@ -963,6 +1089,13 @@ namespace AltController
                 _overlayDialog = null;
             }
 
+            // Close the help/about window
+            if (_helpAboutWindow != null && _helpAboutWindow.IsLoaded)
+            {
+                _helpAboutWindow.Close();
+                _helpAboutWindow = null;
+            }
+
             // Close custom windows
             CustomWindow[] windowsToClose = new CustomWindow[_openCustomWindows.Values.Count];
             _openCustomWindows.Values.CopyTo(windowsToClose, 0);
@@ -997,6 +1130,10 @@ namespace AltController
             else if (childWindow == _overlayDialog)
             {
                 _overlayDialog = null;
+            }
+            else if (childWindow == _helpAboutWindow)
+            {
+                _helpAboutWindow = null;
             }
             else if (childWindow is CustomWindow)
             {
@@ -1038,11 +1175,14 @@ namespace AltController
 
                     // Set profile name
                     FileInfo fi = new FileInfo(filePath);
-                    profile.Name = fi.Name.Replace(".alt.xml", "");
+                    profile.Name = fi.Name.Replace(Constants.ProfileFileExtension, "");
                     //profile.Directory = fi.DirectoryName;
 
                     // Update last used profile
                     _appConfig.SetStringVal(Constants.ConfigLastUsedProfile, filePath);
+
+                    // Update the recent profiles list
+                    UpdateRecentProfiles(filePath);
                 }
                 catch (Exception ex)
                 {
@@ -1058,6 +1198,9 @@ namespace AltController
             if (profile == null)
             {
                 profile = CreateDefaultProfile();
+
+                // Update the recent profiles list
+                UpdateRecentProfiles(null);
             }
 
             // Set the window title
@@ -1525,9 +1668,16 @@ namespace AltController
         private void HelpAbout_Click(object sender, RoutedEventArgs e)
         {
             ClearMessages();
-            
-            HelpAboutWindow helpAbout = new HelpAboutWindow();
-            helpAbout.ShowDialog();
+
+            if (_helpAboutWindow == null)
+            {
+                _helpAboutWindow = new HelpAboutWindow(this);
+                _helpAboutWindow.Show();
+            }
+            else
+            {
+                _helpAboutWindow.WindowState = WindowState.Normal;
+            }
         }
 
         /// <summary>
