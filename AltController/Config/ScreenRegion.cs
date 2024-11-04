@@ -467,7 +467,7 @@ namespace AltController.Config
             _startAngleDeg = double.Parse(element.GetAttribute("startangle"), CultureInfo.InvariantCulture);
             _sweepAngleDeg = double.Parse(element.GetAttribute("sweepangle"), CultureInfo.InvariantCulture);
             _colour = element.GetAttribute("colour");
-            if (element.HasAttribute("backgroundcolour"))   // Added v1.98
+            if (element.HasAttribute("backgroundcolour"))   // Added v2.0
             {
                 _backgroundColour = element.GetAttribute("backgroundcolour");
             }

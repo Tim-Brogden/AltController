@@ -2201,6 +2201,10 @@
     <value>Text files (*.txt)|*.txt|All files (*.*)|*.*</value>
     <comment>Strings</comment>
   </data>
+  <data name="String_Toggle" xml:space="preserve">
+    <value>Toggle</value>
+    <comment>Strings</comment>
+  </data>
   <data name="String_Toggle_key" xml:space="preserve">
     <value>Toggle key</value>
     <comment>Strings</comment>

@@ -171,12 +171,11 @@ namespace AltController.Actions
         /// <summary>
         /// Get the values of the parameters needed by the action
         /// </summary>
-        /// <param name="parent"></param>
+        /// <param name="paramIndex"></param>
         /// <param name="args"></param>
         /// <returns></returns>
         protected ParamValue GetParamValue(int paramIndex,
-                                            AltControlEventArgs args,
-                                            IStateManager parent)
+                                            AltControlEventArgs args)
         {
             ParamValue paramValue;
             if (_requiredParameters != null && paramIndex > -1 && paramIndex < _requiredParameters.Length)

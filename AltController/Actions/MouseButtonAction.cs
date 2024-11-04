@@ -40,10 +40,9 @@ namespace AltController.Actions
     public class MouseButtonAction : BaseAction
     {
         // Members
+        private EActionType _actionType = EActionType.MouseClick;
         private EMouseButton _mouseButton = EMouseButton.Left;
-        private bool _pressOrRelease = true;
         private long _pressDurationTicks = System.Windows.Forms.SystemInformation.DoubleClickTime * TimeSpan.TicksPerMillisecond / 6;
-        private int _numPressesRequired = 1;
 
         // State
         private bool _isPressed;
@@ -52,9 +51,6 @@ namespace AltController.Actions
 
         // Properties
         public EMouseButton MouseButton { get { return _mouseButton; } set { _mouseButton = value; Updated(); } }
-        public bool PressOrRelease { get { return _pressOrRelease; } set { _pressOrRelease = value; Updated(); } }
-        public long PressDurationTicks { get { return _pressDurationTicks; } set { _pressDurationTicks = value; Updated(); } }
-        public int NumPressesRequired { get { return _numPressesRequired; } set { _numPressesRequired = value; Updated(); } }
 
         /// <summary>
         /// Return the type of action
@@ -63,24 +59,7 @@ namespace AltController.Actions
         {
             get 
             {
-                EActionType actionType;
-                if (_pressOrRelease)
-                {
-                    if (_pressDurationTicks > 0L)
-                    {
-                        actionType = (_numPressesRequired == 1) ? EActionType.MouseClick : EActionType.MouseDoubleClick;
-                    }
-                    else
-                    {
-                        actionType = EActionType.MouseHold;
-                    }
-                }
-                else
-                {
-                    actionType = EActionType.MouseRelease;
-                }
-
-                return actionType; 
+                return _actionType; 
             }
         }
 
@@ -92,8 +71,8 @@ namespace AltController.Actions
         {
             get
             {
-                string verb;
-                switch (ActionType)
+                string verb = "";
+                switch (_actionType)
                 {
                     case EActionType.MouseClick:
                         verb = Properties.Resources.String_Click; break;
@@ -101,10 +80,13 @@ namespace AltController.Actions
                         verb = Properties.Resources.String_Double_click; break;
                     case EActionType.MouseHold:
                         verb = Properties.Resources.String_Hold; break;
-                    default:
+                    case EActionType.MouseRelease:
                         verb = Properties.Resources.String_Release; break;
+                    case EActionType.ToggleMouseButton:
+                        verb = Properties.Resources.String_Toggle; break;
                 }
                 Utils utils = new Utils();
+                // TODO: This causes unnatural word order with translated strings
                 return string.Format("{0} '{1}' " + Properties.Resources.String_Mouse_Button.ToLower(), verb, utils.GetMouseButtonName(_mouseButton));
             }
         }
@@ -116,7 +98,7 @@ namespace AltController.Actions
         {
             get
             {
-                return Name.Replace(" mouse button", "");
+                return Name.Replace(" mouse button", "");   // TODO: This doesn't work with translated strings
             }
         }
 
@@ -126,6 +108,11 @@ namespace AltController.Actions
         public MouseButtonAction()
             : base()
         {
+        }
+
+        public MouseButtonAction(EActionType actionType)
+        {
+            _actionType = actionType;
         }
 
         /// <summary>
@@ -148,9 +135,32 @@ namespace AltController.Actions
                     _mouseButton = (EMouseButton)Enum.Parse(typeof(EMouseButton), buttonStr);
                     break;
             }
-            _pressOrRelease = bool.Parse(element.GetAttribute("pressorrelease"));
-            _pressDurationTicks = long.Parse(element.GetAttribute("pressduration"), System.Globalization.CultureInfo.InvariantCulture);
-            _numPressesRequired = int.Parse(element.GetAttribute("numpresses"), System.Globalization.CultureInfo.InvariantCulture);
+            if (element.HasAttribute("actiontype"))
+            {
+                _actionType = (EActionType)Enum.Parse(typeof(EActionType), element.GetAttribute("actiontype"));
+            }
+            else
+            {
+                // Legacy code (upgrade to v2.0)
+                bool pressOrRelease = bool.Parse(element.GetAttribute("pressorrelease"));
+                long pressDurationTicks = long.Parse(element.GetAttribute("pressduration"), System.Globalization.CultureInfo.InvariantCulture);
+                int numPressesRequired = int.Parse(element.GetAttribute("numpresses"), System.Globalization.CultureInfo.InvariantCulture);
+                if (pressOrRelease)
+                {
+                    if (pressDurationTicks > 0L)
+                    {
+                        _actionType = (numPressesRequired == 1) ? EActionType.MouseClick : EActionType.MouseDoubleClick;
+                    }
+                    else
+                    {
+                        _actionType = EActionType.MouseHold;
+                    }
+                }
+                else
+                {
+                    _actionType = EActionType.MouseRelease;
+                }
+            }
 
             base.FromXml(element);
         }
@@ -162,10 +172,8 @@ namespace AltController.Actions
         public override void ToXml(XmlElement element, XmlDocument doc)
         {
             base.ToXml(element, doc);
+            element.SetAttribute("actiontype", _actionType.ToString());
             element.SetAttribute("mousebutton", _mouseButton.ToString());
-            element.SetAttribute("pressorrelease", _pressOrRelease.ToString());
-            element.SetAttribute("pressduration", _pressDurationTicks.ToString(System.Globalization.CultureInfo.InvariantCulture));
-            element.SetAttribute("numpresses", _numPressesRequired.ToString(System.Globalization.CultureInfo.InvariantCulture));
         }
 
         /// <summary>
@@ -174,29 +182,31 @@ namespace AltController.Actions
         public override void StartAction(IStateManager parent, AltControlEventArgs cargs)
         {
             MouseManager mouseManager = parent.MouseStateManager;
-            if (_pressOrRelease)
-            {
-                // Press mouse button task (click, hold or double-click)
-
-                // Press the mouse button
-                mouseManager.SetButtonState(_mouseButton, true);
-                _isPressed = true;
-                _pressCount = 1;
-                _lastActionTimeTicks = DateTime.Now.Ticks;
-
-                IsOngoing = (_pressDurationTicks > 0);
-            }
-            else
-            {
-                // Release button task
-                mouseManager.SetButtonState(_mouseButton, false);
-
-                IsOngoing = false;
+            switch (_actionType) {
+                case EActionType.MouseRelease:
+                    // Release button task
+                    mouseManager.SetButtonState(_mouseButton, false);
+                    IsOngoing = false;
+                    break;
+                case EActionType.ToggleMouseButton:
+                    mouseManager.ToggleButtonState(_mouseButton);
+                    IsOngoing = false;
+                    break;
+                default:
+                    {
+                        // Press mouse button task (click, hold or double-click)
+                        mouseManager.SetButtonState(_mouseButton, true);
+                        _isPressed = true;
+                        _pressCount = 1;
+                        _lastActionTimeTicks = DateTime.Now.Ticks;
+                        IsOngoing = _actionType != EActionType.MouseHold;
+                    }
+                    break;
             }
         }
 
         /// <summary>
-        /// Continue the action
+        /// Continue the click or double-click action
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="args"></param>
@@ -209,7 +219,7 @@ namespace AltController.Actions
                 {
                     // Release  button
                     parent.MouseStateManager.SetButtonState(_mouseButton, false);
-                    if (_pressCount >= _numPressesRequired)
+                    if (_actionType != EActionType.MouseDoubleClick || _pressCount > 1)
                     {
                         // Finished action
                         IsOngoing = false;

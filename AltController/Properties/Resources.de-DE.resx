@@ -2165,6 +2165,10 @@
     <value>Textdateien (*.txt)|*.txt|Alle Dateien (*.*)|*.*</value>
     <comment>Strings</comment>
   </data>
+  <data name="String_Toggle" xml:space="preserve">
+    <value>Umschalten</value>
+    <comment>Strings</comment>
+  </data>
   <data name="String_Toggle_key" xml:space="preserve">
     <value>Taste umschalten</value>
     <comment>Strings</comment>

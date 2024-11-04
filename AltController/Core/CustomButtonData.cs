@@ -199,12 +199,12 @@ namespace AltController.Core
                 _textColour = element.GetAttribute("textcolour");
             }
             // End v1.93
-            // v1.98
+            // v2.0
             if (element.HasAttribute("textalignment"))
             {
                 _textAlignment = (ELRUDState)Enum.Parse(typeof(ELRUDState), element.GetAttribute("textalignment"));
             }
-            // End v1.98
+            // End v2.0
         }
 
         /// <summary>

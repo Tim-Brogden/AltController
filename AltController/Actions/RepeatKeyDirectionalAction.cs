@@ -204,8 +204,8 @@ namespace AltController.Actions
                 _lastPressTimeTicks = currentTime;
 
                 // Get normalised pointer position
-                ParamValue xValue = GetParamValue(0, cargs, parent);
-                ParamValue yValue = GetParamValue(1, cargs, parent);
+                ParamValue xValue = GetParamValue(0, cargs);
+                ParamValue yValue = GetParamValue(1, cargs);
                 if (xValue.Value == null || yValue.Value == null) return;  // Shouldn't ever happen
                 Point normalisedPos = new Point((double)xValue.Value, (double)yValue.Value);
                 
@@ -333,7 +333,7 @@ namespace AltController.Actions
         /// <returns></returns>
         private double GetRequiredPressAmount(Point point)
         {
-            double amount = 0.0;
+            double amount;
 
             // Scale the amount according to the orientation of the action, if any
             switch (_longerPressesDirection)

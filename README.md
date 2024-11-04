@@ -41,8 +41,3 @@ The source code for Alt Controller is available at https://github.com/Tim-Brogde
 Alt Controller is a Microsoft .NET WPF application which can be built using Microsoft Visual Studio Community 2019.
 
 In order to build the installer, there is a script CreateAltControllerSetup.bat in the AltControllerSetup folder. It uses NSIS to package the Setup.exe and MSI files into a single installable exe file. The script isn't called from within the Visual Studio build process; it is run manually after building the solution. If you want run the script, you must first install NSIS, which is available from http://nsis.sourceforge.net/Main_Page).
-
-## Future plans
-The Change pointer action type will likely be removed in a coming version of the software. This was an experimental action type which now seems to serve no purpose. If you are using this action type, please let me know.
-
-Future plans for the software include gradually improving the website and sharing user-created profiles and information there. If you have created a useful Alt Controller profile that you are willing to share, feel free to send it to me via the contact page at altcontroller.net.

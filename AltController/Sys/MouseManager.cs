@@ -42,10 +42,6 @@ namespace AltController.Sys
     {
         private bool[] _buttonsWePressed = new bool[6];
         private IStateManager _parent;
-        private ECursorType _cursorType = ECursorType.User;
-        private IntPtr _blankCursor = IntPtr.Zero;
-        private Dictionary<IDC_STANDARD_CURSORS, IntPtr> _initialCursors;
-        private Dictionary<IDC_STANDARD_CURSORS, IntPtr> _userCursors;
         private bool _canScrollUpRepeat;
         private bool _canScrollDownRepeat;
 
@@ -66,30 +62,6 @@ namespace AltController.Sys
         /// </summary>
         public void Initialise()
         {
-            // Store the initial cursor set
-            _initialCursors = StoreCursors();
-        }
-
-        /// <summary>
-        /// Destroy
-        /// </summary>
-        public void Destroy()
-        {
-            // Restore the cursor if reqd
-            if (_cursorType == ECursorType.Blank)
-            {
-                ApplyCursors(ref _initialCursors);
-                _cursorType = ECursorType.Standard;
-            }
-
-            // Release any stored cursors
-            DestroyCursors(ref _initialCursors);
-            DestroyCursors(ref _userCursors);
-            if (_blankCursor != IntPtr.Zero)
-            {
-                WindowsAPI.DestroyCursor(_blankCursor);
-                _blankCursor = IntPtr.Zero;
-            }
         }
 
         /// <summary>
@@ -198,161 +170,6 @@ namespace AltController.Sys
             inputs[0].mi.dx = x;            
             inputs[0].mi.dy = y;
             WindowsAPI.SendInput(1, inputs, System.Runtime.InteropServices.Marshal.SizeOf(inputs[0]));
-        }
-
-        /// <summary>
-        /// Restore the system cursors to what they were before we changed them
-        /// </summary>
-        public void RestoreUsersCursor()
-        {
-            if (_cursorType != ECursorType.User)
-            {
-                ApplyCursors(ref _userCursors);
-                _cursorType = ECursorType.User;
-            }
-        }
-
-        /// <summary>
-        /// Apply the standard set of system pointers
-        /// </summary>
-        public void ApplyStandardCursor()
-        {
-            if (_cursorType != ECursorType.Standard)
-            {
-                // Store the user's cursors if not already stored
-                if (_userCursors == null)
-                {
-                    _userCursors = StoreCursors();
-                }
-
-                if (_userCursors != null)
-                {
-                    // Apply the standard pointers
-                    ApplyCursors(ref _initialCursors);
-
-                    // Make sure we store them again
-                    _initialCursors = StoreCursors();
-
-                    _cursorType = ECursorType.Standard;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Set the system cursors to be blank
-        /// </summary>
-        public void ApplyBlankCursor()
-        {
-            if (_cursorType != ECursorType.Blank)
-            {
-                // Load blank cursor if required
-                if (_blankCursor == IntPtr.Zero)
-                {
-                    string cursorPath = Path.Combine(AppConfig.BaseDir, "Cursors", "blank.cur");
-                    if (File.Exists(cursorPath))
-                    {
-                        _blankCursor = WindowsAPI.LoadCursorFromFile(cursorPath);
-                    }
-                }
-
-                if (_blankCursor != IntPtr.Zero)
-                {
-                    // Copy the current set of cursors so they can be restored later
-                    if (_userCursors == null)
-                    {
-                        _userCursors = StoreCursors();
-                    }
-
-                    if (_userCursors != null)
-                    {
-                        // Create a blank cursor for each system cursor that we can restore
-                        Dictionary<IDC_STANDARD_CURSORS, IntPtr> blankCursors = new Dictionary<IDC_STANDARD_CURSORS, IntPtr>();
-                        foreach (IDC_STANDARD_CURSORS eCursor in Enum.GetValues(typeof(IDC_STANDARD_CURSORS)))
-                        {
-                            if (_userCursors.ContainsKey(eCursor) || _initialCursors.ContainsKey(eCursor))
-                            {
-                                // Copy the blank cursor
-                                IntPtr blankCursorCopy = WindowsAPI.CopyImage(_blankCursor, WindowsAPI.IMAGE_CURSOR, 0, 0, 0);
-                                blankCursors[eCursor] = blankCursorCopy;
-                            }
-                        }
-
-                        // Apply the blank cursors
-                        ApplyCursors(ref blankCursors);
-
-                        _cursorType = ECursorType.Blank;
-                    }
-                }
-            }
-        }
-        
-        /// <summary>
-        /// Store the current set of cursors
-        /// </summary>
-        private Dictionary<IDC_STANDARD_CURSORS, IntPtr> StoreCursors()
-        {
-            Dictionary<IDC_STANDARD_CURSORS, IntPtr> cursorSet = new Dictionary<IDC_STANDARD_CURSORS, IntPtr>();
-
-            // Loop over system cursors
-            Array eCursors = Enum.GetValues(typeof(IDC_STANDARD_CURSORS));
-            foreach (IDC_STANDARD_CURSORS eCursor in eCursors)
-            {
-                // Load the current cursor
-                //string cursorName = WindowsAPI.MakeIntResourceAlternative((ushort)eCursor);
-                //IntPtr userCursor = WindowsAPI.LoadImage(IntPtr.Zero, cursorName, WindowsAPI.IMAGE_CURSOR, 0, 0, 0);
-                IntPtr currentCursor = WindowsAPI.LoadCursor(IntPtr.Zero, (int)eCursor);
-                if (currentCursor != IntPtr.Zero)
-                {
-                    // Save a copy of the cursor
-                    IntPtr cursorCopy = WindowsAPI.CopyImage(currentCursor, WindowsAPI.IMAGE_CURSOR, 0, 0, 0);
-                    if (cursorCopy != IntPtr.Zero)
-                    {
-                        cursorSet[eCursor] = cursorCopy;
-                    }
-                }
-            }
-
-            return cursorSet;
-        }
-
-        /// <summary>
-        /// Apply a set of cursors
-        /// </summary>
-        /// <param name="cursorSet"></param>
-        private void ApplyCursors(ref Dictionary<IDC_STANDARD_CURSORS, IntPtr> cursorSet)
-        {
-            if (cursorSet != null)
-            {
-                // Loop over system cursors we changed
-                Dictionary<IDC_STANDARD_CURSORS, IntPtr>.Enumerator eCursor = cursorSet.GetEnumerator();
-                while (eCursor.MoveNext())
-                {
-                    // Set the system cursor
-                    WindowsAPI.SetSystemCursor(eCursor.Current.Value, (uint)eCursor.Current.Key);
-                }
-
-                // Ensure that cursors can't be referenced after being applied
-                cursorSet = null;
-            }
-        }
-
-        /// <summary>
-        /// Release the resources for a set of cursors and clear it
-        /// </summary>
-        /// <param name="cursorSet"></param>
-        private void DestroyCursors(ref Dictionary<IDC_STANDARD_CURSORS, IntPtr> cursorSet)
-        {
-            if (cursorSet != null)
-            {
-                foreach (IntPtr cursor in cursorSet.Values)
-                {
-                    // Destroy the cursor
-                    WindowsAPI.DestroyCursor(cursor);
-                }
-
-                // Ensure that cursors can't be referenced after being released
-                cursorSet = null;
-            }
         }
 
     }

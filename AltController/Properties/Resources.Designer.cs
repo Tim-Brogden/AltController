@@ -4777,6 +4777,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle.
+        /// </summary>
+        public static string String_Toggle {
+            get {
+                return ResourceManager.GetString("String_Toggle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggle key.
         /// </summary>
         public static string String_Toggle_key {

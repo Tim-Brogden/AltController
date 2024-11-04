@@ -50,8 +50,6 @@ namespace AltController.Core
                     name = Properties.Resources.String_Change_mode; break;
                 case EActionType.ChangePage:
                     name = Properties.Resources.String_Change_page; break;
-                case EActionType.ChangePointer:
-                    name = Properties.Resources.String_Change_pointer; break;
                 case EActionType.HoldKey:
                     name = Properties.Resources.String_Hold_key; break;
                 case EActionType.MenuOption:

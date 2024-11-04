@@ -43,7 +43,7 @@ namespace AltController.Config
     /// </summary>
     public class ProfileUpgrader
     {
-        private List<string> _upgradeVersions = new List<string> { "0.3", "0.5", "1.3", "1.5", "1.96" };
+        private List<string> _upgradeVersions = new List<string> { "0.3", "0.5", "1.3", "1.5", "1.96", "1.97" };
 
         /// <summary>
         /// Constructor

@@ -1173,6 +1173,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_33D68C479DCA4F478E5489E6208EAD2D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3440380543EA4D73BBEBB89F1F10E15D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -1678,12 +1684,6 @@
         "Entry"
         {
         "MsmKey" = "8:_488FD869F6644B0FAFAB4C2415E3055F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_4899EA07294B4A42BB7771735BFE3827"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -10199,6 +10199,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_33D68C479DCA4F478E5489E6208EAD2D"
+            {
+            "SourcePath" = "8:..\\AltController\\AutoUpgrade\\Upgrade from v1.97.xsl"
+            "TargetName" = "8:Upgrade from v1.97.xsl"
+            "Tag" = "8:"
+            "Folder" = "8:_184AFF26454849368B91DF2776110669"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3440380543EA4D73BBEBB89F1F10E15D"
             {
             "SourcePath" = "8:..\\AltController\\Images\\icons\\webcam.png"
@@ -11885,26 +11905,6 @@
             "TargetName" = "8:webcam_delete.png"
             "Tag" = "8:"
             "Folder" = "8:_AAD44E2E888D47F292D0C299FE82F579"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4899EA07294B4A42BB7771735BFE3827"
-            {
-            "SourcePath" = "8:..\\AltController\\Cursors\\blank.cur"
-            "TargetName" = "8:blank.cur"
-            "Tag" = "8:"
-            "Folder" = "8:_B054CF3521624B97AAAED80D8D83E712"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -26945,17 +26945,6 @@
                         {
                         }
                     }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B054CF3521624B97AAAED80D8D83E712"
-                    {
-                    "Name" = "8:Cursors"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_9D2C4F87186240C2BE8FEAF90A47539C"
-                        "Folders"
-                        {
-                        }
-                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_BC2CDF71D2094DB6897AA2E860C0EB13"
                     {
                     "Name" = "8:Profiles"
@@ -26985,15 +26974,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Alt Controller"
-        "ProductCode" = "8:{3E85CD9F-D563-4790-B77A-3F1EAA5A5616}"
-        "PackageCode" = "8:{1D6F845B-42F7-46C7-A597-2E388E6B0672}"
+        "ProductCode" = "8:{AF7CBA3E-5AB3-4F33-B0FC-D16F83E008E6}"
+        "PackageCode" = "8:{B38A6384-9AC5-4922-8BA6-BE96DF236CB6}"
         "UpgradeCode" = "8:{BA3B7DB1-4994-4CFE-BBA5-8873A32155C1}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.98"
+        "ProductVersion" = "8:2.0"
         "Manufacturer" = "8:Tim Brogden"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:http://altcontroller.net"

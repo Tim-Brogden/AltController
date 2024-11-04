@@ -157,7 +157,6 @@ namespace AltController.Core
         RepeatScrollUp,
         RepeatScrollDown,
         StopScrolling,
-        ChangePointer,
         MoveThePointer,
         MenuOption,
         Wait,

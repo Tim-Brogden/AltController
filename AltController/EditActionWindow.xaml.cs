@@ -41,11 +41,12 @@ namespace AltController
     /// </summary>
     public partial class EditActionWindow : Window
     {
-        private Utils _utils = new Utils();
         private FrameworkElement _visibleActionGrid;
         private BaseAction _currentAction;
         private AltControlEventArgs _inputEvent;
         private Profile _profile;
+        private static long _lastUniqueKeyID = (long)System.Windows.Forms.Keys.A;
+        private static EMouseButton _lastMouseButton = EMouseButton.Left;
 
         /// <summary>
         /// Constructor
@@ -88,74 +89,14 @@ namespace AltController
             // Display settings for current action
             if (_currentAction != null)
             {
-                switch (_currentAction.ActionType)
-                {
-                    case EActionType.TypeKey:
-                        this.TypeKeyDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.TypeText:
-                        this.TypeTextDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.HoldKey:
-                        this.HoldKeyDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.ReleaseKey:
-                        this.ReleaseKeyDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.RepeatKey:
-                        this.RepeatKeyDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.ToggleKey:
-                        this.ToggleKeyDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.StopOngoingActions:
-                    case EActionType.ScrollUp:
-                    case EActionType.ScrollDown:
-                    case EActionType.StopScrolling:
-                        // Nothing to do
-                        break;
-                    case EActionType.RepeatScrollUp:
-                    case EActionType.RepeatScrollDown:
-                        this.RepeatScrollDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.MouseClick:
-                    case EActionType.MouseDoubleClick:
-                    case EActionType.MouseHold:
-                    case EActionType.MouseRelease:
-                        this.MouseButtonActionDetails.ActionType = _currentAction.ActionType;
-                        this.MouseButtonActionDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.ToggleMouseButton:
-                        this.ToggleMouseButtonActionDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.MoveThePointer:
-                        this.MoveThePointerDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.ChangeMode:
-                        this.ChangeModeDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.ChangePage:
-                        this.ChangePageDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.ChangePointer:
-                        this.ChangePointerDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.Wait:
-                        this.WaitDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.RepeatKeyDirectional:
-                        this.RepeatKeyDirectionalDetails.SetCurrentAction(_currentAction);
-                        break;
-                    case EActionType.MenuOption:
-                        this.MenuActionDetails.SetCurrentAction(_currentAction);
-                        break;
-                }
-
                 // Select action type
                 this.ActionTypeCombo.SelectedValue = (long)_currentAction.ActionType;
             }
             else
             {
+                this.BaseKeyActionDetails.SelectedKeyID = _lastUniqueKeyID;
+                this.MouseButtonActionDetails.SelectedMouseButton = _lastMouseButton;
+
                 // Select the first action type
                 if (this.ActionTypeCombo.Items.Count > 0)
                 {
@@ -179,25 +120,33 @@ namespace AltController
                 if (selectedItem != null)
                 {
                     EActionType actionType = (EActionType)selectedItem.ID;
+                    bool created = false;
+
+                    if (_currentAction == null || _currentAction.ActionType != actionType)
+                    {
+                        _currentAction = CreateDefaultAction(actionType);
+                        created = true;
+                    }
+
                     switch (actionType)
                     {
                         case EActionType.TypeKey:
-                            ShowActionGrid(this.TypeKeyDetails);
+                        case EActionType.HoldKey:
+                        case EActionType.ReleaseKey:
+                        case EActionType.ToggleKey:
+                        case EActionType.RepeatKey:
+                        case EActionType.RepeatKeyDirectional:
+                            if (created)
+                            {
+                                // Keep the selected key
+                                ((BaseKeyAction)_currentAction).UniqueKeyID = this.BaseKeyActionDetails.SelectedKeyID;
+                            }
+                            this.BaseKeyActionDetails.SetCurrentAction(_currentAction);
+                            ShowActionGrid(this.BaseKeyActionDetails);
                             break;
                         case EActionType.TypeText:
+                            this.TypeTextDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.TypeTextDetails);
-                            break;
-                        case EActionType.HoldKey:
-                            ShowActionGrid(this.HoldKeyDetails);
-                            break;
-                        case EActionType.ReleaseKey:
-                            ShowActionGrid(this.ReleaseKeyDetails);
-                            break;
-                        case EActionType.RepeatKey:
-                            ShowActionGrid(this.RepeatKeyDetails);
-                            break;
-                        case EActionType.ToggleKey:
-                            ShowActionGrid(this.ToggleKeyDetails);
                             break;
                         case EActionType.StopOngoingActions:
                         case EActionType.ScrollUp:
@@ -206,43 +155,41 @@ namespace AltController
                             ShowActionGrid(null);
                             break;
                         case EActionType.RepeatScrollUp:
-                            this.RepeatScrollDetails.IsUp = true;
-                            ShowActionGrid(this.RepeatScrollDetails);
-                            break;
                         case EActionType.RepeatScrollDown:
-                            this.RepeatScrollDetails.IsUp = false;
+                            this.RepeatScrollDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.RepeatScrollDetails);
                             break;
                         case EActionType.MouseClick:
                         case EActionType.MouseDoubleClick:
                         case EActionType.MouseHold:
                         case EActionType.MouseRelease:
-                            this.MouseButtonActionDetails.ActionType = actionType;
+                        case EActionType.ToggleMouseButton:
+                            if (created)
+                            {
+                                // Keep the selected mouse button
+                                ((MouseButtonAction)_currentAction).MouseButton = MouseButtonActionDetails.SelectedMouseButton;
+                            }
+                            this.MouseButtonActionDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.MouseButtonActionDetails);
                             break;
-                        case EActionType.ToggleMouseButton:
-                            ShowActionGrid(this.ToggleMouseButtonActionDetails);
-                            break;
                         case EActionType.MoveThePointer:
+                            this.MoveThePointerDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.MoveThePointerDetails);
                             break;
                         case EActionType.ChangeMode:
+                            this.ChangeModeDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.ChangeModeDetails);
                             break;
                         case EActionType.ChangePage:
+                            this.ChangePageDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.ChangePageDetails);
                             break;
-                        case EActionType.ChangePointer:
-                            //PopulateActionParams(new ChangePointerAction());
-                            ShowActionGrid(this.ChangePointerDetails);
-                            break;
                         case EActionType.Wait:
+                            this.WaitDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.WaitDetails);
                             break;
-                        case EActionType.RepeatKeyDirectional:
-                            ShowActionGrid(this.RepeatKeyDirectionalDetails);
-                            break;
                         case EActionType.MenuOption:
+                            this.MenuActionDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.MenuActionDetails);
                             break;
                     }
@@ -258,6 +205,62 @@ namespace AltController
             }
         }
 
+        private BaseAction CreateDefaultAction(EActionType actionType)
+        {
+            BaseAction action = null;
+            switch (actionType)
+            {
+                case EActionType.TypeKey:
+                    action = new TypeKeyAction(); break;
+                case EActionType.HoldKey:
+                    action = new HoldKeyAction(); break;
+                case EActionType.ReleaseKey:
+                    action = new ReleaseKeyAction(); break;
+                case EActionType.ToggleKey:
+                    action = new ToggleKeyAction(); break;
+                case EActionType.RepeatKey:
+                    action = new RepeatKeyAction(); break;
+                case EActionType.RepeatKeyDirectional:
+                    action = new RepeatKeyDirectionalAction(); break;
+                case EActionType.TypeText:
+                    action = new TypeTextAction(); break;
+                case EActionType.StopOngoingActions:
+                    action = new StopOngoingActionsAction(); break;
+                case EActionType.ScrollUp:
+                    action = new ScrollWheelAction(true); break;
+                case EActionType.ScrollDown:
+                    action = new ScrollWheelAction(false); break;
+                case EActionType.StopScrolling:
+                    action = new StopScrollingAction(); break;
+                case EActionType.RepeatScrollUp:
+                    action = new RepeatScrollWheelAction(true); break;
+                case EActionType.RepeatScrollDown:
+                    action = new RepeatScrollWheelAction(false); break;
+                case EActionType.MouseClick:
+                    action = new MouseButtonAction(EActionType.MouseClick); break;
+                case EActionType.MouseDoubleClick:
+                    action = new MouseButtonAction(EActionType.MouseDoubleClick); break;
+                case EActionType.MouseHold:
+                    action = new MouseButtonAction(EActionType.MouseHold); break;
+                case EActionType.MouseRelease:
+                    action = new MouseButtonAction(EActionType.MouseRelease); break;
+                case EActionType.ToggleMouseButton:
+                    action = new MouseButtonAction(EActionType.ToggleMouseButton); break;
+                case EActionType.MoveThePointer:
+                    action = new MoveThePointerAction(); break;
+                case EActionType.ChangeMode:
+                    action = new ChangeModeAction(); break;
+                case EActionType.ChangePage:
+                    action = new ChangePageAction(); break;
+                case EActionType.Wait:
+                    action = new WaitAction(); break;
+                case EActionType.MenuOption:
+                    action = new MenuOptionAction(); break;
+            }
+
+            return action;
+        }
+
         /// <summary>
         /// OK Button
         /// </summary>
@@ -268,6 +271,10 @@ namespace AltController
             _currentAction = CreateAction();
             if (_currentAction != null)
             {
+                // Store last selected key and mouse button
+                _lastUniqueKeyID = this.BaseKeyActionDetails.SelectedKeyID;
+                _lastMouseButton = this.MouseButtonActionDetails.SelectedMouseButton;
+
                 this.DialogResult = true;
                 this.Close();
             }
@@ -305,22 +312,15 @@ namespace AltController
                 switch (actionType)
                 {
                     case EActionType.TypeKey:
-                        action = this.TypeKeyDetails.GetCurrentAction();
+                    case EActionType.HoldKey:
+                    case EActionType.ReleaseKey:
+                    case EActionType.ToggleKey:
+                    case EActionType.RepeatKey:
+                    case EActionType.RepeatKeyDirectional:
+                        action = this.BaseKeyActionDetails.GetCurrentAction();
                         break;
                     case EActionType.TypeText:
                         action = this.TypeTextDetails.GetCurrentAction();
-                        break;
-                    case EActionType.HoldKey:
-                        action = this.HoldKeyDetails.GetCurrentAction();
-                        break;
-                    case EActionType.ReleaseKey:
-                        action = this.ReleaseKeyDetails.GetCurrentAction();
-                        break;
-                    case EActionType.RepeatKey:
-                        action = this.RepeatKeyDetails.GetCurrentAction();
-                        break;
-                    case EActionType.ToggleKey:
-                        action = this.ToggleKeyDetails.GetCurrentAction();
                         break;
                     case EActionType.StopOngoingActions:                        
                         action = new StopOngoingActionsAction();
@@ -342,10 +342,8 @@ namespace AltController
                     case EActionType.MouseDoubleClick:
                     case EActionType.MouseHold:
                     case EActionType.MouseRelease:
-                        action = this.MouseButtonActionDetails.GetCurrentAction();
-                        break;
                     case EActionType.ToggleMouseButton:
-                        action = this.ToggleMouseButtonActionDetails.GetCurrentAction();
+                        action = this.MouseButtonActionDetails.GetCurrentAction();
                         break;
                     case EActionType.MoveThePointer:
                         action = this.MoveThePointerDetails.GetCurrentAction();
@@ -356,14 +354,8 @@ namespace AltController
                     case EActionType.ChangePage:
                         action = this.ChangePageDetails.GetCurrentAction();
                         break;
-                    case EActionType.ChangePointer:
-                        action = this.ChangePointerDetails.GetCurrentAction();
-                        break;
                     case EActionType.Wait:
                         action = this.WaitDetails.GetCurrentAction();
-                        break;
-                    case EActionType.RepeatKeyDirectional:
-                        action = this.RepeatKeyDirectionalDetails.GetCurrentAction();
                         break;
                     case EActionType.MenuOption:
                         action = this.MenuActionDetails.GetCurrentAction();

@@ -234,7 +234,6 @@ namespace AltController.Core
             Reset();
 
             _keyStateManager.Destroy();
-            _mouseStateManager.Destroy();
         }
 
         /// <summary>

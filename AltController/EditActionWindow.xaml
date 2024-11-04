@@ -28,20 +28,13 @@
         </GroupBox>
         <GroupBox Name="SettingsGroupBox" Header="{x:Static p:Resources.Action_SettingsGroupBox}" Grid.Row="1" Margin="5">
             <Grid Margin="5">
-                <local:TypeKeyControl x:Name="TypeKeyDetails" Visibility="Hidden"/>
+                <local:BaseKeyControl x:Name="BaseKeyActionDetails" Visibility="Hidden"/>
                 <local:TypeTextControl x:Name="TypeTextDetails" Visibility="Hidden"/>
-                <local:HoldKeyControl x:Name="HoldKeyDetails" Visibility="Hidden"/>
-                <local:ReleaseKeyControl x:Name="ReleaseKeyDetails" Visibility="Hidden"/>
-                <local:RepeatKeyControl x:Name="RepeatKeyDetails" Visibility="Hidden"/>
-                <local:ToggleKeyControl x:Name="ToggleKeyDetails" Visibility="Hidden"/>
-                <local:ToggleMouseButtonActionControl x:Name="ToggleMouseButtonActionDetails" Visibility="Hidden"/>
                 <local:MouseButtonActionControl x:Name="MouseButtonActionDetails" Visibility="Hidden"/>
                 <local:RepeatScrollControl x:Name="RepeatScrollDetails" Visibility="Hidden" />
                 <local:ChangeModeControl x:Name="ChangeModeDetails" Visibility="Hidden"/>
                 <local:ChangePageControl x:Name="ChangePageDetails" Visibility="Hidden"/>
                 <local:WaitControl x:Name="WaitDetails" Visibility="Hidden"/>
-                <local:RepeatKeyDirectionalControl x:Name="RepeatKeyDirectionalDetails" Visibility="Hidden"/>
-                <local:ChangePointerControl x:Name="ChangePointerDetails" Visibility="Hidden"/>
                 <local:MoveThePointerControl x:Name="MoveThePointerDetails" Visibility="Hidden"/>
                 <local:MenuActionControl x:Name="MenuActionDetails" Visibility="Hidden"/>
             </Grid>

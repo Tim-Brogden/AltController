@@ -15,6 +15,6 @@
             <ColumnDefinition Width="180"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Name="MouseButtonLabel" VerticalAlignment="Center" Text="{x:Static p:Resources.Action_MouseButtonLabel}" Grid.Row="0" Grid.Column="0"/>
-        <ComboBox Name="MouseButtonCombo" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" />
+        <ComboBox Name="MouseButtonCombo" Grid.Row="0" Grid.Column="1" DisplayMemberPath="Name" SelectedValuePath="ID" SelectionChanged="MouseButtonCombo_SelectionChanged" />
     </Grid>
 </UserControl>

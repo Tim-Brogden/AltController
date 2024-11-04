@@ -38,9 +38,6 @@ namespace AltController.UserControls
         private RepeatScrollWheelAction _currentAction = new RepeatScrollWheelAction();
         private bool _isUp;
 
-        // Properties
-        public bool IsUp { get { return _isUp; } set { _isUp = value; } }
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -72,6 +69,7 @@ namespace AltController.UserControls
             if (action != null && action is RepeatScrollWheelAction)
             {
                 _currentAction = (RepeatScrollWheelAction)action;
+                _isUp = _currentAction.IsUp;
             }
         }
 

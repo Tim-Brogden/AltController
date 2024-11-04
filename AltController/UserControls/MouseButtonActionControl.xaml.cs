@@ -37,12 +37,24 @@ namespace AltController.UserControls
     public partial class MouseButtonActionControl : UserControl
     {
         // Members
+        private bool _isLoaded;
         private NamedItemList _mouseButtonListItems = new NamedItemList();
-        private MouseButtonAction _currentAction = new MouseButtonAction();
-        private EActionType _actionType = EActionType.MouseClick;
-
+        private MouseButtonAction _currentAction;
+        private EActionType _actionType;
+        private EMouseButton _selectedMouseButton = EMouseButton.Left;
+       
         // Properties
-        public EActionType ActionType { get { return _actionType; } set { _actionType = value; } }
+        public EMouseButton SelectedMouseButton
+        {
+            get 
+            {
+                return _selectedMouseButton;
+            }
+            set
+            {
+                _selectedMouseButton = value;                
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -69,9 +81,11 @@ namespace AltController.UserControls
             }
             this.MouseButtonCombo.ItemsSource = _mouseButtonListItems;
 
+            _isLoaded = true;
+
             if (_currentAction != null)
             {
-                this.MouseButtonCombo.SelectedValue = (long)_currentAction.MouseButton;
+                DisplayAction(_currentAction);
             }
         }
 
@@ -84,7 +98,21 @@ namespace AltController.UserControls
             if (action != null && action is MouseButtonAction)
             {
                 _currentAction = (MouseButtonAction)action;
+                _actionType = _currentAction.ActionType;
+                if (_isLoaded)
+                {
+                    DisplayAction(_currentAction);
+                }
             }
+        }
+
+        /// <summary>
+        /// Display the settings for an action
+        /// </summary>
+        /// <param name="action"></param>
+        private void DisplayAction(MouseButtonAction action)
+        {
+            this.MouseButtonCombo.SelectedValue = (long)action.MouseButton;
         }
 
         /// <summary>
@@ -93,38 +121,17 @@ namespace AltController.UserControls
         /// <returns></returns>
         public BaseAction GetCurrentAction()
         {
-            _currentAction = null;
-
-            NamedItem selectedItem = (NamedItem)this.MouseButtonCombo.SelectedItem;
-            if (selectedItem != null)
-            {
-                _currentAction = new MouseButtonAction();
-                _currentAction.MouseButton = (EMouseButton)selectedItem.ID;
-                switch (_actionType)
-                {
-                    case EActionType.MouseClick:
-                        _currentAction.NumPressesRequired = 1;
-                        _currentAction.PressDurationTicks = Constants.DefaultPressTimeMS * TimeSpan.TicksPerMillisecond;
-                        _currentAction.PressOrRelease = true;
-                        break;
-                    case EActionType.MouseDoubleClick:
-                        _currentAction.NumPressesRequired = 2;
-                        _currentAction.PressDurationTicks = Constants.DefaultPressTimeMS * TimeSpan.TicksPerMillisecond;
-                        _currentAction.PressOrRelease = true;
-                        break;
-                    case EActionType.MouseHold:
-                        _currentAction.NumPressesRequired = 1;
-                        _currentAction.PressDurationTicks = 0L;
-                        _currentAction.PressOrRelease = true;
-                        break;
-                    case EActionType.MouseRelease:
-                        _currentAction.PressOrRelease = false;
-                        break;
-                }
-            }
-
+            _currentAction = new MouseButtonAction(_actionType);
+            _currentAction.MouseButton = SelectedMouseButton;
             return _currentAction;
         }
 
+        private void MouseButtonCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0)
+            {
+                SelectedMouseButton = (EMouseButton)((NamedItem)e.AddedItems[0]).ID;
+            }
+        }
     }
 }
