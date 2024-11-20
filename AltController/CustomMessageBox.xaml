@@ -7,8 +7,8 @@
         Loaded="Window_Loaded" Closing="Window_Closing" d:DesignHeight="120" d:DesignWidth="420" SizeToContent="WidthAndHeight">
     <StackPanel Orientation="Vertical" Margin="5">
         <StackPanel Background="White" Margin="0,0,0,20" Orientation="Horizontal">
-            <Image Name="QuestionIcon" Stretch="None" Source="{StaticResource image_help}" Margin="1" Grid.Column="0" VerticalAlignment="Top"/>
-            <Image Name="InformationIcon" Stretch="None" Source="{StaticResource image_information}" Margin="1" Visibility="Collapsed" Grid.Column="0" VerticalAlignment="Top"/>
+            <Image Name="QuestionIcon" Stretch="None" Source="/AltController;component/Images/icons/help.png" Margin="1" Grid.Column="0" VerticalAlignment="Top"/>
+            <Image Name="InformationIcon" Stretch="None" Source="/AltController;component/Images/icons/information.png" Margin="1" Visibility="Collapsed" Grid.Column="0" VerticalAlignment="Top"/>
             <ScrollViewer Name="ScrollControl" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" MaxHeight="300">
                 <TextBox Name="CustomMessageTextBox" Margin="3,0" BorderThickness="0" Background="Transparent" IsReadOnly="True" MinWidth="360" MaxWidth="400" Grid.Column="1" VerticalAlignment="Top" TextWrapping="Wrap"/>
             </ScrollViewer>

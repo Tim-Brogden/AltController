@@ -37,7 +37,7 @@
         <CheckBox Name="CheckIfRunningCheckBox" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="{x:Static p:Resources.StartProgram_CheckIfRunning}" ToolTip="{x:Static p:Resources.StartProgram_CheckIfRunningToolTip}"/>
         <Button Name="TestActionButton" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" ToolTip="{x:Static p:Resources.StartProgram_TestActionToolTip}" Click="TestActionButton_Click" >
             <StackPanel Orientation="Horizontal">
-                <Image Source="{StaticResource image_application_go}" Stretch="None" />
+                <Image Source="/AltController;component/Images/icons/application_go.png" Stretch="None" />
                 <TextBlock Margin="5,0" Text="{x:Static p:Resources.StartProgram_TestAction}"></TextBlock>
             </StackPanel>
         </Button>

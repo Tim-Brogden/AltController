@@ -214,3 +214,18 @@ Version 1.96
 
 Version 1.97
 - Introduced transparent screen region borders: the transparency setting is now applied to the region border as well as the background image.
+
+Version 2.0
+- Added new action type to load a different profile.
+- Added new action type to start a program (i.e. run a command) with associated user confirmation settings in program options (Security tab).
+- Added new action type to activate a window (where possible)
+- Added new action types to maximise / minimise the current window (where possible).
+- Added new action type to toggle main menu options (Show region names, Show title bars, etc.)
+- Added background colour option for screen regions (background image takes precedence, if set).
+- Added text alignment setting for custom window buttons.
+- Added Recent Files to main file menu (for loading recent profiles).
+- Prevented an unwanted change of active window when screen region borders are clicked.
+- Improved 'Select all' (Ctrl+A) behaviour in screen region and custom window editors.
+- Made Help-About window non-modal.
+- Last selected key or mouse button is now remembered when closing and reopening the Edit action window or when changing action type
+- Removed deprecated 'Change pointer' action type.

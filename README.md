@@ -1,6 +1,6 @@
 # Alt Controller
 - A program to help make computer games more accessible
-- Copyright 2013-2022 Tim Brogden
+- Copyright 2013-2024 Tim Brogden
 - https://altcontroller.net 
 
 ## License
