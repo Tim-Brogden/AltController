@@ -320,6 +320,7 @@ namespace AltController
                 {
                     // Create action editor
                     EditActionWindow actionEditor = new EditActionWindow(null, _currentActionList.EventArgs, _profile);
+                    actionEditor.SetAppConfig(_parentWindow.GetAppConfig());
 
                     // Show editor
                     if (actionEditor.ShowDialog() == true)
@@ -374,6 +375,7 @@ namespace AltController
                 {
                     // Create action editor
                     EditActionWindow actionEditor = new EditActionWindow(action, _currentActionList.EventArgs, _profile);
+                    actionEditor.SetAppConfig(_parentWindow.GetAppConfig());
 
                     // Show editor
                     if (actionEditor.ShowDialog() == true)

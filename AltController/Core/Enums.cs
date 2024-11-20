@@ -149,7 +149,7 @@ namespace AltController.Core
         MouseHold,
         MouseClick,
         MouseDoubleClick,
-        MouseRelease,    
+        MouseRelease,
         ChangeMode,
         ChangePage,
         ScrollUp,
@@ -158,6 +158,11 @@ namespace AltController.Core
         RepeatScrollDown,
         StopScrolling,
         MoveThePointer,
+        LoadProfile,
+        StartProgram,
+        ActivateWindow,
+        MaximiseWindow,
+        MinimiseWindow,
         MenuOption,
         Wait,
         StopOngoingActions
@@ -178,7 +183,9 @@ namespace AltController.Core
         MouseButtonEvent,
         MouseScrollEvent,
         WindowRegionEvent,
-        MenuOptionEvent
+        MenuOptionEvent,
+        LoadProfile,
+        StartProgram
     }
 
     /// <summary>
@@ -272,4 +279,24 @@ namespace AltController.Core
         ShowTitleBars
     }
 
+    /// <summary>
+    /// Type of match for window title
+    /// </summary>
+    public enum EMatchType
+    {
+        Equals,
+        StartsWith,
+        EndsWith
+    }
+
+    /// <summary>
+    /// Command security options
+    /// </summary>
+    public enum ECommandAction
+    {
+        None,
+        Run,
+        DontRun,
+        AskMe
+    }
 }

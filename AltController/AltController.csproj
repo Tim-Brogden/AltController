@@ -87,7 +87,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actions\ActivateWindowAction.cs" />
     <Compile Include="Actions\BaseKeyAction.cs" />
+    <Compile Include="Actions\LoadProfileAction.cs" />
+    <Compile Include="Actions\ShowCurrentWindowAction.cs" />
+    <Compile Include="Actions\StartProgramAction.cs" />
     <Compile Include="Actions\StopScrollingAction.cs" />
     <Compile Include="Actions\RepeatScrollWheelAction.cs" />
     <Compile Include="Actions\MoveThePointerAction.cs" />
@@ -113,11 +117,17 @@
     <Compile Include="Config\ScreenRegionList.cs" />
     <Compile Include="Controls\CustomWindowButtonSet.cs" />
     <Compile Include="Core\AppItem.cs" />
+    <Compile Include="Core\CommandRuleItem.cs" />
+    <Compile Include="Core\CommandRuleManager.cs" />
     <Compile Include="Core\CustomButtonData.cs" />
     <Compile Include="Core\HighlightInfo.cs" />
     <Compile Include="Core\HotkeyBindingConverter.cs" />
     <Compile Include="Core\KeyUtils.cs" />
+    <Compile Include="Core\ProcessManager.cs" />
     <Compile Include="Core\VirtualKeyData.cs" />
+    <Compile Include="CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomWindow.xaml.cs">
       <DependentUpon>CustomWindow.xaml</DependentUpon>
     </Compile>
@@ -134,8 +144,10 @@
     <Compile Include="Event\AltMouseButtonEventArgs.cs" />
     <Compile Include="Event\AltToggleKeyEventArgs.cs" />
     <Compile Include="Event\AltMouseScrollEventArgs.cs" />
+    <Compile Include="Event\LoadProfileEventArgs.cs" />
     <Compile Include="Event\MenuOptionEventArgs.cs" />
     <Compile Include="Event\DoubleValEventArgs.cs" />
+    <Compile Include="Event\StartProgramEventArgs.cs" />
     <Compile Include="Event\WindowRegionEventArgs.cs" />
     <Compile Include="Input\CustomWindowSource.cs" />
     <Compile Include="ProfileNotesWindow.xaml.cs">
@@ -201,6 +213,9 @@
     <Compile Include="Sys\MouseManager.cs" />
     <Compile Include="Sys\KeyPressManager.cs" />
     <Compile Include="Sys\WindowsAPI.cs" />
+    <Compile Include="UserControls\ActivateWindowControl.xaml.cs">
+      <DependentUpon>ActivateWindowControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ChangeModeControl.xaml.cs">
       <DependentUpon>ChangeModeControl.xaml</DependentUpon>
     </Compile>
@@ -213,6 +228,9 @@
     <Compile Include="UserControls\LanguagePickerControl.xaml.cs">
       <DependentUpon>LanguagePickerControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\LoadProfileControl.xaml.cs">
+      <DependentUpon>LoadProfileControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MenuActionControl.xaml.cs">
       <DependentUpon>MenuActionControl.xaml</DependentUpon>
     </Compile>
@@ -224,6 +242,9 @@
     </Compile>
     <Compile Include="UserControls\BaseKeyControl.xaml.cs">
       <DependentUpon>BaseKeyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StartProgramControl.xaml.cs">
+      <DependentUpon>StartProgramControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ViewScreenRegionsControl.xaml.cs">
       <DependentUpon>ViewScreenRegionsControl.xaml</DependentUpon>
@@ -258,6 +279,10 @@
     <Page Include="AppConfigWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomMessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="CustomWindow.xaml">
       <SubType>Designer</SubType>
@@ -319,6 +344,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\ActivateWindowControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\ChangeModeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -335,6 +364,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\LoadProfileControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UserControls\MenuActionControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -348,6 +381,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\BaseKeyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StartProgramControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

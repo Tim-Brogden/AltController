@@ -92,6 +92,16 @@ namespace AltController.Core
                     name = Properties.Resources.String_Type_text; break;
                 case EActionType.Wait:
                     name = Properties.Resources.String_Wait; break;
+                case EActionType.LoadProfile:
+                    name = Properties.Resources.String_LoadProfile; break;
+                case EActionType.StartProgram:
+                    name = Properties.Resources.String_StartProgram; break;
+                case EActionType.ActivateWindow:
+                    name = Properties.Resources.String_Activate_window; break;
+                case EActionType.MaximiseWindow:
+                    name = Properties.Resources.String_MaximiseWindow; break;
+                case EActionType.MinimiseWindow:
+                    name = Properties.Resources.String_MinimiseWindow; break;
                 default:
                     name = "N/K"; break;
             }

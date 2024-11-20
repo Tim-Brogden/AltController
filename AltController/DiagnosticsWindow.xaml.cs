@@ -335,6 +335,18 @@ namespace AltController
                         eventDetails.Title = GUIUtils.MainMenuOptionToString(args.Option);
                     }
                     break;
+                case EEventType.StartProgram:
+                    {
+                        StartProgramEventArgs args = (StartProgramEventArgs)report.Args;
+                        eventDetails.Title = args.Action.ShortName;
+                    }
+                    break;
+                case EEventType.LoadProfile:
+                    {
+                        LoadProfileEventArgs args = (LoadProfileEventArgs)report.Args;
+                        eventDetails.Title = string.Format(Properties.Resources.String_LoadProfileX, args.ProfileName);
+                    }
+                    break;
                 default:
                     // Don't log
                     eventDetails = null;

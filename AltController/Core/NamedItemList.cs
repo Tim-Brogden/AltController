@@ -76,6 +76,26 @@ namespace AltController.Core
         }
 
         /// <summary>
+        /// Find the first item with the specified name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public NamedItem GetItemByName(string name)
+        {
+            NamedItem matchedItem = null;
+            foreach (NamedItem item in this)
+            {
+                if (item.Name.Equals(name))
+                {
+                    matchedItem = item;
+                    break;
+                }
+            }
+
+            return matchedItem;
+        }
+
+        /// <summary>
         /// Find the ID of the next item after the item with the specified id
         /// </summary>
         /// <param name="detailsList"></param>

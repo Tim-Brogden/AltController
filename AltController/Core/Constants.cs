@@ -91,6 +91,10 @@ namespace AltController.Core
         public const string ConfigCustomWindowTitleBars = "custom_window_title_bars";
         public const string ConfigAutoStopPressActions = "auto_stop_press_actions";
         public const string ConfigAutoStopInsideActions = "auto_stop_inside_actions";
+        public const string ConfigDisallowShiftDelete = "disallow_shift_delete";
+        public const string ConfigAllowedCommandsList = "allowed_commands_list";
+        public const string ConfigDisallowedCommandsList = "disallowed_commands_list";
+        public const string ConfigAskMeCommandsList = "ask_me_commands_list";
 
         // Default config values
         public const bool DefaultDrawScreenRegions = true;

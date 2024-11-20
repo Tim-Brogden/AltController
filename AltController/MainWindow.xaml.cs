@@ -36,6 +36,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using System.Threading;
+using AltController.Actions;
 using AltController.Core;
 using AltController.Config;
 using AltController.Event;
@@ -73,14 +74,18 @@ namespace AltController
         private OverlayWindow _overlayDialog;
         private HelpAboutWindow _helpAboutWindow;
         private Dictionary<long, CustomWindow> _openCustomWindows = new Dictionary<long,CustomWindow>();
+        private CustomMessageBox _confirmCommandMessageBox;
+        private CustomMessageBox _commandBlockedMessageBox;
 
         // State
+        private bool _isExiting = false;
         private bool _profileChanged = false;
         private bool _newCanExecute = true;
         private bool _openCanExecute = true;
         private bool _saveAsCanExecute = true;
         private double _dpiX = 1.0;
         private double _dpiY = 1.0;
+        private StartProgramAction _pendingStartProgramAction;
 
         // Status display
         private EventReportHandler EventReported;
@@ -661,6 +666,7 @@ namespace AltController
             // Close app unless user cancelled
             if (result != MessageBoxResult.Cancel)
             {
+                _isExiting = true;
                 UnregisterHotkeys();
                 CloseChildWindows();
                 StopTimer();
@@ -1103,6 +1109,16 @@ namespace AltController
             {
                 window.Close();
             }
+
+            if (_confirmCommandMessageBox != null)
+            {
+                _confirmCommandMessageBox.Close();
+            }
+
+            if (_commandBlockedMessageBox != null)
+            {
+                _commandBlockedMessageBox.Close();
+            }
         }
 
         /// <summary>
@@ -1118,6 +1134,18 @@ namespace AltController
                 _newCanExecute = true;
                 _openCanExecute = true;
                 EditScreenRegions.IsEnabled = true;
+            }
+            else if (childWindow == _confirmCommandMessageBox)
+            {
+                if (!_isExiting)
+                {
+                    HandleStartProgramConfirmation(_confirmCommandMessageBox);
+                }
+                _confirmCommandMessageBox = null;
+            }
+            else if (childWindow == _commandBlockedMessageBox)
+            {
+                _commandBlockedMessageBox = null;
             }
             else if (childWindow == _profileSummaryDialog)
             {
@@ -1143,6 +1171,57 @@ namespace AltController
                 {
                     _openCustomWindows.Remove(customWindow.CustomWindowSource.ID);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Perform a pending Start Program action
+        /// </summary>
+        /// <param name="action"></param>
+        private void HandleStartProgramConfirmation(CustomMessageBox messageBox)
+        {
+            string thisCommand = "";
+            try
+            {
+                if (_pendingStartProgramAction != null)
+                {
+                    StartProgramAction action = _pendingStartProgramAction;
+                    thisCommand = action.GetCommandLine();
+
+                    // Handle "Don't ask again"
+                    if (messageBox.DontAskAgain && messageBox.Result != MessageBoxResult.Cancel)
+                    {
+                        CommandRuleManager ruleManager = new CommandRuleManager();
+                        ruleManager.FromConfig(_appConfig);
+                        ECommandAction actionType = messageBox.Result == MessageBoxResult.Yes ? ECommandAction.Run : ECommandAction.DontRun;
+                        CommandRuleItem rule = ruleManager.FindRule(thisCommand);
+                        if (rule == null)
+                        {
+                            // Create new rule
+                            rule = new CommandRuleItem(thisCommand, actionType);
+                            ruleManager.Rules.Add(rule);
+                        }
+                        else
+                        {
+                            // Change rule's action type
+                            rule.ActionType = actionType;
+                        }
+                        ruleManager.ToConfig(_appConfig);
+                    }
+
+                    if (messageBox.Result == MessageBoxResult.Yes)
+                    {
+                        // Start the program
+                        if (!action.CheckIfRunning || !ProcessManager.IsRunning(action.ProgramName))
+                        {
+                            ProcessManager.Start(action);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(Properties.Resources.E_RunCommand + " " + thisCommand, ex);
             }
         }
 
@@ -1360,6 +1439,16 @@ namespace AltController
                 _logicalState = args.LogicalState;
                 UpdateGUI_Situation(_logicalState);
             }
+            else if (report.EventType == EEventType.LoadProfile)
+            {
+                LoadProfileEventArgs args = (LoadProfileEventArgs)report.Args;
+                HandleLoadProfileEvent(args);
+            }
+            else if (report.EventType == EEventType.StartProgram)
+            {
+                StartProgramEventArgs args = (StartProgramEventArgs)report.Args;
+                HandleStartProgramEvent(args);
+            }
             else if (report.EventType == EEventType.MenuOptionEvent)
             {
                 MenuOptionEventArgs args = (MenuOptionEventArgs)report.Args;
@@ -1404,6 +1493,130 @@ namespace AltController
             else
             {
                 PageName.Text = "N/K";
+            }
+        }
+
+        /// <summary>
+        /// Handle a request to load a profile
+        /// Null profile name means load last used, empty profile name means load a blank profile
+        /// </summary>
+        /// <param name="args"></param>
+        private void HandleLoadProfileEvent(LoadProfileEventArgs args)
+        {
+            try
+            {
+                // Disallow when current profile is unsaved
+                if (!_profileChanged)
+                {
+                    // Get the file name of the profile to load
+                    string filePath = args.ProfileName;
+                    if (!string.IsNullOrEmpty(filePath))
+                    {
+                        // Add extension if required
+                        if (!filePath.EndsWith(Constants.ProfileFileExtension))
+                        {
+                            filePath += Constants.ProfileFileExtension;
+                        }
+
+                        // Get the profiles directory
+                        string defaultProfilesDir = Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
+                        string profilesDir = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
+
+                        // Prepend the directory
+                        filePath = Path.Combine(profilesDir, filePath);
+                    }
+
+                    LoadProfile(filePath);
+                }
+                else
+                {
+                    ShowError(Properties.Resources.E_ChangeProfileUnsavedChanges, new Exception(Properties.Resources.E_ChangeProfileUnsavedChanges));
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(Properties.Resources.E_LoadProfileAction, ex);
+            }
+        }
+
+        /// <summary>
+        /// Handle a request to start a program
+        /// </summary>
+        /// <param name="args"></param>
+        private void HandleStartProgramEvent(StartProgramEventArgs args)
+        {
+            string thisCommand = "";
+            try
+            {
+                StartProgramAction action = args.Action;
+
+                // Check if the program is already running if required, and not already scheduled to occur
+                if (_confirmCommandMessageBox == null && _commandBlockedMessageBox == null)
+                {
+                    // Get the command to execute
+                    thisCommand = action.GetCommandLine();
+
+                    // Check whether the program is allowed
+                    CommandRuleManager ruleManager = new CommandRuleManager();
+                    ruleManager.FromConfig(_appConfig);
+                    CommandRuleItem matchingRule = ruleManager.ApplyRules(thisCommand);
+                    ECommandAction actionType = (matchingRule != null) ? matchingRule.ActionType : ECommandAction.AskMe;
+
+                    bool canStart = false;
+                    if (actionType != ECommandAction.DontRun &&
+                        (!action.CheckIfRunning || !ProcessManager.IsRunning(action.ProgramName)))
+                    {
+                        canStart = true;
+                    }
+
+                    switch (actionType)
+                    {
+                        case ECommandAction.Run:
+                            if (canStart)
+                            {
+                                // Start the program now
+                                ProcessManager.Start(action);
+                            }
+                            break;
+                        case ECommandAction.DontRun:
+                            {
+                                // Add a disallow rule to the config if not already present, so that the user can easily change it
+                                if (matchingRule != null && !matchingRule.Command.Equals(thisCommand))
+                                {
+                                    ruleManager.Rules.Add(new CommandRuleItem(thisCommand, ECommandAction.DontRun));
+                                    ruleManager.ToConfig(_appConfig);
+                                }
+
+                                string message = string.Format(Properties.Resources.Info_CommandDisallowedMessage,
+                                                            Constants.ApplicationName, Environment.NewLine, thisCommand);
+                                _commandBlockedMessageBox = new CustomMessageBox(this, message, Properties.Resources.Info_CommandDisallowed, MessageBoxButton.OK, true, false);
+                                _commandBlockedMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                _commandBlockedMessageBox.IsModal = false;
+                                _commandBlockedMessageBox.Show();
+                                break;
+                            }
+                        case ECommandAction.AskMe:
+                        default:
+                            {
+                                if (canStart)
+                                {
+                                    // Ask the user for confirmation, without blocking this thread
+                                    _pendingStartProgramAction = action;
+                                    string message = string.Format(Properties.Resources.Q_RunCommandMessage,
+                                                                    Constants.ApplicationName, Environment.NewLine, thisCommand);
+                                    _confirmCommandMessageBox = new CustomMessageBox(this, message, Properties.Resources.Q_RunCommand, MessageBoxButton.YesNoCancel, true, true);
+                                    _confirmCommandMessageBox.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                                    _confirmCommandMessageBox.IsModal = false;
+                                    _confirmCommandMessageBox.Show();
+                                }
+                                break;
+                            }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowError(Properties.Resources.E_MAIN017, ex);
             }
         }
 

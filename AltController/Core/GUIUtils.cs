@@ -205,6 +205,10 @@ namespace AltController.Core
                     name = Properties.Resources.String_Window; break;
                 case EEventType.MenuOptionEvent:
                     name = Properties.Resources.String_Menu_Option; break;
+                case EEventType.LoadProfile:
+                    name = Properties.Resources.String_LoadProfile; break;
+                case EEventType.StartProgram:
+                    name = Properties.Resources.String_StartProgram; break;
                 default:
                     name = Properties.Resources.String_Other; break;
             }

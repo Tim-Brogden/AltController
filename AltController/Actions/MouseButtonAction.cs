@@ -71,34 +71,22 @@ namespace AltController.Actions
         {
             get
             {
-                string verb = "";
+                string action = "";
                 switch (_actionType)
                 {
                     case EActionType.MouseClick:
-                        verb = Properties.Resources.String_Click; break;
+                        action = Properties.Resources.String_Click_X_mouse_button; break;
                     case EActionType.MouseDoubleClick:
-                        verb = Properties.Resources.String_Double_click; break;
+                        action = Properties.Resources.String_Double_click_X_mouse_button; break;
                     case EActionType.MouseHold:
-                        verb = Properties.Resources.String_Hold; break;
+                        action = Properties.Resources.String_Hold_X_mouse_button; break;
                     case EActionType.MouseRelease:
-                        verb = Properties.Resources.String_Release; break;
+                        action = Properties.Resources.String_Release_X_mouse_button; break;
                     case EActionType.ToggleMouseButton:
-                        verb = Properties.Resources.String_Toggle; break;
+                        action = Properties.Resources.String_Toggle_X_mouse_button; break;
                 }
                 Utils utils = new Utils();
-                // TODO: This causes unnatural word order with translated strings
-                return string.Format("{0} '{1}' " + Properties.Resources.String_Mouse_Button.ToLower(), verb, utils.GetMouseButtonName(_mouseButton));
-            }
-        }
-
-        /// <summary>
-        /// Return a short name
-        /// </summary>
-        public override string ShortName
-        {
-            get
-            {
-                return Name.Replace(" mouse button", "");   // TODO: This doesn't work with translated strings
+                return string.Format(action, utils.GetMouseButtonName(_mouseButton));
             }
         }
 

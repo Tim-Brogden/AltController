@@ -32,7 +32,7 @@ using System.Runtime.InteropServices;
 
 namespace AltController.Sys
 {
-    public delegate bool CallBackPtr(int hwnd, int lParam);
+    public delegate bool CallBackPtr(IntPtr hwnd, IntPtr lParam);
 
     /// <summary>
     /// Windows API imports
@@ -99,7 +99,37 @@ namespace AltController.Sys
         public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int processId);
 
         [DllImport("user32.dll")]
-        public static extern int EnumWindows(CallBackPtr callPtr, int lPar);
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, IntPtr ProcessId);
+
+        [DllImport("user32.dll")]
+        public static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
+
+        [DllImport("user32.dll")]
+        public static extern int EnumWindows(CallBackPtr callPtr, IntPtr lPar);
+
+        [DllImport("user32.dll")]
+        public static extern int EnumChildWindows(IntPtr hWnd, CallBackPtr callPtr, IntPtr lParam);
+
+        [DllImport("user32.dll")]
+        public static extern bool EnumThreadWindows(uint dwThreadId, CallBackPtr lpfn, IntPtr lParam);
+
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        private static extern int GetWindowTextLength(IntPtr hWnd);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        private static extern int GetWindowText(IntPtr hWnd, StringBuilder lpString, int nMaxCount);
+
+        public const uint SW_HIDE = 0;
+        public const uint SW_SHOWNORMAL = 1;
+        public const uint SW_SHOWMINIMIZED = 2;
+        public const uint SW_SHOWMAXIMIZED = 3;
+        public const uint SW_MAXIMIZE = 3;
+        public const uint SW_SHOWNOACTIVATE = 4;
+        public const uint SW_SHOW = 5;
+        public const uint SW_MINIMIZE = 6;
+        public const uint SW_SHOWMINNOACTIVE = 7;
+        public const uint SW_SHOWNA = 8;
+        public const uint SW_RESTORE = 9;
 
         public const uint WS_BORDER = 0x00800000;
         public const uint WS_CAPTION = 0x00C00000;
@@ -132,11 +162,182 @@ namespace AltController.Sys
         public const uint WM_MOUSEACTIVATE = 0x0021;
         public const uint MA_NOACTIVATE = 0x0003;
 
+        /// <summary>
+        /// Decide which windows we can activate
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        public static bool IsStandardWindowStyle(uint style)
+        {
+            return (style & WS_SYSMENU) != 0 &&
+                    (style & WindowsAPI.WS_VISIBLE) != 0 &&
+                    (style & WindowsAPI.WS_DISABLED) == 0;
+        }
+
+        /// <summary>
+        /// Force window minimise
+        /// </summary>
+        /// <param name="hForegroundWnd"></param>
+        /// <param name="restoreIfMinimised"></param>
+        public static void ForceMinimiseWindow(IntPtr hForegroundWnd)
+        {
+            bool forced = false;
+
+            // Check that the window can be minimised
+            if ((GetWindowStyle(hForegroundWnd) & WS_MINIMIZEBOX) != 0)
+            {
+                //if (Environment.OSVersion.Version.Major >= 6)
+                //{
+                uint foreThreadID = GetWindowThreadProcessId(hForegroundWnd, IntPtr.Zero);
+                uint appThreadID = (uint)AppDomain.GetCurrentThreadId();
+
+                if (foreThreadID != appThreadID)
+                {
+                    if (AttachThreadInput(foreThreadID, appThreadID, true))
+                    {
+                        ShowWindow(hForegroundWnd, SW_MINIMIZE);
+                        AttachThreadInput(foreThreadID, appThreadID, false);
+
+                        forced = true;
+                    }
+                }
+                //}
+
+                if (!forced)
+                {
+                    // No force required
+                    ShowWindow(hForegroundWnd, SW_MINIMIZE);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Force activation of a window
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="restoreIfMinimised"></param>
+        public static void ForceActivateWindow(IntPtr hWnd, bool restoreIfMinimised, bool minimiseIfActive)
+        {
+            IntPtr foreWindow = GetForegroundWindow();
+            if (foreWindow != hWnd)
+            {
+                bool forced = false;
+                //if (Environment.OSVersion.Version.Major >= 6)
+                //{
+                uint foreThreadID = 0u;
+                if (foreWindow != IntPtr.Zero)
+                {
+                    foreThreadID = GetWindowThreadProcessId(foreWindow, IntPtr.Zero);
+                }
+                uint appThreadID = (uint)AppDomain.GetCurrentThreadId();
+
+                if (foreThreadID != appThreadID)
+                {
+                    if (AttachThreadInput(foreThreadID, appThreadID, true))
+                    {
+                        ActivateWindow(hWnd, restoreIfMinimised);
+                        AttachThreadInput(foreThreadID, appThreadID, false);
+
+                        forced = true;
+                    }
+                }
+                //}
+
+                if (!forced)
+                {
+                    // No force required
+                    ActivateWindow(hWnd, restoreIfMinimised);
+                }
+            }
+            else if (minimiseIfActive)
+            {
+                // Specified window is already the active window and can be minimised
+                ForceMinimiseWindow(hWnd);
+            }
+        }
+
+        /// <summary>
+        /// Activate a window normally
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <param name="restoreIfMinimised"></param>
+        private static void ActivateWindow(IntPtr hWnd, bool restoreIfMinimised)
+        {
+            uint showState = GetWindowShowState(hWnd);
+            BringWindowToTop(hWnd);
+            if (restoreIfMinimised && showState == SW_SHOWMINIMIZED)
+            {
+                ShowWindow(hWnd, SW_RESTORE);
+            }
+            else
+            {
+                ShowWindow(hWnd, SW_SHOW);
+            }
+        }
+
+        /// <summary>
+        /// Get the state of a window
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        public static uint GetWindowShowState(IntPtr hWnd)
+        {
+            uint showState = SW_HIDE;
+            WINDOWPLACEMENT placement = new WINDOWPLACEMENT();
+            placement.length = (uint)Marshal.SizeOf(placement);
+            if (GetWindowPlacement(hWnd, ref placement))
+            {
+                showState = placement.showCmd;
+            }
+
+            return showState;
+        }
+
+        /// <summary>
+        /// Get the style of a window
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        public static uint GetWindowStyle(IntPtr hWnd)
+        {
+            uint style = 0u;
+            WINDOWINFO info = new WINDOWINFO(true);
+            if (GetWindowInfo(hWnd, ref info))
+            {
+                style = info.dwStyle;
+            }
+
+            return style;
+        }
+
+        /// <summary>
+        /// Get the title of a window
+        /// </summary>
+        /// <param name="hWnd"></param>
+        /// <returns></returns>
+        public static string GetTitleBarText(IntPtr hWnd)
+        {
+            int length = GetWindowTextLength(hWnd);
+            StringBuilder sb = new StringBuilder(length + 1);
+            GetWindowText(hWnd, sb, sb.Capacity);
+
+            return sb.ToString();
+        }
+
+        [DllImport("user32.dll")]
+        public static extern bool BringWindowToTop(IntPtr hWnd);
+
+        [DllImport("user32.dll")]
+        private static extern bool GetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
         [DllImport("user32.dll")]
         public static extern bool IsWindowVisible(IntPtr hWnd);
 
         [DllImport("user32.dll")]
         public static extern bool GetWindowInfo(IntPtr hwnd, ref WINDOWINFO pwi);
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, uint nCmdShow);
 
         public const int GWL_EXSTYLE = -20;
         public const uint WS_EX_NOACTIVATE = 0x08000000;
@@ -145,24 +346,7 @@ namespace AltController.Sys
         public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
 
         [DllImport("user32.dll")]
-        public static extern uint GetWindowLong(IntPtr hWnd, int nIndex);        
-                
-        //        [DllImport("user32.dll")]
-//        public static extern bool GetCursorInfo(out CURSORINFO pci);
-
-//        [DllImport("user32.dll")]
-//        public static extern int ShowCursor(bool bShow);
-        
-        //[DllImport("kernel32.dll")]
-        //public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
-
-        //[DllImport("kernel32.dll")]
-        //public static extern bool CloseHandle(IntPtr hObject);
-
-        //[DllImport("psapi.dll")]
-        //static extern uint GetProcessImageFileName(IntPtr hProcess, 
-        //                                            [Out] StringBuilder lpImageFileName, 
-        //                                            [In] [MarshalAs(UnmanagedType.U4)] int nSize); 
+        public static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
         
         public const int INPUT_MOUSE = 0;
         public const int INPUT_KEYBOARD = 1;
@@ -190,38 +374,17 @@ namespace AltController.Sys
 
         public const int WM_KEYDOWN = 0x0100;
         public const int WM_KEYUP = 0x0101;
+    }
 
-//        public const Int32 CURSOR_SHOWING = 0x00000001;
-//        public const Int32 CURSOR_SUPPRESSED = 0x00000002;
-
-        public const int IMAGE_BITMAP = 0;
-        public const int IMAGE_ICON = 1;
-        public const int IMAGE_CURSOR = 2;
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr LoadCursorFromFile(string lpFileName);
-
-        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-        public static extern IntPtr LoadImage(IntPtr hinst, string lpszName, uint uType,
-           int cxDesired, int cyDesired, uint fuLoad);
-        
-        public const int IMAGE_ENHMETAFILE = 3;
-        [DllImport("user32.dll", SetLastError = true)]
-        public static extern IntPtr CopyImage(IntPtr hImage, uint uType, int cxDesired, int cyDesired, uint fuFlags);
-
-        [DllImport("user32.dll")]
-        public static extern bool SetSystemCursor(IntPtr hcur, uint id);
-
-        [DllImport("user32.dll")]
-        public static extern bool DestroyCursor(IntPtr hCursor);
-
-        public static string MakeIntResourceAlternative(ushort resourceID)
-        {
-            return Encoding.Default.GetString(BitConverter.GetBytes(resourceID));
-        }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct WINDOWPLACEMENT
+    {
+        public uint length;
+        public uint flags;
+        public uint showCmd;
+        public POINT ptMinPosition;
+        public POINT ptMaxPosition;
+        public RECT rcNormalPosition;
     }
 
     [StructLayout(LayoutKind.Sequential)]
@@ -324,35 +487,4 @@ namespace AltController.Sys
         public Int32 y;
     }
 
-    //[StructLayout(LayoutKind.Sequential)]
-    //public struct CURSORINFO
-    //{
-    //    public Int32 cbSize;        // Specifies the size, in bytes, of the structure. 
-    //    // The caller must set this to Marshal.SizeOf(typeof(CURSORINFO)).
-    //    public Int32 flags;         // Specifies the cursor state. This parameter can be one of the following values:
-    //    //    0             The cursor is hidden.
-    //    //    CURSOR_SHOWING    The cursor is showing.
-    //    public IntPtr hCursor;          // Handle to the cursor. 
-    //    public POINT ptScreenPos;       // A POINT structure that receives the screen coordinates of the cursor. 
-    //}
-
-    public enum IDC_STANDARD_CURSORS
-    {
-        IDC_ARROW = 32512,
-        IDC_IBEAM = 32513,
-        IDC_WAIT = 32514,
-        IDC_CROSS = 32515,
-        IDC_UPARROW = 32516,
-        IDC_SIZE = 32640,
-        IDC_ICON = 32641,
-        IDC_SIZENWSE = 32642,
-        IDC_SIZENESW = 32643,
-        IDC_SIZEWE = 32644,
-        IDC_SIZENS = 32645,
-        IDC_SIZEALL = 32646,
-        IDC_NO = 32648,
-        IDC_HAND = 32649,
-        IDC_APPSTARTING = 32650,
-        IDC_HELP = 32651
-    }
 }

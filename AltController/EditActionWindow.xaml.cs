@@ -45,6 +45,7 @@ namespace AltController
         private BaseAction _currentAction;
         private AltControlEventArgs _inputEvent;
         private Profile _profile;
+        private AppConfig _appConfig;
         private static long _lastUniqueKeyID = (long)System.Windows.Forms.Keys.A;
         private static EMouseButton _lastMouseButton = EMouseButton.Left;
 
@@ -61,6 +62,17 @@ namespace AltController
             _currentAction = action;
             _inputEvent = args;
             _profile = profile;
+        }
+
+        /// <summary>
+        /// Set the config
+        /// </summary>
+        /// <param name="appConfig"></param>
+        public void SetAppConfig(AppConfig appConfig)
+        {
+            _appConfig = appConfig;
+
+            LoadProfileDetails.SetAppConfig(appConfig);
         }
 
         /// <summary>
@@ -152,6 +164,8 @@ namespace AltController
                         case EActionType.ScrollUp:
                         case EActionType.ScrollDown:
                         case EActionType.StopScrolling:
+                        case EActionType.MaximiseWindow:
+                        case EActionType.MinimiseWindow:
                             ShowActionGrid(null);
                             break;
                         case EActionType.RepeatScrollUp:
@@ -191,6 +205,18 @@ namespace AltController
                         case EActionType.MenuOption:
                             this.MenuActionDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.MenuActionDetails);
+                            break;
+                        case EActionType.StartProgram:
+                            this.StartProgramDetails.SetCurrentAction(_currentAction);
+                            ShowActionGrid(this.StartProgramDetails);
+                            break;
+                        case EActionType.ActivateWindow:
+                            this.ActivateWindowDetails.SetCurrentAction(_currentAction);
+                            ShowActionGrid(this.ActivateWindowDetails);
+                            break;
+                        case EActionType.LoadProfile:
+                            this.LoadProfileDetails.SetCurrentAction(_currentAction);
+                            ShowActionGrid(this.LoadProfileDetails);
                             break;
                     }
                 }
@@ -256,6 +282,16 @@ namespace AltController
                     action = new WaitAction(); break;
                 case EActionType.MenuOption:
                     action = new MenuOptionAction(); break;
+                case EActionType.StartProgram:
+                    action = new StartProgramAction(); break;
+                case EActionType.ActivateWindow:
+                    action = new ActivateWindowAction(); break;
+                case EActionType.MaximiseWindow:
+                    action = new ShowCurrentWindowAction(true); break;
+                case EActionType.MinimiseWindow:
+                    action = new ShowCurrentWindowAction(false); break;
+                case EActionType.LoadProfile:
+                    action = new LoadProfileAction(); break;
             }
 
             return action;
@@ -359,6 +395,21 @@ namespace AltController
                         break;
                     case EActionType.MenuOption:
                         action = this.MenuActionDetails.GetCurrentAction();
+                        break;
+                    case EActionType.StartProgram:
+                        action = this.StartProgramDetails.GetCurrentAction();
+                        break;
+                    case EActionType.ActivateWindow:
+                        action = this.ActivateWindowDetails.GetCurrentAction();
+                        break;
+                    case EActionType.MaximiseWindow:
+                        action = new ShowCurrentWindowAction(true); 
+                        break;
+                    case EActionType.MinimiseWindow:
+                        action = new ShowCurrentWindowAction(false); 
+                        break;
+                    case EActionType.LoadProfile:
+                        action = this.LoadProfileDetails.GetCurrentAction();
                         break;
                 }
             }

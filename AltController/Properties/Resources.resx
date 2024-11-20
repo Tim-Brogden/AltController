@@ -119,63 +119,48 @@
   </resheader>
   <data name="About_AboutTab" xml:space="preserve">
     <value>_About</value>
-    <comment>About</comment>
   </data>
   <data name="About_CreditsLabel" xml:space="preserve">
     <value>Credits</value>
-    <comment>About</comment>
   </data>
   <data name="About_CreditsTab" xml:space="preserve">
     <value>C_redits</value>
-    <comment>About</comment>
   </data>
   <data name="About_CreditsText" xml:space="preserve">
     <value>Alt Controller uses some free icons from the Silk icon set 1.3 by Mark James, which is available from www.famfamfam.com/lab/icons/silk/ and is licensed under the Creative Commons Attribution 2.5 License (http://creativecommons.org/licenses/by/2.5). The installer was packaged using NSIS (http://nsis.sourceforge.net).</value>
-    <comment>About</comment>
   </data>
   <data name="About_DescriptionLabel" xml:space="preserve">
     <value>Description</value>
-    <comment>About</comment>
   </data>
   <data name="About_LicenceLabel" xml:space="preserve">
     <value>Licence</value>
-    <comment>About</comment>
   </data>
   <data name="About_LicenceTab" xml:space="preserve">
     <value>_Licence</value>
-    <comment>About</comment>
   </data>
   <data name="About_LicenceText1" xml:space="preserve">
     <value>Alt Controller is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</value>
-    <comment>About</comment>
   </data>
   <data name="About_LicenceText2" xml:space="preserve">
     <value>Alt Controller is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</value>
-    <comment>About</comment>
   </data>
   <data name="About_LicenceText3" xml:space="preserve">
     <value>You should have received a copy of the GNU General Public License along with Alt Controller. If not, see http://www.gnu.org/licenses/.</value>
-    <comment>About</comment>
   </data>
   <data name="About_ProgramDescription" xml:space="preserve">
     <value>A program to help make computer games more accessible. Alt Controller maps computer inputs, such as pointer movements and button presses, to actions, such as key presses.</value>
-    <comment>About</comment>
   </data>
   <data name="About_SpecialEffect" xml:space="preserve">
     <value>Alt Controller was developed as a volunteer project for SpecialEffect, a fantastic charity that helps disabled people to enjoy computer games. If you like this program, please consider making a donation to them.</value>
-    <comment>About</comment>
   </data>
   <data name="About_Title" xml:space="preserve">
     <value>About Alt Controller</value>
-    <comment>About</comment>
   </data>
   <data name="About_TranslatorsLabel" xml:space="preserve">
     <value>Translators</value>
-    <comment>About</comment>
   </data>
   <data name="About_TranslatorsText" xml:space="preserve">
     <value>Translations kindly provided by:</value>
-    <comment>About</comment>
   </data>
   <data name="Action_AbsoluteRadioButton" xml:space="preserve">
     <value>To absolute position</value>
@@ -204,6 +189,14 @@
   <data name="Action_ControlLabel" xml:space="preserve">
     <value>Control:</value>
     <comment>Edit action - Type key</comment>
+  </data>
+  <data name="Action_EndsButton" xml:space="preserve">
+    <value>E_nds</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
+  <data name="Action_EqualsButton" xml:space="preserve">
+    <value>_Equals</value>
+    <comment>Edit action - Activate window</comment>
   </data>
   <data name="Action_HiddenRadioButton" xml:space="preserve">
     <value>Hide the mouse pointer</value>
@@ -241,6 +234,14 @@
     <value>Menu action:</value>
     <comment>Edit action - Toggle menu option</comment>
   </data>
+  <data name="Action_MinimiseIfActive" xml:space="preserve">
+    <value>_Minimise if active</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
+  <data name="Action_MinimiseToolTip" xml:space="preserve">
+    <value>Minimise the window if it is already active</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
   <data name="Action_MouseButtonLabel" xml:space="preserve">
     <value>Mouse button:</value>
     <comment>Edit action - Mouse button</comment>
@@ -256,6 +257,18 @@
   <data name="Action_PressEveryLabel" xml:space="preserve">
     <value>Press every (s):</value>
     <comment>Edit action - Repeat key directional</comment>
+  </data>
+  <data name="Action_ProfileToLoad" xml:space="preserve">
+    <value>Profile to load:</value>
+    <comment>Edit action - load profile</comment>
+  </data>
+  <data name="Action_ProgramLabel" xml:space="preserve">
+    <value>Program:</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
+  <data name="Action_RefreshProgramsListToolTip" xml:space="preserve">
+    <value>Refresh the list of running programs / windows</value>
+    <comment>Edit action - Activate window</comment>
   </data>
   <data name="Action_RelativeRadioButton" xml:space="preserve">
     <value>By relative amount</value>
@@ -289,6 +302,14 @@
     <value>To scroll indefinitely while this action is active, set 'Stop after' to zero</value>
     <comment>Edit action - Repeat key directional</comment>
   </data>
+  <data name="Action_RestoreIfMinimised" xml:space="preserve">
+    <value>_Restore if minimised</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
+  <data name="Action_RestoreToolTip" xml:space="preserve">
+    <value>Restore the window if it is minimised</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
   <data name="Action_RestoreUserRadioButton" xml:space="preserve">
     <value>Restore the original mouse pointer</value>
     <comment>Edit action - Change pointer</comment>
@@ -308,6 +329,10 @@
   <data name="Action_StandardRadioButton" xml:space="preserve">
     <value>Display a standard mouse pointer</value>
     <comment>Edit action - Change pointer</comment>
+  </data>
+  <data name="Action_StartsButton" xml:space="preserve">
+    <value>_Starts</value>
+    <comment>Edit action - Activate window</comment>
   </data>
   <data name="Action_StopAfterLabel" xml:space="preserve">
     <value>Stop after (s):</value>
@@ -349,6 +374,10 @@
     <value>Windows:</value>
     <comment>Edit action - Type key</comment>
   </data>
+  <data name="Action_WindowTitleLabel" xml:space="preserve">
+    <value>Window title:</value>
+    <comment>Edit action - Activate window</comment>
+  </data>
   <data name="Action_XLabel" xml:space="preserve">
     <value>X:</value>
     <comment>Edit action - Move pointer</comment>
@@ -359,11 +388,9 @@
   </data>
   <data name="CancelButton" xml:space="preserve">
     <value>_Cancel</value>
-    <comment>Strings</comment>
   </data>
   <data name="CloseButton" xml:space="preserve">
     <value>_Close</value>
-    <comment>Custom window</comment>
   </data>
   <data name="Custom_AddButton" xml:space="preserve">
     <value>_Add button</value>
@@ -499,367 +526,300 @@
   </data>
   <data name="E_ACTION001" xml:space="preserve">
     <value>Error while changing the action type</value>
-    <comment>Error message</comment>
+  </data>
+  <data name="E_ChangeProfileUnsavedChanges" xml:space="preserve">
+    <value>Unable to change profile because the current profile has unsaved changes.</value>
+  </data>
+  <data name="E_CommandEmpty" xml:space="preserve">
+    <value>Command cannot be empty</value>
   </data>
   <data name="E_CUST001" xml:space="preserve">
     <value>Error while loading window</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST002" xml:space="preserve">
     <value>Error while adding new custom button</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST003" xml:space="preserve">
     <value>Error while deleting custom button</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST004" xml:space="preserve">
     <value>Error while handling selection of custom button</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST005" xml:space="preserve">
     <value>Error while setting window width</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST006" xml:space="preserve">
     <value>Error while setting window height</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST007" xml:space="preserve">
     <value>Error while selecting background colour</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST008" xml:space="preserve">
     <value>Error while setting window translucency</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST009" xml:space="preserve">
     <value>Error while changing ghost background option</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST010" xml:space="preserve">
     <value>Error while changing button X slider</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST011" xml:space="preserve">
     <value>Error while changing button Y slider</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST012" xml:space="preserve">
     <value>Error while setting button width</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST013" xml:space="preserve">
     <value>Error while changing button height</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST014" xml:space="preserve">
     <value>Error while changing button border width</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST015" xml:space="preserve">
     <value>Error while changing button name</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST016" xml:space="preserve">
     <value>Error while changing button text</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST017" xml:space="preserve">
     <value>Error while changing button border colour</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST018" xml:space="preserve">
     <value>Error while changing button background colour</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST019" xml:space="preserve">
     <value>Error while changing button background image</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST020" xml:space="preserve">
     <value>Error while clearing button background image</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST021" xml:space="preserve">
     <value>Error while changing button translucency</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST022" xml:space="preserve">
     <value>Error while changing button font</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST023" xml:space="preserve">
     <value>Error while changing button font size</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST024" xml:space="preserve">
     <value>Error while changing button text colour</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_CUST025" xml:space="preserve">
     <value>Error while changing button text alignment</value>
-    <comment>Error message</comment>
+  </data>
+  <data name="E_InvalidRegex" xml:space="preserve">
+    <value>Invalid regular expression.</value>
+  </data>
+  <data name="E_LoadProfileAction" xml:space="preserve">
+    <value>Error performing load profile action.</value>
   </data>
   <data name="E_MAIN001" xml:space="preserve">
     <value>Error while initialising folders</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN002" xml:space="preserve">
     <value>Error while initialising application</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN003" xml:space="preserve">
     <value>Error while positioning window</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN004" xml:space="preserve">
     <value>Error while creating new profile</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN005" xml:space="preserve">
     <value>Error while opening profile</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN006" xml:space="preserve">
     <value>Error while saving profile</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN007" xml:space="preserve">
     <value>Error during Save As</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN008" xml:space="preserve">
     <value>Error while opening the profile editor</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN009" xml:space="preserve">
     <value>Error while opening the screen region editor</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN010" xml:space="preserve">
     <value>Error while opening the profile summary</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN011" xml:space="preserve">
     <value>Error while loading profile</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN012" xml:space="preserve">
     <value>Error while opening all custom windows</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN013" xml:space="preserve">
     <value>Error during open custom window command</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN014" xml:space="preserve">
     <value>Error while opening custom window</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN015" xml:space="preserve">
     <value>Error while opening the Log information window</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_MAIN016" xml:space="preserve">
     <value>Error while loading recent profile</value>
-    <comment>Error message</comment>
+  </data>
+  <data name="E_MAIN017" xml:space="preserve">
+    <value>Error while running command</value>
   </data>
   <data name="E_PR001" xml:space="preserve">
     <value>Error while loading profile from Xml</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PR002" xml:space="preserve">
     <value>Error while converting profile to Xml</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF001" xml:space="preserve">
     <value>Error while loading profile editor window</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF002" xml:space="preserve">
     <value>Error while applying changes and closing</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF003" xml:space="preserve">
     <value>Error while applying changes</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF004" xml:space="preserve">
     <value>Error while adding new action</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF005" xml:space="preserve">
     <value>Error while editing action</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF006" xml:space="preserve">
     <value>Error while deleting action</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF007" xml:space="preserve">
     <value>Error while moving action up</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF008" xml:space="preserve">
     <value>Error while moving action down</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF009" xml:space="preserve">
     <value>Error while editing situations</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF010" xml:space="preserve">
     <value>Error while editing inputs</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF011" xml:space="preserve">
     <value>Error while designing custom window</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF012" xml:space="preserve">
     <value>Error while editing screen regions</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF013" xml:space="preserve">
     <value>Error while refreshing the action list</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF014" xml:space="preserve">
     <value>Error while selecting an input</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF015" xml:space="preserve">
     <value>Error while selecting a control</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF016" xml:space="preserve">
     <value>Error while navigating to the next action list</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF017" xml:space="preserve">
     <value>Error while navigating to the previous action list</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF018" xml:space="preserve">
     <value>Error while selecting a reason</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_PROF019" xml:space="preserve">
     <value>Error while changing the execution mode</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG001" xml:space="preserve">
     <value>Error while loading the screen region editor</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG002" xml:space="preserve">
     <value>Error while selecting a region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG003" xml:space="preserve">
     <value>Error while enabling region drawing</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG004" xml:space="preserve">
     <value>Error after editing region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG005" xml:space="preserve">
     <value>Error while adding a new region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG006" xml:space="preserve">
     <value>Error while deleting the selected region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG007" xml:space="preserve">
     <value>Error while navigating to the previous region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG008" xml:space="preserve">
     <value>Error while navigating to the next region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG009" xml:space="preserve">
     <value>Error while setting the background image</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG010" xml:space="preserve">
     <value>Error while clearing the background image</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG011" xml:space="preserve">
     <value>Error while setting the region background image</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG012" xml:space="preserve">
     <value>Error while clearing the region background image</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG013" xml:space="preserve">
     <value>Error while setting the region translucency</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG014" xml:space="preserve">
     <value>Error while renaming the selected region</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG015" xml:space="preserve">
     <value>Error while changing the region colour</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG016" xml:space="preserve">
     <value>Error while changing 'Show in mode'</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG017" xml:space="preserve">
     <value>Error while changing 'Show in app'</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG018" xml:space="preserve">
     <value>Error while changing overlay mode</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG019" xml:space="preserve">
     <value>Error while setting region X</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG020" xml:space="preserve">
     <value>Error while setting region Y</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG021" xml:space="preserve">
     <value>Error while setting region width</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG022" xml:space="preserve">
     <value>Error while setting region height</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG023" xml:space="preserve">
     <value>Error while setting region shape</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG024" xml:space="preserve">
     <value>Error while changing hole size</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG025" xml:space="preserve">
     <value>Error while changing start angle</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REG026" xml:space="preserve">
     <value>Error while changing sweep angle</value>
-    <comment>Error message</comment>
   </data>
   <data name="E_REGCTRL001" xml:space="preserve">
     <value>Error: selection of multiple regions is not allowed</value>
-    <comment>Error message</comment>
+  </data>
+  <data name="E_RunCommand" xml:space="preserve">
+    <value>Error running command</value>
   </data>
   <data name="E_UPGR001" xml:space="preserve">
     <value>Error while upgrading profile to the latest version</value>
-    <comment>Error message</comment>
+  </data>
+  <data name="Info_CommandDisallowed" xml:space="preserve">
+    <value>Command disallowed</value>
+  </data>
+  <data name="Info_CommandDisallowedMessage" xml:space="preserve">
+    <value>{0} cannot run this command because it disallowed by your security settings:{1}{1}{2}{1}{1}If you are sure that this command is safe to run, you can allow it in the Program options (Security tab).</value>
   </data>
   <data name="Inputs_AddButton" xml:space="preserve">
     <value>_Add</value>
@@ -951,199 +911,150 @@
   </data>
   <data name="Main_CurrentActionsGroupBox" xml:space="preserve">
     <value>Applying controls for</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_CurrentStateGroupBox" xml:space="preserve">
     <value>Current profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_DevelopedForLabel" xml:space="preserve">
     <value>Developed for SpecialEffect</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_EditMenu" xml:space="preserve">
     <value>_Edit</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_EditProfile" xml:space="preserve">
     <value>Edit _profile...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_EditProfileToolTip" xml:space="preserve">
     <value>Edit the currently loaded profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_EditScreenRegions" xml:space="preserve">
     <value>Edit _screen regions...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_EditScreenRegionsToolTip" xml:space="preserve">
     <value>Edit the profile's screen regions</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileClose" xml:space="preserve">
     <value>_Close</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileCloseToolTip" xml:space="preserve">
     <value>Close the program</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileMenu" xml:space="preserve">
     <value>_File</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileNew" xml:space="preserve">
     <value>_New</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileNewToolTip" xml:space="preserve">
     <value>Create a new profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileOpen" xml:space="preserve">
     <value>_Open...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileOpenToolTip" xml:space="preserve">
     <value>Open an existing profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileSave" xml:space="preserve">
     <value>_Save</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileSaveAs" xml:space="preserve">
     <value>Save _As...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileSaveAsToolTip" xml:space="preserve">
     <value>Choose a file to save the current profile to</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_FileSaveToolTip" xml:space="preserve">
     <value>Save the current profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpAbout" xml:space="preserve">
     <value>_About Alt Controller...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpAboutToolTip" xml:space="preserve">
     <value>View information about the program</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpEventLog" xml:space="preserve">
     <value>_Log information...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpEventLogToolTip" xml:space="preserve">
     <value>Record information about inputs and actions as they occur</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpMenu" xml:space="preserve">
     <value>_Help</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpUserGuide" xml:space="preserve">
     <value>_Online help...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_HelpUserGuideToolTip" xml:space="preserve">
     <value>Online help (opens in web browser)</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_InfoButton" xml:space="preserve">
     <value>Learn more...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_RecentFiles" xml:space="preserve">
     <value>Recent _Files...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_RecentFilesToolTip" xml:space="preserve">
     <value>Open a recent profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ToolsMenu" xml:space="preserve">
     <value>_Tools</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ToolsOptions" xml:space="preserve">
     <value>_Options...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ToolsOptionsToolTip" xml:space="preserve">
     <value>Edit options which apply to all profiles</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawPointerIndicator" xml:space="preserve">
     <value>Draw _pointer indicator</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawPointerIndicatorToolTip" xml:space="preserve">
     <value>Show current pointer position</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegionNames" xml:space="preserve">
     <value>S_how region names</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegionNamesToolTip" xml:space="preserve">
     <value>Show screen region names</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegions" xml:space="preserve">
     <value>_Draw screen regions</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawScreenRegionsToolTip" xml:space="preserve">
     <value>Show screen regions</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawStateOverlay" xml:space="preserve">
     <value>Show _mode/page overlay</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewDrawStateOverlayToolTip" xml:space="preserve">
     <value>Show mode and page name overlay</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewMenu" xml:space="preserve">
     <value>_View</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileNotes" xml:space="preserve">
     <value>Profile _notes...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileNotesToolTip" xml:space="preserve">
     <value>View and edit notes for the current profile</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileSummary" xml:space="preserve">
     <value>Profile _summary...</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_ViewProfileSummaryToolTip" xml:space="preserve">
     <value>View a summary of the current profile's inputs and actions</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_WindowMenu" xml:space="preserve">
     <value>_Window</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_WindowShowTitleBars" xml:space="preserve">
     <value>Show _title bars</value>
-    <comment>Main</comment>
   </data>
   <data name="Main_WindowShowTitleBarsToolTip" xml:space="preserve">
     <value>Show custom window title bars</value>
-    <comment>Main</comment>
   </data>
   <data name="Mouse_RegionLabel" xml:space="preserve">
     <value>Region:</value>
-    <comment>Mouse</comment>
   </data>
   <data name="Notes_IntroLabel" xml:space="preserve">
     <value>Here you can enter any notes or instructions for this profile.</value>
@@ -1155,7 +1066,6 @@
   </data>
   <data name="OKButton" xml:space="preserve">
     <value>_OK</value>
-    <comment>Strings</comment>
   </data>
   <data name="Options_ActionsTab" xml:space="preserve">
     <value>_Actions</value>
@@ -1317,6 +1227,22 @@
     <value>Program restart required</value>
     <comment>Options - Start up</comment>
   </data>
+  <data name="Options_SecurityTab" xml:space="preserve">
+    <value>Security</value>
+    <comment>Options - Security</comment>
+  </data>
+  <data name="Options_Security_ActionColumn" xml:space="preserve">
+    <value>Action</value>
+    <comment>Options - Security</comment>
+  </data>
+  <data name="Options_Security_CommandColumn" xml:space="preserve">
+    <value>Command (exact or ^regex)</value>
+    <comment>Options - Security</comment>
+  </data>
+  <data name="Options_Security_RulesLabel" xml:space="preserve">
+    <value>Rules for 'Start program' commands:</value>
+    <comment>Options - Security</comment>
+  </data>
   <data name="Options_ShiftCheck" xml:space="preserve">
     <value>Sh_ift</value>
     <comment>Options - Hotkeys</comment>
@@ -1460,6 +1386,22 @@
   <data name="Profile_Title" xml:space="preserve">
     <value>Edit profile</value>
     <comment>Edit profile</comment>
+  </data>
+  <data name="Q_RunCommand" xml:space="preserve">
+    <value>Run command?</value>
+    <comment>Message box</comment>
+  </data>
+  <data name="Q_RunCommandMessage" xml:space="preserve">
+    <value>Do you want to allow {0} to run this command?{1}{1}{2}{1}{1}If you are unsure what this command does, choose No.</value>
+    <comment>Message box</comment>
+  </data>
+  <data name="Q_TestCommand" xml:space="preserve">
+    <value>Check and test command</value>
+    <comment>Message box</comment>
+  </data>
+  <data name="Q_TestCommandMessage" xml:space="preserve">
+    <value>The command that will be run with these settings {2}is:{0}{0}{1}{0}{0}Do you want to run it now?</value>
+    <comment>Message box</comment>
   </data>
   <data name="Regions_AddRegionButton" xml:space="preserve">
     <value>_Add...</value>
@@ -1681,640 +1623,644 @@
     <value>Edit situations</value>
     <comment>Edit situations</comment>
   </data>
+  <data name="StartProgram_ArgumentsLabel" xml:space="preserve">
+    <value>Arguments:</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_CheckIfRunning" xml:space="preserve">
+    <value>_Check if running</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_CheckIfRunningToolTip" xml:space="preserve">
+    <value>Check whether the program is already running</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_ChooseFilesToolTip" xml:space="preserve">
+    <value>Choose files or documents if applicable</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_ChooseProgramToolTip" xml:space="preserve">
+    <value>Choose a program</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_FolderLabel" xml:space="preserve">
+    <value>Folder:</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_ProgramNameLabel" xml:space="preserve">
+    <value>Program name:</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_TestAction" xml:space="preserve">
+    <value>Check and test...</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_TestActionToolTip" xml:space="preserve">
+    <value>Check the command that will be run</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_TryBothFolders" xml:space="preserve">
+    <value>_Try both folders</value>
+    <comment>Edit action - start program</comment>
+  </data>
+  <data name="StartProgram_TryBothFoldersToolTip" xml:space="preserve">
+    <value>If a 'Program Files' folder is specified but the program isn't found, look in 'Program Files (x86)' instead, and vice versa</value>
+    <comment>Edit action - start program</comment>
+  </data>
   <data name="String_Actions" xml:space="preserve">
     <value>Actions</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_ActionsToPerformLabel" xml:space="preserve">
     <value>Actions to perform when:</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Actions_defined" xml:space="preserve">
     <value>This input has some actions defined for this situation</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Activate_window" xml:space="preserve">
+    <value>Activate window</value>
   </data>
   <data name="String_Active_window" xml:space="preserve">
     <value>Active window</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Additional_options" xml:space="preserve">
     <value>Additional options</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Add_action_error_description" xml:space="preserve">
     <value>Unable to create an action - check that that you have entered valid values for all the settings</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Add_action_error_title" xml:space="preserve">
     <value>Unable to create action</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Add_input_error_title" xml:space="preserve">
     <value>Can't add input</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Add_keyboard_error_description" xml:space="preserve">
     <value>Can't create input - only 1 keyboard allowed</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Add_mouse_error_description" xml:space="preserve">
     <value>Can't create input - only 1 mouse allowed</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_AllFiles" xml:space="preserve">
+    <value>All files</value>
   </data>
   <data name="String_All_Option" xml:space="preserve">
     <value>(All)</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_AlreadyRunning" xml:space="preserve">
+    <value>Already running</value>
   </data>
   <data name="String_Annulus" xml:space="preserve">
     <value>Annulus</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Annulus_sector" xml:space="preserve">
     <value>Annulus sector</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_App" xml:space="preserve">
     <value>App</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_AppLabel" xml:space="preserve">
     <value>App:</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Apps" xml:space="preserve">
     <value>Apps</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_AskMe" xml:space="preserve">
+    <value>Ask me</value>
   </data>
   <data name="String_Bottom" xml:space="preserve">
     <value>Bottom</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_By_amount" xml:space="preserve">
     <value>By amount</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Cancel" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="String_Change_mode" xml:space="preserve">
     <value>Change mode</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Change_page" xml:space="preserve">
     <value>Change page</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Change_pointer" xml:space="preserve">
     <value>Change pointer</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_check_if_running" xml:space="preserve">
+    <value>check if running</value>
+  </data>
+  <data name="String_ChooseAFolder" xml:space="preserve">
+    <value>Choose a folder</value>
+  </data>
+  <data name="String_ChooseFilesOrDocuments" xml:space="preserve">
+    <value>Choose files or documents</value>
   </data>
   <data name="String_Choose_folder_description" xml:space="preserve">
     <value>Choose the folder in which to store your {0} profiles</value>
-    <comment>Strings</comment>
   </data>
-  <data name="String_Click" xml:space="preserve">
-    <value>Click</value>
-    <comment>Strings</comment>
+  <data name="String_Click_X_mouse_button" xml:space="preserve">
+    <value>Click '{0}' mouse button</value>
+  </data>
+  <data name="String_CommandError" xml:space="preserve">
+    <value>Command error</value>
+  </data>
+  <data name="String_CommandErrorMessage" xml:space="preserve">
+    <value>The command ran but this error occurred:</value>
+  </data>
+  <data name="String_CommandSucceeded" xml:space="preserve">
+    <value>Command succeeded</value>
+  </data>
+  <data name="String_CommandSucceededMessage" xml:space="preserve">
+    <value>The command ran successfully.</value>
   </data>
   <data name="String_CompatibilityLabel" xml:space="preserve">
     <value>Provided for compatibility with previous versions</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Copyright" xml:space="preserve">
     <value>Copyright</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Custom_Button" xml:space="preserve">
     <value>Custom Button</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Custom_Window" xml:space="preserve">
     <value>Custom Window</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Default" xml:space="preserve">
     <value>Default</value>
-    <comment>Strings</comment>
   </data>
-  <data name="String_Double_click" xml:space="preserve">
-    <value>Double-click</value>
-    <comment>Strings</comment>
+  <data name="String_DefaultProfileName" xml:space="preserve">
+    <value>New profile</value>
+  </data>
+  <data name="String_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="String_DontRun" xml:space="preserve">
+    <value>Don't run</value>
+    <comment>Sense: Prevent a command from being run</comment>
+  </data>
+  <data name="String_DontShowAgain" xml:space="preserve">
+    <value>_Don't show this again</value>
+  </data>
+  <data name="String_Double_click_X_mouse_button" xml:space="preserve">
+    <value>Double-click '{0}' mouse button</value>
   </data>
   <data name="String_down" xml:space="preserve">
     <value>down</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_app_description" xml:space="preserve">
     <value>Please ensure that no apps have been added more than once</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_app_title" xml:space="preserve">
     <value>App added twice</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_regions_description" xml:space="preserve">
     <value>Two or more identical regions are exactly on top of each other. Are you sure you want to close anyway?</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Duplicate_regions_title" xml:space="preserve">
     <value>Duplicate regions</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Dwelled" xml:space="preserve">
     <value>Dwelled</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Ellipse" xml:space="preserve">
     <value>Ellipse</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Ellipse_sector" xml:space="preserve">
     <value>Ellipse sector</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_ending" xml:space="preserve">
+    <value>ending</value>
   </data>
   <data name="String_Enter_text" xml:space="preserve">
     <value>(Enter text)</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Event" xml:space="preserve">
     <value>Event</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_ExecutableFiles" xml:space="preserve">
+    <value>Executable files</value>
   </data>
   <data name="String_Hide_pointer" xml:space="preserve">
     <value>Hide pointer</value>
-    <comment>Strings</comment>
-  </data>
-  <data name="String_Hold" xml:space="preserve">
-    <value>Hold</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Hold_down_key_for_X" xml:space="preserve">
     <value>Hold down key '{0}' for {1}s</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Hold_down_key_X" xml:space="preserve">
     <value>Hold down key '{0}'</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Hold_key" xml:space="preserve">
     <value>Hold key</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Hold_X_mouse_button" xml:space="preserve">
+    <value>Hold '{0}' mouse button</value>
+  </data>
+  <data name="String_IfNotRunningOption" xml:space="preserve">
+    <value>(if the program isn't already running)</value>
   </data>
   <data name="String_Image_files_filter" xml:space="preserve">
     <value>Image files (*.bmp; *.gif; *jpeg; *.jpg; *.png)|*.bmp;*.gif;*.jpeg;*.jpg;*.png|All files (*.*)|*.*</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Inherits_actions" xml:space="preserve">
     <value>This input has some actions defined for a parent situation</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Input" xml:space="preserve">
     <value>Input</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Input_Event" xml:space="preserve">
     <value>Input Event</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Inside" xml:space="preserve">
     <value>Inside</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Internal" xml:space="preserve">
     <value>Internal</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_InvalidSettings" xml:space="preserve">
+    <value>Invalid settings</value>
+  </data>
+  <data name="String_InvalidSettingsMessage" xml:space="preserve">
+    <value>Please enter some settings to test.</value>
   </data>
   <data name="String_Key" xml:space="preserve">
     <value>Key</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Keyboard" xml:space="preserve">
     <value>Keyboard</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Key_Toggled" xml:space="preserve">
     <value>Key Toggled</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Last_used" xml:space="preserve">
     <value>Last used</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Left" xml:space="preserve">
     <value>Left</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Level_of_detail" xml:space="preserve">
     <value>Level of detail</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_LoadNewProfile" xml:space="preserve">
+    <value>Load a new profile</value>
+  </data>
+  <data name="String_LoadProfile" xml:space="preserve">
+    <value>Load profile</value>
+  </data>
+  <data name="String_LoadProfileX" xml:space="preserve">
+    <value>Load '{0}' profile</value>
   </data>
   <data name="String_longer_presses_towards" xml:space="preserve">
     <value>longer presses towards</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_MaximiseOrRestoreWindow" xml:space="preserve">
+    <value>Maximise / restore window</value>
+  </data>
+  <data name="String_MaximiseWindow" xml:space="preserve">
+    <value>Maximise window</value>
   </data>
   <data name="String_Menu_Option" xml:space="preserve">
     <value>Menu Option</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Middle" xml:space="preserve">
     <value>Middle</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_minimise" xml:space="preserve">
+    <value>minimise</value>
+  </data>
+  <data name="String_MinimiseWindow" xml:space="preserve">
+    <value>Minimise window</value>
   </data>
   <data name="String_Mode" xml:space="preserve">
     <value>Mode</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_ModeLabel" xml:space="preserve">
     <value>Mode:</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Modes" xml:space="preserve">
     <value>Modes</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Mouse" xml:space="preserve">
     <value>Mouse</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Mouse_Button" xml:space="preserve">
     <value>Mouse Button</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Mouse_click" xml:space="preserve">
     <value>Mouse click</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Mouse_double_click" xml:space="preserve">
     <value>Mouse double-click</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Mouse_hold" xml:space="preserve">
     <value>Mouse hold</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Mouse_release" xml:space="preserve">
     <value>Mouse release</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Moved" xml:space="preserve">
     <value>Moved</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Move_by" xml:space="preserve">
     <value>Move by</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Move_pointer_by" xml:space="preserve">
     <value>Move pointer by</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Move_pointer_to" xml:space="preserve">
     <value>Move pointer to</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Move_the_pointer" xml:space="preserve">
     <value>Move the pointer</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Move_to" xml:space="preserve">
     <value>Move to</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_NewProfile" xml:space="preserve">
     <value>New profile</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_NewProfileOption" xml:space="preserve">
+    <value>(New profile)</value>
   </data>
   <data name="String_Next" xml:space="preserve">
     <value>Next</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_No" xml:space="preserve">
+    <value>No</value>
   </data>
   <data name="String_None" xml:space="preserve">
     <value>None</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_None_Option" xml:space="preserve">
     <value>(None)</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_N_buttons_selected" xml:space="preserve">
     <value>({0} buttons selected)</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_N_regions_selected" xml:space="preserve">
     <value>({0} regions selected)</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_OK" xml:space="preserve">
+    <value>OK</value>
   </data>
   <data name="String_Open" xml:space="preserve">
     <value>Open</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Open_all" xml:space="preserve">
     <value>Open all</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Other" xml:space="preserve">
     <value>Other</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Outside" xml:space="preserve">
     <value>Outside</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Page" xml:space="preserve">
     <value>Page</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_PageLabel" xml:space="preserve">
     <value>Page:</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Pointer" xml:space="preserve">
     <value>Pointer</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Pressed" xml:space="preserve">
     <value>Pressed</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_press_every" xml:space="preserve">
     <value>press every</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Press_key_for_X" xml:space="preserve">
     <value>Press key '{0}' for {1}s every {2}s</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Previous" xml:space="preserve">
     <value>Previous</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Primary_screen" xml:space="preserve">
     <value>Primary screen</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Primary_working_area" xml:space="preserve">
     <value>Primary working area</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Profile" xml:space="preserve">
     <value>Profile</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Profile_applied_X" xml:space="preserve">
     <value>Profile '{0}' was applied</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Profile_files_filter" xml:space="preserve">
     <value>Profile files (*.alt.xml)|*.alt.xml</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_ProgramAlreadyRunningMessage" xml:space="preserve">
+    <value>The program is already running.</value>
   </data>
   <data name="String_Rectangle" xml:space="preserve">
     <value>Rectangle</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Region" xml:space="preserve">
     <value>Region</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_relative_to_X" xml:space="preserve">
     <value>relative to {0}</value>
-    <comment>Strings</comment>
-  </data>
-  <data name="String_Release" xml:space="preserve">
-    <value>Release</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Released" xml:space="preserve">
     <value>Released</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Release_key" xml:space="preserve">
     <value>Release key</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Release_key_X" xml:space="preserve">
     <value>Release key '{0}'</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Release_X_mouse_button" xml:space="preserve">
+    <value>Release '{0}' mouse button</value>
   </data>
   <data name="String_Repeat_key" xml:space="preserve">
     <value>Repeat key</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Repeat_key_directional" xml:space="preserve">
     <value>Repeat key (directional)</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Repeat_key_X" xml:space="preserve">
     <value>Repeat key '{0}'</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Repeat_scroll_down" xml:space="preserve">
     <value>Repeat scroll down</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Repeat_scroll_up" xml:space="preserve">
     <value>Repeat scroll up</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Repeat_scroll_X" xml:space="preserve">
     <value>Scroll {0} every {1}s</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Reset_options_description" xml:space="preserve">
     <value>Reset all options to their default values?</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Reset_options_title" xml:space="preserve">
     <value>Reset all options?</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_restore" xml:space="preserve">
+    <value>restore</value>
   </data>
   <data name="String_Restore_pointer" xml:space="preserve">
     <value>Restore pointer</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Right" xml:space="preserve">
     <value>Right</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Run" xml:space="preserve">
+    <value>Run</value>
+    <comment>Sense: Run a command</comment>
   </data>
   <data name="String_Save_profile_description" xml:space="preserve">
     <value>Save current profile?</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Save_profile_title" xml:space="preserve">
     <value>Save profile?</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Scroll_down" xml:space="preserve">
     <value>Scroll down</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Scroll_repeatedly_X" xml:space="preserve">
     <value>Scroll {0} repeatedly</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Scroll_up" xml:space="preserve">
     <value>Scroll up</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Scroll_Wheel" xml:space="preserve">
     <value>Scroll Wheel</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Scroll_X" xml:space="preserve">
     <value>Scroll {0}</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Select_mode" xml:space="preserve">
     <value>Select mode</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Select_page" xml:space="preserve">
     <value>Select page</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_sensitivity" xml:space="preserve">
     <value>sensitivity</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Situation_Changed" xml:space="preserve">
     <value>Situation Changed</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_snooze" xml:space="preserve">
     <value>snooze</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Standard_pointer" xml:space="preserve">
     <value>Standard pointer</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="String_starting" xml:space="preserve">
+    <value>starting</value>
+  </data>
+  <data name="String_StartProgram" xml:space="preserve">
+    <value>Start program</value>
   </data>
   <data name="String_stop_after_X" xml:space="preserve">
     <value>stop after {0}s</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Stop_ongoing_actions" xml:space="preserve">
     <value>Stop ongoing actions</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Stop_scrolling" xml:space="preserve">
     <value>Stop scrolling</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Text_files_filter" xml:space="preserve">
     <value>Text files (*.txt)|*.txt|All files (*.*)|*.*</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle" xml:space="preserve">
     <value>Toggle</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_key" xml:space="preserve">
     <value>Toggle key</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_key_X" xml:space="preserve">
     <value>Toggle key '{0}'</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_menu_option" xml:space="preserve">
     <value>Toggle menu option</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_mouse_button" xml:space="preserve">
     <value>Toggle mouse button</value>
-    <comment>Strings</comment>
-  </data>
-  <data name="String_Toggle_mouse_button_X" xml:space="preserve">
-    <value>Toggle '{0}' mouse button</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_pointer_indicator" xml:space="preserve">
     <value>Toggle pointer indicator</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_region_names" xml:space="preserve">
     <value>Toggle region names</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_screen_regions" xml:space="preserve">
     <value>Toggle screen regions</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_state_overlay" xml:space="preserve">
     <value>Toggle mode/page overlay</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Toggle_title_bars" xml:space="preserve">
     <value>Toggle title bars</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Toggle_X_mouse_button" xml:space="preserve">
+    <value>Toggle '{0}' mouse button</value>
   </data>
   <data name="String_Top" xml:space="preserve">
     <value>Top</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_to_auto_cancel" xml:space="preserve">
     <value>to auto cancel</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_To_position" xml:space="preserve">
     <value>To position</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_to_reach_max" xml:space="preserve">
     <value>to reach max</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_try_both_folders" xml:space="preserve">
+    <value>try both folders</value>
   </data>
   <data name="String_Type" xml:space="preserve">
     <value>Type</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Type_key" xml:space="preserve">
     <value>Type key</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Type_text" xml:space="preserve">
     <value>Type text</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_up" xml:space="preserve">
     <value>up</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Updated" xml:space="preserve">
     <value>Updated</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Version" xml:space="preserve">
     <value>Version</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Virtual_desktop" xml:space="preserve">
     <value>Virtual desktop</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Virtual_working_area" xml:space="preserve">
     <value>Virtual working area</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Wait" xml:space="preserve">
     <value>Wait</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Wait_for_X" xml:space="preserve">
     <value>Wait for {0}s</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_Window" xml:space="preserve">
     <value>Window</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_X1" xml:space="preserve">
     <value>X1</value>
-    <comment>Strings</comment>
   </data>
   <data name="String_X2" xml:space="preserve">
     <value>X2</value>
-    <comment>Strings</comment>
+  </data>
+  <data name="String_Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="Summary_Title" xml:space="preserve">
     <value>Profile summary</value>
-    <comment>Summary</comment>
   </data>
 </root>

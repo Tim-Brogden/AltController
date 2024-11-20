@@ -340,7 +340,7 @@ namespace AltController
                 _processesTable.Clear();
                 _processIDs.Clear();
                 CallBackPtr callBack = new CallBackPtr(this.EnumWindowsCallback);
-                WindowsAPI.EnumWindows(callBack, 0);
+                WindowsAPI.EnumWindows(callBack, IntPtr.Zero);
             }
             catch (Exception)
             {
@@ -391,17 +391,17 @@ namespace AltController
         /// <param name="hWnd"></param>
         /// <param name="lParam"></param>
         /// <returns></returns>
-        private bool EnumWindowsCallback(int hWnd, int lParam)
+        private bool EnumWindowsCallback(IntPtr hWnd, IntPtr lParam)
         {
             try
             {
                 // Get window's process ID
                 int processID;
-                WindowsAPI.GetWindowThreadProcessId((IntPtr)hWnd, out processID);
+                WindowsAPI.GetWindowThreadProcessId(hWnd, out processID);
                 if (!_processIDs.Contains(processID))
                 {
                     // Check that it's a relevant type of window
-                    if (WindowsAPI.IsWindowVisible((IntPtr)hWnd))
+                    if (WindowsAPI.IsWindowVisible(hWnd))
                     {
                         _processIDs.Add(processID);
 

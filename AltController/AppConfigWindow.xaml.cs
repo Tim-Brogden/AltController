@@ -26,6 +26,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using AltController.Config;
@@ -45,6 +46,7 @@ namespace AltController
         private NamedItemList _hotkeys = new NamedItemList();
         private bool _hotkeysChanged = false;
         private bool _selectionChanging = false;
+        private ObservableCollection<CommandRuleItem> _commandRulesList;
 
         // Properties
         public bool HotkeysChanged { get { return _hotkeysChanged; } }
@@ -86,6 +88,10 @@ namespace AltController
             GUIUtils.PopulateDisplayableListWithKeys(_keyListItems);
             _keyListItems.Insert(0, new NamedItem(0, "None"));
             this.KeyboardKeyCombo.ItemsSource = _keyListItems;
+
+            // Bind command rules
+            _commandRulesList = new ObservableCollection<CommandRuleItem>();
+            CommandRulesTable.ItemsSource = _commandRulesList;
 
             DisplayConfig();
 
@@ -162,6 +168,15 @@ namespace AltController
             // Folders
             string defaultProfilesDir = Path.Combine(AppConfig.UserDataDir, Constants.ProfilesFolderName);
             this.ProfilesFolderTextBox.Text = _appConfig.GetStringVal(Constants.ConfigProfilesDir, defaultProfilesDir);
+
+            // Security tab
+            CommandRuleManager ruleManager = new CommandRuleManager();
+            ruleManager.FromConfig(_appConfig);
+            _commandRulesList.Clear();
+            foreach (CommandRuleItem rule in ruleManager.Rules)
+            {
+                _commandRulesList.Add(rule);
+            }
         }
 
         /// <summary>
@@ -257,7 +272,11 @@ namespace AltController
             else
             {
                 _appConfig.SetStringVal(Constants.ConfigProfilesDir, null);
-            }            
+            }
+
+            // Security tab
+            CommandRuleManager ruleManager = new CommandRuleManager(_commandRulesList);
+            ruleManager.ToConfig(_appConfig);
 
             // Config changed
             DialogResult = true;

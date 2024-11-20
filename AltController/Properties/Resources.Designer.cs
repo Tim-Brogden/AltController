@@ -259,6 +259,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E_nds.
+        /// </summary>
+        public static string Action_EndsButton {
+            get {
+                return ResourceManager.GetString("Action_EndsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Equals.
+        /// </summary>
+        public static string Action_EqualsButton {
+            get {
+                return ResourceManager.GetString("Action_EqualsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hide the mouse pointer.
         /// </summary>
         public static string Action_HiddenRadioButton {
@@ -340,6 +358,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Minimise if active.
+        /// </summary>
+        public static string Action_MinimiseIfActive {
+            get {
+                return ResourceManager.GetString("Action_MinimiseIfActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimise the window if it is already active.
+        /// </summary>
+        public static string Action_MinimiseToolTip {
+            get {
+                return ResourceManager.GetString("Action_MinimiseToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mouse button:.
         /// </summary>
         public static string Action_MouseButtonLabel {
@@ -372,6 +408,33 @@ namespace AltController.Properties {
         public static string Action_PressEveryLabel {
             get {
                 return ResourceManager.GetString("Action_PressEveryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile to load:.
+        /// </summary>
+        public static string Action_ProfileToLoad {
+            get {
+                return ResourceManager.GetString("Action_ProfileToLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program:.
+        /// </summary>
+        public static string Action_ProgramLabel {
+            get {
+                return ResourceManager.GetString("Action_ProgramLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh the list of running programs / windows.
+        /// </summary>
+        public static string Action_RefreshProgramsListToolTip {
+            get {
+                return ResourceManager.GetString("Action_RefreshProgramsListToolTip", resourceCulture);
             }
         }
         
@@ -448,6 +511,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Restore if minimised.
+        /// </summary>
+        public static string Action_RestoreIfMinimised {
+            get {
+                return ResourceManager.GetString("Action_RestoreIfMinimised", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restore the window if it is minimised.
+        /// </summary>
+        public static string Action_RestoreToolTip {
+            get {
+                return ResourceManager.GetString("Action_RestoreToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restore the original mouse pointer.
         /// </summary>
         public static string Action_RestoreUserRadioButton {
@@ -489,6 +570,15 @@ namespace AltController.Properties {
         public static string Action_StandardRadioButton {
             get {
                 return ResourceManager.GetString("Action_StandardRadioButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Starts.
+        /// </summary>
+        public static string Action_StartsButton {
+            get {
+                return ResourceManager.GetString("Action_StartsButton", resourceCulture);
             }
         }
         
@@ -579,6 +669,15 @@ namespace AltController.Properties {
         public static string Action_WindowsLabel {
             get {
                 return ResourceManager.GetString("Action_WindowsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Window title:.
+        /// </summary>
+        public static string Action_WindowTitleLabel {
+            get {
+                return ResourceManager.GetString("Action_WindowTitleLabel", resourceCulture);
             }
         }
         
@@ -925,6 +1024,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to change profile because the current profile has unsaved changes..
+        /// </summary>
+        public static string E_ChangeProfileUnsavedChanges {
+            get {
+                return ResourceManager.GetString("E_ChangeProfileUnsavedChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command cannot be empty.
+        /// </summary>
+        public static string E_CommandEmpty {
+            get {
+                return ResourceManager.GetString("E_CommandEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error while loading window.
         /// </summary>
         public static string E_CUST001 {
@@ -1150,6 +1267,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid regular expression..
+        /// </summary>
+        public static string E_InvalidRegex {
+            get {
+                return ResourceManager.GetString("E_InvalidRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error performing load profile action..
+        /// </summary>
+        public static string E_LoadProfileAction {
+            get {
+                return ResourceManager.GetString("E_LoadProfileAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error while initialising folders.
         /// </summary>
         public static string E_MAIN001 {
@@ -1290,6 +1425,15 @@ namespace AltController.Properties {
         public static string E_MAIN016 {
             get {
                 return ResourceManager.GetString("E_MAIN016", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error while running command.
+        /// </summary>
+        public static string E_MAIN017 {
+            get {
+                return ResourceManager.GetString("E_MAIN017", resourceCulture);
             }
         }
         
@@ -1726,11 +1870,38 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error running command.
+        /// </summary>
+        public static string E_RunCommand {
+            get {
+                return ResourceManager.GetString("E_RunCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error while upgrading profile to the latest version.
         /// </summary>
         public static string E_UPGR001 {
             get {
                 return ResourceManager.GetString("E_UPGR001", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command disallowed.
+        /// </summary>
+        public static string Info_CommandDisallowed {
+            get {
+                return ResourceManager.GetString("Info_CommandDisallowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} cannot run this command because it disallowed by your security settings:{1}{1}{2}{1}{1}If you are sure that this command is safe to run, you can allow it in the Program options (Security tab)..
+        /// </summary>
+        public static string Info_CommandDisallowedMessage {
+            get {
+                return ResourceManager.GetString("Info_CommandDisallowedMessage", resourceCulture);
             }
         }
         
@@ -2761,6 +2932,42 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        public static string Options_Security_ActionColumn {
+            get {
+                return ResourceManager.GetString("Options_Security_ActionColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command (exact or ^regex).
+        /// </summary>
+        public static string Options_Security_CommandColumn {
+            get {
+                return ResourceManager.GetString("Options_Security_CommandColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rules for &apos;Start program&apos; commands:.
+        /// </summary>
+        public static string Options_Security_RulesLabel {
+            get {
+                return ResourceManager.GetString("Options_Security_RulesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security.
+        /// </summary>
+        public static string Options_SecurityTab {
+            get {
+                return ResourceManager.GetString("Options_SecurityTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sh_ift.
         /// </summary>
         public static string Options_ShiftCheck {
@@ -3081,6 +3288,42 @@ namespace AltController.Properties {
         public static string Profile_Title {
             get {
                 return ResourceManager.GetString("Profile_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run command?.
+        /// </summary>
+        public static string Q_RunCommand {
+            get {
+                return ResourceManager.GetString("Q_RunCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you want to allow {0} to run this command?{1}{1}{2}{1}{1}If you are unsure what this command does, choose No..
+        /// </summary>
+        public static string Q_RunCommandMessage {
+            get {
+                return ResourceManager.GetString("Q_RunCommandMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check and test command.
+        /// </summary>
+        public static string Q_TestCommand {
+            get {
+                return ResourceManager.GetString("Q_TestCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command that will be run with these settings {2}is:{0}{0}{1}{0}{0}Do you want to run it now?.
+        /// </summary>
+        public static string Q_TestCommandMessage {
+            get {
+                return ResourceManager.GetString("Q_TestCommandMessage", resourceCulture);
             }
         }
         
@@ -3580,6 +3823,105 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arguments:.
+        /// </summary>
+        public static string StartProgram_ArgumentsLabel {
+            get {
+                return ResourceManager.GetString("StartProgram_ArgumentsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Check if running.
+        /// </summary>
+        public static string StartProgram_CheckIfRunning {
+            get {
+                return ResourceManager.GetString("StartProgram_CheckIfRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check whether the program is already running.
+        /// </summary>
+        public static string StartProgram_CheckIfRunningToolTip {
+            get {
+                return ResourceManager.GetString("StartProgram_CheckIfRunningToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose files or documents if applicable.
+        /// </summary>
+        public static string StartProgram_ChooseFilesToolTip {
+            get {
+                return ResourceManager.GetString("StartProgram_ChooseFilesToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a program.
+        /// </summary>
+        public static string StartProgram_ChooseProgramToolTip {
+            get {
+                return ResourceManager.GetString("StartProgram_ChooseProgramToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder:.
+        /// </summary>
+        public static string StartProgram_FolderLabel {
+            get {
+                return ResourceManager.GetString("StartProgram_FolderLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Program name:.
+        /// </summary>
+        public static string StartProgram_ProgramNameLabel {
+            get {
+                return ResourceManager.GetString("StartProgram_ProgramNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check and test....
+        /// </summary>
+        public static string StartProgram_TestAction {
+            get {
+                return ResourceManager.GetString("StartProgram_TestAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check the command that will be run.
+        /// </summary>
+        public static string StartProgram_TestActionToolTip {
+            get {
+                return ResourceManager.GetString("StartProgram_TestActionToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Try both folders.
+        /// </summary>
+        public static string StartProgram_TryBothFolders {
+            get {
+                return ResourceManager.GetString("StartProgram_TryBothFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If a &apos;Program Files&apos; folder is specified but the program isn&apos;t found, look in &apos;Program Files (x86)&apos; instead, and vice versa.
+        /// </summary>
+        public static string StartProgram_TryBothFoldersToolTip {
+            get {
+                return ResourceManager.GetString("StartProgram_TryBothFoldersToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actions.
         /// </summary>
         public static string String_Actions {
@@ -3603,6 +3945,15 @@ namespace AltController.Properties {
         public static string String_ActionsToPerformLabel {
             get {
                 return ResourceManager.GetString("String_ActionsToPerformLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate window.
+        /// </summary>
+        public static string String_Activate_window {
+            get {
+                return ResourceManager.GetString("String_Activate_window", resourceCulture);
             }
         }
         
@@ -3679,6 +4030,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All files.
+        /// </summary>
+        public static string String_AllFiles {
+            get {
+                return ResourceManager.GetString("String_AllFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Already running.
+        /// </summary>
+        public static string String_AlreadyRunning {
+            get {
+                return ResourceManager.GetString("String_AlreadyRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Annulus.
         /// </summary>
         public static string String_Annulus {
@@ -3724,6 +4093,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask me.
+        /// </summary>
+        public static string String_AskMe {
+            get {
+                return ResourceManager.GetString("String_AskMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom.
         /// </summary>
         public static string String_Bottom {
@@ -3738,6 +4116,15 @@ namespace AltController.Properties {
         public static string String_By_amount {
             get {
                 return ResourceManager.GetString("String_By_amount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string String_Cancel {
+            get {
+                return ResourceManager.GetString("String_Cancel", resourceCulture);
             }
         }
         
@@ -3769,6 +4156,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to check if running.
+        /// </summary>
+        public static string String_check_if_running {
+            get {
+                return ResourceManager.GetString("String_check_if_running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose the folder in which to store your {0} profiles.
         /// </summary>
         public static string String_Choose_folder_description {
@@ -3778,11 +4174,65 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Click.
+        ///   Looks up a localized string similar to Choose a folder.
         /// </summary>
-        public static string String_Click {
+        public static string String_ChooseAFolder {
             get {
-                return ResourceManager.GetString("String_Click", resourceCulture);
+                return ResourceManager.GetString("String_ChooseAFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose files or documents.
+        /// </summary>
+        public static string String_ChooseFilesOrDocuments {
+            get {
+                return ResourceManager.GetString("String_ChooseFilesOrDocuments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click &apos;{0}&apos; mouse button.
+        /// </summary>
+        public static string String_Click_X_mouse_button {
+            get {
+                return ResourceManager.GetString("String_Click_X_mouse_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command error.
+        /// </summary>
+        public static string String_CommandError {
+            get {
+                return ResourceManager.GetString("String_CommandError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command ran but this error occurred:.
+        /// </summary>
+        public static string String_CommandErrorMessage {
+            get {
+                return ResourceManager.GetString("String_CommandErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command succeeded.
+        /// </summary>
+        public static string String_CommandSucceeded {
+            get {
+                return ResourceManager.GetString("String_CommandSucceeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command ran successfully..
+        /// </summary>
+        public static string String_CommandSucceededMessage {
+            get {
+                return ResourceManager.GetString("String_CommandSucceededMessage", resourceCulture);
             }
         }
         
@@ -3832,11 +4282,47 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Double-click.
+        ///   Looks up a localized string similar to New profile.
         /// </summary>
-        public static string String_Double_click {
+        public static string String_DefaultProfileName {
             get {
-                return ResourceManager.GetString("String_Double_click", resourceCulture);
+                return ResourceManager.GetString("String_DefaultProfileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string String_Details {
+            get {
+                return ResourceManager.GetString("String_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t run.
+        /// </summary>
+        public static string String_DontRun {
+            get {
+                return ResourceManager.GetString("String_DontRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Don&apos;t show this again.
+        /// </summary>
+        public static string String_DontShowAgain {
+            get {
+                return ResourceManager.GetString("String_DontShowAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Double-click &apos;{0}&apos; mouse button.
+        /// </summary>
+        public static string String_Double_click_X_mouse_button {
+            get {
+                return ResourceManager.GetString("String_Double_click_X_mouse_button", resourceCulture);
             }
         }
         
@@ -3913,6 +4399,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ending.
+        /// </summary>
+        public static string String_ending {
+            get {
+                return ResourceManager.GetString("String_ending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (Enter text).
         /// </summary>
         public static string String_Enter_text {
@@ -3931,20 +4426,20 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Executable files.
+        /// </summary>
+        public static string String_ExecutableFiles {
+            get {
+                return ResourceManager.GetString("String_ExecutableFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hide pointer.
         /// </summary>
         public static string String_Hide_pointer {
             get {
                 return ResourceManager.GetString("String_Hide_pointer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hold.
-        /// </summary>
-        public static string String_Hold {
-            get {
-                return ResourceManager.GetString("String_Hold", resourceCulture);
             }
         }
         
@@ -3972,6 +4467,24 @@ namespace AltController.Properties {
         public static string String_Hold_key {
             get {
                 return ResourceManager.GetString("String_Hold_key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hold &apos;{0}&apos; mouse button.
+        /// </summary>
+        public static string String_Hold_X_mouse_button {
+            get {
+                return ResourceManager.GetString("String_Hold_X_mouse_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (if the program isn&apos;t already running).
+        /// </summary>
+        public static string String_IfNotRunningOption {
+            get {
+                return ResourceManager.GetString("String_IfNotRunningOption", resourceCulture);
             }
         }
         
@@ -4030,6 +4543,24 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid settings.
+        /// </summary>
+        public static string String_InvalidSettings {
+            get {
+                return ResourceManager.GetString("String_InvalidSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter some settings to test..
+        /// </summary>
+        public static string String_InvalidSettingsMessage {
+            get {
+                return ResourceManager.GetString("String_InvalidSettingsMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Key.
         /// </summary>
         public static string String_Key {
@@ -4084,11 +4615,56 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Load a new profile.
+        /// </summary>
+        public static string String_LoadNewProfile {
+            get {
+                return ResourceManager.GetString("String_LoadNewProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load profile.
+        /// </summary>
+        public static string String_LoadProfile {
+            get {
+                return ResourceManager.GetString("String_LoadProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load &apos;{0}&apos; profile.
+        /// </summary>
+        public static string String_LoadProfileX {
+            get {
+                return ResourceManager.GetString("String_LoadProfileX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to longer presses towards.
         /// </summary>
         public static string String_longer_presses_towards {
             get {
                 return ResourceManager.GetString("String_longer_presses_towards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximise / restore window.
+        /// </summary>
+        public static string String_MaximiseOrRestoreWindow {
+            get {
+                return ResourceManager.GetString("String_MaximiseOrRestoreWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximise window.
+        /// </summary>
+        public static string String_MaximiseWindow {
+            get {
+                return ResourceManager.GetString("String_MaximiseWindow", resourceCulture);
             }
         }
         
@@ -4107,6 +4683,24 @@ namespace AltController.Properties {
         public static string String_Middle {
             get {
                 return ResourceManager.GetString("String_Middle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minimise.
+        /// </summary>
+        public static string String_minimise {
+            get {
+                return ResourceManager.GetString("String_minimise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimise window.
+        /// </summary>
+        public static string String_MinimiseWindow {
+            get {
+                return ResourceManager.GetString("String_MinimiseWindow", resourceCulture);
             }
         }
         
@@ -4273,11 +4867,29 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (New profile).
+        /// </summary>
+        public static string String_NewProfileOption {
+            get {
+                return ResourceManager.GetString("String_NewProfileOption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
         public static string String_Next {
             get {
                 return ResourceManager.GetString("String_Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string String_No {
+            get {
+                return ResourceManager.GetString("String_No", resourceCulture);
             }
         }
         
@@ -4296,6 +4908,15 @@ namespace AltController.Properties {
         public static string String_None_Option {
             get {
                 return ResourceManager.GetString("String_None_Option", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string String_OK {
+            get {
+                return ResourceManager.GetString("String_OK", resourceCulture);
             }
         }
         
@@ -4444,6 +5065,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The program is already running..
+        /// </summary>
+        public static string String_ProgramAlreadyRunningMessage {
+            get {
+                return ResourceManager.GetString("String_ProgramAlreadyRunningMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rectangle.
         /// </summary>
         public static string String_Rectangle {
@@ -4471,15 +5101,6 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release.
-        /// </summary>
-        public static string String_Release {
-            get {
-                return ResourceManager.GetString("String_Release", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Release key.
         /// </summary>
         public static string String_Release_key {
@@ -4494,6 +5115,15 @@ namespace AltController.Properties {
         public static string String_Release_key_X {
             get {
                 return ResourceManager.GetString("String_Release_key_X", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release &apos;{0}&apos; mouse button.
+        /// </summary>
+        public static string String_Release_X_mouse_button {
+            get {
+                return ResourceManager.GetString("String_Release_X_mouse_button", resourceCulture);
             }
         }
         
@@ -4579,6 +5209,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to restore.
+        /// </summary>
+        public static string String_restore {
+            get {
+                return ResourceManager.GetString("String_restore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Restore pointer.
         /// </summary>
         public static string String_Restore_pointer {
@@ -4593,6 +5232,15 @@ namespace AltController.Properties {
         public static string String_Right {
             get {
                 return ResourceManager.GetString("String_Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run.
+        /// </summary>
+        public static string String_Run {
+            get {
+                return ResourceManager.GetString("String_Run", resourceCulture);
             }
         }
         
@@ -4714,6 +5362,33 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string String_Start {
+            get {
+                return ResourceManager.GetString("String_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to starting.
+        /// </summary>
+        public static string String_starting {
+            get {
+                return ResourceManager.GetString("String_starting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start program.
+        /// </summary>
+        public static string String_StartProgram {
+            get {
+                return ResourceManager.GetString("String_StartProgram", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to stop after {0}s.
         /// </summary>
         public static string String_stop_after_X {
@@ -4822,15 +5497,6 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toggle &apos;{0}&apos; mouse button.
-        /// </summary>
-        public static string String_Toggle_mouse_button_X {
-            get {
-                return ResourceManager.GetString("String_Toggle_mouse_button_X", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Toggle pointer indicator.
         /// </summary>
         public static string String_Toggle_pointer_indicator {
@@ -4876,11 +5542,29 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toggle &apos;{0}&apos; mouse button.
+        /// </summary>
+        public static string String_Toggle_X_mouse_button {
+            get {
+                return ResourceManager.GetString("String_Toggle_X_mouse_button", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Top.
         /// </summary>
         public static string String_Top {
             get {
                 return ResourceManager.GetString("String_Top", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to try both folders.
+        /// </summary>
+        public static string String_try_both_folders {
+            get {
+                return ResourceManager.GetString("String_try_both_folders", resourceCulture);
             }
         }
         
@@ -4998,6 +5682,15 @@ namespace AltController.Properties {
         public static string String_X2 {
             get {
                 return ResourceManager.GetString("String_X2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string String_Yes {
+            get {
+                return ResourceManager.GetString("String_Yes", resourceCulture);
             }
         }
         

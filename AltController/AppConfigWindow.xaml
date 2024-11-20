@@ -174,6 +174,43 @@
                     </Button>
                 </Grid>
             </TabItem>
+            <TabItem Name="SecurityTab" Header="{x:Static p:Resources.Options_SecurityTab}">
+                <Grid Margin="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <!--<TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Maximum action list length:</TextBlock>
+                    <local:CustomSliderControl x:Name="MaxActionListLengthSlider" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Width="200" IsLogScale="False" Minimum="1" Maximum="10" Value="3" SmallChange="1" LargeChange="1" DecimalPlaces="0"/>-->
+                    <TextBlock Text="{x:Static p:Resources.Options_Security_RulesLabel}" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"></TextBlock>
+                    <DataGrid Name="CommandRulesTable" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" AutoGenerateColumns="False" ItemsSource="{Binding}"
+                          CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CanUserReorderColumns="False" CanUserResizeRows="False" SelectionMode="Single"
+                           HorizontalGridLinesBrush="#FFDDDDDD" VerticalGridLinesBrush="#FFDDDDDD">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="{x:Static p:Resources.Options_Security_CommandColumn}" EditingElementStyle="{StaticResource CellEditStyle}"
+                                                Binding="{Binding Path=Command, Mode=TwoWay, ValidatesOnExceptions=True}" Width="*">
+                                <DataGridTextColumn.ElementStyle>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="VerticalAlignment" Value="Center" />
+                                        <Setter Property="Margin" Value="5,0,0,0" />
+                                    </Style>
+                                </DataGridTextColumn.ElementStyle>
+                            </DataGridTextColumn>
+                            <DataGridTemplateColumn Header="{x:Static p:Resources.Options_Security_ActionColumn}" Width="90">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding Path=Choices}" DisplayMemberPath="Name" SelectedItem="{Binding Path=ActionItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
         </TabControl>
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5" VerticalAlignment="Bottom" HorizontalAlignment="Left">
             <Button Name="ResetButton" HorizontalAlignment="Left" MinWidth="70" Height="23" Click="ResetButton_Click" ToolTip="{x:Static p:Resources.Options_ResetToolTip}">
