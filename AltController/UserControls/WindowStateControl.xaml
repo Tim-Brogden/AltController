@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="AltController.UserControls.WindowStateControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:p="clr-namespace:AltController.Properties" Loaded="UserControl_Loaded"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBlock VerticalAlignment="Center" Text="{x:Static p:Resources.Action_ActionLabel}" Grid.Row="0" Grid.Column="0"/>
+        <RadioButton x:Name="MaximiseButton" Grid.Row="0" Grid.Column="1" GroupName="WindowStateButtons" VerticalContentAlignment="Center" Content="{x:Static p:Resources.String_Maximise}"/>
+        <RadioButton x:Name="MinimiseButton" Grid.Row="1" Grid.Column="1" GroupName="WindowStateButtons" VerticalContentAlignment="Center" Content="{x:Static p:Resources.String_Minimise}"/>
+        <RadioButton x:Name="MaximiseOrRestoreButton" Grid.Row="2" Grid.Column="1" GroupName="WindowStateButtons" VerticalContentAlignment="Center" Content="{x:Static p:Resources.String_MaximiseOrRestore}"/>
+    </Grid>
+</UserControl>

@@ -2,7 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" WindowStartupLocation="CenterOwner"
         xmlns:p="clr-namespace:AltController.Properties"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ResizeMode="NoResize"
-        Icon="/AltController;component/AltControllerLogo.ico" Title="" mc:Ignorable="d" 
+        Icon="/AltController;component/Images/AltController.png" Title="" mc:Ignorable="d" 
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         Loaded="Window_Loaded" Closing="Window_Closing" d:DesignHeight="120" d:DesignWidth="420" SizeToContent="WidthAndHeight">
     <StackPanel Orientation="Vertical" Margin="5">

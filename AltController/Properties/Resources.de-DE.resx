@@ -165,6 +165,9 @@
   <data name="Action_AbsoluteRadioButton" xml:space="preserve">
     <value>Auf absolute Position</value>
   </data>
+  <data name="Action_ActionLabel" xml:space="preserve">
+    <value>Aktion:</value>
+  </data>
   <data name="Action_ActionTypeLabel" xml:space="preserve">
     <value>Art der Aktion:</value>
   </data>
@@ -436,295 +439,298 @@
     <value>Breite (Pixel):</value>
   </data>
   <data name="E_ACTION001" xml:space="preserve">
-    <value>Error {0} while changing the action type</value>
-  </data>
-  <data name="E_ChangeProfileUnsavedChanges" xml:space="preserve">
-    <value>Profil kann nicht geladen werden, da das aktuelle Profil nicht gespeicherte Änderungen aufweist.</value>
+    <value>Error while changing the action type</value>
   </data>
   <data name="E_CommandEmpty" xml:space="preserve">
-    <value>Der Befehl darf nicht leer sein</value>
+    <value>Command cannot be empty</value>
   </data>
   <data name="E_CUST001" xml:space="preserve">
-    <value>Error {0} while loading window</value>
+    <value>Error while loading window</value>
   </data>
   <data name="E_CUST002" xml:space="preserve">
-    <value>Error {0} while adding new custom button</value>
+    <value>Error while adding new custom button</value>
   </data>
   <data name="E_CUST003" xml:space="preserve">
-    <value>Error {0} while deleting custom button</value>
+    <value>Error while deleting custom button</value>
   </data>
   <data name="E_CUST004" xml:space="preserve">
-    <value>Error {0} while handling selection of custom button</value>
+    <value>Error while handling selection of custom button</value>
   </data>
   <data name="E_CUST005" xml:space="preserve">
-    <value>Error {0} while setting window width</value>
+    <value>Error while setting window width</value>
   </data>
   <data name="E_CUST006" xml:space="preserve">
-    <value>Error {0} while setting window height</value>
+    <value>Error while setting window height</value>
   </data>
   <data name="E_CUST007" xml:space="preserve">
-    <value>Error {0} while selecting background colour</value>
+    <value>Error while selecting background colour</value>
   </data>
   <data name="E_CUST008" xml:space="preserve">
-    <value>Error {0} while setting window translucency</value>
+    <value>Error while setting window translucency</value>
   </data>
   <data name="E_CUST009" xml:space="preserve">
-    <value>Error {0} while changing ghost background option</value>
+    <value>Error while changing ghost background option</value>
   </data>
   <data name="E_CUST010" xml:space="preserve">
-    <value>Error {0} while changing button X slider</value>
+    <value>Error while changing button X slider</value>
   </data>
   <data name="E_CUST011" xml:space="preserve">
-    <value>Error {0} while changing button Y slider</value>
+    <value>Error while changing button Y slider</value>
   </data>
   <data name="E_CUST012" xml:space="preserve">
-    <value>Error {0} while setting button width</value>
+    <value>Error while setting button width</value>
   </data>
   <data name="E_CUST013" xml:space="preserve">
-    <value>Error {0} while changing button height</value>
+    <value>Error while changing button height</value>
   </data>
   <data name="E_CUST014" xml:space="preserve">
-    <value>Error {0} while changing button border width</value>
+    <value>Error while changing button border width</value>
   </data>
   <data name="E_CUST015" xml:space="preserve">
-    <value>Error {0} while changing button name</value>
+    <value>Error while changing button name</value>
   </data>
   <data name="E_CUST016" xml:space="preserve">
-    <value>Error {0} while changing button text</value>
+    <value>Error while changing button text</value>
   </data>
   <data name="E_CUST017" xml:space="preserve">
-    <value>Error {0} while changing button border colour</value>
+    <value>Error while changing button border colour</value>
   </data>
   <data name="E_CUST018" xml:space="preserve">
-    <value>Error {0} while changing button background colour</value>
+    <value>Error while changing button background colour</value>
   </data>
   <data name="E_CUST019" xml:space="preserve">
-    <value>Error {0} while changing button background image</value>
+    <value>Error while changing button background image</value>
   </data>
   <data name="E_CUST020" xml:space="preserve">
-    <value>Error {0} while clearing button background image</value>
+    <value>Error while clearing button background image</value>
   </data>
   <data name="E_CUST021" xml:space="preserve">
-    <value>Error {0} while changing button translucency</value>
+    <value>Error while changing button translucency</value>
   </data>
   <data name="E_CUST022" xml:space="preserve">
-    <value>Error {0} while changing button font</value>
+    <value>Error while changing button font</value>
   </data>
   <data name="E_CUST023" xml:space="preserve">
-    <value>Error {0} while changing button font size</value>
+    <value>Error while changing button font size</value>
   </data>
   <data name="E_CUST024" xml:space="preserve">
-    <value>Error {0} while changing button text colour</value>
+    <value>Error while changing button text colour</value>
   </data>
   <data name="E_CUST025" xml:space="preserve">
-    <value>Fehler beim Ändern der Schaltflächentextausrichtung</value>
+    <value>Error while changing button text alignment</value>
   </data>
   <data name="E_InvalidRegex" xml:space="preserve">
-    <value>Ungültiger regulärer Ausdruck.</value>
-  </data>
-  <data name="E_LoadProfileAction" xml:space="preserve">
-    <value>Fehler beim Ausführen der ‘Profil laden’ aktion.</value>
+    <value>Invalid regular expression.</value>
   </data>
   <data name="E_MAIN001" xml:space="preserve">
-    <value>Error {0} while initialising folders</value>
+    <value>Error while initialising folders</value>
   </data>
   <data name="E_MAIN002" xml:space="preserve">
-    <value>Error {0} while initialising application</value>
+    <value>Error while initialising application</value>
   </data>
   <data name="E_MAIN003" xml:space="preserve">
-    <value>Error {0} while positioning window</value>
+    <value>Error while positioning window</value>
   </data>
   <data name="E_MAIN004" xml:space="preserve">
-    <value>Error {0} while creating new profile</value>
+    <value>Error while creating new profile</value>
   </data>
   <data name="E_MAIN005" xml:space="preserve">
-    <value>Error {0} while opening profile</value>
+    <value>Error while opening profile</value>
   </data>
   <data name="E_MAIN006" xml:space="preserve">
-    <value>Error {0} while saving profile</value>
+    <value>Error while saving profile</value>
   </data>
   <data name="E_MAIN007" xml:space="preserve">
-    <value>Error {0} during Save As</value>
+    <value>Error during Save As</value>
   </data>
   <data name="E_MAIN008" xml:space="preserve">
-    <value>Error {0} while opening the profile editor</value>
+    <value>Error while opening the profile editor</value>
   </data>
   <data name="E_MAIN009" xml:space="preserve">
-    <value>Error {0} while opening the screen region editor</value>
+    <value>Error while opening the screen region editor</value>
   </data>
   <data name="E_MAIN010" xml:space="preserve">
-    <value>Error {0} while opening the profile summary</value>
+    <value>Error while opening the profile summary</value>
   </data>
   <data name="E_MAIN011" xml:space="preserve">
-    <value>Error {0} while loading profile</value>
+    <value>Error while loading profile</value>
   </data>
   <data name="E_MAIN012" xml:space="preserve">
-    <value>Error {0} while opening all custom windows</value>
+    <value>Error while opening all custom windows</value>
   </data>
   <data name="E_MAIN013" xml:space="preserve">
-    <value>Error {0} during open custom window command</value>
+    <value>Error during open custom window command</value>
   </data>
   <data name="E_MAIN014" xml:space="preserve">
-    <value>Error {0} while opening custom window</value>
+    <value>Error while opening custom window</value>
   </data>
   <data name="E_MAIN015" xml:space="preserve">
-    <value>Error {0} while opening the Log information window</value>
+    <value>Error while opening the Log information window</value>
   </data>
   <data name="E_MAIN016" xml:space="preserve">
-    <value>Fehler beim Laden des letzten Profils</value>
+    <value>Error while loading recent profile</value>
   </data>
   <data name="E_MAIN017" xml:space="preserve">
-    <value>Fehler beim Ausführen des Befehls</value>
+    <value>Error while running command</value>
+  </data>
+  <data name="E_MAIN018" xml:space="preserve">
+    <value>Error performing load profile action.</value>
+  </data>
+  <data name="E_MAIN019" xml:space="preserve">
+    <value>Cannot change profile when the profile editor is open.</value>
+  </data>
+  <data name="E_MAIN020" xml:space="preserve">
+    <value>Cannot change profile when there are unsaved changes.</value>
+  </data>
+  <data name="E_MAIN021" xml:space="preserve">
+    <value>Error running command</value>
   </data>
   <data name="E_PR001" xml:space="preserve">
-    <value>Error {0} while loading profile from Xml</value>
+    <value>Error while loading profile from Xml</value>
   </data>
   <data name="E_PR002" xml:space="preserve">
-    <value>Error {0} while converting profile to Xml</value>
+    <value>Error while converting profile to Xml</value>
   </data>
   <data name="E_PROF001" xml:space="preserve">
-    <value>Error {0} while loading profile editor window</value>
+    <value>Error while loading profile editor window</value>
   </data>
   <data name="E_PROF002" xml:space="preserve">
-    <value>Error {0} while applying changes and closing</value>
+    <value>Error while applying changes and closing</value>
   </data>
   <data name="E_PROF003" xml:space="preserve">
-    <value>Error {0} while applying changes</value>
+    <value>Error while applying changes</value>
   </data>
   <data name="E_PROF004" xml:space="preserve">
-    <value>Error {0} while adding new action</value>
+    <value>Error while adding new action</value>
   </data>
   <data name="E_PROF005" xml:space="preserve">
-    <value>Error {0} while editing action</value>
+    <value>Error while editing action</value>
   </data>
   <data name="E_PROF006" xml:space="preserve">
-    <value>Error {0} while deleting action</value>
+    <value>Error while deleting action</value>
   </data>
   <data name="E_PROF007" xml:space="preserve">
-    <value>Error {0} while moving action up</value>
+    <value>Error while moving action up</value>
   </data>
   <data name="E_PROF008" xml:space="preserve">
-    <value>Error {0} while moving action down</value>
+    <value>Error while moving action down</value>
   </data>
   <data name="E_PROF009" xml:space="preserve">
-    <value>Error {0} while editing situations</value>
+    <value>Error while editing situations</value>
   </data>
   <data name="E_PROF010" xml:space="preserve">
-    <value>Error {0} while editing inputs</value>
+    <value>Error while editing inputs</value>
   </data>
   <data name="E_PROF011" xml:space="preserve">
-    <value>Error {0} while designing custom window</value>
+    <value>Error while designing custom window</value>
   </data>
   <data name="E_PROF012" xml:space="preserve">
-    <value>Error {0} while editing screen regions</value>
+    <value>Error while editing screen regions</value>
   </data>
   <data name="E_PROF013" xml:space="preserve">
-    <value>Error {0} while refreshing the action list</value>
+    <value>Error while refreshing the action list</value>
   </data>
   <data name="E_PROF014" xml:space="preserve">
-    <value>Error {0} while selecting an input</value>
+    <value>Error while selecting an input</value>
   </data>
   <data name="E_PROF015" xml:space="preserve">
-    <value>Error {0} while selecting a control</value>
+    <value>Error while selecting a control</value>
   </data>
   <data name="E_PROF016" xml:space="preserve">
-    <value>Error {0} while navigating to the next action list</value>
+    <value>Error while navigating to the next action list</value>
   </data>
   <data name="E_PROF017" xml:space="preserve">
-    <value>Error {0} while navigating to the previous action list</value>
+    <value>Error while navigating to the previous action list</value>
   </data>
   <data name="E_PROF018" xml:space="preserve">
-    <value>Error {0} while selecting a reason</value>
+    <value>Error while selecting a reason</value>
   </data>
   <data name="E_PROF019" xml:space="preserve">
-    <value>Error {0} while changing the execution mode</value>
+    <value>Error while changing the execution mode</value>
   </data>
   <data name="E_REG001" xml:space="preserve">
-    <value>Error {0} while loading the screen region editor</value>
+    <value>Error while loading the screen region editor</value>
   </data>
   <data name="E_REG002" xml:space="preserve">
-    <value>Error {0} while selecting a region</value>
+    <value>Error while selecting a region</value>
   </data>
   <data name="E_REG003" xml:space="preserve">
-    <value>Error {0} while enabling region drawing</value>
+    <value>Error while enabling region drawing</value>
   </data>
   <data name="E_REG004" xml:space="preserve">
-    <value>Error {0} after editing region</value>
+    <value>Error after editing region</value>
   </data>
   <data name="E_REG005" xml:space="preserve">
-    <value>Error {0} while adding a new region</value>
+    <value>Error while adding a new region</value>
   </data>
   <data name="E_REG006" xml:space="preserve">
-    <value>Error {0} while deleting the selected region</value>
+    <value>Error while deleting the selected region</value>
   </data>
   <data name="E_REG007" xml:space="preserve">
-    <value>Error {0} while navigating to the previous region</value>
+    <value>Error while navigating to the previous region</value>
   </data>
   <data name="E_REG008" xml:space="preserve">
-    <value>Error {0} while navigating to the next region</value>
+    <value>Error while navigating to the next region</value>
   </data>
   <data name="E_REG009" xml:space="preserve">
-    <value>Error {0} while setting the background image</value>
+    <value>Error while setting the background image</value>
   </data>
   <data name="E_REG010" xml:space="preserve">
-    <value>Error {0} while clearing the background image</value>
+    <value>Error while clearing the background image</value>
   </data>
   <data name="E_REG011" xml:space="preserve">
-    <value>Error {0} while setting the region background image</value>
+    <value>Error while setting the region background image</value>
   </data>
   <data name="E_REG012" xml:space="preserve">
-    <value>Error {0} while clearing the region background image</value>
+    <value>Error while clearing the region background image</value>
   </data>
   <data name="E_REG013" xml:space="preserve">
-    <value>Error {0} while setting the region translucency</value>
+    <value>Error while setting the region translucency</value>
   </data>
   <data name="E_REG014" xml:space="preserve">
-    <value>Error {0} while renaming the selected region</value>
+    <value>Error while renaming the selected region</value>
   </data>
   <data name="E_REG015" xml:space="preserve">
-    <value>Error {0} while changing the region colour</value>
+    <value>Error while changing the region colour</value>
   </data>
   <data name="E_REG016" xml:space="preserve">
-    <value>Error {0} while changing 'Show in mode'</value>
+    <value>Error while changing 'Show in mode'</value>
   </data>
   <data name="E_REG017" xml:space="preserve">
-    <value>Error {0} while changing 'Show in app'</value>
+    <value>Error while changing 'Show in app'</value>
   </data>
   <data name="E_REG018" xml:space="preserve">
-    <value>Error {0} while changing overlay mode</value>
+    <value>Error while changing overlay mode</value>
   </data>
   <data name="E_REG019" xml:space="preserve">
-    <value>Error {0} while setting region X</value>
+    <value>Error while setting region X</value>
   </data>
   <data name="E_REG020" xml:space="preserve">
-    <value>Error {0} while setting region Y</value>
+    <value>Error while setting region Y</value>
   </data>
   <data name="E_REG021" xml:space="preserve">
-    <value>Error {0} while setting region width</value>
+    <value>Error while setting region width</value>
   </data>
   <data name="E_REG022" xml:space="preserve">
-    <value>Error {0} while setting region height</value>
+    <value>Error while setting region height</value>
   </data>
   <data name="E_REG023" xml:space="preserve">
-    <value>Error {0} while setting region shape</value>
+    <value>Error while setting region shape</value>
   </data>
   <data name="E_REG024" xml:space="preserve">
-    <value>Error {0} while changing hole size</value>
+    <value>Error while changing hole size</value>
   </data>
   <data name="E_REG025" xml:space="preserve">
-    <value>Error {0} while changing start angle</value>
+    <value>Error while changing start angle</value>
   </data>
   <data name="E_REG026" xml:space="preserve">
-    <value>Error {0} while changing sweep angle</value>
+    <value>Error while changing sweep angle</value>
   </data>
   <data name="E_REGCTRL001" xml:space="preserve">
-    <value>Error {0}: selection of multiple regions is not allowed</value>
-  </data>
-  <data name="E_RunCommand" xml:space="preserve">
-    <value>Fehler beim Ausführen des Befehls</value>
+    <value>Error: selection of multiple regions is not allowed</value>
   </data>
   <data name="E_UPGR001" xml:space="preserve">
-    <value>Error {0} while upgrading profile to the latest version</value>
+    <value>Error while upgrading profile to the latest version</value>
   </data>
   <data name="Info_CommandDisallowed" xml:space="preserve">
     <value>Befehl nicht zulässig</value>
@@ -1075,7 +1081,7 @@
     <value>Programmneustart erforderlich</value>
   </data>
   <data name="Options_SecurityTab" xml:space="preserve">
-    <value>Sicherheit</value>
+    <value>S_icherheit</value>
   </data>
   <data name="Options_Security_ActionColumn" xml:space="preserve">
     <value>Aktion</value>
@@ -1575,6 +1581,18 @@
   <data name="String_ExecutableFiles" xml:space="preserve">
     <value>Ausführbare Dateien</value>
   </data>
+  <data name="String_Hide" xml:space="preserve">
+    <value>Ausblenden</value>
+  </data>
+  <data name="String_HideAllCustomWindows" xml:space="preserve">
+    <value>Alle eigenes Layout ausblenden</value>
+  </data>
+  <data name="String_HideCustomWindow" xml:space="preserve">
+    <value>Eigenes Layout ausblenden</value>
+  </data>
+  <data name="String_HideCustomWindowX" xml:space="preserve">
+    <value>Eigenes Layout '{0}' ausblenden</value>
+  </data>
   <data name="String_Hide_pointer" xml:space="preserve">
     <value>Mauszeiger ausblenden</value>
   </data>
@@ -1647,6 +1665,15 @@
   <data name="String_longer_presses_towards" xml:space="preserve">
     <value>länger in Richtung</value>
   </data>
+  <data name="String_Maximise" xml:space="preserve">
+    <value>Maximieren</value>
+  </data>
+  <data name="String_MaximiseOrMinimiseWindow" xml:space="preserve">
+    <value>Fenster maximieren / minimieren</value>
+  </data>
+  <data name="String_MaximiseOrRestore" xml:space="preserve">
+    <value>Maximieren / Wiederherstellen</value>
+  </data>
   <data name="String_MaximiseOrRestoreWindow" xml:space="preserve">
     <value>Fenster maximieren / wiederherstellen</value>
   </data>
@@ -1659,8 +1686,8 @@
   <data name="String_Middle" xml:space="preserve">
     <value>Mitte</value>
   </data>
-  <data name="String_minimise" xml:space="preserve">
-    <value>minimieren</value>
+  <data name="String_Minimise" xml:space="preserve">
+    <value>Minimieren</value>
   </data>
   <data name="String_MinimiseWindow" xml:space="preserve">
     <value>Fenster minimieren</value>
@@ -1833,8 +1860,8 @@
   <data name="String_Reset_options_title" xml:space="preserve">
     <value>Wirklich alle Programmeinstellungen zurücksetzen?</value>
   </data>
-  <data name="String_restore" xml:space="preserve">
-    <value>wiederherstellen</value>
+  <data name="String_Restore" xml:space="preserve">
+    <value>Wiederherstellen</value>
   </data>
   <data name="String_Restore_pointer" xml:space="preserve">
     <value>Zeiger zurücksetzen?</value>
@@ -1874,6 +1901,30 @@
   </data>
   <data name="String_sensitivity" xml:space="preserve">
     <value>Empfindlichkeit</value>
+  </data>
+  <data name="String_Show" xml:space="preserve">
+    <value>Einblenden</value>
+  </data>
+  <data name="String_ShowAllCustomWindows" xml:space="preserve">
+    <value>Alle eigenes Layout einblenden</value>
+  </data>
+  <data name="String_ShowCustomWindow" xml:space="preserve">
+    <value>Eigenes Layout einblenden</value>
+  </data>
+  <data name="String_ShowCustomWindowX" xml:space="preserve">
+    <value>Eigenes Layout '{0}' einblenden</value>
+  </data>
+  <data name="String_ShowOrHide" xml:space="preserve">
+    <value>Ein-/Ausblenden</value>
+  </data>
+  <data name="String_ShowOrHideAllCustomWindows" xml:space="preserve">
+    <value>Alle eigenes Layout ein-/ausblenden</value>
+  </data>
+  <data name="String_ShowOrHideCustomWindow" xml:space="preserve">
+    <value>Eigenes Layout ein-/ausblenden</value>
+  </data>
+  <data name="String_ShowOrHideCustomWindowX" xml:space="preserve">
+    <value>Eigenes Layout '{0}' ein-/ausblenden</value>
   </data>
   <data name="String_Situation_Changed" xml:space="preserve">
     <value>Situation geändert</value>

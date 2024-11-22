@@ -343,8 +343,9 @@ namespace AltController
                     break;
                 case EEventType.LoadProfile:
                     {
-                        LoadProfileEventArgs args = (LoadProfileEventArgs)report.Args;
-                        eventDetails.Title = string.Format(Properties.Resources.String_LoadProfileX, args.ProfileName);
+                        AltStringValEventArgs args = (AltStringValEventArgs)report.Args;
+                        string name = string.IsNullOrEmpty(args.Val) ? Properties.Resources.String_NewProfile : args.Val;
+                        eventDetails.Title = string.Format(Properties.Resources.String_LoadProfileX, name);
                     }
                     break;
                 default:

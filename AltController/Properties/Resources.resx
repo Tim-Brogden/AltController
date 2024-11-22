@@ -166,6 +166,9 @@
     <value>To absolute position</value>
     <comment>Edit action - Move pointer</comment>
   </data>
+  <data name="Action_ActionLabel" xml:space="preserve">
+    <value>Action:</value>
+  </data>
   <data name="Action_ActionTypeLabel" xml:space="preserve">
     <value>Action type:</value>
     <comment>Edit action</comment>
@@ -527,9 +530,6 @@
   <data name="E_ACTION001" xml:space="preserve">
     <value>Error while changing the action type</value>
   </data>
-  <data name="E_ChangeProfileUnsavedChanges" xml:space="preserve">
-    <value>Unable to change profile because the current profile has unsaved changes.</value>
-  </data>
   <data name="E_CommandEmpty" xml:space="preserve">
     <value>Command cannot be empty</value>
   </data>
@@ -611,9 +611,6 @@
   <data name="E_InvalidRegex" xml:space="preserve">
     <value>Invalid regular expression.</value>
   </data>
-  <data name="E_LoadProfileAction" xml:space="preserve">
-    <value>Error performing load profile action.</value>
-  </data>
   <data name="E_MAIN001" xml:space="preserve">
     <value>Error while initialising folders</value>
   </data>
@@ -664,6 +661,18 @@
   </data>
   <data name="E_MAIN017" xml:space="preserve">
     <value>Error while running command</value>
+  </data>
+  <data name="E_MAIN018" xml:space="preserve">
+    <value>Error performing load profile action.</value>
+  </data>
+  <data name="E_MAIN019" xml:space="preserve">
+    <value>Cannot change profile when the profile editor is open.</value>
+  </data>
+  <data name="E_MAIN020" xml:space="preserve">
+    <value>Cannot change profile when there are unsaved changes.</value>
+  </data>
+  <data name="E_MAIN021" xml:space="preserve">
+    <value>Error running command</value>
   </data>
   <data name="E_PR001" xml:space="preserve">
     <value>Error while loading profile from Xml</value>
@@ -808,9 +817,6 @@
   </data>
   <data name="E_REGCTRL001" xml:space="preserve">
     <value>Error: selection of multiple regions is not allowed</value>
-  </data>
-  <data name="E_RunCommand" xml:space="preserve">
-    <value>Error running command</value>
   </data>
   <data name="E_UPGR001" xml:space="preserve">
     <value>Error while upgrading profile to the latest version</value>
@@ -1228,7 +1234,7 @@
     <comment>Options - Start up</comment>
   </data>
   <data name="Options_SecurityTab" xml:space="preserve">
-    <value>Security</value>
+    <value>Sec_urity</value>
     <comment>Options - Security</comment>
   </data>
   <data name="Options_Security_ActionColumn" xml:space="preserve">
@@ -1839,6 +1845,18 @@
   <data name="String_ExecutableFiles" xml:space="preserve">
     <value>Executable files</value>
   </data>
+  <data name="String_Hide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="String_HideAllCustomWindows" xml:space="preserve">
+    <value>Hide all custom windows</value>
+  </data>
+  <data name="String_HideCustomWindow" xml:space="preserve">
+    <value>Hide custom window</value>
+  </data>
+  <data name="String_HideCustomWindowX" xml:space="preserve">
+    <value>Hide custom window '{0}'</value>
+  </data>
   <data name="String_Hide_pointer" xml:space="preserve">
     <value>Hide pointer</value>
   </data>
@@ -1911,6 +1929,15 @@
   <data name="String_longer_presses_towards" xml:space="preserve">
     <value>longer presses towards</value>
   </data>
+  <data name="String_Maximise" xml:space="preserve">
+    <value>Maximise</value>
+  </data>
+  <data name="String_MaximiseOrMinimiseWindow" xml:space="preserve">
+    <value>Maximise / minimise window</value>
+  </data>
+  <data name="String_MaximiseOrRestore" xml:space="preserve">
+    <value>Maximise / restore</value>
+  </data>
   <data name="String_MaximiseOrRestoreWindow" xml:space="preserve">
     <value>Maximise / restore window</value>
   </data>
@@ -1923,8 +1950,8 @@
   <data name="String_Middle" xml:space="preserve">
     <value>Middle</value>
   </data>
-  <data name="String_minimise" xml:space="preserve">
-    <value>minimise</value>
+  <data name="String_Minimise" xml:space="preserve">
+    <value>Minimise</value>
   </data>
   <data name="String_MinimiseWindow" xml:space="preserve">
     <value>Minimise window</value>
@@ -2097,8 +2124,8 @@
   <data name="String_Reset_options_title" xml:space="preserve">
     <value>Reset all options?</value>
   </data>
-  <data name="String_restore" xml:space="preserve">
-    <value>restore</value>
+  <data name="String_Restore" xml:space="preserve">
+    <value>Restore</value>
   </data>
   <data name="String_Restore_pointer" xml:space="preserve">
     <value>Restore pointer</value>
@@ -2139,6 +2166,30 @@
   </data>
   <data name="String_sensitivity" xml:space="preserve">
     <value>sensitivity</value>
+  </data>
+  <data name="String_Show" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="String_ShowAllCustomWindows" xml:space="preserve">
+    <value>Show all custom windows</value>
+  </data>
+  <data name="String_ShowCustomWindow" xml:space="preserve">
+    <value>Show custom window</value>
+  </data>
+  <data name="String_ShowCustomWindowX" xml:space="preserve">
+    <value>Show custom window '{0}'</value>
+  </data>
+  <data name="String_ShowOrHide" xml:space="preserve">
+    <value>Show / hide</value>
+  </data>
+  <data name="String_ShowOrHideAllCustomWindows" xml:space="preserve">
+    <value>Show / hide all custom windows</value>
+  </data>
+  <data name="String_ShowOrHideCustomWindow" xml:space="preserve">
+    <value>Show / hide custom window</value>
+  </data>
+  <data name="String_ShowOrHideCustomWindowX" xml:space="preserve">
+    <value>Show / hide custom window '{0}'</value>
   </data>
   <data name="String_Situation_Changed" xml:space="preserve">
     <value>Situation Changed</value>

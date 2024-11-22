@@ -658,7 +658,7 @@ namespace AltController.Config
 
         /// <summary>
         /// Validate the profile by removing any invalid mappings 
-        /// and ensuring that mode / page / region names are consistent
+        /// and ensuring that mode / page / region /window names are consistent
         /// </summary>
         public void Validate()
         {

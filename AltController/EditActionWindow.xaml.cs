@@ -94,9 +94,14 @@ namespace AltController
             // Bind child controls
             this.ChangeModeDetails.SetModesList(_profile.ModeDetails);
             this.ChangePageDetails.SetPagesList(_profile.PageDetails);
+            this.CustomWindowStateDetails.SetInputSources(_profile.InputSources);
 
             // Action types
             this.ActionTypeCombo.ItemsSource = GUIUtils.GetValidActionTypeList(_inputEvent, _profile);
+
+            // Select last selected key / mouse button
+            this.BaseKeyActionDetails.SelectedKeyID = _lastUniqueKeyID;
+            this.MouseButtonActionDetails.SelectedMouseButton = _lastMouseButton;
 
             // Display settings for current action
             if (_currentAction != null)
@@ -106,9 +111,6 @@ namespace AltController
             }
             else
             {
-                this.BaseKeyActionDetails.SelectedKeyID = _lastUniqueKeyID;
-                this.MouseButtonActionDetails.SelectedMouseButton = _lastMouseButton;
-
                 // Select the first action type
                 if (this.ActionTypeCombo.Items.Count > 0)
                 {
@@ -164,8 +166,6 @@ namespace AltController
                         case EActionType.ScrollUp:
                         case EActionType.ScrollDown:
                         case EActionType.StopScrolling:
-                        case EActionType.MaximiseWindow:
-                        case EActionType.MinimiseWindow:
                             ShowActionGrid(null);
                             break;
                         case EActionType.RepeatScrollUp:
@@ -217,6 +217,14 @@ namespace AltController
                         case EActionType.LoadProfile:
                             this.LoadProfileDetails.SetCurrentAction(_currentAction);
                             ShowActionGrid(this.LoadProfileDetails);
+                            break;
+                        case EActionType.WindowState:
+                            this.WindowStateDetails.SetCurrentAction(_currentAction);
+                            ShowActionGrid(this.WindowStateDetails);
+                            break;
+                        case EActionType.CustomWindowState:
+                            this.CustomWindowStateDetails.SetCurrentAction(_currentAction);
+                            ShowActionGrid(this.CustomWindowStateDetails);
                             break;
                     }
                 }
@@ -286,12 +294,12 @@ namespace AltController
                     action = new StartProgramAction(); break;
                 case EActionType.ActivateWindow:
                     action = new ActivateWindowAction(); break;
-                case EActionType.MaximiseWindow:
-                    action = new ShowCurrentWindowAction(true); break;
-                case EActionType.MinimiseWindow:
-                    action = new ShowCurrentWindowAction(false); break;
+                case EActionType.WindowState:
+                    action = new WindowStateAction(); break;
                 case EActionType.LoadProfile:
                     action = new LoadProfileAction(); break;
+                case EActionType.CustomWindowState:
+                    action = new CustomWindowStateAction(); break;
             }
 
             return action;
@@ -402,14 +410,14 @@ namespace AltController
                     case EActionType.ActivateWindow:
                         action = this.ActivateWindowDetails.GetCurrentAction();
                         break;
-                    case EActionType.MaximiseWindow:
-                        action = new ShowCurrentWindowAction(true); 
-                        break;
-                    case EActionType.MinimiseWindow:
-                        action = new ShowCurrentWindowAction(false); 
+                    case EActionType.WindowState:
+                        action = this.WindowStateDetails.GetCurrentAction();
                         break;
                     case EActionType.LoadProfile:
                         action = this.LoadProfileDetails.GetCurrentAction();
+                        break;
+                    case EActionType.CustomWindowState:
+                        action = this.CustomWindowStateDetails.GetCurrentAction();
                         break;
                 }
             }

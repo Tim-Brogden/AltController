@@ -279,8 +279,8 @@ namespace AltController.UserControls
         {
             _currentAction = null;
             string programName = this.ProgramNameComboBox.Text;
-            string windowName = this.WindowTitleComboBox.Text;
-            if (windowName != "" || (!RequireTitle && programName != ""))
+            string windowTitle = this.WindowTitleComboBox.Text;
+            if (windowTitle != "" || (!RequireTitle && programName != ""))
             {
                 _currentAction = new ActivateWindowAction();
                 _currentAction.ProgramName = this.ProgramNameComboBox.Text;
@@ -297,7 +297,7 @@ namespace AltController.UserControls
                 {
                     matchType = EMatchType.Equals;
                 }
-                _currentAction.WindowTitle = windowName;
+                _currentAction.WindowTitle = windowTitle;
                 _currentAction.MatchType = matchType;
                 _currentAction.RestoreIfMinimised = RestoreIfMinimisedCheckBox.IsChecked == true;
                 _currentAction.MinimiseIfActive = MinimiseIfActiveCheckBox.IsChecked == true;
@@ -345,9 +345,9 @@ namespace AltController.UserControls
             if (_windowTable.ContainsKey(_selectedProgram))
             {
                 int i = 0;
-                foreach (string windowName in _windowTable[_selectedProgram])
+                foreach (string windowTitle in _windowTable[_selectedProgram])
                 {
-                    _windowList.Add(new NamedItem(i++, windowName));
+                    _windowList.Add(new NamedItem(i++, windowTitle));
                 }
             }
         }

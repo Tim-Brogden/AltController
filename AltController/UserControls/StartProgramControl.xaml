@@ -13,6 +13,8 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
@@ -34,13 +36,13 @@
         <Button Name="BrowseDocumentButton" ToolTip="{x:Static p:Resources.StartProgram_ChooseFilesToolTip}" Click="BrowseDocumentButton_Click" HorizontalAlignment="Right" Grid.Row="2" Grid.Column="2" >
             <Image Source="/AltController;component/Images/icons/image_edit.png" Stretch="None"/>
         </Button>
-        <CheckBox Name="CheckIfRunningCheckBox" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Content="{x:Static p:Resources.StartProgram_CheckIfRunning}" ToolTip="{x:Static p:Resources.StartProgram_CheckIfRunningToolTip}"/>
-        <Button Name="TestActionButton" Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" ToolTip="{x:Static p:Resources.StartProgram_TestActionToolTip}" Click="TestActionButton_Click" >
+        <CheckBox Name="CheckIfRunningCheckBox" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Content="{x:Static p:Resources.StartProgram_CheckIfRunning}" ToolTip="{x:Static p:Resources.StartProgram_CheckIfRunningToolTip}"/>
+        <CheckBox Name="TryBothFoldersCheckBox" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Content="{x:Static p:Resources.StartProgram_TryBothFolders}" ToolTip="{x:Static p:Resources.StartProgram_TryBothFoldersToolTip}"/>
+        <Button Name="TestActionButton" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" ToolTip="{x:Static p:Resources.StartProgram_TestActionToolTip}" Click="TestActionButton_Click" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/AltController;component/Images/icons/application_go.png" Stretch="None" />
                 <TextBlock Margin="5,0" Text="{x:Static p:Resources.StartProgram_TestAction}"></TextBlock>
             </StackPanel>
         </Button>
-        <CheckBox Name="TryBothFoldersCheckBox" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Content="{x:Static p:Resources.StartProgram_TryBothFolders}" ToolTip="{x:Static p:Resources.StartProgram_TryBothFoldersToolTip}"/>
     </Grid>
 </UserControl>

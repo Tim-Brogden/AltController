@@ -12,6 +12,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150" />
@@ -37,7 +38,7 @@
             <RadioButton Name="EndsWithRadioButton" GroupName="MatchType" Content="{x:Static p:Resources.Action_EndsButton}"></RadioButton>
         </StackPanel>
         <ComboBox Name="WindowTitleComboBox" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" IsEditable="True"  SelectedValuePath="ID" DisplayMemberPath="Name"/>
-        <CheckBox Name="RestoreIfMinimisedCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Content="{x:Static p:Resources.Action_RestoreIfMinimised}" ToolTip="{x:Static p:Resources.Action_RestoreToolTip}"></CheckBox>
-        <CheckBox Name="MinimiseIfActiveCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="1" Content="{x:Static p:Resources.Action_MinimiseIfActive}" ToolTip="{x:Static p:Resources.Action_MinimiseToolTip}"></CheckBox>
+        <CheckBox Name="RestoreIfMinimisedCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="{x:Static p:Resources.Action_RestoreIfMinimised}" ToolTip="{x:Static p:Resources.Action_RestoreToolTip}"></CheckBox>
+        <CheckBox Name="MinimiseIfActiveCheckBox" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Content="{x:Static p:Resources.Action_MinimiseIfActive}" ToolTip="{x:Static p:Resources.Action_MinimiseToolTip}"></CheckBox>
     </Grid>
 </UserControl>

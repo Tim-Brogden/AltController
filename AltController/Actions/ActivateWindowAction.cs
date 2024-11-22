@@ -75,16 +75,16 @@ namespace AltController.Actions
                 {
                     if (_minimiseIfActive)
                     {
-                        name += string.Format(" ({0}, {1})", Properties.Resources.String_restore, Properties.Resources.String_minimise);
+                        name += string.Format(" ({0}, {1})", Properties.Resources.String_Restore.ToLower(), Properties.Resources.String_Minimise.ToLower());
                     }
                     else
                     {
-                        name += string.Format(" ({0})", Properties.Resources.String_restore);
+                        name += string.Format(" ({0})", Properties.Resources.String_Restore.ToLower());
                     }
                 }
                 else if (_minimiseIfActive)
                 {
-                    name += string.Format(" ({0})", Properties.Resources.String_minimise);
+                    name += string.Format(" ({0})", Properties.Resources.String_Minimise.ToLower());
                 }
                 return name;
             }
@@ -94,18 +94,25 @@ namespace AltController.Actions
         {
             get
             {
-                string matchTypeText;
-                switch (_matchType)
+                string description = _programName;
+                if (_windowTitle != "") 
                 {
-                    case EMatchType.StartsWith:
-                        matchTypeText = Properties.Resources.String_starting + " "; break;
-                    case EMatchType.EndsWith:
-                        matchTypeText = Properties.Resources.String_ending + " "; break;
-                    default:
-                        matchTypeText = ""; break;
+                    if (description != "")
+                    {
+                        description += ", ";
+                    }
+                    if (_matchType == EMatchType.EndsWith)
+                    {
+                        description += "*";
+                    }
+                    description += _windowTitle;
+                    if (_matchType == EMatchType.StartsWith)
+                    {
+                        description += "*";
+                    }
                 }
-            
-                return Properties.Resources.String_Activate_window + string.Format(" {0}'{1}'", matchTypeText, _windowTitle);
+
+                return string.Format("{0} ({1})", Properties.Resources.String_Activate_window, description);
             }
         }
 
@@ -223,21 +230,24 @@ namespace AltController.Actions
                 bool isMatch = WindowsAPI.IsStandardWindowStyle(style);
                 if (isMatch) 
                 {
-                    string titleBarText = WindowsAPI.GetTitleBarText(hWnd).ToLower();
-                    switch(_matchType)
+                    if (!string.IsNullOrEmpty(_windowTitleLower))
                     {
-                        case EMatchType.StartsWith:
-                            isMatch = titleBarText.StartsWith(_windowTitleLower);
-                            break;
-                        case EMatchType.EndsWith:
-                            isMatch = titleBarText.EndsWith(_windowTitleLower);
-                            break;
-                        case EMatchType.Equals:
-                            isMatch = titleBarText == _windowTitleLower;
-                            break;
-                        default:
-                            isMatch = false;
-                            break;
+                        string titleBarText = WindowsAPI.GetTitleBarText(hWnd).ToLower();
+                        switch (_matchType)
+                        {
+                            case EMatchType.StartsWith:
+                                isMatch = titleBarText.StartsWith(_windowTitleLower);
+                                break;
+                            case EMatchType.EndsWith:
+                                isMatch = titleBarText.EndsWith(_windowTitleLower);
+                                break;
+                            case EMatchType.Equals:
+                                isMatch = titleBarText == _windowTitleLower;
+                                break;
+                            default:
+                                isMatch = false;
+                                break;
+                        }
                     }
 
                     if (isMatch)

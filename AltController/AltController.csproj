@@ -56,7 +56,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AltController.pfx</AssemblyOriginatorKeyFile>
@@ -89,8 +89,9 @@
     </ApplicationDefinition>
     <Compile Include="Actions\ActivateWindowAction.cs" />
     <Compile Include="Actions\BaseKeyAction.cs" />
+    <Compile Include="Actions\CustomWindowStateAction.cs" />
     <Compile Include="Actions\LoadProfileAction.cs" />
-    <Compile Include="Actions\ShowCurrentWindowAction.cs" />
+    <Compile Include="Actions\WindowStateAction.cs" />
     <Compile Include="Actions\StartProgramAction.cs" />
     <Compile Include="Actions\StopScrollingAction.cs" />
     <Compile Include="Actions\RepeatScrollWheelAction.cs" />
@@ -144,7 +145,7 @@
     <Compile Include="Event\AltMouseButtonEventArgs.cs" />
     <Compile Include="Event\AltToggleKeyEventArgs.cs" />
     <Compile Include="Event\AltMouseScrollEventArgs.cs" />
-    <Compile Include="Event\LoadProfileEventArgs.cs" />
+    <Compile Include="Event\CustomWindowEventArgs.cs" />
     <Compile Include="Event\MenuOptionEventArgs.cs" />
     <Compile Include="Event\DoubleValEventArgs.cs" />
     <Compile Include="Event\StartProgramEventArgs.cs" />
@@ -227,6 +228,12 @@
     </Compile>
     <Compile Include="UserControls\LanguagePickerControl.xaml.cs">
       <DependentUpon>LanguagePickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\WindowStateControl.xaml.cs">
+      <DependentUpon>WindowStateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomWindowStateControl.xaml.cs">
+      <DependentUpon>CustomWindowStateControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\LoadProfileControl.xaml.cs">
       <DependentUpon>LoadProfileControl.xaml</DependentUpon>
@@ -363,6 +370,14 @@
     <Page Include="UserControls\LanguagePickerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\WindowStateControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\CustomWindowStateControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\LoadProfileControl.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -608,6 +623,7 @@
     <Resource Include="AutoUpgrade\Upgrade from v1.97.xsl">
       <SubType>Designer</SubType>
     </Resource>
+    <Resource Include="Images\icons\application_go.png" />
     <Content Include="Images\readme.html" />
     <Resource Include="Profiles\TmForever LRUD A Driving Esc Default.alt.xml" />
     <Resource Include="Profiles\TmForever WASD A Driving Esc Default.alt.xml" />

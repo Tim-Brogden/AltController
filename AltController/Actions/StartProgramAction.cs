@@ -114,7 +114,7 @@ namespace AltController.Actions
         {
             get
             {
-                return Properties.Resources.String_Start + " " + GetCommandLine();
+                return Properties.Resources.String_Run + " " + GetCommandLine();
             }
         }
 

@@ -209,6 +209,8 @@ namespace AltController.Core
                     name = Properties.Resources.String_LoadProfile; break;
                 case EEventType.StartProgram:
                     name = Properties.Resources.String_StartProgram; break;
+                case EEventType.ShowOrHideCustomWindow:
+                    name = Properties.Resources.String_ShowOrHideCustomWindow; break;
                 default:
                     name = Properties.Resources.String_Other; break;
             }

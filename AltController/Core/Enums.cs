@@ -161,8 +161,8 @@ namespace AltController.Core
         LoadProfile,
         StartProgram,
         ActivateWindow,
-        MaximiseWindow,
-        MinimiseWindow,
+        WindowState,
+        CustomWindowState,
         MenuOption,
         Wait,
         StopOngoingActions
@@ -185,7 +185,8 @@ namespace AltController.Core
         WindowRegionEvent,
         MenuOptionEvent,
         LoadProfile,
-        StartProgram
+        StartProgram,
+        ShowOrHideCustomWindow
     }
 
     /// <summary>
@@ -298,5 +299,17 @@ namespace AltController.Core
         Run,
         DontRun,
         AskMe
+    }
+
+    /// <summary>
+    /// Window state
+    /// </summary>
+    [Flags]
+    public enum EWindowState
+    {
+        None = 0,
+        Minimise = 1,
+        Normal = 2,
+        Maximise = 4
     }
 }

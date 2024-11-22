@@ -122,8 +122,8 @@ namespace AltController.Actions
         /// <param name="args"></param>
         public override void StartAction(IStateManager parent, AltControlEventArgs args)
         {
-            EventArgs lpargs = new LoadProfileEventArgs(_profileName);
-            EventReport report = new EventReport(DateTime.Now, EEventType.LoadProfile, lpargs);
+            EventArgs strargs = new AltStringValEventArgs(_profileName);
+            EventReport report = new EventReport(DateTime.Now, EEventType.LoadProfile, strargs);
             parent.ReportEvent(report);
             IsOngoing = false;
         }

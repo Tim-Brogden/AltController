@@ -219,7 +219,26 @@ namespace AltController.Config
                                     ((ChangePageAction)action).PageName = pageDetails.Name;
                                 }
                             }
-                        }                        
+                        }
+                        else if (action is CustomWindowStateAction)
+                        {
+                            long windowID = ((CustomWindowStateAction)action).WindowID;
+                            if (windowID > 0)
+                            {
+                                NamedItem source = profile.GetInputSource(windowID);
+                                if (source is CustomWindowSource)
+                                {
+                                    // Update the window title
+                                    ((CustomWindowStateAction)action).WindowTitle = ((CustomWindowSource)source).WindowTitle;
+                                }
+                                else
+                                {
+                                    // Prepare to delete the action
+                                    itemsToDelete.Add(i);
+                                    continue;
+                                }
+                            }
+                        }
 
                         // Check that the parameter sources are still valid
                         //if (action.ParameterSources != null)

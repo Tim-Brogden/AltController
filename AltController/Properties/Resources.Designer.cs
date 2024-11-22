@@ -205,6 +205,15 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Action:.
+        /// </summary>
+        public static string Action_ActionLabel {
+            get {
+                return ResourceManager.GetString("Action_ActionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action type:.
         /// </summary>
         public static string Action_ActionTypeLabel {
@@ -1024,15 +1033,6 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unable to change profile because the current profile has unsaved changes..
-        /// </summary>
-        public static string E_ChangeProfileUnsavedChanges {
-            get {
-                return ResourceManager.GetString("E_ChangeProfileUnsavedChanges", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Command cannot be empty.
         /// </summary>
         public static string E_CommandEmpty {
@@ -1276,15 +1276,6 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error performing load profile action..
-        /// </summary>
-        public static string E_LoadProfileAction {
-            get {
-                return ResourceManager.GetString("E_LoadProfileAction", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Error while initialising folders.
         /// </summary>
         public static string E_MAIN001 {
@@ -1434,6 +1425,42 @@ namespace AltController.Properties {
         public static string E_MAIN017 {
             get {
                 return ResourceManager.GetString("E_MAIN017", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error performing load profile action..
+        /// </summary>
+        public static string E_MAIN018 {
+            get {
+                return ResourceManager.GetString("E_MAIN018", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot change profile when the profile editor is open..
+        /// </summary>
+        public static string E_MAIN019 {
+            get {
+                return ResourceManager.GetString("E_MAIN019", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot change profile when there are unsaved changes..
+        /// </summary>
+        public static string E_MAIN020 {
+            get {
+                return ResourceManager.GetString("E_MAIN020", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error running command.
+        /// </summary>
+        public static string E_MAIN021 {
+            get {
+                return ResourceManager.GetString("E_MAIN021", resourceCulture);
             }
         }
         
@@ -1866,15 +1893,6 @@ namespace AltController.Properties {
         public static string E_REGCTRL001 {
             get {
                 return ResourceManager.GetString("E_REGCTRL001", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Error running command.
-        /// </summary>
-        public static string E_RunCommand {
-            get {
-                return ResourceManager.GetString("E_RunCommand", resourceCulture);
             }
         }
         
@@ -2959,7 +2977,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Security.
+        ///   Looks up a localized string similar to Sec_urity.
         /// </summary>
         public static string Options_SecurityTab {
             get {
@@ -4435,11 +4453,47 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide.
+        /// </summary>
+        public static string String_Hide {
+            get {
+                return ResourceManager.GetString("String_Hide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hide pointer.
         /// </summary>
         public static string String_Hide_pointer {
             get {
                 return ResourceManager.GetString("String_Hide_pointer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide all custom windows.
+        /// </summary>
+        public static string String_HideAllCustomWindows {
+            get {
+                return ResourceManager.GetString("String_HideAllCustomWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide custom window.
+        /// </summary>
+        public static string String_HideCustomWindow {
+            get {
+                return ResourceManager.GetString("String_HideCustomWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide custom window &apos;{0}&apos;.
+        /// </summary>
+        public static string String_HideCustomWindowX {
+            get {
+                return ResourceManager.GetString("String_HideCustomWindowX", resourceCulture);
             }
         }
         
@@ -4651,6 +4705,33 @@ namespace AltController.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maximise.
+        /// </summary>
+        public static string String_Maximise {
+            get {
+                return ResourceManager.GetString("String_Maximise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximise / minimise window.
+        /// </summary>
+        public static string String_MaximiseOrMinimiseWindow {
+            get {
+                return ResourceManager.GetString("String_MaximiseOrMinimiseWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximise / restore.
+        /// </summary>
+        public static string String_MaximiseOrRestore {
+            get {
+                return ResourceManager.GetString("String_MaximiseOrRestore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximise / restore window.
         /// </summary>
         public static string String_MaximiseOrRestoreWindow {
@@ -4687,11 +4768,11 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to minimise.
+        ///   Looks up a localized string similar to Minimise.
         /// </summary>
-        public static string String_minimise {
+        public static string String_Minimise {
             get {
-                return ResourceManager.GetString("String_minimise", resourceCulture);
+                return ResourceManager.GetString("String_Minimise", resourceCulture);
             }
         }
         
@@ -5209,11 +5290,11 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to restore.
+        ///   Looks up a localized string similar to Restore.
         /// </summary>
-        public static string String_restore {
+        public static string String_Restore {
             get {
-                return ResourceManager.GetString("String_restore", resourceCulture);
+                return ResourceManager.GetString("String_Restore", resourceCulture);
             }
         }
         
@@ -5331,6 +5412,78 @@ namespace AltController.Properties {
         public static string String_sensitivity {
             get {
                 return ResourceManager.GetString("String_sensitivity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show.
+        /// </summary>
+        public static string String_Show {
+            get {
+                return ResourceManager.GetString("String_Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show all custom windows.
+        /// </summary>
+        public static string String_ShowAllCustomWindows {
+            get {
+                return ResourceManager.GetString("String_ShowAllCustomWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show custom window.
+        /// </summary>
+        public static string String_ShowCustomWindow {
+            get {
+                return ResourceManager.GetString("String_ShowCustomWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show custom window &apos;{0}&apos;.
+        /// </summary>
+        public static string String_ShowCustomWindowX {
+            get {
+                return ResourceManager.GetString("String_ShowCustomWindowX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show / hide.
+        /// </summary>
+        public static string String_ShowOrHide {
+            get {
+                return ResourceManager.GetString("String_ShowOrHide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show / hide all custom windows.
+        /// </summary>
+        public static string String_ShowOrHideAllCustomWindows {
+            get {
+                return ResourceManager.GetString("String_ShowOrHideAllCustomWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show / hide custom window.
+        /// </summary>
+        public static string String_ShowOrHideCustomWindow {
+            get {
+                return ResourceManager.GetString("String_ShowOrHideCustomWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show / hide custom window &apos;{0}&apos;.
+        /// </summary>
+        public static string String_ShowOrHideCustomWindowX {
+            get {
+                return ResourceManager.GetString("String_ShowOrHideCustomWindowX", resourceCulture);
             }
         }
         

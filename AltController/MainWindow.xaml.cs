@@ -1221,7 +1221,7 @@ namespace AltController
             }
             catch (Exception ex)
             {
-                ShowError(Properties.Resources.E_RunCommand + " " + thisCommand, ex);
+                ShowError(Properties.Resources.E_MAIN021 + " " + thisCommand, ex);
             }
         }
 
@@ -1441,7 +1441,7 @@ namespace AltController
             }
             else if (report.EventType == EEventType.LoadProfile)
             {
-                LoadProfileEventArgs args = (LoadProfileEventArgs)report.Args;
+                AltStringValEventArgs args = (AltStringValEventArgs)report.Args;
                 HandleLoadProfileEvent(args);
             }
             else if (report.EventType == EEventType.StartProgram)
@@ -1454,11 +1454,18 @@ namespace AltController
                 MenuOptionEventArgs args = (MenuOptionEventArgs)report.Args;
                 ToggleMenuOption(args.Option);
             }
-            //else if (report.EventType == EEventType.AppChange)
-            //{
-            //    AltAppChangeEventArgs args = (AltAppChangeEventArgs)report.Args;
-            //    this.ActiveAppLabel.Text = args.AppName;
-            //}
+            else if (report.EventType == EEventType.ShowOrHideCustomWindow)
+            {
+                CustomWindowEventArgs args = (CustomWindowEventArgs)report.Args;
+                if (args.WindowID < 0)
+                {
+                    DoOpenAllCustomWindows(args.WindowState);
+                }
+                else
+                {
+                    DoOpenCustomWindow(args.WindowID, args.WindowState);
+                }
+            }
         }
 
         /// <summary>
@@ -1501,15 +1508,23 @@ namespace AltController
         /// Null profile name means load last used, empty profile name means load a blank profile
         /// </summary>
         /// <param name="args"></param>
-        private void HandleLoadProfileEvent(LoadProfileEventArgs args)
+        private void HandleLoadProfileEvent(AltStringValEventArgs args)
         {
             try
             {
-                // Disallow when current profile is unsaved
-                if (!_profileChanged)
+                // Disallow when the editor is open or current profile is unsaved
+                if (_editorDialog != null)
+                {
+                    ShowError(Properties.Resources.E_MAIN019, new Exception(Properties.Resources.E_MAIN019));
+                }
+                else if (_profileChanged)
+                {
+                    ShowError(Properties.Resources.E_MAIN020, new Exception(Properties.Resources.E_MAIN020));
+                }
+                else
                 {
                     // Get the file name of the profile to load
-                    string filePath = args.ProfileName;
+                    string filePath = args.Val;
                     if (!string.IsNullOrEmpty(filePath))
                     {
                         // Add extension if required
@@ -1528,14 +1543,10 @@ namespace AltController
 
                     LoadProfile(filePath);
                 }
-                else
-                {
-                    ShowError(Properties.Resources.E_ChangeProfileUnsavedChanges, new Exception(Properties.Resources.E_ChangeProfileUnsavedChanges));
-                }
             }
             catch (Exception ex)
             {
-                ShowError(Properties.Resources.E_LoadProfileAction, ex);
+                ShowError(Properties.Resources.E_MAIN018, ex);
             }
         }
 
@@ -1640,7 +1651,7 @@ namespace AltController
             while (eCustomWindow.MoveNext())
             {
                 BaseSource source = _profile.GetInputSource(eCustomWindow.Current.Key);
-                if (source == null || !(source.SourceType == ESourceType.CustomWindow))
+                if (source == null || source.SourceType != ESourceType.CustomWindow)
                 {
                     // Prepare to close custom window
                     windowsToClose.Add(eCustomWindow.Current.Value);
@@ -1667,7 +1678,7 @@ namespace AltController
                 WindowMenu.Items.RemoveAt(0);
             }
             
-            int customWindowIndex = 0;
+            int windowIndex = 0;
             foreach (BaseSource source in _profile.InputSources)
             {
                 if (source.SourceType == ESourceType.CustomWindow)
@@ -1678,19 +1689,19 @@ namespace AltController
                     MenuItem menuItem = new MenuItem();
                     menuItem.Click += new RoutedEventHandler(CustomWindowMenuItem_Click);
                     menuItem.Header = Properties.Resources.String_Open + " " + customWindowSource.WindowTitle + "...";
-                    menuItem.Tag = customWindowIndex;
-                    if (customWindowIndex < 4)
+                    menuItem.Tag = source.ID;
+                    if (windowIndex < 4)
                     {
                         // Can open upto 4 custom windows using Ctrl+1...4
-                        menuItem.InputGestureText = string.Format("Ctrl+{0}", customWindowIndex + 1);
+                        menuItem.InputGestureText = string.Format("Ctrl+{0}", windowIndex + 1);
                     }
-                    WindowMenu.Items.Insert(customWindowIndex, menuItem);
+                    WindowMenu.Items.Insert(windowIndex, menuItem);
 
-                    customWindowIndex++;
+                    windowIndex++;
                 }
             }
 
-            if (customWindowIndex != 0)
+            if (windowIndex != 0)
             {
                 // Add 'Open all' option
                 MenuItem menuItem = new MenuItem();
@@ -1729,22 +1740,14 @@ namespace AltController
         /// <summary>
         /// Open all custom windows
         /// </summary>
-        private void DoOpenAllCustomWindows()
+        private void DoOpenAllCustomWindows(EWindowState windowState = EWindowState.Normal)
         {
-            // Count the custom windows
-            int count = 0;
             foreach (BaseSource source in _profile.InputSources)
             {
                 if (source.SourceType == ESourceType.CustomWindow)
                 {
-                    count++;
+                    DoOpenCustomWindow(source.ID, windowState);
                 }
-            }
-
-            // Open all custom windows
-            for (int i = 0; i < count; i++)
-            {
-                DoOpenCustomWindow(i);
             }
         }
 
@@ -1759,27 +1762,36 @@ namespace AltController
             {
                 ClearMessages();
 
-                int customWindowIndex = -1;
+                int windowIndex = -1;
                 if (e.Command == OpenCustomWindow1)
                 {
-                    customWindowIndex = 0;
+                    windowIndex = 0;
                 }
                 else if (e.Command == OpenCustomWindow2)
                 {
-                    customWindowIndex = 1;
+                    windowIndex = 1;
                 }
                 else if (e.Command == OpenCustomWindow3)
                 {
-                    customWindowIndex = 2;
+                    windowIndex = 2;
                 }
                 else if (e.Command == OpenCustomWindow4)
                 {
-                    customWindowIndex = 3;
+                    windowIndex = 3;
                 }
-
-                if (customWindowIndex != -1)
+                
+                int index = 0;
+                foreach (BaseSource source in _profile.InputSources)
                 {
-                    DoOpenCustomWindow(customWindowIndex);
+                    if (source.SourceType == ESourceType.CustomWindow)
+                    {
+                        if (index == windowIndex)
+                        {
+                            DoOpenCustomWindow(source.ID);
+                            break;
+                        }
+                        index++;
+                    }
                 }
             }
             catch (Exception ex)
@@ -1802,8 +1814,8 @@ namespace AltController
                 ClearMessages();
 
                 MenuItem menuItem = (MenuItem)sender;
-                int customWindowIndex = (int)menuItem.Tag;
-                DoOpenCustomWindow(customWindowIndex);
+                long windowID = (long)menuItem.Tag;
+                DoOpenCustomWindow(windowID);
             }
             catch (Exception ex)
             {
@@ -1814,34 +1826,49 @@ namespace AltController
         /// <summary>
         /// Open the specified custom window
         /// </summary>
-        /// <param name="customWindowIndex"></param>
-        private void DoOpenCustomWindow(int customWindowIndex)
+        /// <param name="windowID"></param>
+        private void DoOpenCustomWindow(long windowID, EWindowState windowState = EWindowState.Normal)
         {
             CustomWindowSource customWindowSource = null;
-            int index = 0;
+            int windowIndex = 0;
             foreach (BaseSource source in _profile.InputSources)
             {
                 if (source.SourceType == ESourceType.CustomWindow)
                 {
-                    if (index++ == customWindowIndex)
+                    if (source.ID == windowID)
                     {
                         customWindowSource = (CustomWindowSource)source;
                         break;
                     }
+                    windowIndex++;
                 }
             }
         
-            // Create or show custom window
             if (customWindowSource != null)
             {
                 if (_openCustomWindows.ContainsKey(customWindowSource.ID))
                 {
-                    // Window already open
+                    // Window already created
                     CustomWindow customWindow = _openCustomWindows[customWindowSource.ID];
                     if (customWindow.IsLoaded)
                     {
-                        // Activate window in case hidden
-                        customWindow.Activate();
+                        switch (windowState)
+                        {
+                            case EWindowState.Normal:
+                                customWindow.WindowState = WindowState.Normal; break;
+                            case EWindowState.Minimise:
+                                customWindow.WindowState = WindowState.Minimized; break;
+                            default:
+                                if (customWindow.WindowState == WindowState.Normal)
+                                {
+                                    customWindow.WindowState = WindowState.Minimized;
+                                }
+                                else 
+                                {
+                                    customWindow.WindowState = WindowState.Normal;
+                                }
+                                break;
+                        }
                     }
                 }
                 else
@@ -1849,9 +1876,14 @@ namespace AltController
                     // Custom window not open
                     CustomWindow customWindow = new CustomWindow(this);
                     customWindow.ShowTitleBar = WindowShowTitleBars.IsChecked;
-                    customWindow.WindowIndex = customWindowIndex;
+                    customWindow.WindowIndex = windowIndex;
                     customWindow.CustomWindowSource = customWindowSource;
                     customWindow.Show();
+
+                    if (windowState == EWindowState.Minimise)
+                    {
+                        customWindow.WindowState = WindowState.Minimized;
+                    }
 
                     // Record that window is open
                     _openCustomWindows[customWindowSource.ID] = customWindow;

@@ -123,6 +123,12 @@
   <data name="About_LicenceTab" xml:space="preserve">
     <value>_License</value>
   </data>
+  <data name="Action_MinimiseToolTip" xml:space="preserve">
+    <value>Minimize the window if it is already active</value>
+  </data>
+  <data name="Action_RestoreIfMinimised" xml:space="preserve">
+    <value>_Restore if minimized</value>
+  </data>
   <data name="Custom_ButtonBgColorLabel" xml:space="preserve">
     <value>Background color:</value>
   </data>
@@ -167,5 +173,23 @@
   </data>
   <data name="Regions_RegionColorLabel" xml:space="preserve">
     <value>Color:</value>
+  </data>
+  <data name="String_Maximise" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="String_MaximiseOrMinimiseWindow" xml:space="preserve">
+    <value>Maximize / minimize window</value>
+  </data>
+  <data name="String_MaximiseOrRestoreWindow" xml:space="preserve">
+    <value>Maximize / restore window</value>
+  </data>
+  <data name="String_MaximiseWindow" xml:space="preserve">
+    <value>Maximize window</value>
+  </data>
+  <data name="String_Minimise" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="String_MinimiseWindow" xml:space="preserve">
+    <value>Minimize window</value>
   </data>
 </root>
