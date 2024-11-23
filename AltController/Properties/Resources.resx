@@ -1654,7 +1654,7 @@
     <comment>Edit action - start program</comment>
   </data>
   <data name="StartProgram_ProgramNameLabel" xml:space="preserve">
-    <value>Program name:</value>
+    <value>Executable file:</value>
     <comment>Edit action - start program</comment>
   </data>
   <data name="StartProgram_TestAction" xml:space="preserve">
@@ -1663,14 +1663,6 @@
   </data>
   <data name="StartProgram_TestActionToolTip" xml:space="preserve">
     <value>Check the command that will be run</value>
-    <comment>Edit action - start program</comment>
-  </data>
-  <data name="StartProgram_TryBothFolders" xml:space="preserve">
-    <value>_Try both folders</value>
-    <comment>Edit action - start program</comment>
-  </data>
-  <data name="StartProgram_TryBothFoldersToolTip" xml:space="preserve">
-    <value>If a 'Program Files' folder is specified but the program isn't found, look in 'Program Files (x86)' instead, and vice versa</value>
     <comment>Edit action - start program</comment>
   </data>
   <data name="String_Actions" xml:space="preserve">

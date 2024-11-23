@@ -3895,7 +3895,7 @@ namespace AltController.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Program name:.
+        ///   Looks up a localized string similar to Executable file:.
         /// </summary>
         public static string StartProgram_ProgramNameLabel {
             get {
@@ -3918,24 +3918,6 @@ namespace AltController.Properties {
         public static string StartProgram_TestActionToolTip {
             get {
                 return ResourceManager.GetString("StartProgram_TestActionToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Try both folders.
-        /// </summary>
-        public static string StartProgram_TryBothFolders {
-            get {
-                return ResourceManager.GetString("StartProgram_TryBothFolders", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to If a &apos;Program Files&apos; folder is specified but the program isn&apos;t found, look in &apos;Program Files (x86)&apos; instead, and vice versa.
-        /// </summary>
-        public static string StartProgram_TryBothFoldersToolTip {
-            get {
-                return ResourceManager.GetString("StartProgram_TryBothFoldersToolTip", resourceCulture);
             }
         }
         

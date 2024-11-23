@@ -1396,19 +1396,13 @@
     <value>Ordner:</value>
   </data>
   <data name="StartProgram_ProgramNameLabel" xml:space="preserve">
-    <value>Programmname:</value>
+    <value>Ausführbare Datei:</value>
   </data>
   <data name="StartProgram_TestAction" xml:space="preserve">
     <value>Prüfen und testen...</value>
   </data>
   <data name="StartProgram_TestActionToolTip" xml:space="preserve">
     <value>Überprüfen Sie den Befehl, der ausgeführt wird</value>
-  </data>
-  <data name="StartProgram_TryBothFolders" xml:space="preserve">
-    <value>_Versuchen Sie beide Ordner</value>
-  </data>
-  <data name="StartProgram_TryBothFoldersToolTip" xml:space="preserve">
-    <value>Wenn ein Ordner „Programme“ angegeben ist, das Programm aber nicht gefunden wird, suchen Sie stattdessen in „Programme (x86)“ und umgekehrt</value>
   </data>
   <data name="String_Actions" xml:space="preserve">
     <value>Aktionen </value>
