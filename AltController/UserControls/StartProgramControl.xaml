@@ -12,8 +12,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
             <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -37,7 +36,6 @@
             <Image Source="/AltController;component/Images/icons/image_edit.png" Stretch="None"/>
         </Button>
         <CheckBox Name="CheckIfRunningCheckBox" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Content="{x:Static p:Resources.StartProgram_CheckIfRunning}" ToolTip="{x:Static p:Resources.StartProgram_CheckIfRunningToolTip}"/>
-        <CheckBox Name="TryBothFoldersCheckBox" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" Content="{x:Static p:Resources.StartProgram_TryBothFolders}" ToolTip="{x:Static p:Resources.StartProgram_TryBothFoldersToolTip}"/>
         <Button Name="TestActionButton" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" ToolTip="{x:Static p:Resources.StartProgram_TestActionToolTip}" Click="TestActionButton_Click" >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/AltController;component/Images/icons/application_go.png" Stretch="None" />

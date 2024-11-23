@@ -45,14 +45,12 @@ namespace AltController.Actions
         private string _programFolder = "";
         private string _programArgs = "";
         private bool _checkIfRunning = true;
-        private bool _tryBothFolders = true;
 
         // Properties
         public string ProgramName { get { return _programName; } set { _programName = value; } }
         public string ProgramFolder { get { return _programFolder; } set { _programFolder = value; } }
         public string ProgramArgs { get { return _programArgs; } set { _programArgs = value; } }
         public bool CheckIfRunning { get { return _checkIfRunning; } set { _checkIfRunning = value; } }
-        public bool TryBothFolders { get { return _tryBothFolders; } set { _tryBothFolders = value; } }
 
         /// <summary>
         /// Type of action
@@ -80,7 +78,6 @@ namespace AltController.Actions
             _programFolder = string.Copy(action._programFolder);
             _programArgs = string.Copy(action._programArgs);
             _checkIfRunning = action._checkIfRunning;
-            _tryBothFolders = action._tryBothFolders;
         }
 
         /// <summary>
@@ -91,18 +88,13 @@ namespace AltController.Actions
         {
             get 
             {
-                string options;
+                string name = ShortName;
                 if (_checkIfRunning)
                 {
-                    options = string.Format(" ({0}{1})", Properties.Resources.String_check_if_running,                        
-                        _tryBothFolders ? ", " + Properties.Resources.String_try_both_folders : "");
-                }
-                else
-                {
-                    options = _tryBothFolders ? " (" + Properties.Resources.String_try_both_folders + ")" : "";
+                    name += string.Format(" ({0})", Properties.Resources.String_check_if_running);
                 }
 
-                return ShortName + options;
+                return name;
             }
         }
 
@@ -128,36 +120,9 @@ namespace AltController.Actions
             string programName = _programName;
             if (programName != "")
             {
-                if (!programName.EndsWith(".exe"))
-                {
-                    programName += ".exe";
-                }
-
                 if (_programFolder != "")
                 {
-                    fileTarget = Path.Combine(_programFolder, programName);
-
-                    // See if we need to switch between Program Files and Program Files (x86)
-                    if (_tryBothFolders && _programFolder.Contains("Program Files") && !File.Exists(fileTarget))
-                    {
-                        // Create an alternative target using the other Program Files directory
-                        string alternativeFolder;
-                        if (_programFolder.Contains("Program Files (x86)"))
-                        {
-                            alternativeFolder = _programFolder.Replace("Program Files (x86)", "Program Files");
-                        }
-                        else
-                        {
-                            alternativeFolder = _programFolder.Replace("Program Files", "Program Files (x86)");
-                        }
-                        
-                        string alternativeTarget = Path.Combine(alternativeFolder, programName);
-                        if (File.Exists(alternativeTarget))
-                        {
-                            // Use the alternative target
-                            fileTarget = alternativeTarget;
-                        }
-                    }                    
+                    fileTarget = Path.Combine(_programFolder, programName);               
                 }
                 else
                 {
@@ -218,7 +183,6 @@ namespace AltController.Actions
             _programFolder = element.GetAttribute("programfolder");
             _programArgs = element.GetAttribute("arguments");
             _checkIfRunning = bool.Parse(element.GetAttribute("checkifrunning"));
-            _tryBothFolders = bool.Parse(element.GetAttribute("trybothfolders"));
 
             base.FromXml(element);
         }
@@ -236,7 +200,6 @@ namespace AltController.Actions
             element.SetAttribute("programfolder", _programFolder);
             element.SetAttribute("arguments", _programArgs);
             element.SetAttribute("checkifrunning", _checkIfRunning.ToString());
-            element.SetAttribute("trybothfolders", _tryBothFolders.ToString());
         }
 
         /// <summary>

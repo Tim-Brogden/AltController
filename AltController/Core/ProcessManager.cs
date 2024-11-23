@@ -27,6 +27,7 @@ You should have received a copy of the GNU General Public License
 along with Alt Controller.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using AltController.Actions;
 
 namespace AltController.Core
@@ -36,6 +37,8 @@ namespace AltController.Core
     /// </summary>
     public static class ProcessManager
     {
+        private static Regex _executableFileRegex = new Regex("\\.(bat|bin|cmd|exe)$", RegexOptions.IgnoreCase);
+
         /// <summary>
         /// Starts a process
         /// </summary>
@@ -87,7 +90,7 @@ namespace AltController.Core
             if (processName != "")
             {
                 // Convert to friendly name without extension if required
-                if (processName.EndsWith(".exe"))
+                if (_executableFileRegex.IsMatch(processName))
                 {
                     processName = processName.Substring(0, processName.Length - 4);
                 }

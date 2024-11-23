@@ -88,7 +88,6 @@ namespace AltController.UserControls
                 ProgramFolderTextBox.Text = _currentAction.ProgramFolder;
                 ProgramArgsTextBox.Text = _currentAction.ProgramArgs;
                 CheckIfRunningCheckBox.IsChecked = _currentAction.CheckIfRunning;
-                TryBothFoldersCheckBox.IsChecked = _currentAction.TryBothFolders;
             }
         }
 
@@ -103,7 +102,7 @@ namespace AltController.UserControls
             dialog.AddExtension = true;
             dialog.CheckFileExists = true;
             dialog.DefaultExt = ".exe";
-            dialog.Filter = Properties.Resources.String_ExecutableFiles + "|*.exe";
+            dialog.Filter = Properties.Resources.String_ExecutableFiles + "|*.bat; *.bin; *.cmd; *.exe; *.lnk";
             dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             dialog.Multiselect = false;
             dialog.RestoreDirectory = true;
@@ -112,7 +111,7 @@ namespace AltController.UserControls
             if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(dialog.FileName);
-                ProgramNameTextBox.Text = fi.Name.Replace(".exe", "");
+                ProgramNameTextBox.Text = fi.Name;
                 ProgramFolderTextBox.Text = fi.DirectoryName;
                 ProgramFolderTextBox.ToolTip = fi.DirectoryName;
             }
@@ -242,7 +241,6 @@ namespace AltController.UserControls
                 _currentAction.ProgramFolder = programFolder;
                 _currentAction.ProgramArgs = programArgs;
                 _currentAction.CheckIfRunning = CheckIfRunningCheckBox.IsChecked == true;
-                _currentAction.TryBothFolders = TryBothFoldersCheckBox.IsChecked == true;
             }
             else
             {
